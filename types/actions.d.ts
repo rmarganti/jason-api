@@ -1,5 +1,5 @@
-import { iAttributes } from 'ts-json-api';
-import { iLoadAction, iAddRelationshipAction, iRemoveRelationshipAction, iSetRelationshipAction, iClearRelationshipAction, iUpdateResourceObjectsMetaAction, iUpdateResourceObjectMetaAction, iUpdateResourceObjectAction, iRemoveResourceObjectAction, iClearResourceObjectTypeAction } from './interfaces/actions';
+import { iAttributes, iJsonApiResponse } from 'ts-json-api';
+import { iLoadAction, iAddRelationshipAction, iRemoveRelationshipAction, iSetRelationshipAction, iClearRelationshipAction, iUpdateResourceObjectsMetaAction, iUpdateResourceObjectMetaAction, iUpdateResourceObjectAction, iRemoveResourceObjectAction, iClearResourceObjectTypeAction, iCacheQueryAction } from './interfaces/actions';
 import { FlexiblePayload } from './interfaces/other';
 /**
  * Load a JSON API response into the state
@@ -74,3 +74,10 @@ export declare const removeResourceObject: (resourceType: string, resourceId: st
  * @param  resourceType
  */
 export declare const clearResourceObjectType: (resourceType: string) => iClearResourceObjectTypeAction;
+/**
+ * Cache a simplified version of a JSON API query response
+ *
+ * @param url
+ * @param response
+ */
+export declare const cacheQuery: (url: string, response: iJsonApiResponse) => iCacheQueryAction;

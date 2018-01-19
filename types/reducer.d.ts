@@ -1,4 +1,4 @@
 import * as actions from './interfaces/actions';
-import { iState } from './interfaces/state';
-declare const _default: (state?: iState, action?: actions.Action) => iState;
+import { iJasonApiState } from './interfaces/state';
+declare const _default: (state?: iJasonApiState, action?: actions.Action) => iJasonApiState;
 export default _default;

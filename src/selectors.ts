@@ -7,7 +7,7 @@ import {
     iJsonApiResponseWithData,
 } from 'ts-json-api';
 
-import { iState } from './interfaces/state';
+import { iJasonApiState } from './interfaces/state';
 
 /**
  * Grab an Resource Object from the state
@@ -17,7 +17,11 @@ import { iState } from './interfaces/state';
  * @param  {String} id
  * @return {Object}
  */
-export const getResourceObject = (state: iState, key: string, id: string) => {
+export const getResourceObject = (
+    state: iJasonApiState,
+    key: string,
+    id: string
+) => {
     const pluralKey = pluralize(key);
     return R.path([pluralKey, 'byId', id], state) as iResourceObject;
 };
@@ -26,7 +30,7 @@ export const getResourceObject = (state: iState, key: string, id: string) => {
  * Get an array of Resource Objects from the state
  */
 export const getResourceObjects = (
-    state: iState,
+    state: iJasonApiState,
     key: string,
     ids: string[] | null = null
 ): iResourceObject[] => {
@@ -54,7 +58,7 @@ export const getResourceObjects = (
  * @return {Mixed}
  */
 export const getResourceObjectsMeta = (
-    state: iState,
+    state: iJasonApiState,
     resourceType: string,
     metaKey: string | null = null
 ) =>
@@ -72,7 +76,7 @@ export const getResourceObjectsMeta = (
  * @return {Mixed}
  */
 export const getResourceObjectMeta = (
-    state: iState,
+    state: iJasonApiState,
     resourceType: string,
     resourceId: string,
     metaKey: string | null = null
@@ -87,5 +91,5 @@ export const getResourceObjectMeta = (
  * @param state
  * @param url
  */
-export const getCachedQuery = (state: iState, url: string) =>
+export const getCachedQuery = (state: iJasonApiState, url: string) =>
     R.path(['_cachedQueries', url], state);

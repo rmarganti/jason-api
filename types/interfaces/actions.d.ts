@@ -1,4 +1,4 @@
-import { iAttributes } from 'ts-json-api';
+import { iAttributes, iJsonApiResponse } from 'ts-json-api';
 import { FlexiblePayload } from './other';
 export interface iLoadAction {
     type: string;
@@ -58,5 +58,10 @@ export interface iRemoveResourceObjectAction {
 export interface iClearResourceObjectTypeAction {
     type: string;
     resourceType: string;
+}
+export interface iCacheQueryAction {
+    type: string;
+    response: iJsonApiResponse;
+    url: string;
 }
 export declare type Action = iLoadAction | iAddRelationshipAction | iRemoveRelationshipAction | iSetRelationshipAction | iUpdateResourceObjectsMetaAction | iUpdateResourceObjectMetaAction | iUpdateResourceObjectAction | iRemoveResourceObjectAction | iClearResourceObjectTypeAction;

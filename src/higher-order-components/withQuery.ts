@@ -2,6 +2,7 @@ import { equals, omit } from 'ramda';
 import { connect } from 'react-redux';
 import {
     compose,
+    ComponentEnhancer,
     lifecycle,
     withHandlers,
     withState,
@@ -11,16 +12,12 @@ import { ActionCreator, Action } from 'redux';
 
 import { iJsonApiActionConfig } from '../interfaces/Middleware';
 import { getCachedQuery } from '../selectors';
-import { iState } from '../interfaces/state';
+import { iStateWithJasonApi } from '../interfaces/state';
 
-interface iWithQueryOptions {
+export interface iWithQueryOptions {
     actionCreator: (props: object) => iJsonApiActionConfig;
     propsToWatch: string[];
     stateBranch?: string;
-}
-
-interface iFlexibleState {
-    [index: string]: any;
 }
 
 const withQuery = ({
@@ -30,7 +27,7 @@ const withQuery = ({
 }: iWithQueryOptions) =>
     compose(
         connect(
-            (state: iFlexibleState, ownProps) => {
+            (state: iStateWithJasonApi, ownProps) => {
                 const url = actionCreator(ownProps).url;
                 const cachedQuery = getCachedQuery(state[stateBranch], url);
                 return { ...cachedQuery };
@@ -51,7 +48,12 @@ const withQuery = ({
                 setLoadingState: (status: boolean) => any;
             }) => () => {
                 setLoadingState(true);
-                fetchData().then(() => setLoadingState(false));
+                fetchData()
+                    .then(() => setLoadingState(false))
+                    .catch(response => {
+                        setLoadingState(false);
+                        console.log(response);
+                    });
             },
         }),
 
@@ -79,3 +81,4 @@ const withQuery = ({
 
         mapProps(omit(['fetchData', 'setLoadingState']))
     );
+export default withQuery;

@@ -158,12 +158,16 @@ const parseResponse = (response: Response) => {
  */
 const handleError = (error: Response | TypeError) => {
     if (error instanceof TypeError) {
-        throw [
-            {
-                status: 500,
-                details: error.message,
-            },
-        ];
+        throw {
+            errors: [{ status: 500, details: error.message }],
+        };
+    }
+
+    const contentType = error.headers.get('content-type');
+    if (!contentType || !contentType.match(/json/i)) {
+        throw {
+            errors: [{ status: error.status, details: error.statusText }],
+        };
     }
 
     error.json().then(json => {

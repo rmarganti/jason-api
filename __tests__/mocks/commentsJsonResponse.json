@@ -1,39 +1,53 @@
 {
-    "data":[
+    "data": [
         {
-            "type":"comments",
-            "id":"42",
-            "attributes":{
-                "body":"Banana!"
+            "type": "comments",
+            "id": "42",
+            "attributes": {
+                "body": "Banana!"
             },
-            "relationships":{
-                "author":{
-                    "data":{
-                        "type":"people",
-                        "id":"2"
+            "relationships": {
+                "author": {
+                    "data": {
+                        "type": "people",
+                        "id": "2"
                     }
                 }
             },
-            "links":{
-                "self":"http://example.com/comments/42"
+            "links": {
+                "self": "http://example.com/comments/42"
             }
         },
         {
-            "type":"comments",
-            "id":"44",
-            "attributes":{
-                "body":"!ananaB"
+            "type": "comments",
+            "id": "44",
+            "attributes": {
+                "body": "!ananaB"
             },
-            "relationships":{
-                "author":{
-                    "data":{
-                        "type":"people",
-                        "id":"2"
+            "relationships": {
+                "author": {
+                    "data": {
+                        "type": "people",
+                        "id": "2"
                     }
                 }
             },
-            "links":{
-                "self":"http://example.com/comments/44"
+            "links": {
+                "self": "http://example.com/comments/44"
+            }
+        }
+    ],
+    "included": [
+        {
+            "type": "people",
+            "id": "2",
+            "attributes": {
+                "first-name": "Joe",
+                "last-name": "Dimagio",
+                "twitter": "jdim"
+            },
+            "links": {
+                "self": "http://example.com/people/2"
             }
         }
     ]

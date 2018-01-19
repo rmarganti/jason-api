@@ -1,8 +1,9 @@
 import {
     addRelationshipToResourceObject,
-    removeResourceObject,
+    cacheQuery,
     loadJsonApiResourceObjectData,
     removeRelationshipFromResourceObject,
+    removeResourceObject,
     setRelationshipOnResourceObject,
     updateResourceObject,
     updateResourceObjectsMeta,
@@ -134,7 +135,13 @@ class JsonApiMiddleware {
             this.executeOnSuccessActions(transformedResponse);
 
             if (this.action.onSuccess) {
-                this.action.onSuccess(response);
+                this.action.onSuccess(transformedResponse);
+            }
+
+            if (method === 'get') {
+                this.store.dispatch(
+                    cacheQuery(this.action.url, transformedResponse)
+                );
             }
 
             return transformedResponse;
@@ -165,6 +172,10 @@ class JsonApiMiddleware {
                         this.config.displayErrorActionCreator(error.message)
                     );
                 }
+            }
+
+            if (method === 'get') {
+                this.store.dispatch(cacheQuery(this.action.url, error));
             }
 
             throw error;

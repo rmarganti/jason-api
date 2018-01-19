@@ -1,5 +1,6 @@
 import {
     iAttributes,
+    iJsonApiResponse,
     iJsonApiResponseWithData,
     iResourceObject,
 } from 'ts-json-api';
@@ -73,6 +74,12 @@ export interface iRemoveResourceObjectAction {
 export interface iClearResourceObjectTypeAction {
     type: string;
     resourceType: string;
+}
+
+export interface iCacheQueryAction {
+    type: string;
+    response: iJsonApiResponse;
+    url: string;
 }
 
 export type Action =

@@ -3,6 +3,7 @@ import {
     iJsonApiResponseWithData,
     iAttributes,
     iResourceObject,
+    iJsonApiResponse,
 } from 'ts-json-api';
 
 import actionNames from './action-names';
@@ -17,6 +18,7 @@ import {
     iUpdateResourceObjectAction,
     iRemoveResourceObjectAction,
     iClearResourceObjectTypeAction,
+    iCacheQueryAction,
 } from './interfaces/actions';
 
 import { FlexiblePayload } from './interfaces/other';
@@ -210,4 +212,19 @@ export const clearResourceObjectType = (
         resourceType
     ).toUpperCase()}`,
     resourceType,
+});
+
+/**
+ * Cache a simplified version of a JSON API query response
+ *
+ * @param url
+ * @param response
+ */
+export const cacheQuery = (
+    url: string,
+    response: iJsonApiResponse
+): iCacheQueryAction => ({
+    type: actionNames.CACHE_QUERY,
+    response,
+    url,
 });

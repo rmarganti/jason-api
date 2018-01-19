@@ -9,5 +9,6 @@ declare const _default: {
     UPDATE_ENTITY_META: string;
     REMOVE_ENTITY: string;
     CLEAR_ENTITY_TYPE: string;
+    CACHE_QUERY: string;
 };
 export default _default;

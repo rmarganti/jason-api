@@ -5,11 +5,11 @@ import {
 } from 'react-redux';
 import { iResourceObject } from 'ts-json-api';
 
+import { iJasonApiState } from '../interfaces/state';
 import { getResourceObject } from '../selectors';
-import { iState } from '../interfaces/state';
 
 export interface iWithItemOptions {
-    resourceType: string;
+    resourceType?: string;
     resourceId?: string;
 }
 
@@ -18,15 +18,27 @@ export interface iWithItemProps {
     id?: string;
 }
 
-const withItem = ({ resourceType, resourceId }: iWithItemOptions) =>
+const withItem = ({ resourceType, resourceId }: iWithItemOptions = {}) =>
     connect(
-        (state: { resourceObjects: iState }, { data, id }: iWithItemProps) => ({
-            data: getResourceObject(
-                state.resourceObjects,
-                data ? data.type : resourceType,
-                data ? data.id : id || resourceId
-            ),
-        })
+        (
+            state: { resourceObjects: iJasonApiState },
+            { data, id }: iWithItemProps
+        ) => {
+            const resolvedType = data ? data.type : resourceType;
+            const resolvedId = data ? data.id : id || resourceId;
+
+            if (!resolvedType || !resolvedId) {
+                return { data: {} };
+            }
+
+            return {
+                data: getResourceObject(
+                    state.resourceObjects,
+                    resolvedType,
+                    resolvedId
+                ),
+            };
+        }
     );
 
 export default withItem;

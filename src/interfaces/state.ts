@@ -8,10 +8,14 @@ export interface iResourceObjectCollection {
     };
 }
 
-export interface iState {
+export interface iStateWithJasonApi {
+    [index: string]: iJasonApiState;
+}
+
+export interface iJasonApiState {
     [index: string]: iResourceObjectCollection;
 }
 
 export interface iReducer {
-    (state: iState, action: Action): iState;
+    (state: iJasonApiState, action: Action): iJasonApiState;
 }

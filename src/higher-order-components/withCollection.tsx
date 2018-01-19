@@ -5,7 +5,7 @@ import {
 } from 'react-redux';
 import { iResourceObject } from 'ts-json-api';
 
-import { iState } from '../interfaces/state';
+import { iJasonApiState } from '../interfaces/state';
 import { getResourceObjects } from '../selectors';
 import { simplifyResourceObjects } from '../utils';
 
@@ -36,7 +36,7 @@ const withCollection = ({
 }: iWithCollectionOptions) =>
     connect(
         (
-            state: { resourceObjects: iState },
+            state: { resourceObjects: iJasonApiState },
             { ids }: iWithCollectionProps
         ) => ({
             data: expandResourceObjects(

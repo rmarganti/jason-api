@@ -1,1 +1,0 @@
-{"version":3,"file":"action-names.js","sourceRoot":"","sources":["../src/action-names.ts"],"names":[],"mappings":";;AAAA,kBAAe;IACX,yBAAyB,EAAE,2BAA2B;IAEtD,0BAA0B,EAAE,4BAA4B;IACxD,+BAA+B,EAAE,iCAAiC;IAClE,0BAA0B,EAAE,4BAA4B;IACxD,4BAA4B,EAAE,8BAA8B;IAE5D,aAAa,EAAE,eAAe;IAC9B,oBAAoB,EAAE,sBAAsB;IAC5C,kBAAkB,EAAE,oBAAoB;IAExC,aAAa,EAAE,eAAe;IAC9B,iBAAiB,EAAE,mBAAmB;CACzC,CAAC"}

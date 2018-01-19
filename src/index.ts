@@ -18,3 +18,5 @@ export { FlexiblePayload } from './interfaces/other';
 export * from './higher-order-components';
 export { default as middleware, middlewareFactory } from './middleware';
 export { JASON_API_REQUEST } from './constants';
+
+export { compose, pipe } from 'ramda';

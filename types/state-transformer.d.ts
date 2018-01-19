@@ -1,5 +1,5 @@
-import { iAttributes, iResourceObject } from 'ts-json-api';
-import { iState } from './interfaces/state';
+import { iAttributes, iJsonApiResponse, iResourceObject } from 'ts-json-api';
+import { iJasonApiState } from './interfaces/state';
 import { FlexiblePayload } from './interfaces/other';
 /**
  * Insert an ResourceObject or group of ResourceObjects
@@ -8,7 +8,7 @@ import { FlexiblePayload } from './interfaces/other';
  * @param state
  * @param payload
  */
-export declare const insertOrUpdateResourceObjects: (state: iState, payload: FlexiblePayload) => iState;
+export declare const insertOrUpdateResourceObjects: (state: iJasonApiState, payload: FlexiblePayload) => iJasonApiState;
 /**
  * Insert an ResourceObject into the state and
  * add it as a relationship to another ResourceObject
@@ -20,7 +20,7 @@ export declare const insertOrUpdateResourceObjects: (state: iState, payload: Fle
  * @param  {Object|String}  relationshipObject  Can be either a valid JSON API object or a string ID
  * @return {Object}
  */
-export declare const addRelationshipToResourceObject: (initialState: iState, resourceType: string, resourceId: string, relationshipKey: string, relationshipObject: FlexiblePayload) => iState;
+export declare const addRelationshipToResourceObject: (initialState: iJasonApiState, resourceType: string, resourceId: string, relationshipKey: string, relationshipObject: FlexiblePayload) => iJasonApiState;
 /**
  * Remove a relationship an ResourceObject
  *
@@ -31,7 +31,7 @@ export declare const addRelationshipToResourceObject: (initialState: iState, res
  * @param  relationshipId  Id of the relationship object
  * @return {Object}
  */
-export declare const removeRelationshipFromResourceObject: (initialState: iState, resourceType: string, resourceId: string, relationshipKey: string, relationshipId: string) => iState;
+export declare const removeRelationshipFromResourceObject: (initialState: iJasonApiState, resourceType: string, resourceId: string, relationshipKey: string, relationshipId: string) => iJasonApiState;
 /**
  * Set a relationship on an ResourceObject to another ResourceObject or ResourceObjects
  *
@@ -41,7 +41,7 @@ export declare const removeRelationshipFromResourceObject: (initialState: iState
  * @param relationshipKey  Name of the relationship
  * @param relationshipObject  Can be a JsonApiResponse, a Resource Object, or an array of Resource Objects
  */
-export declare const setRelationshipOnResourceObject: (initialState: iState, resourceType: string, resourceId: string, relationshipKey: string, relationshipObject: FlexiblePayload) => iState;
+export declare const setRelationshipOnResourceObject: (initialState: iJasonApiState, resourceType: string, resourceId: string, relationshipKey: string, relationshipObject: FlexiblePayload) => iJasonApiState;
 /**
  * Completely clear a relationship type on an entity
  *
@@ -50,7 +50,7 @@ export declare const setRelationshipOnResourceObject: (initialState: iState, res
  * @param resourceId  Id of entity who owns the relationship
  * @param relationshipKey Name of relationship to clear
  */
-export declare const clearRelationshipOnResourceObject: (initialState: iState, resourceType: string, resourceId: string, relationshipKey: string) => iState;
+export declare const clearRelationshipOnResourceObject: (initialState: iJasonApiState, resourceType: string, resourceId: string, relationshipKey: string) => iJasonApiState;
 /**
  * Update an ResourceObject's attributes
  *
@@ -60,7 +60,7 @@ export declare const clearRelationshipOnResourceObject: (initialState: iState, r
  * @param  {Object} data
  * @return {Object}
  */
-export declare const updateResourceObject: (state: iState, resourceTypeOrResourceObject: string | iResourceObject, resourceId?: string, data?: iAttributes | iResourceObject) => iState;
+export declare const updateResourceObject: (state: iJasonApiState, resourceTypeOrResourceObject: string | iResourceObject, resourceId?: string, data?: iAttributes | iResourceObject) => iJasonApiState;
 /**
  * Update the meta data for an ResourceObject group
  *
@@ -70,7 +70,7 @@ export declare const updateResourceObject: (state: iState, resourceTypeOrResourc
  * @param  {Mixed}  value
  * @return {Object}
  */
-export declare const updateResourceObjectsMeta: (state: iState, resourceType: string, metaKey: string, value: any) => iState;
+export declare const updateResourceObjectsMeta: (state: iJasonApiState, resourceType: string, metaKey: string, value: any) => iJasonApiState;
 /**
  * Update the meta data for an ResourceObject
  *
@@ -81,7 +81,7 @@ export declare const updateResourceObjectsMeta: (state: iState, resourceType: st
  * @param  {Mixed}  value
  * @return {Object}
  */
-export declare const updateResourceObjectMeta: (state: iState, resourceType: string, resourceId: string, metaKey: string, value: any) => iState;
+export declare const updateResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey: string, value: any) => iJasonApiState;
 /**
  * Remove a single ResourceObject
  *
@@ -90,7 +90,7 @@ export declare const updateResourceObjectMeta: (state: iState, resourceType: str
  * @param  {String} resourceId
  * @return {Object}
  */
-export declare const removeResourceObject: (state: iState, resourceType: string, resourceId: string) => iState;
+export declare const removeResourceObject: (state: iJasonApiState, resourceType: string, resourceId: string) => iJasonApiState;
 /**
  * Clear all of the ResourceObjects out of an ResourceObject type
  *
@@ -98,4 +98,12 @@ export declare const removeResourceObject: (state: iState, resourceType: string,
  * @param  {String} resourceType
  * @return {Object}
  */
-export declare const clearResourceObjectType: (state: iState, resourceType: string) => iState;
+export declare const clearResourceObjectType: (state: iJasonApiState, resourceType: string) => iJasonApiState;
+/**
+ * Cache a simplified API response
+ *
+ * @param state
+ * @param url
+ * @param response
+ */
+export declare const cacheQuery: (state: iJasonApiState, url: string, response: iJsonApiResponse) => iJasonApiState;
