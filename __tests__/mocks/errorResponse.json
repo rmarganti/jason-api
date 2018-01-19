@@ -1,0 +1,9 @@
+{
+    "errors": [
+        {
+            "status": "404",
+            "title": "Not Found",
+            "detail": "The requested Article was not found."
+        }
+    ]
+}
