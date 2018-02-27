@@ -35,6 +35,12 @@ export declare const setRelationshipOnResourceObject: (resourceType: string, res
  * @param  relationshipId
  */
 export declare const removeRelationshipFromResourceObject: (resourceType: string, resourceId: string, relationshipKey: string, relationshipId: string) => iRemoveRelationshipAction;
+/**
+ * Completely remove a relationship from a ResourceObject
+ * @param resourceType
+ * @param resourceId
+ * @param relationshipKey
+ */
 export declare const clearRelationshipOnResourceObject: (resourceType: string, resourceId: string, relationshipKey: string) => iClearRelationshipAction;
 /**
  * Update an ResourceObject's attributes
@@ -63,7 +69,7 @@ export declare const updateResourceObjectsMeta: (resourceType: string, metaKey: 
 export declare const updateResourceObjectMeta: (resourceType: string, resourceId: string, metaKey: string, value: any) => iUpdateResourceObjectMetaAction;
 /**
  * Remove a single ResourceObject
- *
+
  * @param  resourceType
  * @param  resourceId
  */

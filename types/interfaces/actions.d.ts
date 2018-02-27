@@ -2,66 +2,88 @@ import { iAttributes, iJsonApiResponse } from 'ts-json-api';
 import { FlexiblePayload } from './other';
 export interface iLoadAction {
     type: string;
-    data: FlexiblePayload;
+    payload: {
+        data: FlexiblePayload;
+    };
 }
 export interface iAddRelationshipAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    relationshipKey: string;
-    relationshipObject: FlexiblePayload;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        relationshipKey: string;
+        relationshipObject: FlexiblePayload;
+    };
 }
 export interface iRemoveRelationshipAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    relationshipKey: string;
-    relationshipId: string;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        relationshipKey: string;
+        relationshipId: string;
+    };
 }
 export interface iSetRelationshipAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    relationshipKey: string;
-    relationshipObject: FlexiblePayload;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        relationshipKey: string;
+        relationshipObject: FlexiblePayload;
+    };
 }
 export interface iClearRelationshipAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    relationshipKey: string;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        relationshipKey: string;
+    };
 }
 export interface iUpdateResourceObjectsMetaAction {
     type: string;
-    resourceType: string;
-    metaKey: string;
-    value: any;
+    payload: {
+        resourceType: string;
+        metaKey: string;
+        value: any;
+    };
 }
 export interface iUpdateResourceObjectMetaAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    metaKey: string;
-    value: any;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        metaKey: string;
+        value: any;
+    };
 }
 export interface iUpdateResourceObjectAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
-    data: iAttributes;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+        data: iAttributes;
+    };
 }
 export interface iRemoveResourceObjectAction {
     type: string;
-    resourceType: string;
-    resourceId: string;
+    payload: {
+        resourceType: string;
+        resourceId: string;
+    };
 }
 export interface iClearResourceObjectTypeAction {
     type: string;
-    resourceType: string;
+    payload: {
+        resourceType: string;
+    };
 }
 export interface iCacheQueryAction {
     type: string;
-    response: iJsonApiResponse;
-    url: string;
+    payload: {
+        response: iJsonApiResponse;
+        url: string;
+    };
 }
 export declare type Action = iLoadAction | iAddRelationshipAction | iRemoveRelationshipAction | iSetRelationshipAction | iUpdateResourceObjectsMetaAction | iUpdateResourceObjectMetaAction | iUpdateResourceObjectAction | iRemoveResourceObjectAction | iClearResourceObjectTypeAction;

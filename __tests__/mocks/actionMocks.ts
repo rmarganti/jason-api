@@ -1,5 +1,7 @@
 import * as pluralize from 'pluralize';
 
+import * as actions from '../../src/actions';
+
 interface iBasicAction {
     type: string;
     [index: string]: any;
@@ -19,43 +21,24 @@ export const startLoading = (resourceType, resourceId) => {
 
     if (resourceId) {
         returnedActions.push.apply(returnedActions, [
-            {
+            actions.updateResourceObjectMeta(
+                resourceType,
                 resourceId,
-                resourceType: resourceType,
-                metaKey: 'loading',
-                type: `UPDATE_ENTITY_META_${singularize(
-                    resourceType.toUpperCase()
-                )}`,
-                value: true,
-            },
-            {
-                resourceType: resourceType,
+                'loading',
+                true
+            ),
+
+            actions.updateResourceObjectMeta(
+                resourceType,
                 resourceId,
-                metaKey: 'errors',
-                type: `UPDATE_ENTITY_META_${singularize(
-                    resourceType.toUpperCase()
-                )}`,
-                value: null,
-            },
+                'errors',
+                null
+            ),
         ]);
     } else if (resourceType) {
         returnedActions.push.apply(returnedActions, [
-            {
-                resourceType: resourceType,
-                metaKey: 'loading',
-                type: `UPDATE_ENTITIES_META_${pluralize(
-                    resourceType.toUpperCase()
-                )}`,
-                value: true,
-            },
-            {
-                resourceType: resourceType,
-                metaKey: 'errors',
-                type: `UPDATE_ENTITIES_META_${pluralize(
-                    resourceType.toUpperCase()
-                )}`,
-                value: null,
-            },
+            actions.updateResourceObjectsMeta(resourceType, 'loading', true),
+            actions.updateResourceObjectsMeta(resourceType, 'errors', null),
         ]);
     }
 
@@ -73,24 +56,18 @@ export const stopLoading = (resourceType, resourceId) => {
     const returnedActions: iBasicAction[] = [{ type: 'STOP_LOADING' }];
 
     if (resourceId) {
-        returnedActions.push({
-            resourceId,
-            resourceType: resourceType,
-            metaKey: 'loading',
-            type: `UPDATE_ENTITY_META_${singularize(
-                resourceType.toUpperCase()
-            )}`,
-            value: false,
-        });
+        returnedActions.push(
+            actions.updateResourceObjectMeta(
+                resourceType,
+                resourceId,
+                'loading',
+                false
+            )
+        );
     } else if (resourceType) {
-        returnedActions.push({
-            resourceType: resourceType,
-            metaKey: 'loading',
-            type: `UPDATE_ENTITIES_META_${pluralize(
-                resourceType.toUpperCase()
-            )}`,
-            value: false,
-        });
+        returnedActions.push(
+            actions.updateResourceObjectsMeta(resourceType, 'loading', false)
+        );
     }
 
     return returnedActions;
@@ -119,7 +96,7 @@ export const startAndStopLoading = (
  */
 export const loadResponse = (response, resourceType) => {
     const returnedActions: iBasicAction[] = [
-        { type: 'LOAD_JSON_API_ENTITY_DATA', data: response },
+        { type: 'LOAD_JSON_API_ENTITY_DATA', payload: { data: response } },
     ];
 
     return returnedActions;
@@ -139,13 +116,13 @@ export const addRelationship = (
     resourceId,
     relationshipKey,
     response
-) => ({
-    type: `ADD_RELATIONSHIP_TO_ENTITY_${resourceType.toUpperCase()}_${relationshipKey.toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
-    relationshipObject: response,
-});
+) =>
+    actions.addRelationshipToResourceObject(
+        resourceType,
+        resourceId,
+        relationshipKey,
+        response
+    );
 
 /**
  * Generate an action to remove a relationship
@@ -161,16 +138,26 @@ export const removeRelationship = (
     resourceId,
     relationshipKey,
     relationshipId
-) => ({
-    type: `REMOVE_RELATIONSHIP_FROM_ENTITY_${resourceType.toUpperCase()}_${relationshipKey.toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
-    relationshipId,
-});
+) =>
+    actions.removeRelationshipFromResourceObject(
+        resourceType,
+        resourceId,
+        relationshipKey,
+        relationshipId
+    );
 
-export const removeResourceObject = (resourceType, resourceId) => ({
-    type: `REMOVE_ENTITY_${singularize(resourceType.toUpperCase())}`,
-    resourceType,
-    resourceId,
-});
+/**
+ * Generate an action to remove a Resource Object from the store
+ * @param resourceType
+ * @param resourceId
+ */
+export const removeResourceObject = (resourceType, resourceId) =>
+    actions.removeResourceObject(resourceType, resourceId);
+
+/**
+ * Create an action to cache a query response
+ *
+ * @param url
+ * @param query
+ */
+export const cacheQuery = (url, query) => actions.cacheQuery(url, query);

@@ -31,7 +31,7 @@ export declare const appendOrConcat: (a: any) => any;
  *
  * Object -> Object
  */
-export declare const simplifyResourceObject: <T, U>(obj: T) => U;
+export declare const simplifyResourceObject: (a: any) => any;
 /**
  * Simplifiy a single Resource Object or array of
  * Resource Objects to only its/their ID/ID's

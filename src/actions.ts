@@ -23,7 +23,8 @@ import {
 
 import { FlexiblePayload } from './interfaces/other';
 
-const singularize = (input: string) => pluralize(input, 1);
+const singularCase = (input: string) => pluralize(input, 1).toUpperCase();
+const pluralCase = (input: string) => pluralize(input).toUpperCase();
 
 /**
  * Load a JSON API response into the state
@@ -35,7 +36,7 @@ export const loadJsonApiResourceObjectData = (
     data: FlexiblePayload
 ): iLoadAction => ({
     type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-    data,
+    payload: { data },
 });
 
 /**
@@ -52,13 +53,10 @@ export const addRelationshipToResourceObject = (
     relationshipKey: string,
     relationshipObject: FlexiblePayload
 ): iAddRelationshipAction => ({
-    type: `${actionNames.ADD_RELATIONSHIP_TO_ENTITY}_${singularize(
+    type: `${actionNames.ADD_RELATIONSHIP_TO_ENTITY}_${singularCase(
         resourceType
-    ).toUpperCase()}_${pluralize(relationshipKey).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
-    relationshipObject,
+    )}_${pluralCase(relationshipKey)}`,
+    payload: { resourceType, resourceId, relationshipKey, relationshipObject },
 });
 
 /**
@@ -75,13 +73,10 @@ export const setRelationshipOnResourceObject = (
     relationshipKey: string,
     relationshipObject: FlexiblePayload
 ): iSetRelationshipAction => ({
-    type: `${actionNames.SET_RELATIONSHIP_ON_ENTITY}_${singularize(
+    type: `${actionNames.SET_RELATIONSHIP_ON_ENTITY}_${singularCase(
         resourceType
-    ).toUpperCase()}_${pluralize(relationshipKey).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
-    relationshipObject,
+    )}_${pluralCase(relationshipKey)}`,
+    payload: { resourceType, resourceId, relationshipKey, relationshipObject },
 });
 
 /**
@@ -98,26 +93,27 @@ export const removeRelationshipFromResourceObject = (
     relationshipKey: string,
     relationshipId: string
 ): iRemoveRelationshipAction => ({
-    type: `${actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY}_${singularize(
+    type: `${actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY}_${singularCase(
         resourceType
-    ).toUpperCase()}_${pluralize(relationshipKey).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
-    relationshipId,
+    )}_${pluralCase(relationshipKey)}`,
+    payload: { resourceType, resourceId, relationshipKey, relationshipId },
 });
 
+/**
+ * Completely remove a relationship from a ResourceObject
+ * @param resourceType
+ * @param resourceId
+ * @param relationshipKey
+ */
 export const clearRelationshipOnResourceObject = (
     resourceType: string,
     resourceId: string,
     relationshipKey: string
 ): iClearRelationshipAction => ({
-    type: `${actionNames.CLEAR_RELATIONSHIP_ON_ENTITY}_${singularize(
+    type: `${actionNames.CLEAR_RELATIONSHIP_ON_ENTITY}_${singularCase(
         resourceType
-    ).toUpperCase()}_${pluralize(relationshipKey).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    relationshipKey,
+    )}_${pluralCase(relationshipKey)}`,
+    payload: { resourceType, resourceId, relationshipKey },
 });
 
 /**
@@ -132,12 +128,8 @@ export const updateResourceObject = (
     resourceId: string,
     data: iAttributes
 ): iUpdateResourceObjectAction => ({
-    type: `${actionNames.UPDATE_ENTITY}_${singularize(
-        resourceType
-    ).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    data,
+    type: `${actionNames.UPDATE_ENTITY}_${singularCase(resourceType)}`,
+    payload: { resourceType, resourceId, data },
 });
 
 /**
@@ -152,12 +144,8 @@ export const updateResourceObjectsMeta = (
     metaKey: string,
     value: any
 ): iUpdateResourceObjectsMetaAction => ({
-    type: `${actionNames.UPDATE_ENTITIES_META}_${pluralize(
-        resourceType
-    ).toUpperCase()}`,
-    resourceType,
-    metaKey,
-    value,
+    type: `${actionNames.UPDATE_ENTITIES_META}_${pluralCase(resourceType)}`,
+    payload: { resourceType, metaKey, value },
 });
 
 /**
@@ -174,18 +162,13 @@ export const updateResourceObjectMeta = (
     metaKey: string,
     value: any
 ): iUpdateResourceObjectMetaAction => ({
-    type: `${actionNames.UPDATE_ENTITY_META}_${singularize(
-        resourceType
-    ).toUpperCase()}`,
-    resourceType,
-    resourceId,
-    metaKey,
-    value,
+    type: `${actionNames.UPDATE_ENTITY_META}_${singularCase(resourceType)}`,
+    payload: { resourceType, resourceId, metaKey, value },
 });
 
 /**
  * Remove a single ResourceObject
- *
+
  * @param  resourceType
  * @param  resourceId
  */
@@ -193,11 +176,8 @@ export const removeResourceObject = (
     resourceType: string,
     resourceId: string
 ): iRemoveResourceObjectAction => ({
-    type: `${actionNames.REMOVE_ENTITY}_${singularize(
-        resourceType
-    ).toUpperCase()}`,
-    resourceType,
-    resourceId,
+    type: `${actionNames.REMOVE_ENTITY}_${singularCase(resourceType)}`,
+    payload: { resourceType, resourceId },
 });
 
 /**
@@ -208,10 +188,8 @@ export const removeResourceObject = (
 export const clearResourceObjectType = (
     resourceType: string
 ): iClearResourceObjectTypeAction => ({
-    type: `${actionNames.CLEAR_ENTITY_TYPE}_${pluralize(
-        resourceType
-    ).toUpperCase()}`,
-    resourceType,
+    type: `${actionNames.CLEAR_ENTITY_TYPE}_${pluralCase(resourceType)}`,
+    payload: { resourceType },
 });
 
 /**
@@ -225,6 +203,5 @@ export const cacheQuery = (
     response: iJsonApiResponse
 ): iCacheQueryAction => ({
     type: actionNames.CACHE_QUERY,
-    response,
-    url,
+    payload: { response, url },
 });

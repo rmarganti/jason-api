@@ -36,6 +36,10 @@ describe('middleware', () => {
         const expectedActions = [
             ...actionMocks.startAndStopLoading('articles', '1'),
             ...actionMocks.loadResponse(itemResponse, 'articles'),
+            actionMocks.cacheQuery(
+                'http://www.api.com/articles/1',
+                itemResponse
+            ),
         ];
 
         const getStub = sinon
@@ -50,7 +54,7 @@ describe('middleware', () => {
         });
     });
 
-    it('Fetches a collection and returns an array of JsonApiResponse objects', done => {
+    it('Fetches a collection and returns the JSON API response', done => {
         const action = {
             type: JASON_API_REQUEST,
             url: 'http://www.api.com/articles',
@@ -60,6 +64,10 @@ describe('middleware', () => {
         const expectedActions = [
             ...actionMocks.startAndStopLoading('articles'),
             ...actionMocks.loadResponse(collectionResponse, 'articles'),
+            actionMocks.cacheQuery(
+                'http://www.api.com/articles',
+                collectionResponse
+            ),
         ];
 
         const getStub = sinon
@@ -114,18 +122,24 @@ describe('middleware', () => {
             ...actionMocks.startLoading('articles', '1'),
             ...actionMocks.stopLoading('articles', '1'),
             {
-                metaKey: 'errors',
-                resourceId: '1',
-                resourceType: 'articles',
                 type: 'UPDATE_ENTITY_META_ARTICLE',
-                value: [
-                    {
-                        detail: 'The requested Article was not found.',
-                        status: '404',
-                        title: 'Not Found',
-                    },
-                ],
+                payload: {
+                    metaKey: 'errors',
+                    resourceId: '1',
+                    resourceType: 'articles',
+                    value: [
+                        {
+                            detail: 'The requested Article was not found.',
+                            status: '404',
+                            title: 'Not Found',
+                        },
+                    ],
+                },
             },
+            actionMocks.cacheQuery(
+                'http://www.api.com/articles/1',
+                errorResponse
+            ),
         ];
 
         const getStub = sinon

@@ -9,6 +9,7 @@ import {
     mapProps,
 } from 'recompose';
 import { ActionCreator, Action } from 'redux';
+import { iJsonApiResponse } from 'ts-json-api';
 
 import { iJsonApiActionConfig } from '../interfaces/Middleware';
 import { getCachedQuery } from '../selectors';
@@ -46,14 +47,12 @@ const withQuery = ({
             }: {
                 fetchData: () => Promise<any>;
                 setLoadingState: (status: boolean) => any;
-            }) => () => {
+            }) => (newProps = {}) => {
                 setLoadingState(true);
+
                 fetchData()
                     .then(() => setLoadingState(false))
-                    .catch(response => {
-                        setLoadingState(false);
-                        console.log(response);
-                    });
+                    .catch(() => setLoadingState(false));
             },
         }),
 
@@ -81,4 +80,5 @@ const withQuery = ({
 
         mapProps(omit(['fetchData', 'setLoadingState']))
     );
+
 export default withQuery;

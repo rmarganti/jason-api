@@ -22,7 +22,7 @@ const store = createStore(
 
 ## Talking to an API
 
-Below is a couple simple examples of a action creators. The only required options are the
+Below is a couple simple examples of action creators. The only required options are the
 `type` (must be set to `JASON_API_REQUEST`) and `url`. This will make a request
 to the given URL, normalize the response, and update the store. Additionally, since
 we set the `resourceType` and `resourceId`, the meta data for that particular entity

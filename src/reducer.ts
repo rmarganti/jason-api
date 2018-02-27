@@ -19,7 +19,7 @@ const reducerMap = {
     [actionNames.LOAD_JSON_API_ENTITY_DATA]: (
         state: iJasonApiState,
         action: actions.iLoadAction
-    ) => insertOrUpdateResourceObjects(state, action.data),
+    ) => insertOrUpdateResourceObjects(state, action.payload.data),
 
     [actionNames.ADD_RELATIONSHIP_TO_ENTITY]: (
         state: iJasonApiState,
@@ -27,10 +27,10 @@ const reducerMap = {
     ) =>
         addRelationshipToResourceObject(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.relationshipKey,
-            action.relationshipObject
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.relationshipKey,
+            action.payload.relationshipObject
         ),
 
     [actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY]: (
@@ -39,10 +39,10 @@ const reducerMap = {
     ) =>
         removeRelationshipFromResourceObject(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.relationshipKey,
-            action.relationshipId
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.relationshipKey,
+            action.payload.relationshipId
         ),
 
     [actionNames.SET_RELATIONSHIP_ON_ENTITY]: (
@@ -51,10 +51,10 @@ const reducerMap = {
     ) =>
         setRelationshipOnResourceObject(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.relationshipKey,
-            action.relationshipObject
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.relationshipKey,
+            action.payload.relationshipObject
         ),
 
     [actionNames.CLEAR_RELATIONSHIP_ON_ENTITY]: (
@@ -63,9 +63,9 @@ const reducerMap = {
     ) =>
         clearRelationshipOnResourceObject(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.relationshipKey
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.relationshipKey
         ),
 
     [actionNames.UPDATE_ENTITIES_META]: (
@@ -74,9 +74,9 @@ const reducerMap = {
     ) =>
         updateResourceObjectsMeta(
             state,
-            action.resourceType,
-            action.metaKey,
-            action.value
+            action.payload.resourceType,
+            action.payload.metaKey,
+            action.payload.value
         ),
 
     [actionNames.UPDATE_ENTITY_META]: (
@@ -85,10 +85,10 @@ const reducerMap = {
     ) =>
         updateResourceObjectMeta(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.metaKey,
-            action.value
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.metaKey,
+            action.payload.value
         ),
 
     [actionNames.UPDATE_ENTITY]: (
@@ -97,27 +97,30 @@ const reducerMap = {
     ) =>
         updateResourceObject(
             state,
-            action.resourceType,
-            action.resourceId,
-            action.data
+            action.payload.resourceType,
+            action.payload.resourceId,
+            action.payload.data
         ),
 
     [actionNames.REMOVE_ENTITY]: (
         state: iJasonApiState,
         action: actions.iRemoveResourceObjectAction
-    ) => removeResourceObject(state, action.resourceType, action.resourceId),
+    ) =>
+        removeResourceObject(
+            state,
+            action.payload.resourceType,
+            action.payload.resourceId
+        ),
 
     [actionNames.CLEAR_ENTITY_TYPE]: (
         state: iJasonApiState,
         action: actions.iClearResourceObjectTypeAction
-    ) => clearResourceObjectType(state, action.resourceType),
+    ) => clearResourceObjectType(state, action.payload.resourceType),
 
     [actionNames.CACHE_QUERY]: (
         state: iJasonApiState,
         action: actions.iCacheQueryAction
-    ) => cacheQuery(state, action.url, action.response),
-
-    default: (state: iJasonApiState) => state,
+    ) => cacheQuery(state, action.payload.url, action.payload.response),
 };
 
 /**
@@ -127,7 +130,10 @@ const reducerMap = {
  * @param  {Object} action
  * @return {Object}
  */
-export default (state: iJasonApiState = {}, action?: actions.Action) => {
+export default (
+    state: iJasonApiState = {},
+    action?: actions.Action
+): iJasonApiState => {
     const actionKey =
         action &&
         Object.keys(reducerMap).find(
@@ -140,5 +146,5 @@ export default (state: iJasonApiState = {}, action?: actions.Action) => {
         return (<iReducer>reducerMap[actionKey])(state, action);
     }
 
-    return reducerMap.default(state);
+    return state;
 };

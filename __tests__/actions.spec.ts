@@ -16,7 +16,7 @@ describe('actions', () => {
         };
         const expectedAction = {
             type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-            data,
+            payload: { data },
         };
         expect(actions.loadJsonApiResourceObjectData(data)).toEqual(
             expectedAction
@@ -36,10 +36,12 @@ describe('actions', () => {
         };
         const expectedAction = {
             type: actionNames.ADD_RELATIONSHIP_TO_ENTITY + '_ARTICLE_READERS',
-            resourceType,
-            resourceId,
-            relationshipKey,
-            relationshipObject,
+            payload: {
+                resourceType,
+                resourceId,
+                relationshipKey,
+                relationshipObject,
+            },
         };
         expect(
             actions.addRelationshipToResourceObject(
@@ -60,11 +62,14 @@ describe('actions', () => {
             type:
                 actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY +
                 '_ARTICLE_READERS',
-            resourceType,
-            resourceId,
-            relationshipKey,
-            relationshipId,
+            payload: {
+                resourceType,
+                resourceId,
+                relationshipKey,
+                relationshipId,
+            },
         };
+
         expect(
             actions.removeRelationshipFromResourceObject(
                 resourceType,
@@ -83,9 +88,11 @@ describe('actions', () => {
         };
         const expectedAction = {
             type: actionNames.UPDATE_ENTITY + '_ARTICLE',
-            resourceType,
-            resourceId,
-            data,
+            payload: {
+                resourceType,
+                resourceId,
+                data,
+            },
         };
         expect(
             actions.updateResourceObject(resourceType, resourceId, data)
@@ -99,9 +106,11 @@ describe('actions', () => {
 
         const expectedAction = {
             type: actionNames.UPDATE_ENTITIES_META + '_ARTICLES',
-            resourceType,
-            metaKey,
-            value,
+            payload: {
+                resourceType,
+                metaKey,
+                value,
+            },
         };
 
         expect(
@@ -117,10 +126,12 @@ describe('actions', () => {
 
         const expectedAction = {
             type: actionNames.UPDATE_ENTITY_META + '_ARTICLE',
-            resourceType,
-            resourceId,
-            metaKey,
-            value,
+            payload: {
+                resourceType,
+                resourceId,
+                metaKey,
+                value,
+            },
         };
 
         expect(
@@ -139,8 +150,10 @@ describe('actions', () => {
 
         const expectedAction = {
             type: actionNames.REMOVE_ENTITY + '_ARTICLE',
-            resourceType,
-            resourceId,
+            payload: {
+                resourceType,
+                resourceId,
+            },
         };
 
         expect(actions.removeResourceObject(resourceType, resourceId)).toEqual(
@@ -153,7 +166,9 @@ describe('actions', () => {
 
         const expectedAction = {
             type: actionNames.CLEAR_ENTITY_TYPE + '_ARTICLES',
-            resourceType,
+            payload: {
+                resourceType,
+            },
         };
 
         expect(actions.clearResourceObjectType(resourceType)).toEqual(

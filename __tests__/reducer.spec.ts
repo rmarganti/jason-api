@@ -13,7 +13,9 @@ const initialExpectedState = reducer(
     {},
     {
         type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-        data: initialJsonApiResponse,
+        payload: {
+            data: initialJsonApiResponse,
+        },
     }
 );
 
@@ -54,7 +56,9 @@ describe('reducer', () => {
     it('should handle an additional LOAD_JSON_API_ENTITY_DATA', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-            data: commentJsonResponse,
+            payload: {
+                data: commentJsonResponse,
+            },
         });
 
         expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy;
@@ -80,10 +84,12 @@ describe('reducer', () => {
     it('should handle ADD_RELATIONSHIP_TO_ENTITY', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.ADD_RELATIONSHIP_TO_ENTITY + '_ARTICLE_COMMENTS',
-            resourceType: 'article',
-            resourceId: '1',
-            relationshipKey: 'comments',
-            relationshipObject: commentJsonResponse,
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                relationshipKey: 'comments',
+                relationshipObject: commentJsonResponse,
+            },
         });
 
         expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy;
@@ -100,10 +106,12 @@ describe('reducer', () => {
             type:
                 actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY +
                 '_ARTICLE_COMMENTS',
-            resourceType: 'article',
-            resourceId: '1',
-            relationshipKey: 'comments',
-            relationshipId: '5',
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                relationshipKey: 'comments',
+                relationshipId: '5',
+            },
         });
         expect(
             (<iResourceObject[]>R.path(
@@ -116,16 +124,18 @@ describe('reducer', () => {
     it('should handle a SET_RELATIONSHIP_ON_ENTITY', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.SET_RELATIONSHIP_ON_ENTITY + '_ARTICLE_EDITOR',
-            resourceType: 'article',
-            resourceId: '1',
-            relationshipKey: 'editor',
-            relationshipObject: {
-                type: 'people',
-                id: '999',
-                attributes: {
-                    'first-name': 'Triet',
-                    'last-name': 'Hill',
-                    twitter: 't_swizzle',
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                relationshipKey: 'editor',
+                relationshipObject: {
+                    type: 'people',
+                    id: '999',
+                    attributes: {
+                        'first-name': 'Triet',
+                        'last-name': 'Hill',
+                        twitter: 't_swizzle',
+                    },
                 },
             },
         });
@@ -156,9 +166,11 @@ describe('reducer', () => {
         const result = reducer(initialExpectedState, {
             type:
                 actionNames.CLEAR_RELATIONSHIP_ON_ENTITY + '_ARTICLE_COMMENTS',
-            resourceType: 'article',
-            resourceId: '1',
-            relationshipKey: 'comments',
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                relationshipKey: 'comments',
+            },
         });
 
         expect(
@@ -172,10 +184,12 @@ describe('reducer', () => {
     it('should handle UPDATE_ENTITY', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.UPDATE_ENTITY + '_ARTICLE',
-            resourceType: 'article',
-            resourceId: '1',
-            data: {
-                title: 'JSON API does not paint my bikeshed!',
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                data: {
+                    title: 'JSON API does not paint my bikeshed!',
+                },
             },
         });
 
@@ -187,9 +201,11 @@ describe('reducer', () => {
     it('should handle UPDATE_ENTITIES_META and replace a single metadata property', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.UPDATE_ENTITIES_META + '_ARTICLES',
-            resourceType: 'article',
-            metaKey: 'randomMetaKey',
-            value: true,
+            payload: {
+                resourceType: 'article',
+                metaKey: 'randomMetaKey',
+                value: true,
+            },
         });
 
         expect(R.path(['articles', 'meta', 'randomMetaKey'], result)).toEqual(
@@ -200,9 +216,11 @@ describe('reducer', () => {
     it('should handle UPDATE_ENTITIES_META and completely replace the meta object', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.UPDATE_ENTITIES_META + '_ARTICLES',
-            resourceType: 'article',
-            metaKey: null,
-            value: { newMetaProperty: 'newMetaValue' },
+            payload: {
+                resourceType: 'article',
+                metaKey: null,
+                value: { newMetaProperty: 'newMetaValue' },
+            },
         });
 
         expect(R.path(['articles', 'meta'], result)).toEqual({
@@ -213,10 +231,12 @@ describe('reducer', () => {
     it('should handle UPDATE_ENTITY_META and replace a single metadata property', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.UPDATE_ENTITY_META + '_ARTICLE',
-            resourceType: 'article',
-            resourceId: '1',
-            metaKey: 'isLoading',
-            value: true,
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                metaKey: 'isLoading',
+                value: true,
+            },
         });
 
         expect(
@@ -227,10 +247,12 @@ describe('reducer', () => {
     it('should handle UPDATE_ENTITY_META and completely replace the meta object', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.UPDATE_ENTITY_META + '_ARTICLE',
-            resourceType: 'article',
-            resourceId: '1',
-            metaKey: null,
-            value: { randomMetaKey: true },
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+                metaKey: null,
+                value: { randomMetaKey: true },
+            },
         });
 
         expect(R.path(['articles', 'byId', '1', 'meta'], result)).toEqual({
@@ -241,8 +263,10 @@ describe('reducer', () => {
     it('should handle REMOVE_ENTITY', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.REMOVE_ENTITY + '_ARTICLE',
-            resourceType: 'article',
-            resourceId: '1',
+            payload: {
+                resourceType: 'article',
+                resourceId: '1',
+            },
         });
         expect(result.articles.byId).toEqual({});
     });
@@ -250,7 +274,9 @@ describe('reducer', () => {
     it('should handle CLEAR_ENTITY_TYPE', () => {
         const result = reducer(initialExpectedState, {
             type: actionNames.CLEAR_ENTITY_TYPE + '_ARTICLES',
-            resourceType: 'articles',
+            payload: {
+                resourceType: 'articles',
+            },
         });
 
         expect(result.articles).toEqual(undefined);

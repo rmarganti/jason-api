@@ -18,6 +18,7 @@ import {
     pipe,
     prop,
 } from 'ramda';
+import { isUndefined } from 'util';
 
 /**
  * Ensure the given value is an array. If not, return it as a single-item array
@@ -59,7 +60,11 @@ export const appendOrConcat = ifElse(Array.isArray, concat, append);
  *
  * Object -> Object
  */
-export const simplifyResourceObject = pick(['type', 'id']);
+export const simplifyResourceObject = ifElse(
+    isUndefined,
+    identity,
+    pick(['type', 'id'])
+);
 
 /**
  * Simplifiy a single Resource Object or array of
