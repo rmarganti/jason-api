@@ -6,8 +6,8 @@ import {
 import { iResourceObject } from 'ts-json-api';
 
 import { iJasonApiState } from '../interfaces/state';
-import { getResourceObjects } from '../selectors';
-import { simplifyResourceObjects } from '../utils';
+import { getResourceObjects } from '../redux/selectors';
+import { simplifyResourceObjects } from '../utils/data';
 
 export interface iWithCollectionOptions {
     resourceType: string;

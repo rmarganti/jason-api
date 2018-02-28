@@ -1,4 +1,4 @@
-import { equals, omit } from 'ramda';
+import { equals, omit, pick } from 'ramda';
 import { connect } from 'react-redux';
 import {
     compose,
@@ -12,13 +12,18 @@ import { ActionCreator, Action } from 'redux';
 import { iJsonApiResponse } from 'ts-json-api';
 
 import { iJsonApiActionConfig } from '../interfaces/Middleware';
-import { getCachedQuery } from '../selectors';
 import { iStateWithJasonApi } from '../interfaces/state';
+import { getCachedQuery } from '../redux/selectors';
 
 export interface iWithQueryOptions {
     actionCreator: (props: object) => iJsonApiActionConfig;
     propsToWatch: string[];
     stateBranch?: string;
+}
+
+interface iRefetchParams {
+    fetchData: () => Promise<any>;
+    setLoadingState: (status: boolean) => any;
 }
 
 const withQuery = ({
@@ -41,13 +46,9 @@ const withQuery = ({
         withState('isLoading', 'setLoadingState', false),
 
         withHandlers({
-            refetch: ({
-                fetchData,
-                setLoadingState,
-            }: {
-                fetchData: () => Promise<any>;
-                setLoadingState: (status: boolean) => any;
-            }) => (newProps = {}) => {
+            refetch: ({ fetchData, setLoadingState }: iRefetchParams) => (
+                newProps = {}
+            ) => {
                 setLoadingState(true);
 
                 fetchData()
@@ -62,12 +63,9 @@ const withQuery = ({
             },
 
             componentWillReceiveProps(nextProps) {
-                const hasChanged = propsToWatch.find(
-                    propToWatch =>
-                        !equals(
-                            (<any>this.props)[propToWatch],
-                            (<any>nextProps)[propToWatch]
-                        )
+                const hasChanged = !equals(
+                    pick(propsToWatch, this.props),
+                    pick(propsToWatch, nextProps)
                 );
 
                 if (!hasChanged) {

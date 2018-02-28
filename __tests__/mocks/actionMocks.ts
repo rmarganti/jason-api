@@ -1,6 +1,6 @@
 import * as pluralize from 'pluralize';
 
-import * as actions from '../../src/actions';
+import * as actions from '../../src/redux/actions';
 
 interface iBasicAction {
     type: string;

@@ -6,7 +6,7 @@ import {
     iJsonApiResponse,
 } from 'ts-json-api';
 
-import actionNames from './action-names';
+import { actionNames } from '../constants';
 import {
     iLoadAction,
     iAddRelationshipAction,
@@ -19,9 +19,8 @@ import {
     iRemoveResourceObjectAction,
     iClearResourceObjectTypeAction,
     iCacheQueryAction,
-} from './interfaces/actions';
-
-import { FlexiblePayload } from './interfaces/other';
+} from '../interfaces/actions';
+import { FlexiblePayload } from '../interfaces/other';
 
 const singularCase = (input: string) => pluralize(input, 1).toUpperCase();
 const pluralCase = (input: string) => pluralize(input).toUpperCase();

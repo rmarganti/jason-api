@@ -1,6 +1,6 @@
-import actionNames from './action-names';
-import * as actions from './interfaces/actions';
-import { iReducer, iJasonApiState } from './interfaces/state';
+import { actionNames } from '../constants';
+import * as actions from '../interfaces/actions';
+import { iReducer, iJasonApiState } from '../interfaces/state';
 import {
     addRelationshipToResourceObject,
     clearResourceObjectType,
@@ -13,7 +13,7 @@ import {
     updateResourceObjectMeta,
     clearRelationshipOnResourceObject,
     cacheQuery,
-} from './state-transformer';
+} from '../state-transformer';
 
 const reducerMap = {
     [actionNames.LOAD_JSON_API_ENTITY_DATA]: (

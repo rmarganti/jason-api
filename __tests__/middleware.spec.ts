@@ -1,9 +1,9 @@
 import * as sinon from 'sinon';
 import { ResourceObject, JsonApiResponse } from 'ts-json-api';
 
-import * as network from '../src/fetch';
-import middleware from '../src/middleware';
 import { JASON_API_REQUEST } from '../src/constants';
+import middleware from '../src/redux/middleware';
+import * as network from '../src/utils/fetch';
 import * as actionMocks from './mocks/actionMocks';
 import { createMockStore, restoreNetworkFunctions } from './tools';
 

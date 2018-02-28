@@ -1,7 +1,7 @@
 import pluralize from 'pluralize';
 
-import * as actions from '../src/actions';
-import actionNames from '../src/action-names';
+import { actionNames } from '../src/constants';
+import * as actions from '../src/redux/actions';
 
 describe('actions', () => {
     it('should create an action to load json api data', () => {

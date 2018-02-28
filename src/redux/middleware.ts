@@ -1,3 +1,13 @@
+import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
+import {
+    ResourceObject,
+    iAttributes,
+    iJsonApiResponse,
+    iJsonApiResponseWithData,
+    iResourceObject,
+    JsonApiResponse,
+} from 'ts-json-api';
+
 import {
     addRelationshipToResourceObject,
     cacheQuery,
@@ -9,23 +19,14 @@ import {
     updateResourceObjectsMeta,
     updateResourceObjectMeta,
 } from './actions';
-import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
-import {
-    ResourceObject,
-    iAttributes,
-    iJsonApiResponse,
-    iJsonApiResponseWithData,
-    iResourceObject,
-    JsonApiResponse,
-} from 'ts-json-api';
 
-import { JASON_API_REQUEST } from './constants';
-import * as network from './fetch';
+import { JASON_API_REQUEST } from '../constants';
+import * as network from '../utils/fetch';
 import {
     iTransformer,
     iSuccessCallback,
     iJsonApiActionConfig,
-} from './interfaces/Middleware';
+} from '../interfaces/Middleware';
 
 export interface MiddlewareConfig {
     startLoadingActionCreator?: ActionCreator<any>;

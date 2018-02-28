@@ -6,7 +6,7 @@ import {
     getResourceObjects,
     getResourceObjectsMeta,
     getResourceObjectMeta,
-} from '../src/selectors';
+} from '../src/redux/selectors';
 
 import { iJasonApiState } from '../src/interfaces/state';
 

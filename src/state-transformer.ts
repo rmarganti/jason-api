@@ -14,7 +14,7 @@ import {
     simplifyResourceObject,
     simplifyJsonApi,
     unwrapDataProp,
-} from './utils';
+} from './utils/data';
 
 /**
  * Insert an ResourceObject or group of ResourceObjects

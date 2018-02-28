@@ -1,5 +1,5 @@
 import configureMockStore from 'redux-mock-store';
-import { middlewareFactory } from '../../src/middleware';
+import { middlewareFactory } from '../../src/redux/middleware';
 
 const defaultStoreContent = require('../mocks/defaultStore.json');
 

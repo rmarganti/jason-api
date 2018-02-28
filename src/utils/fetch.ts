@@ -1,4 +1,4 @@
-import {} from 'isomorphic-fetch';
+import 'isomorphic-fetch';
 import { iJsonApiResponse } from 'ts-json-api';
 
 interface iRequest {

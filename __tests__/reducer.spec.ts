@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import { iResourceObject } from 'ts-json-api';
 
-import reducer from '../src/reducer';
-import actionNames from '../src/action-names';
+import { actionNames } from '../src/constants';
+import reducer from '../src/redux/reducer';
 import {
     commentJsonResponse,
     initialJsonApiResponse,

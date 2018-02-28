@@ -6,7 +6,7 @@ import {
 import { iResourceObject } from 'ts-json-api';
 
 import { iJasonApiState } from '../interfaces/state';
-import { getResourceObject } from '../selectors';
+import { getResourceObject } from '../redux/selectors';
 
 export interface iWithItemOptions {
     resourceType?: string;
