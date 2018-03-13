@@ -45,10 +45,8 @@ const withQuery = ({
 
         withState('isLoading', 'setLoadingState', false),
 
-        withHandlers({
-            refetch: ({ fetchData, setLoadingState }: iRefetchParams) => (
-                newProps = {}
-            ) => {
+        withHandlers<iRefetchParams, any>({
+            refetch: ({ setLoadingState, fetchData }: iRefetchParams) => () => {
                 setLoadingState(true);
 
                 fetchData()

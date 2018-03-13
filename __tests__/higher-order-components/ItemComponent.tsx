@@ -1,7 +1,12 @@
-import * as React from 'react';
+import React, { SFC } from 'react';
+import { iResourceObject } from 'ts-json-api';
 
-const ItemComponent = ({ data, ...rest }) => (
-    <div>{data && <p>{data.body}</p>}</div>
+type Props = {
+    data: iResourceObject;
+};
+
+const ItemComponent: SFC<Props> = ({ data }) => (
+    <div>{data && <p>{data.attributes.body}</p>}</div>
 );
 
 export default ItemComponent;

@@ -11,7 +11,7 @@ import { simplifyResourceObjects } from '../utils/data';
 
 export interface iWithCollectionOptions {
     resourceType: string;
-    resourceIds?: string[];
+    ids?: string[];
     shouldExpand?: boolean;
 }
 
@@ -31,7 +31,7 @@ const expandResourceObjects = (
 
 const withCollection = ({
     resourceType,
-    resourceIds,
+    ids: resourceIds,
     shouldExpand = false,
 }: iWithCollectionOptions) =>
     connect(

@@ -1,12 +1,12 @@
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
+import React, { SFC } from 'react';
+import { iResourceObject } from 'ts-json-api';
 
-const CollectionComponent = ({ data }) => (
-    <div>{data.map(article => <p key={article.id}>{article.title}</p>)}</div>
-);
-
-CollectionComponent.propTypes = {
-    data: PropTypes.array,
+type Props = {
+    data: iResourceObject[];
 };
+
+const CollectionComponent: SFC<Props> = ({ data }) => (
+    <div>{data.map(article => <p key={article.id}>{article.attributes.title}</p>)}</div>
+);
 
 export default CollectionComponent;

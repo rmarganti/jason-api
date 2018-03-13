@@ -1,14 +1,14 @@
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
+import React, { SFC } from 'react';
+import { iResourceObject } from 'ts-json-api';
 
-const CollectionIdsComponent = ({ ids }) => (
+type Props = {
+    ids: string[];
+};
+
+const CollectionIdsComponent: SFC<Props> = ({ ids }) => (
     <div>
         { ids.map(id => <p key={id}>{ id }</p>) }
     </div>
 );
-
-CollectionIdsComponent.propTypes = {
-    ids: PropTypes.array,
-};
 
 export default CollectionIdsComponent;
