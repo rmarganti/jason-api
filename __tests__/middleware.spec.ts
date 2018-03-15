@@ -1,9 +1,9 @@
+import axios from 'axios';
 import * as sinon from 'sinon';
 import { ResourceObject, JsonApiResponse } from 'ts-json-api';
 
 import { JASON_API_REQUEST } from '../src/constants';
 import middleware from '../src/redux/middleware';
-import * as network from '../src/utils/fetch';
 import * as actionMocks from './mocks/actionMocks';
 import { createMockStore, restoreNetworkFunctions } from './tools';
 
@@ -16,7 +16,7 @@ let mockStore;
 describe('middleware', () => {
     beforeEach(() => {
         mockStore = createMockStore();
-        restoreNetworkFunctions(network);
+        restoreNetworkFunctions(axios);
     });
 
     it('ignores unrelated action types', () => {
@@ -39,7 +39,7 @@ describe('middleware', () => {
         ];
 
         const getStub = sinon
-            .stub(network, 'request')
+            .stub(axios, 'request')
             .callsFake(() => Promise.resolve(itemResponse));
 
         mockStore.dispatch(action).then(result => {
@@ -63,7 +63,7 @@ describe('middleware', () => {
         ];
 
         const getStub = sinon
-            .stub(network, 'request')
+            .stub(axios, 'request')
             .callsFake(() => Promise.resolve(collectionResponse));
 
         mockStore.dispatch(action).then(result => {
@@ -91,7 +91,7 @@ describe('middleware', () => {
         ];
 
         const postStub = sinon
-            .stub(network, 'request')
+            .stub(axios, 'request')
             .callsFake(() => Promise.resolve(itemResponse));
 
         mockStore.dispatch(action).then(result => {
@@ -131,7 +131,7 @@ describe('middleware', () => {
         ];
 
         const getStub = sinon
-            .stub(network, 'request')
+            .stub(axios, 'request')
             .callsFake(() => Promise.reject(errorResponse));
 
         mockStore.dispatch(action).catch(result => {

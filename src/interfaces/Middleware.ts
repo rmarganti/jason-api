@@ -40,7 +40,7 @@ export type iRemoveRelationshipOnSuccess = [string, string, string, string];
 export type iRemoveResourceObjectOnSuccess = [string, string];
 export type iUpdateResourceObjectOnSuccess = [string, string, iAttributes];
 
-export type Method = 'get' | 'post' | 'patch' | 'destroy';
+export type Method = 'get' | 'post' | 'patch' | 'delete';
 
 export interface iJsonApiActionConfig {
     type: string;

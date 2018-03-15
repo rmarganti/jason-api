@@ -1,3 +1,5 @@
+import axios, { AxiosError } from 'axios';
+import { path } from 'ramda';
 import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
 import {
     iAttributes,
@@ -21,7 +23,6 @@ import {
 } from './actions';
 
 import { JASON_API_REQUEST } from '../constants';
-import * as network from '../utils/fetch';
 import {
     iTransformer,
     iSuccessCallback,
@@ -44,28 +45,20 @@ class JsonApiMiddleware {
 
     private action: iJsonApiActionConfig;
 
-    private resourceType: string;
+    private resourceType?: string;
 
-    private resourceId: string;
+    private resourceId?: string;
 
     private store: Store<any>;
 
-    constructor(config: MiddlewareConfig = {}) {
-        this.config = config;
-    }
-
-    /**
-     * Intercept `JASON_API_REQUEST` type actions
-     * and let others bubble through
-     */
-    public middleware(
+    constructor(
+        config: MiddlewareConfig = {},
         store: Store<any>,
         next: Dispatch<any>,
         action: iJsonApiActionConfig
     ) {
-        if (action.type !== JASON_API_REQUEST) {
-            return next(<any>action);
-        }
+        this.config = config;
+        this.store = store;
 
         this.action = Object.assign(
             {},
@@ -76,27 +69,32 @@ class JsonApiMiddleware {
             },
             action
         );
+    }
 
-        this.store = store;
-
+    /**
+     * Intercept `JASON_API_REQUEST` type actions
+     * and let others bubble through
+     */
+    public executeMiddleware() {
         if (
             !this.action.disableStartLoadingActionCreator &&
             this.config.startLoadingActionCreator
         ) {
-            store.dispatch(this.config.startLoadingActionCreator());
+            this.store.dispatch(this.config.startLoadingActionCreator());
         }
 
-        const payload: Payload =
+        const payload: Payload | undefined =
             this.action.payload instanceof ResourceObject
-                ? { data: <ResourceObject>this.action.payload.toJSON() }
+                ? { data: this.action.payload.toJSON() }
                 : this.action.payload;
 
         this.resourceType =
             this.action.resourceType ||
-            (payload && payload.data && payload.data.type);
+            path(['data', 'type'], payload);
+
         this.resourceId =
             this.action.resourceId ||
-            (payload && payload.data && payload.data.id);
+            path(['data', 'id'], payload);
 
         this.setLoadingMeta();
         this.clearError();
@@ -109,14 +107,8 @@ class JsonApiMiddleware {
      *
      * @param payload
      */
-    private async executeRequest(payload: Payload) {
-        const method = this.action.method || 'get';
-        const networkCall = network.request(
-            method,
-            this.action.url,
-            payload,
-            this.action.additionalHeaders
-        );
+    private async executeRequest(payload?: Payload) {
+        const networkCall = this.buildNetworkCall(payload);
 
         try {
             const response = await networkCall;
@@ -171,6 +163,19 @@ class JsonApiMiddleware {
 
             throw error;
         }
+    }
+
+    private buildNetworkCall(payload?: Payload) {
+        return axios.request({
+            data: payload,
+            headers: {
+                Accept: 'application/vnd.api+json',
+                ContentType: !(payload instanceof FormData) && 'application/vnd.api+json',
+                ...this.action.additionalHeaders,
+            },
+            method: this.action.method,
+            url: this.action.url,
+        });
     }
 
     /**
@@ -340,6 +345,10 @@ class JsonApiMiddleware {
      * @param error
      */
     private handleError(error: any) {
+        if (!this.resourceType) {
+            return;
+        }
+
         if (this.resourceId) {
             this.store.dispatch(
                 updateResourceObjectMeta(
@@ -360,14 +369,10 @@ class JsonApiMiddleware {
     /**
      * Check to see if the provide error is an Authentication expired error
      *
-     * @param possibleError
+     * @param error
      */
-    private checkForAuthenticationError(possibleErrors: any): boolean {
-        if (!Array.isArray(possibleErrors)) {
-            return false;
-        }
-
-        return !!possibleErrors.find(error => error.status === 401);
+    private checkForAuthenticationError(error: AxiosError): boolean {
+        return error.response && error.response.status === 401 || false;
     }
 }
 
@@ -380,8 +385,14 @@ export const middlewareFactory = (config: MiddlewareConfig = {}): any => {
     return <Middleware>(store: Store<any>) => (next: Dispatch<any>) => (
         action: iJsonApiActionConfig
     ) => {
-        const jsonApiMiddleware = new JsonApiMiddleware(config);
-        return jsonApiMiddleware.middleware(store, next, action);
+        if (action.type !== JASON_API_REQUEST) {
+            return next(<any>action);
+        }
+
+        const jsonApiMiddleware =
+            new JsonApiMiddleware(config, store, next, action);
+
+        return jsonApiMiddleware.executeMiddleware();
     };
 };
 

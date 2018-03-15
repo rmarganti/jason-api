@@ -14,6 +14,7 @@
     },
     "types": "./types/index.d.ts",
     "dependencies": {
+        "axios": "^0.18.0",
         "isomorphic-fetch": "^2.2.1",
         "pluralize": "^7.0.0",
         "ramda": "^0.25.0"

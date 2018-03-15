@@ -1,4 +1,4 @@
-import configureMockStore from 'redux-mock-store';
+import * as configureMockStore from 'redux-mock-store';
 import { middlewareFactory } from '../../src/redux/middleware';
 
 const defaultStoreContent = require('../mocks/defaultStore.json');
@@ -20,7 +20,7 @@ export const defaultStore = createMockStore({
 });
 
 export const restoreNetworkFunctions = network => {
-    ['destroy', 'get', 'post', 'patch', 'request'].forEach(action => {
+    ['delete', 'get', 'post', 'patch', 'request'].forEach(action => {
         if (network[action] && network[action].restore)
             network[action].restore();
     });
