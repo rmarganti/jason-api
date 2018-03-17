@@ -1,7 +1,12 @@
 import { equals, omit, pickAll } from 'ramda';
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { iJsonApiResponse, iJsonApiResponseWithData, iJsonApiResponseWithError, iJsonApiResponseWithMetaData } from 'ts-json-api';
+import {
+    iJsonApiResponse,
+    iJsonApiResponseWithData,
+    iJsonApiResponseWithError,
+    iJsonApiResponseWithMetaData,
+} from 'ts-json-api';
 
 import { iStateWithJasonApi } from '../interfaces/state';
 import { cacheQuery } from '../redux/actions';
@@ -47,9 +52,8 @@ const withQuery = ({
     type TInternalProps = TPassedProps & TConnectedProps;
 
     class WithQuery extends React.Component<TInternalProps, TState> {
-        static displayName = `WithQuery(${
-            BaseComponent.displayName || BaseComponent.name
-        })`;
+        static displayName = `WithQuery(${BaseComponent.displayName ||
+            BaseComponent.name})`;
 
         constructor(props: TInternalProps) {
             super(props);
@@ -65,7 +69,8 @@ const withQuery = ({
 
             const { fetchData, cacheQueryResult } = this.props;
 
-            this.props.fetchData()
+            this.props
+                .fetchData()
                 .then(response => {
                     this.setState({
                         isLoading: false,
@@ -75,17 +80,17 @@ const withQuery = ({
                     cacheQueryResult(response);
                 })
                 .catch(errors => {
-                    this.setState(({ queryResult }) =>({
+                    this.setState(({ queryResult }) => ({
                         isLoading: false,
                         queryResult: {
                             ...queryResult,
-                            ...errors
-                        }
+                            ...errors,
+                        },
                     }));
 
                     return errors;
                 });
-        }
+        };
 
         componentDidMount() {
             this.refetch();
@@ -105,7 +110,7 @@ const withQuery = ({
         }
 
         render() {
-            const passedProps = omit([ 'cachedQuery', 'fetchData' ], this.props);
+            const passedProps = omit(['cachedQuery', 'fetchData'], this.props);
             const { isLoading, queryResult } = this.state;
 
             return (
@@ -126,12 +131,13 @@ const withQuery = ({
         ),
     });
 
-    const mapDispatchToProps = (dispatch: Dispatch<iStateWithJasonApi>, ownProps: object) => ({
+    const mapDispatchToProps = (
+        dispatch: Dispatch<iStateWithJasonApi>,
+        ownProps: object
+    ) => ({
         fetchData: () => queryFactory(dispatch, ownProps),
         cacheQueryResult: (result: iJsonApiResponse) => {
-            dispatch(
-                cacheQuery(hashQuery(queryFactory, ownProps), result)
-            );
+            dispatch(cacheQuery(hashQuery(queryFactory, ownProps), result));
         },
     });
 

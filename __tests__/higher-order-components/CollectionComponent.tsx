@@ -6,7 +6,11 @@ type Props = {
 };
 
 const CollectionComponent: React.StatelessComponent<Props> = ({ data }) => (
-    <div>{data.map(article => <p key={article.id}>{article.attributes.title}</p>)}</div>
+    <div>
+        {data.map(article => (
+            <p key={article.id}>{article.attributes.title}</p>
+        ))}
+    </div>
 );
 
 export default CollectionComponent;
