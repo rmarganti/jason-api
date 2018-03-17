@@ -16,7 +16,7 @@ export interface iWithCollectionOptions {
 }
 
 export interface iWithCollectionProps {
-    ids: string[];
+    ids?: string[];
 }
 
 export interface iWithCollectionPassedProps extends DispatchProp<any> {

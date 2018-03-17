@@ -6,7 +6,7 @@ export interface iWithCollectionOptions {
     shouldExpand?: boolean;
 }
 export interface iWithCollectionProps {
-    ids: string[];
+    ids?: string[];
 }
 export interface iWithCollectionPassedProps extends DispatchProp<any> {
     data: iResourceObject[];

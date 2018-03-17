@@ -36,10 +36,6 @@ describe('middleware', () => {
         const expectedActions = [
             ...actionMocks.startAndStopLoading('articles', '1'),
             ...actionMocks.loadResponse(itemResponse, 'articles'),
-            actionMocks.cacheQuery(
-                'http://www.api.com/articles/1',
-                itemResponse
-            ),
         ];
 
         const getStub = sinon
@@ -64,10 +60,6 @@ describe('middleware', () => {
         const expectedActions = [
             ...actionMocks.startAndStopLoading('articles'),
             ...actionMocks.loadResponse(collectionResponse, 'articles'),
-            actionMocks.cacheQuery(
-                'http://www.api.com/articles',
-                collectionResponse
-            ),
         ];
 
         const getStub = sinon
@@ -136,10 +128,6 @@ describe('middleware', () => {
                     ],
                 },
             },
-            actionMocks.cacheQuery(
-                'http://www.api.com/articles/1',
-                errorResponse
-            ),
         ];
 
         const getStub = sinon
