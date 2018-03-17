@@ -86,4 +86,4 @@ export declare const clearResourceObjectType: (resourceType: string) => iClearRe
  * @param url
  * @param response
  */
-export declare const cacheQuery: (url: string, response: iJsonApiResponse) => iCacheQueryAction;
+export declare const cacheQuery: (key: string, response: iJsonApiResponse) => iCacheQueryAction;

@@ -91,5 +91,5 @@ export const getResourceObjectMeta = (
  * @param state
  * @param url
  */
-export const getCachedQuery = (state: iJasonApiState, url: string) =>
-    R.path(['_cachedQueries', url], state);
+export const getCachedQuery = (state: iJasonApiState, key: string) =>
+    R.path(['_cachedQueries', key], state);

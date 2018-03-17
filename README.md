@@ -78,30 +78,25 @@ import { getUser, updateUser } from './yourActions';
 
 const User = ({
     data,
-    isLoading,
-    onUpdateUser,
-    ...anyOtherDataInAJsonApiResponse
+    isLoading, // Automatically updated based on the status of your queryFactory's Promise
+    refetch, // Re-run your queryFactory.
+    ...anyOtherDataInAJsonApiResponse // `meta`, `errors`, etc.
 }) =>
     isLoading ? (
         <p>Loading...</p>
     ) : (
         <div>
-            <h1 onClick={() => onUpdateUser('Blob', 'Vila')}>
-                {data.firstName} {data.lastName}
-            </h1>
+            <h1>{data.firstName} {data.lastName}</h1>
+            <p>{data.email}</p>
         </div>
     );
 
-const enhance = compose(
-    withMutations({
-        onUpdateUser: props => (firstName, lastName) =>
-            updateUser(props.id, { firstName, lastName }),
-    }),
-    withQuery({
-        actionCreator: props => getUser(props.id),
-        propsToWatch: ['userId'],
-    })
-);
+const enhance = withQuery({
+    // queryFactory is a function that returns Promise that resolves to a JSON API response.
+    // HINT: Any dispatch()'ed JASON_API_REQUEST fits this criteria.
+    queryFactory: (dispatch, props) => dispatch(getUser(props.id)),
+    propsToWatch: ['userId'],
+});
 
 const EnhancedUser = enhance(YourUserComponent);
 ```

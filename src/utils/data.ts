@@ -84,3 +84,29 @@ export const simplifyJsonApi = pipe(
     over(lensProp('data'), simplifyResourceObjects),
     omit(['included'])
 );
+
+/**
+ * Generate a unique hash from any javascript object
+ *
+ * @param object
+ */
+export const hashObject = (object: any): string => {
+    const stringified = JSON.stringify(
+        object,
+        (key, value) => (typeof value === 'function' ? value.toString() : value)
+    );
+
+    var hash = 0,
+        i,
+        chr;
+
+    if (stringified.length === 0) return hash.toString();
+
+    for (i = 0; i < stringified.length; i++) {
+        chr = stringified.charCodeAt(i);
+        hash = (hash << 5) - hash + chr;
+        hash |= 0; // Convert to 32bit integer
+    }
+
+    return hash.toString();
+};

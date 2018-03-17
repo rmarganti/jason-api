@@ -198,9 +198,9 @@ export const clearResourceObjectType = (
  * @param response
  */
 export const cacheQuery = (
-    url: string,
+    key: string,
     response: iJsonApiResponse
 ): iCacheQueryAction => ({
     type: actionNames.CACHE_QUERY,
-    payload: { response, url },
+    payload: { key, response },
 });

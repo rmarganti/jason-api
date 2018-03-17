@@ -1,6 +1,5 @@
 import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
 import {
-    ResourceObject,
     iAttributes,
     iJsonApiResponse,
     iJsonApiResponseWithData,
@@ -8,9 +7,10 @@ import {
     JsonApiResponse,
 } from 'ts-json-api';
 
+import ResourceObject from 'ts-json-api/dist/ResourceObject';
+
 import {
     addRelationshipToResourceObject,
-    cacheQuery,
     loadJsonApiResourceObjectData,
     removeRelationshipFromResourceObject,
     removeResourceObject,
@@ -139,12 +139,6 @@ class JsonApiMiddleware {
                 this.action.onSuccess(transformedResponse);
             }
 
-            if (method === 'get') {
-                this.store.dispatch(
-                    cacheQuery(this.action.url, transformedResponse)
-                );
-            }
-
             return transformedResponse;
         } catch (error) {
             if (
@@ -173,10 +167,6 @@ class JsonApiMiddleware {
                         this.config.displayErrorActionCreator(error.message)
                     );
                 }
-            }
-
-            if (method === 'get') {
-                this.store.dispatch(cacheQuery(this.action.url, error));
             }
 
             throw error;

@@ -99,8 +99,8 @@ export interface iClearResourceObjectTypeAction {
 export interface iCacheQueryAction {
     type: string;
     payload: {
+        key: string;
         response: iJsonApiResponse;
-        url: string;
     };
 }
 

@@ -60,7 +60,7 @@ export declare const clearRelationshipOnResourceObject: (initialState: iJasonApi
  * @param  {Object} data
  * @return {Object}
  */
-export declare const updateResourceObject: (state: iJasonApiState, resourceTypeOrResourceObject: string | iResourceObject, resourceId?: string, data?: iAttributes | iResourceObject) => iJasonApiState;
+export declare const updateResourceObject: (state: iJasonApiState, resourceTypeOrResourceObject: string | iResourceObject, resourceId?: string | undefined, data?: iAttributes | iResourceObject | undefined) => iJasonApiState;
 /**
  * Update the meta data for an ResourceObject group
  *
@@ -81,7 +81,7 @@ export declare const updateResourceObjectsMeta: (state: iJasonApiState, resource
  * @param  {Mixed}  value
  * @return {Object}
  */
-export declare const updateResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey: string, value: any) => iJasonApiState;
+export declare const updateResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey: string | undefined, value: any) => iJasonApiState;
 /**
  * Remove a single ResourceObject
  *
@@ -106,4 +106,4 @@ export declare const clearResourceObjectType: (state: iJasonApiState, resourceTy
  * @param url
  * @param response
  */
-export declare const cacheQuery: (state: iJasonApiState, url: string, response: iJsonApiResponse) => iJasonApiState;
+export declare const cacheQuery: (state: iJasonApiState, key: string, response: iJsonApiResponse) => iJasonApiState;

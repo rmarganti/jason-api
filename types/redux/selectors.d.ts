@@ -12,7 +12,7 @@ export declare const getResourceObject: (state: iJasonApiState, key: string, id:
 /**
  * Get an array of Resource Objects from the state
  */
-export declare const getResourceObjects: (state: iJasonApiState, key: string, ids?: string[]) => iResourceObject[];
+export declare const getResourceObjects: (state: iJasonApiState, key: string, ids?: string[] | null) => iResourceObject[];
 /**
  * Grab an Resource Object group's meta data from the state
  *
@@ -21,7 +21,7 @@ export declare const getResourceObjects: (state: iJasonApiState, key: string, id
  * @param  {String} metaKey
  * @return {Mixed}
  */
-export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceType: string, metaKey?: string) => {};
+export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceType: string, metaKey?: string | null) => {};
 /**
  * Grab an Resource Object's meta data from the state
  *
@@ -31,11 +31,11 @@ export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceTyp
  * @param  {String} metaKey
  * @return {Mixed}
  */
-export declare const getResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey?: string) => {};
+export declare const getResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey?: string | null) => {};
 /**
  * Get a cached Query
  *
  * @param state
  * @param url
  */
-export declare const getCachedQuery: (state: iJasonApiState, url: string) => {};
+export declare const getCachedQuery: (state: iJasonApiState, key: string) => {};

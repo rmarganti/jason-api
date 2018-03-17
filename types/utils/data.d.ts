@@ -46,3 +46,9 @@ export declare const simplifyResourceObjects: any;
  * Object -> Object
  */
 export declare const simplifyJsonApi: (x0: {}) => {};
+/**
+ * Generate a unique hash from any javascript object
+ *
+ * @param object
+ */
+export declare const hashObject: (object: any) => string;

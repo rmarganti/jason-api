@@ -49,6 +49,10 @@ const insertOrUpdateResourceObject = (
 ): iJasonApiState => {
     validateResourceObject(entity);
 
+    if (!entity.id) {
+        throw new Error('ResourceObjects must have an id');
+    }
+
     return R.over(
         R.lensPath([pluralize(entity.type), 'byId', entity.id]),
         reverseMergeDeepLeft(entity),
@@ -240,6 +244,14 @@ export const updateResourceObject = (
         );
     }
 
+    if (!resourceId) {
+        throw new Error('`resourceId` must be defined.');
+    }
+
+    if (!data) {
+        throw new Error('`data` must be defined.');
+    }
+
     return R.over(
         R.lensPath([
             pluralize(<string>resourceTypeOrResourceObject),
@@ -341,11 +353,11 @@ export const clearResourceObjectType = (
  */
 export const cacheQuery = (
     state: iJasonApiState,
-    url: string,
+    key: string,
     response: iJsonApiResponse
 ): iJasonApiState => {
     return R.set(
-        R.lensPath(['_cachedQueries', url]),
+        R.lensPath(['_cachedQueries', key]),
         simplifyJsonApi(response),
         state
     );

@@ -120,7 +120,7 @@ const reducerMap = {
     [actionNames.CACHE_QUERY]: (
         state: iJasonApiState,
         action: actions.iCacheQueryAction
-    ) => cacheQuery(state, action.payload.url, action.payload.response),
+    ) => cacheQuery(state, action.payload.key, action.payload.response),
 };
 
 /**
@@ -134,13 +134,13 @@ export default (
     state: iJasonApiState = {},
     action?: actions.Action
 ): iJasonApiState => {
-    const actionKey =
-        action &&
-        Object.keys(reducerMap).find(
-            key =>
-                action.type &&
-                !!action.type.match(new RegExp(`^${key}(_[_A-Z]+)?$`))
-        );
+    if (!action || !action.type) {
+        return state;
+    }
+
+    const actionKey = Object.keys(reducerMap).find(
+        key => !!action.type.match(new RegExp(`^${key}(_[_A-Z]+)?$`))
+    );
 
     if (actionKey) {
         return (<iReducer>reducerMap[actionKey])(state, action);

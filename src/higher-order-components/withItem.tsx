@@ -1,10 +1,9 @@
 import {
     connect,
     DispatchProp,
-    InferableComponentEnhancerWithProps,
+    InferableComponentEnhancerWithProps
 } from 'react-redux';
 import { iResourceObject } from 'ts-json-api';
-
 import { iJasonApiState } from '../interfaces/state';
 import { getResourceObject } from '../redux/selectors';
 

@@ -82,8 +82,8 @@ export interface iClearResourceObjectTypeAction {
 export interface iCacheQueryAction {
     type: string;
     payload: {
+        key: string;
         response: iJsonApiResponse;
-        url: string;
     };
 }
 export declare type Action = iLoadAction | iAddRelationshipAction | iRemoveRelationshipAction | iSetRelationshipAction | iUpdateResourceObjectsMetaAction | iUpdateResourceObjectMetaAction | iUpdateResourceObjectAction | iRemoveResourceObjectAction | iClearResourceObjectTypeAction;
