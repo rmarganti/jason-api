@@ -1,5 +1,5 @@
-import { AxiosError } from "axios";
-import { iJsonApiResponseWithError } from "ts-json-api";
+import { AxiosError } from 'axios';
+import { iJsonApiResponseWithError } from 'ts-json-api';
 
 /**
  * Extract valid JSON API errors from an Axios error response. If the API
@@ -8,26 +8,30 @@ import { iJsonApiResponseWithError } from "ts-json-api";
  *
  * @param error
  */
-export const extractJsonApiErrorFromAxios =
-    (error: AxiosError): iJsonApiResponseWithError => {
-        if (error.response && error.response.data.errors) {
-            return error.response.data;
-        } else if (error.request) {
-            return {
-                errors: [{
-                    status: error.request.status,
-                    detail: error.request.statusText
-                }],
-            };
-        }
-
+export const extractJsonApiErrorFromAxios = (
+    error: AxiosError
+): iJsonApiResponseWithError => {
+    if (error.response && error.response.data.errors) {
+        return error.response.data;
+    } else if (error.request) {
         return {
-            errors: [{
-                detail: error.message,
-            }],
+            errors: [
+                {
+                    status: error.request.status,
+                    detail: error.request.statusText,
+                },
+            ],
         };
     }
 
+    return {
+        errors: [
+            {
+                detail: error.message,
+            },
+        ],
+    };
+};
 
 export const stringifyJsonApiErrors = (errorJson: iJsonApiResponseWithError) =>
     errorJson.errors.map(error => error.detail || error.title).join('\n');

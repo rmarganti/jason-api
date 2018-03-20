@@ -8,7 +8,9 @@ export interface iWithItemProps {
     data?: iResourceObject;
     id?: string;
 }
-declare const withItem: ({resourceType, resourceId}?: iWithItemOptions) => InferableComponentEnhancerWithProps<{
+declare const withItem: ({ resourceType, resourceId }?: iWithItemOptions) => InferableComponentEnhancerWithProps<({
     data: {};
-} & DispatchProp<any>, iWithItemProps>;
+} & DispatchProp<any>) | ({
+    data: iResourceObject;
+} & DispatchProp<any>), iWithItemProps>;
 export default withItem;

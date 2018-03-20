@@ -30,7 +30,10 @@ import {
     iJsonApiActionConfig,
 } from '../interfaces/Middleware';
 
-import { extractJsonApiErrorFromAxios, stringifyJsonApiErrors } from '../utils/async';
+import {
+    extractJsonApiErrorFromAxios,
+    stringifyJsonApiErrors,
+} from '../utils/async';
 
 export interface MiddlewareConfig {
     startLoadingActionCreator?: ActionCreator<any>;
@@ -92,12 +95,10 @@ class JsonApiMiddleware {
                 : this.action.payload;
 
         this.resourceType =
-            this.action.resourceType ||
-            path(['data', 'type'], payload);
+            this.action.resourceType || path(['data', 'type'], payload);
 
         this.resourceId =
-            this.action.resourceId ||
-            path(['data', 'id'], payload);
+            this.action.resourceId || path(['data', 'id'], payload);
 
         this.setLoadingMeta();
         this.clearError();
@@ -181,7 +182,9 @@ class JsonApiMiddleware {
             data: payload,
             headers: {
                 Accept: 'application/vnd.api+json',
-                ContentType: !(payload instanceof FormData) && 'application/vnd.api+json',
+                ContentType:
+                    !(payload instanceof FormData) &&
+                    'application/vnd.api+json',
                 ...this.action.additionalHeaders,
             },
             method: this.action.method,
@@ -383,7 +386,7 @@ class JsonApiMiddleware {
      * @param error
      */
     private checkForAuthenticationError(error: AxiosError): boolean {
-        return error.response && error.response.status === 401 || false;
+        return (error.response && error.response.status === 401) || false;
     }
 }
 
@@ -400,8 +403,12 @@ export const middlewareFactory = (config: MiddlewareConfig = {}): any => {
             return next(<any>action);
         }
 
-        const jsonApiMiddleware =
-            new JsonApiMiddleware(config, store, next, action);
+        const jsonApiMiddleware = new JsonApiMiddleware(
+            config,
+            store,
+            next,
+            action
+        );
 
         return jsonApiMiddleware.executeMiddleware();
     };
