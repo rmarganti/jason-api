@@ -12,7 +12,7 @@ export declare const reverseMergeDeepLeft: (arg1: {}, arg0?: any) => <B>(b: B) =
 /**
  * Remove an object's wrapping `data` prop, if it exists
  */
-export declare const unwrapDataProp: (a: any) => any;
+export declare const unwrapDataProp: R.Arity1Fn;
 /**
  * Apply a function in a map if the given data is an array.
  * Otherwise, simply apply it once to the data
@@ -24,14 +24,14 @@ export declare const mapOrOnce: (...a: any[]) => any;
  * If the given data is an array, concat it.
  * If it is a single item, append it.
  */
-export declare const appendOrConcat: (a: any) => any;
+export declare const appendOrConcat: R.Arity1Fn;
 /**
  * Simplify a single Resource Object
  * to only its type and ID
  *
  * Object -> Object
  */
-export declare const simplifyResourceObject: (a: any) => any;
+export declare const simplifyResourceObject: R.Arity1Fn;
 /**
  * Simplifiy a single Resource Object or array of
  * Resource Objects to only its/their ID/ID's

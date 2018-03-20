@@ -17,7 +17,7 @@ export declare type iAddRelationshipOnSuccess = [string, string, string, Flexibl
 export declare type iRemoveRelationshipOnSuccess = [string, string, string, string];
 export declare type iRemoveResourceObjectOnSuccess = [string, string];
 export declare type iUpdateResourceObjectOnSuccess = [string, string, iAttributes];
-export declare type Method = 'get' | 'post' | 'patch' | 'destroy';
+export declare type Method = 'get' | 'post' | 'patch' | 'delete';
 export interface iJsonApiActionConfig {
     type: string;
     url: string;

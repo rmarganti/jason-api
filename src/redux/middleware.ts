@@ -7,6 +7,7 @@ import {
     iJsonApiResponseWithData,
     iResourceObject,
     JsonApiResponse,
+    iJsonApiResponseWithError,
 } from 'ts-json-api';
 
 import ResourceObject from 'ts-json-api/dist/ResourceObject';
@@ -28,6 +29,8 @@ import {
     iSuccessCallback,
     iJsonApiActionConfig,
 } from '../interfaces/Middleware';
+
+import { extractJsonApiErrorFromAxios, stringifyJsonApiErrors } from '../utils/async';
 
 export interface MiddlewareConfig {
     startLoadingActionCreator?: ActionCreator<any>;
@@ -85,7 +88,7 @@ class JsonApiMiddleware {
 
         const payload: Payload | undefined =
             this.action.payload instanceof ResourceObject
-                ? { data: this.action.payload.toJSON() }
+                ? this.action.payload && { data: this.action.payload.toJSON() }
                 : this.action.payload;
 
         this.resourceType =
@@ -112,9 +115,11 @@ class JsonApiMiddleware {
 
         try {
             const response = await networkCall;
-            const transformedResponse = this.action.transformer
-                ? this.action.transformer.call(null, response)
-                : response;
+            const data = response.data;
+
+            const transformedData = this.action.transformer
+                ? this.action.transformer.call(null, data)
+                : data;
 
             if (
                 !this.action.disableStartLoadingActionCreator &&
@@ -124,15 +129,17 @@ class JsonApiMiddleware {
             }
 
             this.clearLoadingMeta();
-            this.finishLoading(transformedResponse);
-            this.executeOnSuccessActions(transformedResponse);
+            this.finishLoading(transformedData);
+            this.executeOnSuccessActions(transformedData);
 
             if (this.action.onSuccess) {
-                this.action.onSuccess(transformedResponse);
+                this.action.onSuccess(transformedData);
             }
 
-            return transformedResponse;
+            return transformedData;
         } catch (error) {
+            const errorJson = extractJsonApiErrorFromAxios(error);
+
             if (
                 !this.action.disableStartLoadingActionCreator &&
                 this.config.stopLoadingActionCreator
@@ -150,18 +157,22 @@ class JsonApiMiddleware {
                     this.config.authenticationExpiredActionCreator(error)
                 );
             } else {
-                this.handleError(error);
+                this.handleError(errorJson);
                 if (
                     this.action.displayNotificationOnError &&
                     this.config.displayErrorActionCreator
                 ) {
                     this.store.dispatch(
-                        this.config.displayErrorActionCreator(error.message)
+                        this.config.displayErrorActionCreator(
+                            stringifyJsonApiErrors(errorJson)
+                        )
                     );
                 }
             }
 
-            throw error;
+            console.log('asdf', errorJson);
+
+            throw errorJson;
         }
     }
 
@@ -344,7 +355,7 @@ class JsonApiMiddleware {
      *
      * @param error
      */
-    private handleError(error: any) {
+    private handleError(errorBody: iJsonApiResponseWithError) {
         if (!this.resourceType) {
             return;
         }
@@ -355,14 +366,14 @@ class JsonApiMiddleware {
                     this.resourceType,
                     this.resourceId,
                     'errors',
-                    error.errors
+                    errorBody.errors
                 )
             );
             return;
         }
 
         this.store.dispatch(
-            updateResourceObjectsMeta(this.resourceType, 'errors', error)
+            updateResourceObjectsMeta(this.resourceType, 'errors', errorBody)
         );
     }
 

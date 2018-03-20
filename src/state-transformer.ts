@@ -305,10 +305,10 @@ export const updateResourceObjectMeta = (
     const pluralKey = pluralize(resourceType);
     return metaKey
         ? R.assocPath(
-              [pluralKey, 'byId', resourceId, 'meta', metaKey],
-              value,
-              state
-          )
+            [pluralKey, 'byId', resourceId, 'meta', metaKey],
+            value,
+            state
+        )
         : R.assocPath([pluralKey, 'byId', resourceId, 'meta'], value, state);
 };
 
