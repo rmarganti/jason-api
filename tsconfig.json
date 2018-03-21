@@ -14,6 +14,5 @@
         "strict": true,
         "target": "es2016"
     },
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules/**/*", "**/Entity.ts"]
+    "include": ["src/**/*"]
 }

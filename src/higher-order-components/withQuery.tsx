@@ -19,6 +19,7 @@ export type TQueryFactory = (
 ) => Promise<iJsonApiResponse>;
 
 export interface iWithQueryOptions {
+    cacheScheme: "cacheFirst" | "cacheOnly" | "noCache";
     propsToWatch: string[];
     queryFactory: TQueryFactory;
     stateBranch?: string;
@@ -43,6 +44,7 @@ type TState = {
 };
 
 const withQuery = ({
+    cacheScheme = 'cacheFirst',
     queryFactory,
     propsToWatch = [],
     stateBranch = 'resourceObjects',
@@ -93,6 +95,10 @@ const withQuery = ({
         };
 
         componentDidMount() {
+            if (cacheScheme === 'noCache') {
+                return;
+            }
+
             this.refetch();
         }
 
@@ -125,7 +131,7 @@ const withQuery = ({
     }
 
     const mapStateToProps = (state: iStateWithJasonApi, ownProps: object) => ({
-        cachedQuery: getCachedQuery(
+        cachedQuery: cacheScheme !== 'noCache' && getCachedQuery(
             state[stateBranch],
             hashQuery(queryFactory, ownProps)
         ),
