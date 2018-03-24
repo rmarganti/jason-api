@@ -1,12 +1,8 @@
 import { equals, omit, pickAll } from 'ramda';
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import {
-    iJsonApiResponse,
-    iJsonApiResponseWithData,
-    iJsonApiResponseWithError,
-    iJsonApiResponseWithMetaData,
-} from 'ts-json-api';
+import * as JsonApi from 'ts-json-api';
+import { iAttributes, iResourceObject, iResponse } from 'ts-json-api';
 
 import { iStateWithJasonApi } from '../interfaces/state';
 import { cacheQuery } from '../redux/actions';
@@ -16,31 +12,31 @@ import { hashObject, simplifyJsonApi } from '../utils/data';
 export type TQueryFactory = (
     dispatch: Dispatch<iStateWithJasonApi>,
     props: object
-) => Promise<iJsonApiResponse>;
+) => Promise<JsonApi.iResponse>;
 
 export interface iWithQueryOptions {
-    cacheScheme: "cacheFirst" | "cacheOnly" | "noCache";
+    cacheScheme: 'cacheFirst' | 'cacheOnly' | 'noCache';
     propsToWatch: string[];
     queryFactory: TQueryFactory;
     stateBranch?: string;
 }
 
 type TConnectedProps = {
-    cachedQuery: iJsonApiResponse;
-    cacheQueryResult: (response: iJsonApiResponse) => void;
-    fetchData: () => Promise<iJsonApiResponse>;
+    cachedQuery: JsonApi.iResponse;
+    cacheQueryResult: (response: JsonApi.iResponse) => void;
+    fetchData: () => Promise<JsonApi.iResponse>;
 };
 
 type TInjectedProps = {
     isLoading: boolean;
     refetch: () => void;
-} & Partial<iJsonApiResponse>;
+} & Partial<JsonApi.iResponse>;
 
-const initialState = { isLoading: false, queryResult: {} };
+const initialState = { isLoading: false, queryResult: undefined };
 
 type TState = {
     isLoading: boolean;
-    queryResult: Partial<iJsonApiResponse>;
+    queryResult?: Partial<JsonApi.iResponse>;
 };
 
 const withQuery = ({
@@ -57,6 +53,8 @@ const withQuery = ({
         static displayName = `WithQuery(${BaseComponent.displayName ||
             BaseComponent.name})`;
 
+        readonly state: TState = initialState;
+
         constructor(props: TInternalProps) {
             super(props);
 
@@ -66,6 +64,10 @@ const withQuery = ({
             };
         }
 
+        /**
+         * Execute `queryFactory`, keep track of loading state,
+         * and cache queries appropriately.
+         */
         refetch = () => {
             this.setState({ isLoading: true });
 
@@ -94,6 +96,9 @@ const withQuery = ({
                 });
         };
 
+        /**
+         * Execute initial query.
+         */
         componentDidMount() {
             if (cacheScheme === 'noCache') {
                 return;
@@ -102,6 +107,12 @@ const withQuery = ({
             this.refetch();
         }
 
+        /**
+         * Execute a referch of the query if any
+         * of the `propsToWatch` has changed.
+         *
+         * @param prevProps
+         */
         componentDidUpdate(prevProps: Readonly<TInternalProps>) {
             const hasChanged = !equals(
                 pickAll(propsToWatch, prevProps),
@@ -115,6 +126,9 @@ const withQuery = ({
             this.refetch();
         }
 
+        /**
+         * @inheritDoc
+         */
         render() {
             const passedProps = omit(['cachedQuery', 'fetchData'], this.props);
             const { isLoading, queryResult } = this.state;
@@ -131,10 +145,12 @@ const withQuery = ({
     }
 
     const mapStateToProps = (state: iStateWithJasonApi, ownProps: object) => ({
-        cachedQuery: cacheScheme !== 'noCache' && getCachedQuery(
-            state[stateBranch],
-            hashQuery(queryFactory, ownProps)
-        ),
+        cachedQuery:
+            cacheScheme !== 'noCache' &&
+            getCachedQuery(
+                state[stateBranch],
+                hashQuery(queryFactory, ownProps)
+            ),
     });
 
     const mapDispatchToProps = (
@@ -142,7 +158,7 @@ const withQuery = ({
         ownProps: object
     ) => ({
         fetchData: () => queryFactory(dispatch, ownProps),
-        cacheQueryResult: (result: iJsonApiResponse) => {
+        cacheQueryResult: (result: JsonApi.iResponse) => {
             dispatch(cacheQuery(hashQuery(queryFactory, ownProps), result));
         },
     });
@@ -150,7 +166,14 @@ const withQuery = ({
     return connect(mapStateToProps, mapDispatchToProps)(WithQuery);
 };
 
-const hashQuery = (queryFactory: any, props: object) =>
+/**
+ * Generate a unique id for a `queryFactory`
+ * called with a specific set of props.
+ *
+ * @param queryFactory
+ * @param props
+ */
+const hashQuery = (queryFactory: TQueryFactory, props: object): string =>
     hashObject({
         queryFactory,
         props,

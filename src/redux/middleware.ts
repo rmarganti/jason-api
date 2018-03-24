@@ -3,14 +3,13 @@ import { path } from 'ramda';
 import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
 import {
     iAttributes,
-    iJsonApiResponse,
-    iJsonApiResponseWithData,
+    iResponse,
+    iResponseWithData,
     iResourceObject,
     JsonApiResponse,
-    iJsonApiResponseWithError,
+    iResponseWithError,
+    ResourceObject,
 } from 'ts-json-api';
-
-import ResourceObject from 'ts-json-api/dist/ResourceObject';
 
 import {
     addRelationshipToResourceObject,
@@ -220,13 +219,13 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private finishLoading(response: iJsonApiResponse) {
-        if (!response || !(<iJsonApiResponseWithData>response).data) {
+    private finishLoading(response: iResponse) {
+        if (!response || !(<iResponseWithData>response).data) {
             return;
         }
 
         this.store.dispatch(
-            loadJsonApiResourceObjectData(<iJsonApiResponseWithData>response)
+            loadJsonApiResourceObjectData(<iResponseWithData>response)
         );
     }
 
@@ -258,7 +257,7 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private executeOnSuccessActions(response: iJsonApiResponseWithData) {
+    private executeOnSuccessActions(response: iResponseWithData) {
         this.action.setRelationshipOnSuccess &&
             this.action.setRelationshipOnSuccess.forEach(action => {
                 const [
@@ -358,7 +357,7 @@ class JsonApiMiddleware {
      *
      * @param error
      */
-    private handleError(errorBody: iJsonApiResponseWithError) {
+    private handleError(errorBody: iResponseWithError) {
         if (!this.resourceType) {
             return;
         }

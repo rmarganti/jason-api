@@ -1,9 +1,9 @@
 import * as pluralize from 'pluralize';
 import {
-    iJsonApiResponseWithData,
     iAttributes,
     iResourceObject,
-    iJsonApiResponse,
+    iResponse,
+    iResponseWithData,
 } from 'ts-json-api';
 
 import { actionNames } from '../constants';
@@ -199,7 +199,7 @@ export const clearResourceObjectType = (
  */
 export const cacheQuery = (
     key: string,
-    response: iJsonApiResponse
+    response: iResponse
 ): iCacheQueryAction => ({
     type: actionNames.CACHE_QUERY,
     payload: { key, response },

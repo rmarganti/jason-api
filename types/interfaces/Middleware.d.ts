@@ -1,5 +1,5 @@
 import { FlexiblePayload } from './other';
-import { ResourceObject, iAttributes, iJsonApiResponse, iJsonApiResponseWithData } from 'ts-json-api';
+import { ResourceObject, iAttributes, iResponse, iResponseWithData } from 'ts-json-api';
 export interface iAdditionalHeaders {
     [index: string]: string;
 }
@@ -7,10 +7,10 @@ export interface iErrorCallback {
     (error: Error): void;
 }
 export interface iSuccessCallback {
-    (response?: iJsonApiResponse): void;
+    (response?: iResponse): void;
 }
 export interface iTransformer {
-    (response: iJsonApiResponseWithData): iJsonApiResponseWithData;
+    (response: iResponseWithData): iResponseWithData;
 }
 export declare type iSetRelationshipOnSuccess = [string, string, string, FlexiblePayload];
 export declare type iAddRelationshipOnSuccess = [string, string, string, FlexiblePayload];

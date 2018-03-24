@@ -1,4 +1,4 @@
-import { iAttributes, iJsonApiResponse, iResourceObject } from 'ts-json-api';
+import { iAttributes, iResponse, iResourceObject } from 'ts-json-api';
 import { iJasonApiState } from './interfaces/state';
 import { FlexiblePayload } from './interfaces/other';
 /**
@@ -60,7 +60,7 @@ export declare const clearRelationshipOnResourceObject: (initialState: iJasonApi
  * @param  {Object} data
  * @return {Object}
  */
-export declare const updateResourceObject: (state: iJasonApiState, resourceTypeOrResourceObject: string | iResourceObject, resourceId?: string | undefined, data?: iAttributes | iResourceObject | undefined) => iJasonApiState;
+export declare const updateResourceObject: (state: iJasonApiState, resourceTypeOrResourceObject: string | iResourceObject<string, iAttributes>, resourceId?: string | undefined, data?: iAttributes | iResourceObject<string, iAttributes> | undefined) => iJasonApiState;
 /**
  * Update the meta data for an ResourceObject group
  *
@@ -106,4 +106,4 @@ export declare const clearResourceObjectType: (state: iJasonApiState, resourceTy
  * @param url
  * @param response
  */
-export declare const cacheQuery: (state: iJasonApiState, key: string, response: iJsonApiResponse) => iJasonApiState;
+export declare const cacheQuery: (state: iJasonApiState, key: string, response: iResponse<iResourceObject<string, iAttributes> | iResourceObject<string, iAttributes>[]>) => iJasonApiState;

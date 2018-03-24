@@ -1,4 +1,4 @@
-import { iJsonApiResponseWithData, iResourceObject } from 'ts-json-api';
+import { iResponseWithData, iResourceObject } from 'ts-json-api';
 import * as R from 'ramda';
 
 import {

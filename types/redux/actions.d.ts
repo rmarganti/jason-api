@@ -1,4 +1,4 @@
-import { iAttributes, iJsonApiResponse } from 'ts-json-api';
+import { iAttributes, iResourceObject, iResponse } from 'ts-json-api';
 import { iLoadAction, iAddRelationshipAction, iRemoveRelationshipAction, iSetRelationshipAction, iClearRelationshipAction, iUpdateResourceObjectsMetaAction, iUpdateResourceObjectMetaAction, iUpdateResourceObjectAction, iRemoveResourceObjectAction, iClearResourceObjectTypeAction, iCacheQueryAction } from '../interfaces/actions';
 import { FlexiblePayload } from '../interfaces/other';
 /**
@@ -86,4 +86,4 @@ export declare const clearResourceObjectType: (resourceType: string) => iClearRe
  * @param url
  * @param response
  */
-export declare const cacheQuery: (key: string, response: iJsonApiResponse) => iCacheQueryAction;
+export declare const cacheQuery: (key: string, response: iResponse<iResourceObject<string, iAttributes> | iResourceObject<string, iAttributes>[]>) => iCacheQueryAction;

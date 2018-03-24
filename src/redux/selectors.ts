@@ -3,8 +3,8 @@ import * as R from 'ramda';
 import {
     iAttributes,
     iResourceObject,
+    iResponseWithData,
     JsonApiResponse,
-    iJsonApiResponseWithData,
 } from 'ts-json-api';
 
 import { iJasonApiState } from '../interfaces/state';

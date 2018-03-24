@@ -8,7 +8,7 @@ export declare const ensureArray: (value: any) => any[];
 /**
  * Ramda's mergeDeepRight with paramater order flipped
  */
-export declare const reverseMergeDeepLeft: (arg1: {}, arg0?: {} | undefined) => <B>(b: B) => B & {};
+export declare const reverseMergeDeepLeft: (arg1: {}, arg0?: any) => <B>(b: B) => any;
 /**
  * Remove an object's wrapping `data` prop, if it exists
  */

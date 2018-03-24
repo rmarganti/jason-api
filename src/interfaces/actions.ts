@@ -1,7 +1,7 @@
 import {
     iAttributes,
-    iJsonApiResponse,
-    iJsonApiResponseWithData,
+    iResponse,
+    iResponseWithData,
     iResourceObject,
 } from 'ts-json-api';
 
@@ -100,7 +100,7 @@ export interface iCacheQueryAction {
     type: string;
     payload: {
         key: string;
-        response: iJsonApiResponse;
+        response: iResponse;
     };
 }
 

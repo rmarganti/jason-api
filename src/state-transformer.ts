@@ -1,7 +1,7 @@
 import * as pluralize from 'pluralize';
 import * as R from 'ramda';
 
-import { iAttributes, iJsonApiResponse, iResourceObject } from 'ts-json-api';
+import { iAttributes, iResponse, iResourceObject } from 'ts-json-api';
 
 import { iJasonApiState } from './interfaces/state';
 import { FlexiblePayload } from './interfaces/other';
@@ -305,10 +305,10 @@ export const updateResourceObjectMeta = (
     const pluralKey = pluralize(resourceType);
     return metaKey
         ? R.assocPath(
-            [pluralKey, 'byId', resourceId, 'meta', metaKey],
-            value,
-            state
-        )
+              [pluralKey, 'byId', resourceId, 'meta', metaKey],
+              value,
+              state
+          )
         : R.assocPath([pluralKey, 'byId', resourceId, 'meta'], value, state);
 };
 
@@ -354,7 +354,7 @@ export const clearResourceObjectType = (
 export const cacheQuery = (
     state: iJasonApiState,
     key: string,
-    response: iJsonApiResponse
+    response: iResponse
 ): iJasonApiState => {
     return R.set(
         R.lensPath(['_cachedQueries', key]),

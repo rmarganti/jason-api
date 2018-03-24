@@ -96,7 +96,7 @@ export const hashObject = (object: any): string => {
         (key, value) => (typeof value === 'function' ? value.toString() : value)
     );
 
-    var hash = 0,
+    let hash = 0,
         i,
         chr;
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { iResourceObject } from 'ts-json-api';
+import { CommentResource } from '../mocks/types';
 
 type Props = {
-    data: iResourceObject;
+    data: CommentResource;
 };
 
 const ItemComponent: React.StatelessComponent<Props> = ({ data }) => (
