@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import * as JsonApi from 'ts-json-api';
 
-import { iAttributes, iResourceObject, iResponseWithError } from 'ts-json-api';
+import { iAttributes, iResourceObject, iResponseWithErrors } from 'ts-json-api';
 
 /**
  * Extract valid JSON API errors from an Axios error response. If the API
@@ -12,7 +12,7 @@ import { iAttributes, iResourceObject, iResponseWithError } from 'ts-json-api';
  */
 export const extractJsonApiErrorFromAxios = (
     error: AxiosError
-): iResponseWithError => {
+): iResponseWithErrors => {
     if (error.response && error.response.data.errors) {
         return error.response.data;
     } else if (error.request) {
@@ -35,5 +35,5 @@ export const extractJsonApiErrorFromAxios = (
     };
 };
 
-export const stringifyJsonApiErrors = (errorJson: iResponseWithError) =>
+export const stringifyJsonApiErrors = (errorJson: iResponseWithErrors) =>
     errorJson.errors.map(error => error.detail || error.title).join('\n');

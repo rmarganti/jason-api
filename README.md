@@ -70,7 +70,7 @@ console.log(result);
 ## Using HOC's
 
 ```js
-import { compose, withMutations, withQuery } from 'jason-api';
+import { compose, withQuery } from 'jason-api';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 

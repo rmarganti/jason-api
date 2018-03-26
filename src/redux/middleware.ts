@@ -7,7 +7,7 @@ import {
     iResponseWithData,
     iResourceObject,
     JsonApiResponse,
-    iResponseWithError,
+    iResponseWithErrors,
     ResourceObject,
 } from 'ts-json-api';
 
@@ -169,8 +169,6 @@ class JsonApiMiddleware {
                     );
                 }
             }
-
-            console.log('asdf', errorJson);
 
             throw errorJson;
         }
@@ -357,7 +355,7 @@ class JsonApiMiddleware {
      *
      * @param error
      */
-    private handleError(errorBody: iResponseWithError) {
+    private handleError(errorBody: iResponseWithErrors) {
         if (!this.resourceType) {
             return;
         }

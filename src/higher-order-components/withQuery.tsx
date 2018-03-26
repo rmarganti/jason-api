@@ -91,8 +91,6 @@ const withQuery = ({
                             ...errors,
                         },
                     }));
-
-                    return errors;
                 });
         };
 
