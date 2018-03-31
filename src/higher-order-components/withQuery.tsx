@@ -95,10 +95,15 @@ const withQuery = ({
         };
 
         /**
-         * Execute initial query.
+         * Execute initial query. A cache scheme of `noCache` will
+         * never trigger this. A cache scheme of `cacheOnly` will
+         * only trigger it if there is not already a cached query.
          */
         componentDidMount() {
-            if (cacheScheme === 'noCache') {
+            if (
+                cacheScheme === 'noCache' ||
+                (cacheScheme === 'cacheOnly' && this.state.queryResult)
+            ) {
                 return;
             }
 
