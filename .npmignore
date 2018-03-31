@@ -1,2 +1,8 @@
-./src
+.git
+.gitattributes
+.gitignore
+__tests__
+node_modules
+src
+yarn-error.log
 
