@@ -9,8 +9,6 @@ import ItemComponent from './ItemComponent';
 
 describe('withItem', () => {
     it('gets item info from store and calls the loading action', () => {
-        const loadingAction = sinon.spy();
-
         const WithItemComponent = withItem({
             resourceType: 'comments',
         })(ItemComponent);

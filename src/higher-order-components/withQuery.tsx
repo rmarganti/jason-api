@@ -4,7 +4,7 @@ import { connect, Dispatch } from 'react-redux';
 import * as JsonApi from 'ts-json-api';
 import { iAttributes, iResourceObject, iResponse } from 'ts-json-api';
 
-import { iStateWithJasonApi } from '../interfaces/state';
+import { iStateWithJasonApi } from '../common-types/state';
 import { cacheQuery } from '../redux/actions';
 import { getCachedQuery } from '../redux/selectors';
 import { hashObject, simplifyJsonApi } from '../utils/data';

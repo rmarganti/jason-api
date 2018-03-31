@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as sinon from 'sinon';
 import { ResourceObject, JsonApiResponse } from 'ts-json-api';
 
-import { JASON_API_REQUEST } from '../src/constants';
+import * as actionTypes from '../src/redux/actionTypes';
 import middleware from '../src/redux/middleware';
 import * as actionMocks from './mocks/actionMocks';
 import { createMockStore, restoreNetworkFunctions } from './tools';
@@ -27,7 +27,7 @@ describe('middleware', () => {
 
     it('Fetches an item and returns a JsonApiResponse object', done => {
         const action = {
-            type: JASON_API_REQUEST,
+            type: actionTypes.JASON_API_REQUEST,
             url: 'http://www.api.com/articles/1',
             resourceType: 'articles',
             resourceId: '1',
@@ -40,7 +40,7 @@ describe('middleware', () => {
 
         const getStub = sinon
             .stub(axios, 'request')
-            .callsFake(() => Promise.resolve(itemResponse));
+            .callsFake(() => Promise.resolve({ data: itemResponse }));
 
         mockStore.dispatch(action).then(result => {
             expect(mockStore.getActions()).toEqual(expectedActions);
@@ -52,7 +52,7 @@ describe('middleware', () => {
 
     it('Fetches a collection and returns the JSON API response', done => {
         const action = {
-            type: JASON_API_REQUEST,
+            type: actionTypes.JASON_API_REQUEST,
             url: 'http://www.api.com/articles',
             resourceType: 'articles',
         };
@@ -64,7 +64,7 @@ describe('middleware', () => {
 
         const getStub = sinon
             .stub(axios, 'request')
-            .callsFake(() => Promise.resolve(collectionResponse));
+            .callsFake(() => Promise.resolve({ data: collectionResponse }));
 
         mockStore.dispatch(action).then(result => {
             expect(mockStore.getActions()).toEqual(expectedActions);
@@ -77,7 +77,7 @@ describe('middleware', () => {
 
     it('Posts a new ResourceObject and returns a JsonApiResponse', done => {
         const action = {
-            type: JASON_API_REQUEST,
+            type: actionTypes.JASON_API_REQUEST,
             url: 'http://www.api.com/articles',
             method: 'post',
             payload: ResourceObject.build('articles', {
@@ -92,7 +92,7 @@ describe('middleware', () => {
 
         const postStub = sinon
             .stub(axios, 'request')
-            .callsFake(() => Promise.resolve(itemResponse));
+            .callsFake(() => Promise.resolve({ data: itemResponse }));
 
         mockStore.dispatch(action).then(result => {
             expect(mockStore.getActions()).toEqual(expectedActions);
@@ -104,7 +104,7 @@ describe('middleware', () => {
 
     it('throws on an erroneous api response', done => {
         const action = {
-            type: JASON_API_REQUEST,
+            type: actionTypes.JASON_API_REQUEST,
             url: 'http://www.api.com/articles/1',
             resourceType: 'articles',
             resourceId: '1',
@@ -114,7 +114,7 @@ describe('middleware', () => {
             ...actionMocks.startLoading('articles', '1'),
             ...actionMocks.stopLoading('articles', '1'),
             {
-                type: 'UPDATE_ENTITY_META_ARTICLE',
+                type: actionTypes.UPDATE_RESOURCE_OBJECT_META,
                 payload: {
                     metaKey: 'errors',
                     resourceId: '1',
@@ -132,7 +132,8 @@ describe('middleware', () => {
 
         const getStub = sinon
             .stub(axios, 'request')
-            .callsFake(() => Promise.reject(errorResponse));
+            .callsFake(() =>
+                Promise.reject({ response: { data: errorResponse } }));
 
         mockStore.dispatch(action).catch(result => {
             expect(mockStore.getActions()).toEqual(expectedActions);

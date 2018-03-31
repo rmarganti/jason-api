@@ -11,7 +11,7 @@ export interface iWithCollectionProps {
 export interface iWithCollectionPassedProps extends DispatchProp<any> {
     data: iResourceObject[];
 }
-declare const withCollection: ({resourceType, ids: resourceIds, shouldExpand}: iWithCollectionOptions) => InferableComponentEnhancerWithProps<{
+declare const withCollection: ({ resourceType, ids: resourceIds, shouldExpand, }: iWithCollectionOptions) => InferableComponentEnhancerWithProps<{
     data: any;
 } & DispatchProp<any>, iWithCollectionProps>;
 export default withCollection;

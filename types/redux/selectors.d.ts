@@ -1,5 +1,5 @@
 import { iAttributes, iResourceObject } from 'ts-json-api';
-import { iJasonApiState } from '../interfaces/state';
+import { iJasonApiState } from '../common-types/state';
 /**
  * Grab an Resource Object from the state
  *
@@ -21,7 +21,7 @@ export declare const getResourceObjects: (state: iJasonApiState, key: string, id
  * @param  {String} metaKey
  * @return {Mixed}
  */
-export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceType: string, metaKey?: string | null) => {};
+export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceType: string, metaKey?: string | null) => {} | undefined;
 /**
  * Grab an Resource Object's meta data from the state
  *
@@ -31,11 +31,11 @@ export declare const getResourceObjectsMeta: (state: iJasonApiState, resourceTyp
  * @param  {String} metaKey
  * @return {Mixed}
  */
-export declare const getResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey?: string | null) => {};
+export declare const getResourceObjectMeta: (state: iJasonApiState, resourceType: string, resourceId: string, metaKey?: string | null) => {} | undefined;
 /**
  * Get a cached Query
  *
  * @param state
  * @param url
  */
-export declare const getCachedQuery: (state: iJasonApiState, key: string) => {};
+export declare const getCachedQuery: (state: iJasonApiState, key: string) => {} | undefined;

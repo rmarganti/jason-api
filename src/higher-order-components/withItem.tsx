@@ -1,10 +1,11 @@
 import {
     connect,
     DispatchProp,
-    InferableComponentEnhancerWithProps
+    InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import { iResourceObject } from 'ts-json-api';
-import { iJasonApiState } from '../interfaces/state';
+import { iAttributes, iResourceObject } from 'ts-json-api';
+
+import { iJasonApiState } from '../common-types/state';
 import { getResourceObject } from '../redux/selectors';
 
 export interface iWithItemOptions {

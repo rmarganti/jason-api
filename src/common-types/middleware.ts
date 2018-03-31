@@ -42,11 +42,14 @@ export type iUpdateResourceObjectOnSuccess = [string, string, iAttributes];
 
 export type Method = 'get' | 'post' | 'patch' | 'delete';
 
+/**
+ * Jason API Redux action
+ */
 export interface iJsonApiActionConfig {
     type: string;
     url: string;
     method?: Method;
-    payload?: ResourceObject;
+    payload?: FlexiblePayload;
     resourceId?: string;
     resourceType?: string;
     additionalHeaders?: iAdditionalHeaders;

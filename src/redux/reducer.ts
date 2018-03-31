@@ -1,6 +1,11 @@
-import { actionNames } from '../constants';
-import * as actions from '../interfaces/actions';
-import { iReducer, iJasonApiState } from '../interfaces/state';
+import { iAttributes, iResourceObject, iResponse } from 'ts-json-api';
+
+import { iJasonApiState } from '../common-types/state';
+import * as actions from '../redux/actions';
+import { ActionWithPayload } from '../utils/createAction';
+import * as actionTypes from './actionTypes';
+import JasonApiAction from './JsonApiAction';
+
 import {
     addRelationshipToResourceObject,
     clearResourceObjectType,
@@ -15,136 +20,94 @@ import {
     cacheQuery,
 } from '../state-transformer';
 
-const reducerMap = {
-    [actionNames.LOAD_JSON_API_ENTITY_DATA]: (
-        state: iJasonApiState,
-        action: actions.iLoadAction
-    ) => insertOrUpdateResourceObjects(state, action.payload.data),
-
-    [actionNames.ADD_RELATIONSHIP_TO_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iAddRelationshipAction
-    ) =>
-        addRelationshipToResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.relationshipKey,
-            action.payload.relationshipObject
-        ),
-
-    [actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iRemoveRelationshipAction
-    ) =>
-        removeRelationshipFromResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.relationshipKey,
-            action.payload.relationshipId
-        ),
-
-    [actionNames.SET_RELATIONSHIP_ON_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iSetRelationshipAction
-    ) =>
-        setRelationshipOnResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.relationshipKey,
-            action.payload.relationshipObject
-        ),
-
-    [actionNames.CLEAR_RELATIONSHIP_ON_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iClearRelationshipAction
-    ) =>
-        clearRelationshipOnResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.relationshipKey
-        ),
-
-    [actionNames.UPDATE_ENTITIES_META]: (
-        state: iJasonApiState,
-        action: actions.iUpdateResourceObjectsMetaAction
-    ) =>
-        updateResourceObjectsMeta(
-            state,
-            action.payload.resourceType,
-            action.payload.metaKey,
-            action.payload.value
-        ),
-
-    [actionNames.UPDATE_ENTITY_META]: (
-        state: iJasonApiState,
-        action: actions.iUpdateResourceObjectMetaAction
-    ) =>
-        updateResourceObjectMeta(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.metaKey,
-            action.payload.value
-        ),
-
-    [actionNames.UPDATE_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iUpdateResourceObjectAction
-    ) =>
-        updateResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId,
-            action.payload.data
-        ),
-
-    [actionNames.REMOVE_ENTITY]: (
-        state: iJasonApiState,
-        action: actions.iRemoveResourceObjectAction
-    ) =>
-        removeResourceObject(
-            state,
-            action.payload.resourceType,
-            action.payload.resourceId
-        ),
-
-    [actionNames.CLEAR_ENTITY_TYPE]: (
-        state: iJasonApiState,
-        action: actions.iClearResourceObjectTypeAction
-    ) => clearResourceObjectType(state, action.payload.resourceType),
-
-    [actionNames.CACHE_QUERY]: (
-        state: iJasonApiState,
-        action: actions.iCacheQueryAction
-    ) => cacheQuery(state, action.payload.key, action.payload.response),
-};
-
-/**
- * The giadc-redux-json-api reducer
- *
- * @param  {Object} state
- * @param  {Object} action
- * @return {Object}
- */
-export default (
-    state: iJasonApiState = {},
-    action?: actions.Action
-): iJasonApiState => {
-    if (!action || !action.type) {
+export default (state: iJasonApiState = {}, action?: JasonApiAction) => {
+    if (!action) {
         return state;
     }
 
-    const actionKey = Object.keys(reducerMap).find(
-        key => !!action.type.match(new RegExp(`^${key}(_[_A-Z]+)?$`))
-    );
+    switch (action.type) {
+        case actionTypes.LOAD_DATA:
+            return insertOrUpdateResourceObjects(state, action.payload);
 
-    if (actionKey) {
-        return (<iReducer>reducerMap[actionKey])(state, action);
+        case actionTypes.ADD_RELATIONSHIP:
+            return addRelationshipToResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.relationshipKey,
+                action.payload.relationshipObject
+            );
+
+        case actionTypes.REMOVE_RELATIONSHIP:
+            return removeRelationshipFromResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.relationshipKey,
+                action.payload.relationshipId
+            );
+
+        case actionTypes.SET_RELATIONSHIP:
+            return setRelationshipOnResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.relationshipKey,
+                action.payload.relationshipObject
+            );
+
+        case actionTypes.CLEAR_RELATIONSHIP:
+            return clearRelationshipOnResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.relationshipKey
+            );
+
+        case actionTypes.UPDATE_RESOURCE_OBJECTS_META:
+            return updateResourceObjectsMeta(
+                state,
+                action.payload.resourceType,
+                action.payload.metaKey,
+                action.payload.value
+            );
+
+
+        case actionTypes.UPDATE_RESOURCE_OBJECT_META:
+            return updateResourceObjectMeta(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.metaKey,
+                action.payload.value
+            );
+
+        case actionTypes.UPDATE_RESOURCE_OBJECT:
+            return updateResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId,
+                action.payload.data
+            );
+
+        case actionTypes.REMOVE_RESOURCE_OBJECT:
+            return removeResourceObject(
+                state,
+                action.payload.resourceType,
+                action.payload.resourceId
+            );
+
+        case actionTypes.CLEAR_RESOURCE_OBJECT_TYPE:
+            return clearResourceObjectType(state, action.payload.resourceType);
+
+        case actionTypes.CACHE_QUERY:
+            return cacheQuery(
+                state,
+                action.payload.key,
+                action.payload.response
+            );
+
+        default:
+            return state;
     }
-
-    return state;
 };

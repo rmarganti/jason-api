@@ -7,7 +7,7 @@ import {
     JsonApiResponse,
 } from 'ts-json-api';
 
-import { iJasonApiState } from '../interfaces/state';
+import { iJasonApiState } from '../common-types/state';
 
 /**
  * Grab an Resource Object from the state

@@ -9,8 +9,6 @@ import CollectionComponent from './CollectionComponent';
 
 describe('withCollection', () => {
     it('gets collection info from the store', () => {
-        const loadingAction = sinon.spy();
-
         const WithCollectionComponent = withCollection({
             resourceType: 'articles',
             shouldExpand: true,

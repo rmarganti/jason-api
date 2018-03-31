@@ -1,6 +1,6 @@
 import { iAttributes, iResponse, iResourceObject } from 'ts-json-api';
-import { iJasonApiState } from './interfaces/state';
-import { FlexiblePayload } from './interfaces/other';
+import { iJasonApiState } from './common-types/state';
+import { FlexiblePayload } from './common-types/other';
 /**
  * Insert an ResourceObject or group of ResourceObjects
  * into the state as well as any includes

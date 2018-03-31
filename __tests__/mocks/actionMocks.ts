@@ -1,5 +1,6 @@
 import * as pluralize from 'pluralize';
 
+import * as actionTypes from '../../src/redux/actionTypes';
 import * as actions from '../../src/redux/actions';
 
 interface iBasicAction {
@@ -89,14 +90,14 @@ export const startAndStopLoading = (
 ];
 
 /**
- * Generate a LOAD_JSON_API_ENTITY_DATA action
+ * Generate a LOAD_DATA action
  *
  * @param  {Object} response
  * @return {Object}
  */
 export const loadResponse = (response, resourceType) => {
     const returnedActions: iBasicAction[] = [
-        { type: 'LOAD_JSON_API_ENTITY_DATA', payload: { data: response } },
+        { type: actionTypes.LOAD_DATA, payload: response },
     ];
 
     return returnedActions;

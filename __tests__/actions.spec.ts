@@ -1,11 +1,11 @@
 import pluralize from 'pluralize';
 
-import { actionNames } from '../src/constants';
+import * as actionTypes from '../src/redux/actionTypes';
 import * as actions from '../src/redux/actions';
 
 describe('actions', () => {
     it('should create an action to load json api data', () => {
-        const data = {
+        const payload = {
             data: {
                 type: 'article',
                 id: '12345',
@@ -15,10 +15,10 @@ describe('actions', () => {
             },
         };
         const expectedAction = {
-            type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-            payload: { data },
+            type: actionTypes.LOAD_DATA,
+            payload: payload,
         };
-        expect(actions.loadJsonApiResourceObjectData(data)).toEqual(
+        expect(actions.loadJsonApiResourceObjectData(payload)).toEqual(
             expectedAction
         );
     });
@@ -35,7 +35,7 @@ describe('actions', () => {
             },
         };
         const expectedAction = {
-            type: actionNames.ADD_RELATIONSHIP_TO_ENTITY + '_ARTICLE_READERS',
+            type: actionTypes.ADD_RELATIONSHIP,
             payload: {
                 resourceType,
                 resourceId,
@@ -59,9 +59,7 @@ describe('actions', () => {
         const relationshipKey = 'reader';
         const relationshipId = '54321';
         const expectedAction = {
-            type:
-                actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY +
-                '_ARTICLE_READERS',
+            type: actionTypes.REMOVE_RELATIONSHIP,
             payload: {
                 resourceType,
                 resourceId,
@@ -87,7 +85,7 @@ describe('actions', () => {
             title: 'New Test Title',
         };
         const expectedAction = {
-            type: actionNames.UPDATE_ENTITY + '_ARTICLE',
+            type: actionTypes.UPDATE_RESOURCE_OBJECT,
             payload: {
                 resourceType,
                 resourceId,
@@ -105,7 +103,7 @@ describe('actions', () => {
         const value = true;
 
         const expectedAction = {
-            type: actionNames.UPDATE_ENTITIES_META + '_ARTICLES',
+            type: actionTypes.UPDATE_RESOURCE_OBJECTS_META,
             payload: {
                 resourceType,
                 metaKey,
@@ -125,7 +123,7 @@ describe('actions', () => {
             value = true;
 
         const expectedAction = {
-            type: actionNames.UPDATE_ENTITY_META + '_ARTICLE',
+            type: actionTypes.UPDATE_RESOURCE_OBJECT_META,
             payload: {
                 resourceType,
                 resourceId,
@@ -145,11 +143,11 @@ describe('actions', () => {
     });
 
     it('should create an action to delete an entity', () => {
-        const resourceType = 'article',
-            resourceId = '1';
+        const resourceType = 'article';
+        const resourceId = '1';
 
         const expectedAction = {
-            type: actionNames.REMOVE_ENTITY + '_ARTICLE',
+            type: actionTypes.REMOVE_RESOURCE_OBJECT,
             payload: {
                 resourceType,
                 resourceId,
@@ -165,7 +163,7 @@ describe('actions', () => {
         const resourceType = 'articles';
 
         const expectedAction = {
-            type: actionNames.CLEAR_ENTITY_TYPE + '_ARTICLES',
+            type: actionTypes.CLEAR_RESOURCE_OBJECT_TYPE,
             payload: {
                 resourceType,
             },

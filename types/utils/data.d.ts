@@ -1,21 +1,22 @@
 /// <reference types="ramda" />
 /**
- * Ensure the given value is an array. If not, return it as a single-item array
+ * Ensure the given value is an array. If not,
+ * return it as a single-item array.
  *
  * @param value
  */
 export declare const ensureArray: (value: any) => any[];
 /**
- * Ramda's mergeDeepRight with paramater order flipped
+ * Ramda's mergeDeepRight with paramater order flipped.
  */
-export declare const reverseMergeDeepLeft: (arg1: {}, arg0?: any) => <B>(b: B) => any;
+export declare const reverseMergeDeepLeft: (arg1: {}, arg0?: {} | undefined) => <B>(b: B) => B & {};
 /**
- * Remove an object's wrapping `data` prop, if it exists
+ * Remove an object's wrapping `data` prop, if it exists.
  */
 export declare const unwrapDataProp: (a: any) => any;
 /**
  * Apply a function in a map if the given data is an array.
- * Otherwise, simply apply it once to the data
+ * Otherwise, simply apply it once to the data.
  *
  * @param func Function to perform
  */
@@ -41,13 +42,13 @@ export declare const simplifyResourceObject: (a: any) => any;
 export declare const simplifyResourceObjects: any;
 /**
  * Give a JSON API Response, simplify the Resource Objects
- * and strip any additional `included` Resource Objects
+ * and strip any additional `included` Resource Objects.
  *
  * Object -> Object
  */
 export declare const simplifyJsonApi: (x0: {}) => {};
 /**
- * Generate a unique hash from any javascript object
+ * Generate a unique hash from any javascript object.
  *
  * @param object
  */

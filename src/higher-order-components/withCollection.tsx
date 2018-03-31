@@ -5,7 +5,7 @@ import {
 } from 'react-redux';
 import { iResourceObject } from 'ts-json-api';
 
-import { iJasonApiState } from '../interfaces/state';
+import { iJasonApiState } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
 import { simplifyResourceObjects } from '../utils/data';
 

@@ -21,13 +21,9 @@ import {
     updateResourceObjectsMeta,
     updateResourceObjectMeta,
 } from './actions';
+import { JASON_API_REQUEST } from './actionTypes';
 
-import { JASON_API_REQUEST } from '../constants';
-import {
-    iTransformer,
-    iSuccessCallback,
-    iJsonApiActionConfig,
-} from '../interfaces/Middleware';
+import { iJsonApiActionConfig } from '../common-types/Middleware';
 
 import {
     extractJsonApiErrorFromAxios,

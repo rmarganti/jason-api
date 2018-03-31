@@ -21,7 +21,8 @@ import {
 import { isUndefined } from 'util';
 
 /**
- * Ensure the given value is an array. If not, return it as a single-item array
+ * Ensure the given value is an array. If not,
+ * return it as a single-item array.
  *
  * @param value
  */
@@ -29,18 +30,18 @@ export const ensureArray = (value: any) =>
     Array.isArray(value) ? value : [value];
 
 /**
- * Ramda's mergeDeepRight with paramater order flipped
+ * Ramda's mergeDeepRight with paramater order flipped.
  */
 export const reverseMergeDeepLeft = flip(mergeDeepRight);
 
 /**
- * Remove an object's wrapping `data` prop, if it exists
+ * Remove an object's wrapping `data` prop, if it exists.
  */
 export const unwrapDataProp = ifElse(has('data'), prop('data'), identity);
 
 /**
  * Apply a function in a map if the given data is an array.
- * Otherwise, simply apply it once to the data
+ * Otherwise, simply apply it once to the data.
  *
  * @param func Function to perform
  */
@@ -76,7 +77,7 @@ export const simplifyResourceObjects = mapOrOnce(simplifyResourceObject);
 
 /**
  * Give a JSON API Response, simplify the Resource Objects
- * and strip any additional `included` Resource Objects
+ * and strip any additional `included` Resource Objects.
  *
  * Object -> Object
  */
@@ -86,7 +87,7 @@ export const simplifyJsonApi = pipe(
 );
 
 /**
- * Generate a unique hash from any javascript object
+ * Generate a unique hash from any javascript object.
  *
  * @param object
  */

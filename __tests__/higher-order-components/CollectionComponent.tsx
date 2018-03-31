@@ -3,6 +3,7 @@ import { iResponse } from 'ts-json-api';
 import { ArticleResource } from '../mocks/types';
 
 type ResponseWithLoadingState = {
+    data: any;
     isLoading: boolean;
 } & iResponse<ArticleResource[]>;
 

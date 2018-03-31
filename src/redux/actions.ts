@@ -6,21 +6,9 @@ import {
     iResponseWithData,
 } from 'ts-json-api';
 
-import { actionNames } from '../constants';
-import {
-    iLoadAction,
-    iAddRelationshipAction,
-    iRemoveRelationshipAction,
-    iSetRelationshipAction,
-    iClearRelationshipAction,
-    iUpdateResourceObjectsMetaAction,
-    iUpdateResourceObjectMetaAction,
-    iUpdateResourceObjectAction,
-    iRemoveResourceObjectAction,
-    iClearResourceObjectTypeAction,
-    iCacheQueryAction,
-} from '../interfaces/actions';
-import { FlexiblePayload } from '../interfaces/other';
+import { FlexiblePayload } from '../common-types/other';
+import { Action, ActionWithPayload, createAction } from '../utils/createAction';
+import * as actionTypes from './actionTypes';
 
 const singularCase = (input: string) => pluralize(input, 1).toUpperCase();
 const pluralCase = (input: string) => pluralize(input).toUpperCase();
@@ -31,12 +19,8 @@ const pluralCase = (input: string) => pluralize(input).toUpperCase();
  * @param  {Object} data
  * @return {Object}
  */
-export const loadJsonApiResourceObjectData = (
-    data: FlexiblePayload
-): iLoadAction => ({
-    type: actionNames.LOAD_JSON_API_ENTITY_DATA,
-    payload: { data },
-});
+export const loadJsonApiResourceObjectData = (data: FlexiblePayload) =>
+    createAction(actionTypes.LOAD_DATA, data);
 
 /**
  * Add a relationship to an ResourceObject
@@ -51,12 +35,13 @@ export const addRelationshipToResourceObject = (
     resourceId: string,
     relationshipKey: string,
     relationshipObject: FlexiblePayload
-): iAddRelationshipAction => ({
-    type: `${actionNames.ADD_RELATIONSHIP_TO_ENTITY}_${singularCase(
-        resourceType
-    )}_${pluralCase(relationshipKey)}`,
-    payload: { resourceType, resourceId, relationshipKey, relationshipObject },
-});
+) =>
+    createAction(actionTypes.ADD_RELATIONSHIP, {
+        resourceType,
+        resourceId,
+        relationshipKey,
+        relationshipObject,
+    });
 
 /**
  * Set a relationship on an ResourceObject
@@ -71,12 +56,13 @@ export const setRelationshipOnResourceObject = (
     resourceId: string,
     relationshipKey: string,
     relationshipObject: FlexiblePayload
-): iSetRelationshipAction => ({
-    type: `${actionNames.SET_RELATIONSHIP_ON_ENTITY}_${singularCase(
-        resourceType
-    )}_${pluralCase(relationshipKey)}`,
-    payload: { resourceType, resourceId, relationshipKey, relationshipObject },
-});
+) =>
+    createAction(actionTypes.SET_RELATIONSHIP, {
+        resourceType,
+        resourceId,
+        relationshipKey,
+        relationshipObject,
+    });
 
 /**
  * Remove a relationship from an ResourceObject
@@ -91,15 +77,17 @@ export const removeRelationshipFromResourceObject = (
     resourceId: string,
     relationshipKey: string,
     relationshipId: string
-): iRemoveRelationshipAction => ({
-    type: `${actionNames.REMOVE_RELATIONSHIP_FROM_ENTITY}_${singularCase(
-        resourceType
-    )}_${pluralCase(relationshipKey)}`,
-    payload: { resourceType, resourceId, relationshipKey, relationshipId },
-});
+) =>
+    createAction(actionTypes.REMOVE_RELATIONSHIP, {
+        resourceType,
+        resourceId,
+        relationshipKey,
+        relationshipId,
+    });
 
 /**
  * Completely remove a relationship from a ResourceObject
+ *
  * @param resourceType
  * @param resourceId
  * @param relationshipKey
@@ -108,12 +96,12 @@ export const clearRelationshipOnResourceObject = (
     resourceType: string,
     resourceId: string,
     relationshipKey: string
-): iClearRelationshipAction => ({
-    type: `${actionNames.CLEAR_RELATIONSHIP_ON_ENTITY}_${singularCase(
-        resourceType
-    )}_${pluralCase(relationshipKey)}`,
-    payload: { resourceType, resourceId, relationshipKey },
-});
+) =>
+    createAction(actionTypes.CLEAR_RELATIONSHIP, {
+        resourceType,
+        resourceId,
+        relationshipKey,
+    });
 
 /**
  * Update an ResourceObject's attributes
@@ -126,10 +114,12 @@ export const updateResourceObject = (
     resourceType: string,
     resourceId: string,
     data: iAttributes
-): iUpdateResourceObjectAction => ({
-    type: `${actionNames.UPDATE_ENTITY}_${singularCase(resourceType)}`,
-    payload: { resourceType, resourceId, data },
-});
+) =>
+    createAction(actionTypes.UPDATE_RESOURCE_OBJECT, {
+        resourceType,
+        resourceId,
+        data,
+    });
 
 /**
  * Update an ResourceObject group's meta data
@@ -142,10 +132,12 @@ export const updateResourceObjectsMeta = (
     resourceType: string,
     metaKey: string,
     value: any
-): iUpdateResourceObjectsMetaAction => ({
-    type: `${actionNames.UPDATE_ENTITIES_META}_${pluralCase(resourceType)}`,
-    payload: { resourceType, metaKey, value },
-});
+) =>
+    createAction(actionTypes.UPDATE_RESOURCE_OBJECTS_META, {
+        resourceType,
+        metaKey,
+        value,
+    });
 
 /**
  * Update an ResourceObject's meta data
@@ -160,10 +152,13 @@ export const updateResourceObjectMeta = (
     resourceId: string,
     metaKey: string,
     value: any
-): iUpdateResourceObjectMetaAction => ({
-    type: `${actionNames.UPDATE_ENTITY_META}_${singularCase(resourceType)}`,
-    payload: { resourceType, resourceId, metaKey, value },
-});
+) =>
+    createAction(actionTypes.UPDATE_RESOURCE_OBJECT_META, {
+        resourceType,
+        resourceId,
+        metaKey,
+        value,
+    });
 
 /**
  * Remove a single ResourceObject
@@ -174,22 +169,21 @@ export const updateResourceObjectMeta = (
 export const removeResourceObject = (
     resourceType: string,
     resourceId: string
-): iRemoveResourceObjectAction => ({
-    type: `${actionNames.REMOVE_ENTITY}_${singularCase(resourceType)}`,
-    payload: { resourceType, resourceId },
-});
+) =>
+    createAction(actionTypes.REMOVE_RESOURCE_OBJECT, {
+        resourceType,
+        resourceId,
+    });
 
 /**
  * Clear all the ResourceObjects from an ResourceObject type
  *
  * @param  resourceType
  */
-export const clearResourceObjectType = (
-    resourceType: string
-): iClearResourceObjectTypeAction => ({
-    type: `${actionNames.CLEAR_ENTITY_TYPE}_${pluralCase(resourceType)}`,
-    payload: { resourceType },
-});
+export const clearResourceObjectType = (resourceType: string) =>
+    createAction(actionTypes.CLEAR_RESOURCE_OBJECT_TYPE, {
+        resourceType,
+    });
 
 /**
  * Cache a simplified version of a JSON API query response
@@ -197,10 +191,5 @@ export const clearResourceObjectType = (
  * @param url
  * @param response
  */
-export const cacheQuery = (
-    key: string,
-    response: iResponse
-): iCacheQueryAction => ({
-    type: actionNames.CACHE_QUERY,
-    payload: { key, response },
-});
+export const cacheQuery = (key: string, response: iResponse) =>
+    createAction(actionTypes.CACHE_QUERY, { key, response });
