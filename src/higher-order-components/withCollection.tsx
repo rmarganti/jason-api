@@ -3,7 +3,7 @@ import {
     DispatchProp,
     InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import { iResourceObject } from 'ts-json-api';
+import { iAttributes, iResourceObject } from 'ts-json-api';
 
 import { iJasonApiState } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
@@ -12,7 +12,7 @@ import { simplifyResourceObjects } from '../utils/data';
 export interface iWithCollectionOptions {
     resourceType: string;
     ids?: string[];
-    shouldExpand?: boolean;
+    expandResourceObjects?: boolean;
 }
 
 export interface iWithCollectionProps {
@@ -32,20 +32,18 @@ const expandResourceObjects = (
 const withCollection = ({
     resourceType,
     ids: resourceIds,
-    shouldExpand = false,
+    expandResourceObjects = false,
 }: iWithCollectionOptions) =>
     connect(
         (
             state: { resourceObjects: iJasonApiState },
             { ids }: iWithCollectionProps
         ) => ({
-            data: expandResourceObjects(
-                shouldExpand,
-                getResourceObjects(
-                    state.resourceObjects,
-                    resourceType,
-                    ids || resourceIds
-                )
+            data: getResourceObjects(
+                state.resourceObjects,
+                resourceType,
+                ids || resourceIds,
+                expandResourceObjects
             ),
         })
     );

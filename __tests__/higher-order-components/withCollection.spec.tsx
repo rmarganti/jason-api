@@ -11,7 +11,7 @@ describe('withCollection', () => {
     it('gets collection info from the store', () => {
         const WithCollectionComponent = withCollection({
             resourceType: 'articles',
-            shouldExpand: true,
+            expandResourceObjects: true,
         })(CollectionComponent);
 
         const wrapper = mount(<WithCollectionComponent store={defaultStore} />);

@@ -6,30 +6,38 @@ import {
     getResourceObjects,
     getResourceObjectsMeta,
     getResourceObjectMeta,
+    getCachedQuery,
 } from '../src/redux/selectors';
 
-import { iJasonApiState } from '../src/interfaces/state';
+import { iJasonApiState } from '../src/common-types/state';
 
 import { commentJsonResponse, initialJsonApiResponse } from './mocks';
-import { insertOrUpdateResourceObjects } from '../src/state-transformer';
 
-const reverseMerge = R.flip(R.merge);
+import {
+    cacheQuery,
+    insertOrUpdateResourceObjects,
+} from '../src/state-transformer';
 
-const state = R.pipe(
-    R.assocPath(['articles', 'meta'], {
+const state: iJasonApiState = R.pipe(
+    R.assocPath<any, iJasonApiState>(['articles', 'meta'], {
         isLoading: true,
         anotherMetaProperty: 666,
     }),
-    R.assocPath(['articles', 'byId', '1', 'meta', 'isLoading'], true)
-)(insertOrUpdateResourceObjects({}, initialJsonApiResponse));
+    R.assocPath<any, iJasonApiState>(
+        ['articles', 'byId', '1', 'meta', 'isLoading'],
+        true
+    )
+)(
+    cacheQuery(
+        insertOrUpdateResourceObjects({}, initialJsonApiResponse),
+        'cacheKey',
+        initialJsonApiResponse
+    )
+);
 
 describe('getResourceObject', () => {
     it('should return an resource object', () => {
-        const resourceObject = getResourceObject(
-            <iJasonApiState>state,
-            'article',
-            '1'
-        );
+        const resourceObject = getResourceObject(state, 'article', '1');
 
         expect(resourceObject.id).toEqual('1');
         expect(resourceObject.type).toEqual('articles');
@@ -39,15 +47,13 @@ describe('getResourceObject', () => {
     });
 
     it('should return `undefined` if the resource object does not exist', () => {
-        expect(
-            getResourceObject(<iJasonApiState>state, 'article', '666')
-        ).toEqual(undefined);
+        expect(getResourceObject(state, 'article', '666')).toEqual(undefined);
     });
 });
 
 describe('getResourceObjects', () => {
     it('should return all resource objects', () => {
-        const results = getResourceObjects(<iJasonApiState>state, 'comments');
+        const results = getResourceObjects(state, 'comments');
         expect(results[0].attributes).toEqual({
             body: 'First!',
         });
@@ -58,10 +64,7 @@ describe('getResourceObjects', () => {
     });
 
     it('should return a subset of resource objects', () => {
-        const results = getResourceObjects(<iJasonApiState>state, 'comments', [
-            '5',
-            '12',
-        ]);
+        const results = getResourceObjects(state, 'comments', ['5', '12']);
 
         expect(results[0].attributes).toEqual({
             body: 'First!',
@@ -73,10 +76,7 @@ describe('getResourceObjects', () => {
     });
 
     it('should return only resource objects that exist', () => {
-        const results = getResourceObjects(<iJasonApiState>state, 'comments', [
-            '5',
-            '666',
-        ]);
+        const results = getResourceObjects(state, 'comments', ['5', '666']);
         expect(results.length).toEqual(1);
         expect(results[0].attributes).toEqual({
             body: 'First!',
@@ -84,83 +84,75 @@ describe('getResourceObjects', () => {
     });
 
     it('should return an empty array if the resource objects do not exist', () => {
-        expect(
-            getResourceObjects(<iJasonApiState>state, 'comments', [
-                '666',
-                '777',
-            ])
-        ).toEqual([]);
-        expect(getResourceObjects(<iJasonApiState>state, 'spicyboys')).toEqual(
+        expect(getResourceObjects(state, 'comments', ['666', '777'])).toEqual(
             []
         );
+        expect(getResourceObjects(state, 'spicyboys')).toEqual([]);
     });
 });
 
 describe('getResourceObjectsMeta', () => {
     it('should return all the meta data for an resource object type', () => {
-        expect(
-            getResourceObjectsMeta(<iJasonApiState>state, 'articles')
-        ).toEqual({
+        expect(getResourceObjectsMeta(state, 'articles')).toEqual({
             isLoading: true,
             anotherMetaProperty: 666,
         });
     });
 
     it("should return a specific meta property's value for an resource object group", () => {
-        expect(
-            getResourceObjectsMeta(
-                <iJasonApiState>state,
-                'articles',
-                'isLoading'
-            )
-        ).toEqual(true);
+        expect(getResourceObjectsMeta(state, 'articles', 'isLoading')).toEqual(
+            true
+        );
     });
 
     it('should return `undefined` if no meta data exists for an resource object group', () => {
         expect(
-            getResourceObjectsMeta(
-                <iJasonApiState>state,
-                'articles',
-                'invalidMetaKey'
-            )
+            getResourceObjectsMeta(state, 'articles', 'invalidMetaKey')
         ).toEqual(undefined);
-        expect(
-            getResourceObjectsMeta(<iJasonApiState>state, 'authors')
-        ).toEqual(undefined);
+        expect(getResourceObjectsMeta(state, 'authors')).toEqual(undefined);
     });
 });
 
 describe('getResourceObjectMeta', () => {
     it('should return all the meta data for an resource object type', () => {
-        expect(
-            getResourceObjectMeta(<iJasonApiState>state, 'articles', '1')
-        ).toEqual({
+        expect(getResourceObjectMeta(state, 'articles', '1')).toEqual({
             isLoading: true,
         });
     });
 
     it("should return a specific meta property's value for an resource object group", () => {
         expect(
-            getResourceObjectMeta(
-                <iJasonApiState>state,
-                'articles',
-                '1',
-                'isLoading'
-            )
+            getResourceObjectMeta(state, 'articles', '1', 'isLoading')
         ).toEqual(true);
     });
 
     it('should return `undefined` if no meta data exists for an resource object group', () => {
         expect(
-            getResourceObjectMeta(
-                <iJasonApiState>state,
-                'articles',
-                '1',
-                'invalidMetaKey'
-            )
+            getResourceObjectMeta(state, 'articles', '1', 'invalidMetaKey')
         ).toEqual(undefined);
-        expect(
-            getResourceObjectMeta(<iJasonApiState>state, 'authors', '1')
-        ).toEqual(undefined);
+        expect(getResourceObjectMeta(state, 'authors', '1')).toEqual(undefined);
+    });
+});
+
+describe('getCachedQuery', () => {
+    it('should get a cached query', () => {
+        const result = getCachedQuery(state, 'cacheKey');
+
+        expect(result).toEqual({
+            data: [{ type: 'articles', id: '1' }],
+            links: {
+                self: 'http://example.com/articles',
+                next: 'http://example.com/articles?page[offset]=2',
+                last: 'http://example.com/articles?page[offset]=10',
+            },
+        });
+    });
+
+    it('should fetch and expand a cached query', () => {
+        const result = getCachedQuery(state, 'cacheKey', true);
+
+        expect(result.data[0].attributes.title).toEqual(
+            'JSON API paints my bikeshed!'
+        );
     });
 });

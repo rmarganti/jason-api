@@ -16,6 +16,7 @@ export type TQueryFactory = (
 
 export interface iWithQueryOptions {
     cacheScheme: 'cacheFirst' | 'cacheOnly' | 'noCache';
+    expandResourceObjects: boolean;
     propsToWatch: string[];
     queryFactory: TQueryFactory;
     stateBranch?: string;
@@ -36,11 +37,12 @@ const initialState = { isLoading: false, queryResult: undefined };
 
 type TState = {
     isLoading: boolean;
-    queryResult?: Partial<JsonApi.iResponse>;
+    queryResult?: JsonApi.iResponse;
 };
 
 const withQuery = ({
     cacheScheme = 'cacheFirst',
+    expandResourceObjects = false,
     queryFactory,
     propsToWatch = [],
     stateBranch = 'resourceObjects',
@@ -78,7 +80,9 @@ const withQuery = ({
                 .then(response => {
                     this.setState({
                         isLoading: false,
-                        queryResult: simplifyJsonApi(response),
+                        queryResult: expandResourceObjects
+                            ? response
+                            : simplifyJsonApi(response),
                     });
 
                     cacheQueryResult(response);
@@ -152,7 +156,8 @@ const withQuery = ({
             cacheScheme !== 'noCache' &&
             getCachedQuery(
                 state[stateBranch],
-                hashQuery(queryFactory, ownProps)
+                hashQuery(queryFactory, ownProps),
+                expandResourceObjects
             ),
     });
 
