@@ -6,6 +6,7 @@ import {
     iResponseWithData,
     JsonApiResponse,
     iResponse,
+    iMeta,
 } from 'ts-json-api';
 
 import { iJasonApiState } from '../common-types/state';
@@ -14,10 +15,9 @@ import { mapOrOnce, simplifyResourceObjects } from '../utils/data';
 /**
  * Grab an Resource Object from the state
  *
- * @param  {Object} state
- * @param  {String} key
- * @param  {String} id
- * @return {Object}
+ * @param state
+ * @param key
+ * @param id
  */
 export const getResourceObject = (
     state: iJasonApiState,
@@ -30,6 +30,11 @@ export const getResourceObject = (
 
 /**
  * Get an array of Resource Objects from the state
+ *
+ * @param state
+ * @param key
+ * @param ids
+ * @param expand
  */
 export const getResourceObjects = (
     state: iJasonApiState,
@@ -59,10 +64,9 @@ export const getResourceObjects = (
 /**
  * Grab an Resource Object group's meta data from the state
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} metaKey
- * @return {Mixed}
+ * @param state
+ * @param resourceType
+ * @param metaKey
  */
 export const getResourceObjectsMeta = (
     state: iJasonApiState,
@@ -70,17 +74,16 @@ export const getResourceObjectsMeta = (
     metaKey: string | null = null
 ) =>
     metaKey === null
-        ? R.path([resourceType, 'meta'], state)
+        ? R.path<iMeta>([resourceType, 'meta'], state)
         : R.path([resourceType, 'meta', metaKey], state);
 
 /**
  * Grab an Resource Object's meta data from the state
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @param  {String} metaKey
- * @return {Mixed}
+ * @param state
+ * @param resourceType
+ * @param resourceId
+ * @param metaKey
  */
 export const getResourceObjectMeta = (
     state: iJasonApiState,

@@ -23,12 +23,6 @@ export interface iWithCollectionPassedProps extends DispatchProp<any> {
     data: iResourceObject[];
 }
 
-const expandResourceObjects = (
-    shouldExpand = false,
-    resourceObjects: iResourceObject[] = []
-) =>
-    shouldExpand ? resourceObjects : simplifyResourceObjects(resourceObjects);
-
 const withCollection = ({
     resourceType,
     ids: resourceIds,
