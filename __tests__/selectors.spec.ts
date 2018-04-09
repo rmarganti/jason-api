@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-import { iResponseWithData } from 'ts-json-api';
 
 import {
     getResourceObject,
@@ -9,7 +8,7 @@ import {
     getCachedQuery,
 } from '../src/redux/selectors';
 
-import { iJasonApiState } from '../src/common-types/state';
+import { JasonApiState } from '../src/common-types/state';
 
 import { commentJsonResponse, initialJsonApiResponse } from './mocks';
 
@@ -18,15 +17,12 @@ import {
     insertOrUpdateResourceObjects,
 } from '../src/state-transformer';
 
-const state: iJasonApiState = R.pipe(
-    R.assocPath<any, iJasonApiState>(['articles', 'meta'], {
+const state = R.pipe<JasonApiState, JasonApiState, JasonApiState>(
+    R.assocPath(['articles', 'meta'], {
         isLoading: true,
         anotherMetaProperty: 666,
     }),
-    R.assocPath<any, iJasonApiState>(
-        ['articles', 'byId', '1', 'meta', 'isLoading'],
-        true
-    )
+    R.assocPath(['articles', 'byId', '1', 'meta', 'isLoading'], true)
 )(
     cacheQuery(
         insertOrUpdateResourceObjects({}, initialJsonApiResponse),

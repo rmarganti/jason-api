@@ -1,5 +1,15 @@
-import { iResourceObject, iResponseWithData, iResponse } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
+import { AnyAction } from 'redux';
 
-import { iJasonApiState } from './state';
+export type FlexiblePayload =
+    | JsonApi.ResourceObject
+    | JsonApi.ResourceObject[]
+    | JsonApi.Response;
 
-export type FlexiblePayload = iResourceObject | iResourceObject[] | iResponse;
+export type FunctionType = (...args: any[]) => any;
+
+export type ActionCreatorsMapObject = { [actionCreator: string]: FunctionType };
+
+export type ActionsUnion<A extends ActionCreatorsMapObject> = ReturnType<
+    A[keyof A]
+>;

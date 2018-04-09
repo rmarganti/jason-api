@@ -1,11 +1,11 @@
 import 'jest';
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as sinon from 'sinon';
 
 import withItem from '../../src/higher-order-components/withItem';
 import { defaultStore } from '../tools';
 import ItemComponent from './ItemComponent';
+import { Provider } from 'react-redux';
 
 describe('withItem', () => {
     it('gets item info from store and calls the loading action', () => {
@@ -14,7 +14,9 @@ describe('withItem', () => {
         })(ItemComponent);
 
         const wrapper = mount(
-            <WithItemComponent store={defaultStore} id="5" />
+            <Provider store={defaultStore}>
+                <WithItemComponent id="5" />
+            </Provider>
         );
 
         expect(wrapper.find('p')).toHaveLength(1);

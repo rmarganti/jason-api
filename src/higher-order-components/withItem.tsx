@@ -3,32 +3,32 @@ import {
     DispatchProp,
     InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import { iAttributes, iResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
-import { iJasonApiState } from '../common-types/state';
+import { JasonApiState } from '../common-types/state';
 import { getResourceObject } from '../redux/selectors';
 
-export interface iWithItemOptions {
+export interface WithItemOptions {
     resourceType?: string;
     resourceId?: string;
 }
 
-export interface iWithItemProps {
-    data?: iResourceObject;
+export interface WithItemProps {
+    data?: JsonApi.ResourceObject;
     id?: string;
 }
 
-const withItem = ({ resourceType, resourceId }: iWithItemOptions = {}) =>
+const withItem = ({ resourceType, resourceId }: WithItemOptions = {}) =>
     connect(
         (
-            state: { resourceObjects: iJasonApiState },
-            { data, id }: iWithItemProps
+            state: { resourceObjects: JasonApiState },
+            { data, id }: WithItemProps
         ) => {
             const resolvedType = data ? data.type : resourceType;
             const resolvedId = data ? data.id : id || resourceId;
 
             if (!resolvedType || !resolvedId) {
-                return { data: {} };
+                return {};
             }
 
             return {

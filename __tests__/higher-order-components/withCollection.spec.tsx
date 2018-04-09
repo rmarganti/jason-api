@@ -1,8 +1,7 @@
+import { mount } from 'enzyme';
 import 'jest';
 import * as React from 'react';
-import { mount } from 'enzyme';
-import * as sinon from 'sinon';
-
+import { Provider } from 'react-redux';
 import withCollection from '../../src/higher-order-components/withCollection';
 import { defaultStore } from '../tools';
 import CollectionComponent from './CollectionComponent';
@@ -14,7 +13,11 @@ describe('withCollection', () => {
             expandResourceObjects: true,
         })(CollectionComponent);
 
-        const wrapper = mount(<WithCollectionComponent store={defaultStore} />);
+        const wrapper = mount(
+            <Provider store={defaultStore}>
+                <WithCollectionComponent />
+            </Provider>
+        );
 
         expect(wrapper.find('p')).toHaveLength(1);
     });

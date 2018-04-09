@@ -1,16 +1,25 @@
 import axios, { AxiosError } from 'axios';
 import { path } from 'ramda';
-import { ActionCreator, Dispatch, Middleware, Store } from 'redux';
 import {
-    iAttributes,
-    iResponse,
-    iResponseWithData,
-    iResourceObject,
-    JsonApiResponse,
-    iResponseWithErrors,
-    ResourceObject,
-} from 'ts-json-api';
-
+    Action,
+    ActionCreator,
+    Dispatch,
+    MiddlewareAPI,
+    AnyAction,
+} from 'redux';
+import { ResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
+import {
+    JasonApiRequestAction,
+    JasonApiDispatch,
+    JasonApiMiddleware,
+} from '../common-types/middleware';
+import { StateWithJasonApi } from '../common-types/state';
+import {
+    extractJsonApiErrorFromAxios,
+    stringifyJsonApiErrors,
+} from '../utils/async';
+import { JASON_API_REQUEST } from './actionTypes';
 import {
     addRelationshipToResourceObject,
     loadJsonApiResourceObjectData,
@@ -18,17 +27,9 @@ import {
     removeResourceObject,
     setRelationshipOnResourceObject,
     updateResourceObject,
-    updateResourceObjectsMeta,
     updateResourceObjectMeta,
+    updateResourceObjectsMeta,
 } from './actions';
-import { JASON_API_REQUEST } from './actionTypes';
-
-import { iJsonApiActionConfig } from '../common-types/Middleware';
-
-import {
-    extractJsonApiErrorFromAxios,
-    stringifyJsonApiErrors,
-} from '../utils/async';
 
 export interface MiddlewareConfig {
     startLoadingActionCreator?: ActionCreator<any>;
@@ -44,19 +45,18 @@ export interface Payload {
 class JsonApiMiddleware {
     private config: MiddlewareConfig;
 
-    private action: iJsonApiActionConfig;
+    private action: JasonApiRequestAction;
 
     private resourceType?: string;
 
     private resourceId?: string;
 
-    private store: Store<any>;
+    private store: MiddlewareAPI<any>;
 
     constructor(
         config: MiddlewareConfig = {},
-        store: Store<any>,
-        next: Dispatch<any>,
-        action: iJsonApiActionConfig
+        store: MiddlewareAPI<any>,
+        action: AnyAction
     ) {
         this.config = config;
         this.store = store;
@@ -68,7 +68,7 @@ class JsonApiMiddleware {
                 disableStartLoadingActionCreator: false,
                 displayNotificationOnError: false,
             },
-            action
+            action as JasonApiRequestAction
         );
     }
 
@@ -213,14 +213,12 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private finishLoading(response: iResponse) {
-        if (!response || !(<iResponseWithData>response).data) {
+    private finishLoading(response: JsonApi.Response) {
+        if (!response || !response.data) {
             return;
         }
 
-        this.store.dispatch(
-            loadJsonApiResourceObjectData(<iResponseWithData>response)
-        );
+        this.store.dispatch(loadJsonApiResourceObjectData(response));
     }
 
     /**
@@ -251,7 +249,7 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private executeOnSuccessActions(response: iResponseWithData) {
+    private executeOnSuccessActions(response: JsonApi.ResponseWithData) {
         this.action.setRelationshipOnSuccess &&
             this.action.setRelationshipOnSuccess.forEach(action => {
                 const [
@@ -351,7 +349,7 @@ class JsonApiMiddleware {
      *
      * @param error
      */
-    private handleError(errorBody: iResponseWithErrors) {
+    private handleError(errorBody: JsonApi.ResponseWithErrors) {
         if (!this.resourceType) {
             return;
         }
@@ -388,23 +386,16 @@ class JsonApiMiddleware {
  *
  * @param dispatch
  */
-export const middlewareFactory = (config: MiddlewareConfig = {}): any => {
-    return <Middleware>(store: Store<any>) => (next: Dispatch<any>) => (
-        action: iJsonApiActionConfig
-    ) => {
-        if (action.type !== JASON_API_REQUEST) {
-            return next(<any>action);
-        }
+export const middlewareFactory = (
+    config: MiddlewareConfig = {}
+): JasonApiMiddleware => store => next => <A extends Action>(action: A) => {
+    if (action.type !== JASON_API_REQUEST) {
+        return next(action);
+    }
 
-        const jsonApiMiddleware = new JsonApiMiddleware(
-            config,
-            store,
-            next,
-            action
-        );
+    const jsonApiMiddleware = new JsonApiMiddleware(config, store, action);
 
-        return jsonApiMiddleware.executeMiddleware();
-    };
+    return jsonApiMiddleware.executeMiddleware();
 };
 
 export default middlewareFactory();

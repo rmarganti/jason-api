@@ -1,43 +1,50 @@
 import { equals, omit, pickAll } from 'ramda';
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
-import * as JsonApi from 'ts-json-api';
-import { iAttributes, iResourceObject, iResponse } from 'ts-json-api';
-
-import { iStateWithJasonApi } from '../common-types/state';
+import { connect } from 'react-redux';
+import * as JsonApi from 'ts-json-api/types/structure';
+import { JasonApiDispatch } from '../common-types/middleware';
+import { StateWithJasonApi } from '../common-types/state';
 import { cacheQuery } from '../redux/actions';
 import { getCachedQuery } from '../redux/selectors';
 import { hashObject, simplifyJsonApi } from '../utils/data';
 
-export type TQueryFactory = (
-    dispatch: Dispatch<iStateWithJasonApi>,
-    props: object
-) => Promise<JsonApi.iResponse>;
+type Diff<T extends string, U extends string> = ({ [P in T]: P } &
+    { [P in U]: never } & { [x: string]: never })[T];
 
-export interface iWithQueryOptions {
-    cacheScheme: 'cacheFirst' | 'cacheOnly' | 'noCache';
-    expandResourceObjects: boolean;
-    propsToWatch: string[];
-    queryFactory: TQueryFactory;
+type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
+
+export type QueryFactory = (
+    dispatch: JasonApiDispatch,
+    props: any
+) => Promise<JsonApi.Response>;
+
+export interface WithQueryOptions {
+    cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
+    expandResourceObjects?: boolean;
+    propsToWatch?: string[];
+    queryFactory: QueryFactory;
     stateBranch?: string;
 }
 
-type TConnectedProps = {
-    cachedQuery: JsonApi.iResponse;
-    cacheQueryResult: (response: JsonApi.iResponse) => void;
-    fetchData: () => Promise<JsonApi.iResponse>;
-};
+export interface MapStateProps {
+    cachedQuery: JsonApi.Response | undefined;
+}
 
-type TInjectedProps = {
+export interface MapDispatchProps {
+    cacheQueryResult: (response: JsonApi.Response) => any;
+    fetchData: () => Promise<JsonApi.Response>;
+}
+
+export type ConnectedProps = MapStateProps & MapDispatchProps;
+
+export interface InjectedProps extends JsonApi.Response {
+    isLoading?: boolean;
+    refetch?: () => void;
+}
+
+type State = {
     isLoading: boolean;
-    refetch: () => void;
-} & Partial<JsonApi.iResponse>;
-
-const initialState = { isLoading: false, queryResult: undefined };
-
-type TState = {
-    isLoading: boolean;
-    queryResult?: JsonApi.iResponse;
+    queryResult?: JsonApi.Response;
 };
 
 const withQuery = ({
@@ -46,18 +53,19 @@ const withQuery = ({
     queryFactory,
     propsToWatch = [],
     stateBranch = 'resourceObjects',
-}: iWithQueryOptions) => <TPassedProps extends TInjectedProps>(
-    BaseComponent: React.ComponentType<TPassedProps>
+}: WithQueryOptions) => <OriginalProps extends InjectedProps>(
+    BaseComponent: React.ComponentType<OriginalProps & InjectedProps>
 ) => {
-    type TInternalProps = TPassedProps & TConnectedProps;
+    type ExternalProps = Omit<OriginalProps, keyof InjectedProps>;
+    type InternalProps = ExternalProps & ConnectedProps;
 
-    class WithQuery extends React.Component<TInternalProps, TState> {
+    class WithQuery extends React.Component<InternalProps, State> {
         static displayName = `WithQuery(${BaseComponent.displayName ||
             BaseComponent.name})`;
 
-        readonly state: TState = initialState;
+        readonly state: State;
 
-        constructor(props: TInternalProps) {
+        constructor(props: InternalProps) {
             super(props);
 
             this.state = {
@@ -73,10 +81,9 @@ const withQuery = ({
         refetch = () => {
             this.setState({ isLoading: true });
 
-            const { fetchData, cacheQueryResult } = this.props;
+            const { fetchData, cacheQueryResult } = this.props as InternalProps;
 
-            this.props
-                .fetchData()
+            fetchData!()
                 .then(response => {
                     this.setState({
                         isLoading: false,
@@ -85,7 +92,7 @@ const withQuery = ({
                             : simplifyJsonApi(response),
                     });
 
-                    cacheQueryResult(response);
+                    cacheQueryResult!(response);
                 })
                 .catch(errors => {
                     this.setState(({ queryResult }) => ({
@@ -120,7 +127,7 @@ const withQuery = ({
          *
          * @param prevProps
          */
-        componentDidUpdate(prevProps: Readonly<TInternalProps>) {
+        componentDidUpdate(prevProps: InternalProps) {
             const hasChanged = !equals(
                 pickAll(propsToWatch, prevProps),
                 pickAll(propsToWatch, this.props)
@@ -151,27 +158,33 @@ const withQuery = ({
         }
     }
 
-    const mapStateToProps = (state: iStateWithJasonApi, ownProps: object) => ({
+    const mapStateToProps = (
+        state: StateWithJasonApi,
+        ownProps: ExternalProps
+    ) => ({
         cachedQuery:
-            cacheScheme !== 'noCache' &&
-            getCachedQuery(
-                state[stateBranch],
-                hashQuery(queryFactory, ownProps),
-                expandResourceObjects
-            ),
+            cacheScheme !== 'noCache'
+                ? getCachedQuery(
+                      state[stateBranch],
+                      hashQuery(queryFactory, ownProps),
+                      expandResourceObjects
+                  )
+                : undefined,
     });
 
-    const mapDispatchToProps = (
-        dispatch: Dispatch<iStateWithJasonApi>,
-        ownProps: object
-    ) => ({
-        fetchData: () => queryFactory(dispatch, ownProps),
-        cacheQueryResult: (result: JsonApi.iResponse) => {
+    const mapDispatchToProps = (dispatch: any, ownProps: ExternalProps) => ({
+        fetchData: () => queryFactory(dispatch as JasonApiDispatch, ownProps),
+        cacheQueryResult: (result: JsonApi.Response) => {
             dispatch(cacheQuery(hashQuery(queryFactory, ownProps), result));
         },
     });
 
-    return connect(mapStateToProps, mapDispatchToProps)(WithQuery);
+    return connect<
+        MapStateProps,
+        MapDispatchProps,
+        ExternalProps,
+        StateWithJasonApi
+    >(mapStateToProps, mapDispatchToProps)(WithQuery);
 };
 
 /**
@@ -181,7 +194,7 @@ const withQuery = ({
  * @param queryFactory
  * @param props
  */
-const hashQuery = (queryFactory: TQueryFactory, props: object): string =>
+const hashQuery = (queryFactory: QueryFactory, props: object): string =>
     hashObject({
         queryFactory,
         props,

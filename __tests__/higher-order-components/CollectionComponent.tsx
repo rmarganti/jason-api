@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { iResponse } from 'ts-json-api';
-import { ArticleResource } from '../mocks/types';
+import { Response } from 'ts-json-api/types/structure';
+import { Article } from '../mocks/types';
 
-type ResponseWithLoadingState = {
-    data: any;
-    isLoading: boolean;
-} & iResponse<ArticleResource[]>;
+type CollectionProps = {
+    data: Article[] | undefined;
+    isLoading?: boolean;
+};
 
-const CollectionComponent: React.StatelessComponent<
-    ResponseWithLoadingState
-> = ({ data }) => (
+const CollectionComponent: React.StatelessComponent<CollectionProps> = ({
+    data,
+}) => (
     <div>
         {data.map(article => (
             <p key={article.id}>{article.attributes.title}</p>

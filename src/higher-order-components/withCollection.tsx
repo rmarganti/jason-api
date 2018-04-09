@@ -3,35 +3,35 @@ import {
     DispatchProp,
     InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import { iAttributes, iResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
-import { iJasonApiState } from '../common-types/state';
+import { JasonApiState } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
 import { simplifyResourceObjects } from '../utils/data';
 
-export interface iWithCollectionOptions {
+export interface WithCollectionOptions {
     resourceType: string;
     ids?: string[];
     expandResourceObjects?: boolean;
 }
 
-export interface iWithCollectionProps {
+export interface WithCollectionProps {
     ids?: string[];
 }
 
-export interface iWithCollectionPassedProps extends DispatchProp<any> {
-    data: iResourceObject[];
+export interface WithCollectionPassedProps extends DispatchProp<any> {
+    data: JsonApi.ResourceObjects | undefined;
 }
 
 const withCollection = ({
     resourceType,
     ids: resourceIds,
     expandResourceObjects = false,
-}: iWithCollectionOptions) =>
+}: WithCollectionOptions) =>
     connect(
         (
-            state: { resourceObjects: iJasonApiState },
-            { ids }: iWithCollectionProps
+            state: { resourceObjects: JasonApiState },
+            { ids }: WithCollectionProps
         ) => ({
             data: getResourceObjects(
                 state.resourceObjects,

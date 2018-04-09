@@ -1,9 +1,9 @@
 import * as pluralize from 'pluralize';
 import * as R from 'ramda';
 
-import { iAttributes, iResponse, iResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
-import { iJasonApiState } from './common-types/state';
+import { JasonApiState } from './common-types/state';
 import { FlexiblePayload } from './common-types/other';
 
 import {
@@ -24,10 +24,10 @@ import {
  * @param payload
  */
 export const insertOrUpdateResourceObjects = (
-    state: iJasonApiState,
+    state: JasonApiState,
     payload: FlexiblePayload
-): iJasonApiState => {
-    const included: iResourceObject[] = R.propOr([], 'included', payload);
+): JasonApiState => {
+    const included: JsonApi.ResourceObjects = R.propOr([], 'included', payload);
 
     return R.pipe(
         unwrapDataProp,
@@ -44,9 +44,9 @@ export const insertOrUpdateResourceObjects = (
  * @param entity
  */
 const insertOrUpdateResourceObject = (
-    state: iJasonApiState = {},
-    entity: iResourceObject
-): iJasonApiState => {
+    state: JasonApiState = {},
+    entity: JsonApi.ResourceObject
+): JasonApiState => {
     validateResourceObject(entity);
 
     if (!entity.id) {
@@ -63,9 +63,9 @@ const insertOrUpdateResourceObject = (
 /**
  * Ensure that an ResourceObject is well-formed
  *
- * @param  {Object} entity
+ * @param  entity
  */
-const validateResourceObject = (entity: iResourceObject) => {
+const validateResourceObject = (entity: JsonApi.ResourceObject) => {
     if (!('type' in entity)) {
         throw new Error(
             'JSON API resource objects must have a `type` property'
@@ -81,20 +81,19 @@ const validateResourceObject = (entity: iResourceObject) => {
  * Insert an ResourceObject into the state and
  * add it as a relationship to another ResourceObject
  *
- * @param  {Object}         initialState
- * @param  {String}         resourceType
- * @param  {String}         resourceId
- * @param  {String}         relationshipKey
- * @param  {Object|String}  relationshipObject  Can be either a valid JSON API object or a string ID
- * @return {Object}
+ * @param initialState
+ * @param resourceType
+ * @param resourceId
+ * @param relationshipKey
+ * @param relationshipObject  Can be either a valid JSON API object or a string ID
  */
 export const addRelationshipToResourceObject = (
-    initialState: iJasonApiState,
+    initialState: JasonApiState,
     resourceType: string,
     resourceId: string,
     relationshipKey: string,
     relationshipObject: FlexiblePayload
-): iJasonApiState => {
+): JasonApiState => {
     const unwrappedRelationshipObject = unwrapDataProp(relationshipObject);
     const newState = insertOrUpdateResourceObjects(
         initialState,
@@ -129,15 +128,14 @@ export const addRelationshipToResourceObject = (
  * @param  resourceId  ID of entity on which to set relationship
  * @param  relationshipKey  Name of the relationship
  * @param  relationshipId  Id of the relationship object
- * @return {Object}
  */
 export const removeRelationshipFromResourceObject = (
-    initialState: iJasonApiState,
+    initialState: JasonApiState,
     resourceType: string,
     resourceId: string,
     relationshipKey: string,
     relationshipId: string
-): iJasonApiState => {
+): JasonApiState => {
     const pluralResourceObjectKey = pluralize(resourceType);
 
     return R.over(
@@ -161,15 +159,15 @@ export const removeRelationshipFromResourceObject = (
  * @param resourceType  Type of entity on which to set relationship
  * @param resourceId  ID of entity on which to set relationship
  * @param relationshipKey  Name of the relationship
- * @param relationshipObject  Can be a JsonApiResponse, a Resource Object, or an array of Resource Objects
+ * @param relationshipObject  Can be a JsonApResponse, a Resource Object, or an array of Resource Objects
  */
 export const setRelationshipOnResourceObject = (
-    initialState: iJasonApiState,
+    initialState: JasonApiState,
     resourceType: string,
     resourceId: string,
     relationshipKey: string,
     relationshipObject: FlexiblePayload
-): iJasonApiState => {
+): JasonApiState => {
     const unwrappedRelationshipObject = unwrapDataProp(relationshipObject);
     const newState = insertOrUpdateResourceObjects(
         initialState,
@@ -200,11 +198,11 @@ export const setRelationshipOnResourceObject = (
  * @param relationshipKey Name of relationship to clear
  */
 export const clearRelationshipOnResourceObject = (
-    initialState: iJasonApiState,
+    initialState: JasonApiState,
     resourceType: string,
     resourceId: string,
     relationshipKey: string
-): iJasonApiState => {
+): JasonApiState => {
     const pluralResourceObjectKey = pluralize(resourceType);
 
     return R.dissocPath(
@@ -222,17 +220,16 @@ export const clearRelationshipOnResourceObject = (
 /**
  * Update an ResourceObject's attributes
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @param  {Object} data
- * @return {Object}
+ * @param  state
+ * @param  resourceType
+ * @param  resourceId
+ * @param  data
  */
 export const updateResourceObject = (
-    state: iJasonApiState,
-    resourceTypeOrResourceObject: string | iResourceObject,
+    state: JasonApiState,
+    resourceTypeOrResourceObject: string | JsonApi.ResourceObject,
     resourceId?: string,
-    data?: iResourceObject | iAttributes
+    data?: JsonApi.ResourceObject | JsonApi.Attributes
 ) => {
     if (
         R.has('type', resourceTypeOrResourceObject) &&
@@ -240,11 +237,11 @@ export const updateResourceObject = (
     ) {
         return insertOrUpdateResourceObject(
             state,
-            <iResourceObject>resourceTypeOrResourceObject
+            <JsonApi.ResourceObject>resourceTypeOrResourceObject
         );
     }
 
-    if (!resourceId) {
+    if(!resourceId) {
         throw new Error('`resourceId` must be defined.');
     }
 
@@ -267,18 +264,17 @@ export const updateResourceObject = (
 /**
  * Update the meta data for an ResourceObject group
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} metaKey
- * @param  {Mixed}  value
- * @return {Object}
+ * @param  state
+ * @param  resourceType
+ * @param  metaKey
+ * @param  value
  */
 export const updateResourceObjectsMeta = (
-    state: iJasonApiState,
+    state: JasonApiState,
     resourceType: string,
     metaKey: string,
     value: any
-): iJasonApiState => {
+): JasonApiState => {
     const pluralKey = pluralize(resourceType);
     return metaKey
         ? R.assocPath([pluralKey, 'meta', metaKey], value, state)
@@ -288,20 +284,19 @@ export const updateResourceObjectsMeta = (
 /**
  * Update the meta data for an ResourceObject
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @param  {String} metaKey
- * @param  {Mixed}  value
- * @return {Object}
+ * @param  state
+ * @param  resourceType
+ * @param  resourceId
+ * @param  metaKey
+ * @param  value
  */
 export const updateResourceObjectMeta = (
-    state: iJasonApiState,
+    state: JasonApiState,
     resourceType: string,
     resourceId: string,
     metaKey: string | undefined,
     value: any
-): iJasonApiState => {
+): JasonApiState => {
     const pluralKey = pluralize(resourceType);
     return metaKey
         ? R.assocPath(
@@ -315,16 +310,15 @@ export const updateResourceObjectMeta = (
 /**
  * Remove a single ResourceObject
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @return {Object}
+ * @param  state
+ * @param  resourceType
+ * @param  resourceId
  */
 export const removeResourceObject = (
-    state: iJasonApiState,
+    state: JasonApiState,
     resourceType: string,
     resourceId: string
-): iJasonApiState => {
+): JasonApiState => {
     const pluralKey = pluralize(resourceType);
     return R.dissocPath([pluralKey, 'byId', resourceId], state);
 };
@@ -332,14 +326,13 @@ export const removeResourceObject = (
 /**
  * Clear all of the ResourceObjects out of an ResourceObject type
  *
- * @param  {Object} state
- * @param  {String} resourceType
- * @return {Object}
+ * @param  state
+ * @param  resourceType
  */
 export const clearResourceObjectType = (
-    state: iJasonApiState,
+    state: JasonApiState,
     resourceType: string
-): iJasonApiState => {
+): JasonApiState => {
     const pluralKey = pluralize(resourceType);
     return R.dissoc(pluralKey, state);
 };
@@ -352,10 +345,10 @@ export const clearResourceObjectType = (
  * @param response
  */
 export const cacheQuery = (
-    state: iJasonApiState,
+    state: JasonApiState,
     key: string,
-    response: iResponse
-): iJasonApiState => {
+    response: JsonApi.Response
+): JasonApiState => {
     return R.set(
         R.lensPath(['_cachedQueries', key]),
         simplifyJsonApi(response),

@@ -1,10 +1,5 @@
 import * as pluralize from 'pluralize';
-import {
-    iAttributes,
-    iResourceObject,
-    iResponse,
-    iResponseWithData,
-} from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
 import { FlexiblePayload } from '../common-types/other';
 import { Action, ActionWithPayload, createAction } from '../utils/createAction';
@@ -16,8 +11,7 @@ const pluralCase = (input: string) => pluralize(input).toUpperCase();
 /**
  * Load a JSON API response into the state
  *
- * @param  {Object} data
- * @return {Object}
+ * @param data
  */
 export const loadJsonApiResourceObjectData = (data: FlexiblePayload) =>
     createAction(actionTypes.LOAD_DATA, data);
@@ -108,12 +102,12 @@ export const clearRelationshipOnResourceObject = (
  *
  * @param  resourceType
  * @param  resourceId
- * @param  {Object} data
+ * @param  data
  */
 export const updateResourceObject = (
     resourceType: string,
     resourceId: string,
-    data: iAttributes
+    data: JsonApi.Attributes
 ) =>
     createAction(actionTypes.UPDATE_RESOURCE_OBJECT, {
         resourceType,
@@ -191,5 +185,5 @@ export const clearResourceObjectType = (resourceType: string) =>
  * @param url
  * @param response
  */
-export const cacheQuery = (key: string, response: iResponse) =>
+export const cacheQuery = (key: string, response: JsonApi.Response) =>
     createAction(actionTypes.CACHE_QUERY, { key, response });

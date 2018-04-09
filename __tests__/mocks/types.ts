@@ -1,19 +1,18 @@
-import * as JsonApi from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
-type ArticleAttributes = {
-    title: string;
-};
+export interface Article extends JsonApi.ResourceObject {
+    type: 'articles';
+    attributes: {
+        title: string;
+    };
+    relationships: {
+        comments: JsonApi.Relationship<Comment[]>;
+    };
+}
 
-export type ArticleResource = JsonApi.iResourceObject<
-    'articles',
-    ArticleAttributes
->;
-
-type CommentAttributes = {
-    body: string;
-};
-
-export type CommentResource = JsonApi.iResourceObject<
-    'comments',
-    CommentAttributes
->;
+export interface Comment extends JsonApi.ResourceObject {
+    type: 'comments';
+    attributes: {
+        body: string;
+    };
+}

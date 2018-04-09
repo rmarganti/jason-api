@@ -1,66 +1,76 @@
+import { Action, MiddlewareAPI, Dispatch } from 'redux';
+import * as JsonApi from 'ts-json-api/types/structure';
 import { FlexiblePayload } from './other';
-import {
-    ResourceObject,
-    iAttributes,
-    iResponse,
-    iResponseWithData,
-} from 'ts-json-api';
+import { JASON_API_REQUEST } from '../redux/actionTypes';
+import { StateWithJasonApi } from './state';
 
-export interface iAdditionalHeaders {
+export interface AdditionalHeaders {
     [index: string]: string;
 }
 
-export interface iErrorCallback {
+export interface ErrorCallback {
     (error: Error): void;
 }
 
-export interface iSuccessCallback {
-    (response?: iResponse): void;
+export interface SuccessCallback {
+    (response?: JsonApi.Response): void;
 }
 
-export interface iTransformer {
-    (response: iResponseWithData): iResponseWithData;
+export interface Transformer {
+    (response: JsonApi.Response): JsonApi.Response;
 }
 
-export type iSetRelationshipOnSuccess = [
+export type SetRelationshipOnSuccess = [
     string,
     string,
     string,
     FlexiblePayload
 ];
 
-export type iAddRelationshipOnSuccess = [
+export type AddRelationshipOnSuccess = [
     string,
     string,
     string,
     FlexiblePayload
 ];
 
-export type iRemoveRelationshipOnSuccess = [string, string, string, string];
-export type iRemoveResourceObjectOnSuccess = [string, string];
-export type iUpdateResourceObjectOnSuccess = [string, string, iAttributes];
+export type RemoveRelationshipOnSuccess = [string, string, string, string];
+export type RemoveResourceObjectOnSuccess = [string, string];
+export type UpdateResourceObjectOnSuccess = [
+    string,
+    string,
+    JsonApi.Attributes
+];
 
 export type Method = 'get' | 'post' | 'patch' | 'delete';
 
 /**
  * Jason API Redux action
  */
-export interface iJsonApiActionConfig {
-    type: string;
+export interface JasonApiRequestAction extends Action {
+    type: typeof JASON_API_REQUEST;
     url: string;
     method?: Method;
     payload?: FlexiblePayload;
     resourceId?: string;
     resourceType?: string;
-    additionalHeaders?: iAdditionalHeaders;
+    additionalHeaders?: AdditionalHeaders;
     disableStartLoadingActionCreator?: boolean;
     displayNotificationOnError?: boolean;
-    onError?: iErrorCallback;
-    onSuccess?: iSuccessCallback;
-    transformer?: iTransformer;
-    setRelationshipOnSuccess?: iSetRelationshipOnSuccess[];
-    addRelationshipOnSuccess?: iAddRelationshipOnSuccess[];
-    removeRelationshipOnSuccess?: iRemoveRelationshipOnSuccess[];
-    removeResourceObjectOnSuccess?: iRemoveResourceObjectOnSuccess[];
-    updateResourceObjectOnSuccess?: iUpdateResourceObjectOnSuccess[];
+    onError?: ErrorCallback;
+    onSuccess?: SuccessCallback;
+    transformer?: Transformer;
+    setRelationshipOnSuccess?: SetRelationshipOnSuccess[];
+    addRelationshipOnSuccess?: AddRelationshipOnSuccess[];
+    removeRelationshipOnSuccess?: RemoveRelationshipOnSuccess[];
+    removeResourceObjectOnSuccess?: RemoveResourceObjectOnSuccess[];
+    updateResourceObjectOnSuccess?: UpdateResourceObjectOnSuccess[];
+}
+
+export interface JasonApiDispatch {
+    <A extends Action>(action: A): Promise<JsonApi.Response>;
+}
+
+export interface JasonApiMiddleware {
+    <S>(store: MiddlewareAPI<S>): (next: Dispatch<S>) => any;
 }

@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { iResourceObject } from 'ts-json-api';
+import { ResourceObject } from 'ts-json-api';
 
 import * as actionTypes from '../src/redux/actionTypes';
 import reducer from '../src/redux/reducer';
@@ -44,7 +44,7 @@ describe('reducer', () => {
             )
         ).toEqual('9');
         expect(
-            R.path<iResourceObject[]>(
+            R.path<ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 initialExpectedState
             ).map(comment => comment.id)
@@ -90,10 +90,10 @@ describe('reducer', () => {
 
         expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy;
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['5', '12', '44']);
     });
 
@@ -108,10 +108,10 @@ describe('reducer', () => {
             },
         });
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['12']);
     });
 

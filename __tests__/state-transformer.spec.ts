@@ -1,4 +1,4 @@
-import { iResponseWithData, iResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 import * as R from 'ramda';
 
 import {
@@ -45,10 +45,10 @@ describe('insertOrUpdateResourceObjects', () => {
             )
         ).toEqual('9');
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['5', '12']);
     });
 
@@ -116,10 +116,10 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['5', '12', '44']);
     });
 
@@ -139,10 +139,10 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['5', '12', '44']);
     });
 
@@ -163,10 +163,10 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['42', '44', '5', '12']);
     });
 });
@@ -183,10 +183,10 @@ describe('removeRelationshipFromResourceObject', () => {
         );
 
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['12']);
     });
 });
@@ -205,10 +205,20 @@ describe('setRelationshipOnResourceObject', () => {
             }
         );
 
-        expect(<iResourceObject[]>R.path(
-            ['articles', 'byId', '1', 'relationships', 'author', 'data', 'id'],
-            result
-        )).toEqual('4444');
+        expect(
+            R.path(
+                [
+                    'articles',
+                    'byId',
+                    '1',
+                    'relationships',
+                    'author',
+                    'data',
+                    'id',
+                ],
+                result
+            )
+        ).toEqual('4444');
     });
 
     it('sets a relationship to an array or resource itesms', () => {
@@ -222,10 +232,10 @@ describe('setRelationshipOnResourceObject', () => {
         );
 
         expect(
-            (<iResourceObject[]>R.path(
+            R.path<JsonApi.ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
-            )).map(comment => comment.id)
+            ).map(comment => comment.id)
         ).toEqual(['4444', '6666']);
     });
 });

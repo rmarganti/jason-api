@@ -1,24 +1,20 @@
 import * as pluralize from 'pluralize';
+import { AnyAction } from 'redux';
 
 import * as actionTypes from '../../src/redux/actionTypes';
 import * as actions from '../../src/redux/actions';
-
-interface iBasicAction {
-    type: string;
-    [index: string]: any;
-}
 
 const singularize = word => pluralize(word, 1);
 
 /**
  * Generate action(s) for setting initial loading states
  *
- * @param  {String}        resourceType
- * @param  {String}        resourceId
+ * @param   resourceType
+ * @param   resourceId
  * @return {Object|Array}
  */
 export const startLoading = (resourceType, resourceId) => {
-    const returnedActions: iBasicAction[] = [{ type: 'START_LOADING' }];
+    const returnedActions: AnyAction[] = [{ type: 'START_LOADING' }];
 
     if (resourceId) {
         returnedActions.push.apply(returnedActions, [
@@ -49,12 +45,12 @@ export const startLoading = (resourceType, resourceId) => {
 /**
  * Generate action(s) for setting loading states to false
  *
- * @param  {String}        resourceType
- * @param  {String}        resourceId
+ * @param   resourceType
+ * @param   resourceId
  * @return {Object|Array}
  */
 export const stopLoading = (resourceType, resourceId) => {
-    const returnedActions: iBasicAction[] = [{ type: 'STOP_LOADING' }];
+    const returnedActions: AnyAction[] = [{ type: 'STOP_LOADING' }];
 
     if (resourceId) {
         returnedActions.push(
@@ -77,9 +73,8 @@ export const stopLoading = (resourceType, resourceId) => {
 /**
  * Generate action(s) for setting loading states to true then false
  *
- * @param  {String}        resourceType
- * @param  {String}        resourceId
- * @return {Object|Array}
+ * @param  resourceType
+ * @param  resourceId
  */
 export const startAndStopLoading = (
     resourceType: string,
@@ -92,11 +87,10 @@ export const startAndStopLoading = (
 /**
  * Generate a LOAD_DATA action
  *
- * @param  {Object} response
- * @return {Object}
+ * @param  response
  */
 export const loadResponse = (response, resourceType) => {
-    const returnedActions: iBasicAction[] = [
+    const returnedActions: AnyAction[] = [
         { type: actionTypes.LOAD_DATA, payload: response },
     ];
 
@@ -106,11 +100,10 @@ export const loadResponse = (response, resourceType) => {
 /**
  * Generate an action to add a relationship
  *
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @param  {String} relationshipKey
- * @param  {Object} response
- * @return {Object}
+ * @param resourceType
+ * @param resourceId
+ * @param relationshipKey
+ * @param response
  */
 export const addRelationship = (
     resourceType,
@@ -128,11 +121,10 @@ export const addRelationship = (
 /**
  * Generate an action to remove a relationship
  *
- * @param  {String} resourceType
- * @param  {String} resourceId
- * @param  {String} relationshipKey
- * @param  {Object} response
- * @return {Object}
+ * @param  resourceType
+ * @param  resourceId
+ * @param  relationshipKey
+ * @param  response
  */
 export const removeRelationship = (
     resourceType,

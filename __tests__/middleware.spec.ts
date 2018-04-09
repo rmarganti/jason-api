@@ -133,7 +133,8 @@ describe('middleware', () => {
         const getStub = sinon
             .stub(axios, 'request')
             .callsFake(() =>
-                Promise.reject({ response: { data: errorResponse } }));
+                Promise.reject({ response: { data: errorResponse } })
+            );
 
         mockStore.dispatch(action).catch(result => {
             expect(mockStore.getActions()).toEqual(expectedActions);

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { CommentResource } from '../mocks/types';
+import { Response } from 'ts-json-api/types/structure';
+import { Comment } from '../mocks/types';
 
 type Props = {
-    data: CommentResource;
+    id?: string;
+    data: Comment | undefined;
 };
 
-const ItemComponent: React.StatelessComponent<Props> = ({ data }) => (
-    <div>{data && <p>{data.attributes.body}</p>}</div>
-);
+const ItemComponent: React.StatelessComponent<Props> = ({ data }) =>
+    data ? <p>{data.attributes.body}</p> : null;
 
 export default ItemComponent;

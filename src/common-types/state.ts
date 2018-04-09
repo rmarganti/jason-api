@@ -1,16 +1,16 @@
-import { iMeta, iResourceObject } from 'ts-json-api';
+import * as JsonApi from 'ts-json-api/types/structure';
 
-export interface iResourceObjectCollection {
-    meta: iMeta;
+export interface ResourceObjectCollection {
+    meta: JsonApi.Meta;
     byId: {
-        [index: string]: iResourceObject;
+        [index: string]: JsonApi.ResourceObject;
     };
 }
 
-export interface iStateWithJasonApi {
-    [index: string]: iJasonApiState;
+export interface StateWithJasonApi {
+    [index: string]: JasonApiState;
 }
 
-export interface iJasonApiState {
-    [index: string]: iResourceObjectCollection;
+export interface JasonApiState {
+    [index: string]: ResourceObjectCollection;
 }
