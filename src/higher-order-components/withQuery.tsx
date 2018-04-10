@@ -1,7 +1,7 @@
 import { equals, omit, pickAll } from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as JsonApi from 'ts-json-api/types/structure';
+import { Response, ResourceObjectOrObjects } from 'ts-json-api';
 import { JasonApiDispatch } from '../common-types/middleware';
 import { StateWithJasonApi } from '../common-types/state';
 import { cacheQuery } from '../redux/actions';
@@ -16,7 +16,7 @@ type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
 export type QueryFactory = (
     dispatch: JasonApiDispatch,
     props: any
-) => Promise<JsonApi.Response>;
+) => Promise<Response>;
 
 export interface WithQueryOptions {
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
@@ -27,24 +27,26 @@ export interface WithQueryOptions {
 }
 
 export interface MapStateProps {
-    cachedQuery: JsonApi.Response | undefined;
+    cachedQuery: Response | undefined;
 }
 
 export interface MapDispatchProps {
-    cacheQueryResult: (response: JsonApi.Response) => any;
-    fetchData: () => Promise<JsonApi.Response>;
+    cacheQueryResult: (response: Response) => any;
+    fetchData: () => Promise<Response>;
 }
 
 export type ConnectedProps = MapStateProps & MapDispatchProps;
 
-export interface InjectedProps extends JsonApi.Response {
+export interface WithQueryInjectedProps<
+    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+> extends Response<D> {
     isLoading?: boolean;
     refetch?: () => void;
 }
 
 type State = {
     isLoading: boolean;
-    queryResult?: JsonApi.Response;
+    queryResult?: Response;
 };
 
 const withQuery = ({
@@ -53,10 +55,10 @@ const withQuery = ({
     queryFactory,
     propsToWatch = [],
     stateBranch = 'resourceObjects',
-}: WithQueryOptions) => <OriginalProps extends InjectedProps>(
-    BaseComponent: React.ComponentType<OriginalProps & InjectedProps>
+}: WithQueryOptions) => <OriginalProps extends WithQueryInjectedProps>(
+    BaseComponent: React.ComponentType<OriginalProps & WithQueryInjectedProps>
 ) => {
-    type ExternalProps = Omit<OriginalProps, keyof InjectedProps>;
+    type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps>;
     type InternalProps = ExternalProps & ConnectedProps;
 
     class WithQuery extends React.Component<InternalProps, State> {
@@ -174,7 +176,7 @@ const withQuery = ({
 
     const mapDispatchToProps = (dispatch: any, ownProps: ExternalProps) => ({
         fetchData: () => queryFactory(dispatch as JasonApiDispatch, ownProps),
-        cacheQueryResult: (result: JsonApi.Response) => {
+        cacheQueryResult: (result: Response) => {
             dispatch(cacheQuery(hashQuery(queryFactory, ownProps), result));
         },
     });

@@ -3,7 +3,7 @@ import {
     DispatchProp,
     InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import * as JsonApi from 'ts-json-api/types/structure';
+import { ResourceObject } from 'ts-json-api';
 
 import { JasonApiState } from '../common-types/state';
 import { getResourceObject } from '../redux/selectors';
@@ -14,7 +14,7 @@ export interface WithItemOptions {
 }
 
 export interface WithItemProps {
-    data?: JsonApi.ResourceObject;
+    data?: ResourceObject;
     id?: string;
 }
 

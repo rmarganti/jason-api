@@ -1,5 +1,5 @@
-import * as JsonApi from 'ts-json-api/types/structure';
 import * as R from 'ramda';
+import { ResourceObject, ResourceObjects } from 'ts-json-api';
 
 import {
     addRelationshipToResourceObject,
@@ -45,7 +45,7 @@ describe('insertOrUpdateResourceObjects', () => {
             )
         ).toEqual('9');
         expect(
-            R.path<JsonApi.ResourceObject[]>(
+            R.path<ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)
@@ -116,7 +116,7 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            R.path<JsonApi.ResourceObject[]>(
+            R.path<ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)
@@ -139,7 +139,7 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            R.path<JsonApi.ResourceObject[]>(
+            R.path<ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)
@@ -163,7 +163,7 @@ describe('addRelationshipToResourceObject', () => {
             '44',
         ]);
         expect(
-            R.path<JsonApi.ResourceObject[]>(
+            R.path<ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)
@@ -183,7 +183,7 @@ describe('removeRelationshipFromResourceObject', () => {
         );
 
         expect(
-            R.path<JsonApi.ResourceObject[]>(
+            R.path<ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)
@@ -232,7 +232,7 @@ describe('setRelationshipOnResourceObject', () => {
         );
 
         expect(
-            R.path<JsonApi.ResourceObjects>(
+            R.path<ResourceObjects>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
                 result
             ).map(comment => comment.id)

@@ -6,7 +6,7 @@ Consume and manipulate [JSON API standard](http://jsonapi.org/) data in Redux wi
 
 ## Hooking up the reducer and middleware
 
-```js
+```ts
 import {
     reducer as resourceObjects,
     middleware as jasonApiMiddleware,
@@ -32,7 +32,7 @@ JasonAPI action creators also play nice with our Higher Order Components, enabli
 intelligent caching, error-handling, and much more. There's plenty of additional,
 helpful options; so be sure to check the WIKI.
 
-```js
+```ts
 import { JASON_API_REQUEST } from 'jason-api';
 
 const getUser = userId => ({
@@ -69,7 +69,7 @@ console.log(result);
 
 ## Using HOC's
 
-```js
+```ts
 import { compose, withQuery } from 'jason-api';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';

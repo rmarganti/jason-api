@@ -3,7 +3,7 @@ import {
     DispatchProp,
     InferableComponentEnhancerWithProps,
 } from 'react-redux';
-import * as JsonApi from 'ts-json-api/types/structure';
+import { Attributes, Links, Relationships, ResourceObjects } from 'ts-json-api';
 
 import { JasonApiState } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
@@ -20,7 +20,7 @@ export interface WithCollectionProps {
 }
 
 export interface WithCollectionPassedProps extends DispatchProp<any> {
-    data: JsonApi.ResourceObjects | undefined;
+    data: ResourceObjects | undefined;
 }
 
 const withCollection = ({

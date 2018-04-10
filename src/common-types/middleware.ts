@@ -1,8 +1,7 @@
-import { Action, MiddlewareAPI, Dispatch } from 'redux';
-import * as JsonApi from 'ts-json-api/types/structure';
-import { FlexiblePayload } from './other';
+import { Action, Dispatch, MiddlewareAPI } from 'redux';
+import { Attributes, Response } from 'ts-json-api';
 import { JASON_API_REQUEST } from '../redux/actionTypes';
-import { StateWithJasonApi } from './state';
+import { FlexiblePayload } from './other';
 
 export interface AdditionalHeaders {
     [index: string]: string;
@@ -13,11 +12,11 @@ export interface ErrorCallback {
 }
 
 export interface SuccessCallback {
-    (response?: JsonApi.Response): void;
+    (response?: Response): void;
 }
 
 export interface Transformer {
-    (response: JsonApi.Response): JsonApi.Response;
+    (response: Response): Response;
 }
 
 export type SetRelationshipOnSuccess = [
@@ -36,11 +35,7 @@ export type AddRelationshipOnSuccess = [
 
 export type RemoveRelationshipOnSuccess = [string, string, string, string];
 export type RemoveResourceObjectOnSuccess = [string, string];
-export type UpdateResourceObjectOnSuccess = [
-    string,
-    string,
-    JsonApi.Attributes
-];
+export type UpdateResourceObjectOnSuccess = [string, string, Attributes];
 
 export type Method = 'get' | 'post' | 'patch' | 'delete';
 
@@ -68,7 +63,7 @@ export interface JasonApiRequestAction extends Action {
 }
 
 export interface JasonApiDispatch {
-    <A extends Action>(action: A): Promise<JsonApi.Response>;
+    <A extends Action>(action: A): Promise<Response>;
 }
 
 export interface JasonApiMiddleware {

@@ -1,15 +1,15 @@
-import * as JsonApi from 'ts-json-api/types/structure';
+import { ResponseWithData } from 'ts-json-api';
 import * as Resources from './types';
 
-export const initialJsonApiResponse: JsonApi.ResponseWithData<
+export const initialJsonApiResponse: ResponseWithData<
     Resources.Article[]
 > = require('./initialJsonApiResponse.json');
 
-export const commentJsonResponse: JsonApi.ResponseWithData<
+export const commentJsonResponse: ResponseWithData<
     Resources.Comment
 > = require('./commentJsonResponse.json');
 
-export const commentsJsonResponse: JsonApi.ResponseWithData<
+export const commentsJsonResponse: ResponseWithData<
     Resources.Comment
 > = require('./commentsJsonResponse.json');
 

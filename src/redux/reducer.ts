@@ -1,4 +1,3 @@
-import * as JsonApi from 'ts-json-api/types/structure';
 import { AnyAction } from 'redux';
 import { JasonApiState } from '../common-types/state';
 import {

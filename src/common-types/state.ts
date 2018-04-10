@@ -1,9 +1,9 @@
-import * as JsonApi from 'ts-json-api/types/structure';
+import { Meta, ResourceObject } from 'ts-json-api';
 
 export interface ResourceObjectCollection {
-    meta: JsonApi.Meta;
+    meta: Meta;
     byId: {
-        [index: string]: JsonApi.ResourceObject;
+        [index: string]: ResourceObject;
     };
 }
 

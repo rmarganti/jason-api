@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as sinon from 'sinon';
-import { ResourceObject, JsonApiResponse } from 'ts-json-api';
+import { ApiResourceObject } from 'ts-json-api';
 
 import * as actionTypes from '../src/redux/actionTypes';
 import middleware from '../src/redux/middleware';
@@ -75,12 +75,12 @@ describe('middleware', () => {
         });
     });
 
-    it('Posts a new ResourceObject and returns a JsonApiResponse', done => {
+    it('Posts a new ApiResourceObject and returns a JsonApiResponse', done => {
         const action = {
             type: actionTypes.JASON_API_REQUEST,
             url: 'http://www.api.com/articles',
             method: 'post',
-            payload: ResourceObject.build('articles', {
+            payload: ApiResourceObject.build('articles', {
                 title: 'JSON API paints my bikeshed',
             }),
         };

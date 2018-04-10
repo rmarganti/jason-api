@@ -1,5 +1,10 @@
 import { AxiosError } from 'axios';
-import * as JsonApi from 'ts-json-api/types/structure';
+import {
+    Attributes,
+    Links,
+    Relationships,
+    ResponseWithErrors,
+} from 'ts-json-api';
 
 /**
  * Extract valid JSON API errors from an Axios error response.
@@ -10,7 +15,7 @@ import * as JsonApi from 'ts-json-api/types/structure';
  */
 export const extractJsonApiErrorFromAxios = (
     error: AxiosError
-): JsonApi.ResponseWithErrors => {
+): ResponseWithErrors => {
     if (error.response && error.response.data.errors) {
         return error.response.data;
     } else if (error.request) {
@@ -39,5 +44,5 @@ export const extractJsonApiErrorFromAxios = (
  *
  * @param errorJson
  */
-export const stringifyJsonApiErrors = (errorJson: JsonApi.ResponseWithErrors) =>
+export const stringifyJsonApiErrors = (errorJson: ResponseWithErrors) =>
     errorJson.errors.map(error => error.detail || error.title).join('\n');

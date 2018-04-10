@@ -7,14 +7,19 @@ import {
     MiddlewareAPI,
     AnyAction,
 } from 'redux';
-import { ResourceObject } from 'ts-json-api';
-import * as JsonApi from 'ts-json-api/types/structure';
+import {
+    ApiResourceObject,
+    Response,
+    ResponseWithData,
+    ResponseWithErrors,
+} from 'ts-json-api';
+
 import {
     JasonApiRequestAction,
     JasonApiDispatch,
     JasonApiMiddleware,
-} from '../common-types/middleware';
-import { StateWithJasonApi } from '../common-types/state';
+    StateWithJasonApi,
+} from '../common-types';
 import {
     extractJsonApiErrorFromAxios,
     stringifyJsonApiErrors,
@@ -85,7 +90,7 @@ class JsonApiMiddleware {
         }
 
         const payload: Payload | undefined =
-            this.action.payload instanceof ResourceObject
+            this.action.payload instanceof ApiResourceObject
                 ? this.action.payload && { data: this.action.payload.toJSON() }
                 : this.action.payload;
 
@@ -213,7 +218,7 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private finishLoading(response: JsonApi.Response) {
+    private finishLoading(response: Response) {
         if (!response || !response.data) {
             return;
         }
@@ -249,7 +254,7 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private executeOnSuccessActions(response: JsonApi.ResponseWithData) {
+    private executeOnSuccessActions(response: ResponseWithData) {
         this.action.setRelationshipOnSuccess &&
             this.action.setRelationshipOnSuccess.forEach(action => {
                 const [
@@ -349,7 +354,7 @@ class JsonApiMiddleware {
      *
      * @param error
      */
-    private handleError(errorBody: JsonApi.ResponseWithErrors) {
+    private handleError(errorBody: ResponseWithErrors) {
         if (!this.resourceType) {
             return;
         }

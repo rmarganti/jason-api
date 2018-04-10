@@ -1,5 +1,5 @@
 import * as pluralize from 'pluralize';
-import * as JsonApi from 'ts-json-api/types/structure';
+import { Attributes, Links, Relationships, Response } from 'ts-json-api';
 
 import { FlexiblePayload } from '../common-types/other';
 import { Action, ActionWithPayload, createAction } from '../utils/createAction';
@@ -107,7 +107,7 @@ export const clearRelationshipOnResourceObject = (
 export const updateResourceObject = (
     resourceType: string,
     resourceId: string,
-    data: JsonApi.Attributes
+    data: Attributes
 ) =>
     createAction(actionTypes.UPDATE_RESOURCE_OBJECT, {
         resourceType,
@@ -185,5 +185,5 @@ export const clearResourceObjectType = (resourceType: string) =>
  * @param url
  * @param response
  */
-export const cacheQuery = (key: string, response: JsonApi.Response) =>
+export const cacheQuery = (key: string, response: Response) =>
     createAction(actionTypes.CACHE_QUERY, { key, response });

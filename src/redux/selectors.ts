@@ -1,6 +1,13 @@
 import * as pluralize from 'pluralize';
 import * as R from 'ramda';
-import * as JsonApi from 'ts-json-api/types/structure';
+import {
+    Attributes,
+    Links,
+    Relationships,
+    ResourceObject,
+    ResourceObjects,
+    Response,
+} from 'ts-json-api';
 import { JasonApiState } from '../common-types/state';
 import { mapOrOnce, simplifyResourceObjects } from '../utils/data';
 
@@ -15,7 +22,7 @@ export const getResourceObject = (
     state: JasonApiState,
     key: string,
     id: string
-): JsonApi.ResourceObject | undefined => {
+): ResourceObject | undefined => {
     const pluralKey = pluralize(key);
     return R.path([pluralKey, 'byId', id], state);
 };
@@ -33,7 +40,7 @@ export const getResourceObjects = (
     key: string,
     ids: string[] | null = null,
     expand: boolean = true
-): JsonApi.ResourceObject[] | undefined => {
+): ResourceObjects | undefined => {
     const pluralKey = pluralize(key);
     const isUndefined = (value: any) => typeof value === 'undefined';
 
@@ -98,7 +105,7 @@ export const getCachedQuery = (
     state: JasonApiState,
     key: string,
     expandResourceObjects: boolean = false
-): JsonApi.Response | undefined => {
+): Response | undefined => {
     const cachedQuery = R.path(['_cachedQueries', key], state);
 
     if (!expandResourceObjects || !cachedQuery) {
@@ -106,7 +113,7 @@ export const getCachedQuery = (
     }
 
     const expandResourceObject = (state: JasonApiState) => (
-        resourceObject: JsonApi.ResourceObject
+        resourceObject: ResourceObject
     ) => getResourceObject(state, resourceObject.type, resourceObject.id!);
 
     const expandAll = mapOrOnce(expandResourceObject(state));

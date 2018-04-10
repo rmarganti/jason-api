@@ -1,7 +1,12 @@
 import * as pluralize from 'pluralize';
 import * as R from 'ramda';
 
-import * as JsonApi from 'ts-json-api/types/structure';
+import {
+    ResourceObjects,
+    ResourceObject,
+    Attributes,
+    Response,
+} from 'ts-json-api';
 
 import { JasonApiState } from './common-types/state';
 import { FlexiblePayload } from './common-types/other';
@@ -27,7 +32,7 @@ export const insertOrUpdateResourceObjects = (
     state: JasonApiState,
     payload: FlexiblePayload
 ): JasonApiState => {
-    const included: JsonApi.ResourceObjects = R.propOr([], 'included', payload);
+    const included: ResourceObjects = R.propOr([], 'included', payload);
 
     return R.pipe(
         unwrapDataProp,
@@ -45,7 +50,7 @@ export const insertOrUpdateResourceObjects = (
  */
 const insertOrUpdateResourceObject = (
     state: JasonApiState = {},
-    entity: JsonApi.ResourceObject
+    entity: ResourceObject
 ): JasonApiState => {
     validateResourceObject(entity);
 
@@ -65,7 +70,7 @@ const insertOrUpdateResourceObject = (
  *
  * @param  entity
  */
-const validateResourceObject = (entity: JsonApi.ResourceObject) => {
+const validateResourceObject = (entity: ResourceObject) => {
     if (!('type' in entity)) {
         throw new Error(
             'JSON API resource objects must have a `type` property'
@@ -227,21 +232,22 @@ export const clearRelationshipOnResourceObject = (
  */
 export const updateResourceObject = (
     state: JasonApiState,
-    resourceTypeOrResourceObject: string | JsonApi.ResourceObject,
+    resourceTypeOrResourceObject: string | ResourceObject,
     resourceId?: string,
-    data?: JsonApi.ResourceObject | JsonApi.Attributes
+    data?: ResourceObject | Attributes
 ) => {
     if (
+        typeof resourceTypeOrResourceObject !== 'string' &&
         R.has('type', resourceTypeOrResourceObject) &&
         R.has('id', resourceTypeOrResourceObject)
     ) {
         return insertOrUpdateResourceObject(
             state,
-            <JsonApi.ResourceObject>resourceTypeOrResourceObject
+            resourceTypeOrResourceObject
         );
     }
 
-    if(!resourceId) {
+    if (!resourceId) {
         throw new Error('`resourceId` must be defined.');
     }
 
@@ -251,7 +257,7 @@ export const updateResourceObject = (
 
     return R.over(
         R.lensPath([
-            pluralize(<string>resourceTypeOrResourceObject),
+            pluralize(resourceTypeOrResourceObject as string),
             'byId',
             resourceId,
             'attributes',
@@ -347,7 +353,7 @@ export const clearResourceObjectType = (
 export const cacheQuery = (
     state: JasonApiState,
     key: string,
-    response: JsonApi.Response
+    response: Response
 ): JasonApiState => {
     return R.set(
         R.lensPath(['_cachedQueries', key]),

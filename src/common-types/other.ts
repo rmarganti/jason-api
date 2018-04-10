@@ -1,10 +1,7 @@
-import * as JsonApi from 'ts-json-api/types/structure';
+import { Response, ResourceObjectOrObjects } from 'ts-json-api';
 import { AnyAction } from 'redux';
 
-export type FlexiblePayload =
-    | JsonApi.ResourceObject
-    | JsonApi.ResourceObject[]
-    | JsonApi.Response;
+export type FlexiblePayload = ResourceObjectOrObjects | Response;
 
 export type FunctionType = (...args: any[]) => any;
 
