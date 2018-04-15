@@ -1,7 +1,7 @@
 {
     "name": "jason-api",
     "private": false,
-    "version": "1.0.0",
+    "version": "0.9.0-beta.2",
     "license": "MIT",
     "main": "./lib/index.js",
     "description": "Consume and manipulate JSON API standard data in Redux with scary ease.",
@@ -15,13 +15,14 @@
     "types": "./types/index.d.ts",
     "dependencies": {
         "axios": "^0.18.0",
-        "isomorphic-fetch": "^2.2.1",
         "pluralize": "^7.0.0",
-        "ramda": "^0.25.0"
+        "ramda": "^0.25.0",
+        "ts-json-api": "^0.9.0-beta.3"
     },
     "devDependencies": {
         "@types/enzyme": "^3.1.9",
         "@types/isomorphic-fetch": "^0.0.34",
+        "@types/jest": "^22.2.3",
         "@types/pluralize": "^0.0.28",
         "@types/ramda": "^0.25.15",
         "@types/react": "^16.0.34",
@@ -39,7 +40,7 @@
         "redux": "^3.7.2",
         "redux-mock-store": "^1.4.0",
         "rimraf": "^2.6.2",
-        "ts-json-api": "0.2.0-beta.3",
+        "ts-jest": "^22.4.3",
         "typescript": "^2.8.0",
         "typescript-eslint-parser": "^14.0.0"
     },

@@ -8,6 +8,8 @@ Consume and manipulate [JSON API standard](http://jsonapi.org/) data in Redux wi
 
 ```ts
 import {
+    // All of JasonAPI's HOC's default to using `resourceObjects`
+    // as the redux store key, so rwe recommend you do the same.
     reducer as resourceObjects,
     middleware as jasonApiMiddleware,
 } from 'jason-api';
@@ -69,11 +71,13 @@ console.log(result);
 
 ## Using HOC's
 
-```ts
-import { compose, withQuery } from 'jason-api';
+Combining JasonAPI's action creators and high-order components
+makes for a simple and powerful way to fetch data from your API.
+
+```js
+import { withQuery } from 'jason-api';
 import { render } from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-
 import { getUser, updateUser } from './yourActions';
 
 const User = ({
@@ -86,19 +90,20 @@ const User = ({
         <p>Loading...</p>
     ) : (
         <div>
-            <h1>{data.firstName} {data.lastName}</h1>
-            <p>{data.email}</p>
+            <h1>{data.attributes.firstName} {data.attributes.lastName}</h1>
+            <p>{data.attributes.email}</p>
         </div>
     );
 
 const enhance = withQuery({
-    // queryFactory is a function that returns Promise that resolves to a JSON API response.
-    // HINT: Any dispatch()'ed JASON_API_REQUEST fits this criteria.
+    // queryFactory is a function that returns a Promise
+    // that resolves to a JSON API response. HINT: Any
+    // dispatch()'ed JASON_API_REQUEST fits this criteria.
     queryFactory: (dispatch, props) => dispatch(getUser(props.id)),
     propsToWatch: ['userId'],
 });
 
-const EnhancedUser = enhance(YourUserComponent);
+const EnhancedUser = enhance(User);
 ```
 
 Now, you can use the `EnhancedUser` component wherever you may need them. `<EnhancedUser id="12345" />`.
