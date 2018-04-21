@@ -2,14 +2,15 @@
 
 # JasonAPI
 
-Consume and manipulate [JSON API standard](http://jsonapi.org/) data in Redux with scary ease.
+Consume and manipulate [JSON API standard](http://jsonapi.org/)
+data in Redux with scary ease.
 
 ## Hooking up the reducer and middleware
 
 ```ts
 import {
     // All of JasonAPI's HOC's default to using `resourceObjects`
-    // as the redux store key, so rwe recommend you do the same.
+    // as the redux store key, so we recommend you do the same.
     reducer as resourceObjects,
     middleware as jasonApiMiddleware,
 } from 'jason-api';
@@ -22,17 +23,59 @@ const store = createStore(
 );
 ```
 
+## A Basic (But Powerful) Example
+
+Below is a simple example. Hopefully, it should demonstrate how the individual
+pieces play together. With just a little bit of code, you get JSON API-compliant
+api calls, caching, loading status management, error-handling, and efficent
+React renders.
+
+```js
+import { JSON_API_REQUEST, withItem, withQuery } from 'jason-api';
+
+const fetchUsers = () => ({
+    type: JSON_API_REQUEST,
+    url: '/api/users',
+});
+
+const UsersList = ({ data, errors, isLoading }) =>
+    isLoading ? (
+        <YourLoadingComponent />
+    ) : error ? (
+        <YourErrorsComponent errors={errors} />
+    ) : (
+        <div>
+            <h1>Users</h1>
+            {data.map(user => <EnhancedUser data={user} />)}
+        </div>
+    );
+
+const EnhancedUsersList = withQuery({
+    queryFactory: dispatch => dispatch(fetchUsers()),
+});
+
+const User = ({ data }) => (
+    <div>
+        <h2>{data.attributes.userName}</h2>
+        <h3>{data.attributes.email}</h3>
+    </div>
+);
+
+const EnhancedUser = withItem()(User);
+```
+
 ## Talking to an API
 
-Below is a couple simple examples of action creators. The only required options are the
-`type` (must be set to `JASON_API_REQUEST`) and `url`. This will make a request
-to the given URL, normalize the response, and update the store. Additionally, since
-we set the `resourceType` and `resourceId`, the meta data for that particular entity
-will be updated to reflect `isLoading` and `error` status.
+Below is a couple simple examples of action creators. The only required
+options are the `type` (must be set to `JASON_API_REQUEST`) and `url`.
+This will make a request to the given URL, normalize the response, and update
+the store. Additionally, since we set the `resourceType` and `resourceId`,
+the meta data for that particular entity will be updated to reflect `isLoading`
+and `error` status.
 
-JasonAPI action creators also play nice with our Higher Order Components, enabling
-intelligent caching, error-handling, and much more. There's plenty of additional,
-helpful options; so be sure to check the WIKI.
+JasonAPI action creators also play nice with our Higher Order Components,
+enabling intelligent caching, error-handling, and much more. There's plenty
+of additional, helpful options; so be sure to check the WIKI.
 
 ```ts
 import { JASON_API_REQUEST } from 'jason-api';
@@ -204,44 +247,4 @@ const EnhancedUsers = enhance(Users);
 
 // If you want to set id's dynamically.
 <EnhancedUsers ids={['12345', '54321']} />
-```
-
-## Bringing it all together
-
-Below is a simple example. Hopefully, it should demonstrate how the individual
-pieces play together. Notice that we don't have to set any options on `withItem`
-due to the way it plays with `withQuery`. It just works™.
-
-```js
-import { JSON_API_REQUEST, withItem, withQuery } from 'jason-api';
-
-const fetchUsers = () => ({
-    type: JSON_API_REQUEST,
-    url: '/api/users',
-});
-
-const UsersList = ({ data, errors, isLoading }) =>
-    isLoading ? (
-        <YourLoadingComponent />
-    ) : error ? (
-        <YourErrorsComponent errors={errors} />
-    ) : (
-        <div>
-            <h1>Users</h1>
-            {data.map(user => <EnhancedUser data={user} />)}
-        </div>
-    );
-
-const EnhancedUsersList = withQuery({
-    queryFactory: dispatch => dispatch(fetchUsers()),
-});
-
-const User = ({ data }) => (
-    <div>
-        <h2>{data.attributes.userName}</h2>
-        <h3>{data.attributes.email}</h3>
-    </div>
-);
-
-const EnhancedUser = withItem()(User);
 ```
