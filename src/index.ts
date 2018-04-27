@@ -6,5 +6,5 @@ export { default as middleware, middlewareFactory } from './redux/middleware';
 export * from './redux/selectors';
 export { default as reducer } from './redux/reducer';
 
-export { FlexiblePayload } from './common-types/other';
+export { FlexiblePayload, JasonApiState } from './common-types';
 export * from './higher-order-components';
