@@ -1,4 +1,4 @@
-import { Action, Dispatch, MiddlewareAPI } from 'redux';
+import { Action, Middleware } from 'redux';
 import { Attributes, Response } from 'ts-json-api';
 import { JASON_API_REQUEST } from '../redux/actionTypes';
 import { FlexiblePayload } from './other';
@@ -62,10 +62,8 @@ export interface JasonApiRequestAction extends Action {
     updateResourceObjectOnSuccess?: UpdateResourceObjectOnSuccess[];
 }
 
-export interface JasonApiDispatch {
-    <A extends Action>(action: A): Promise<Response>;
-}
+export type JasonApiDispatch = <A extends Action>(
+    action: A
+) => Promise<Response>;
 
-export interface JasonApiMiddleware {
-    <S>(store: MiddlewareAPI<S>): (next: Dispatch<S>) => any;
-}
+export type JasonApiMiddleware = Middleware<JasonApiDispatch>;

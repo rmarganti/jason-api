@@ -4,6 +4,7 @@ import {
     Action,
     ActionCreator,
     Dispatch,
+    Middleware,
     MiddlewareAPI,
     AnyAction,
 } from 'redux';
@@ -393,7 +394,7 @@ class JsonApiMiddleware {
  */
 export const middlewareFactory = (
     config: MiddlewareConfig = {}
-): JasonApiMiddleware => store => next => <A extends Action>(action: A) => {
+): JasonApiMiddleware => store => next => action => {
     if (action.type !== JASON_API_REQUEST) {
         return next(action);
     }

@@ -7,9 +7,6 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "lib",
-        "paths": {
-            "*": ["node_modules/*", "src/types/*"]
-        },
         "sourceMap": true,
         "strict": true,
         "target": "es2016"

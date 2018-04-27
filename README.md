@@ -27,7 +27,7 @@ const store = createStore(
 
 Below is a simple example. Hopefully, it should demonstrate how the individual
 pieces play together. With just a little bit of code, you get JSON API-compliant
-api calls, caching, loading status management, error-handling, and efficent
+api calls, caching, loading status management, error-handling, and efficient
 React renders.
 
 ```js
@@ -108,7 +108,7 @@ dispatch(getUser('12345')).then(response =>
 );
 
 // Or Use Await if that's your thing
-const result = await(dispatch(updateUser('12345', { firstName: 'Enrique' })));
+const result = await dispatch(updateUser('12345', { firstName: 'Enrique' }));
 console.log(result);
 ```
 
