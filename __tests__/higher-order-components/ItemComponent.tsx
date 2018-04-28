@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Response } from 'ts-json-api/types/structure';
 import { Comment } from '../mocks/types';
+import { WithQueryInjectedProps } from '../../src/higher-order-components/withQuery';
 
-type Props = {
+type ExternalProps = {
     id?: string;
-    data: Comment | undefined;
 };
+
+type Props = WithQueryInjectedProps<Comment> & ExternalProps;
 
 const ItemComponent: React.StatelessComponent<Props> = ({ data }) =>
     data ? <p>{data.attributes.body}</p> : null;
