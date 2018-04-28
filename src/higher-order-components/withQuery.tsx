@@ -8,7 +8,7 @@ import { cacheQuery } from '../redux/actions';
 import { getCachedQuery } from '../redux/selectors';
 import { hashObject, simplifyJsonApi } from '../utils/data';
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export type QueryFactory = (
     dispatch: JasonApiDispatch,
@@ -23,16 +23,11 @@ export interface WithQueryOptions {
     stateBranch?: string;
 }
 
-export interface MapStateProps {
+export interface ConnectedProps {
     cachedQuery: Response | undefined;
-}
-
-export interface MapDispatchProps {
-    cacheQueryResult: (response: Response) => any;
+    cacheQueryResult: (response: Response) => void;
     fetchData: () => Promise<Response>;
 }
-
-export type ConnectedProps = MapStateProps & MapDispatchProps;
 
 export interface WithQueryInjectedProps<
     D extends ResourceObjectOrObjects = ResourceObjectOrObjects
@@ -52,8 +47,8 @@ const withQuery = ({
     queryFactory,
     propsToWatch = [],
     stateBranch = 'resourceObjects',
-}: WithQueryOptions) => <OriginalProps extends WithQueryInjectedProps>(
-    BaseComponent: React.ComponentType<OriginalProps>
+}: WithQueryOptions) => <OriginalProps extends {}>(
+    BaseComponent: React.ComponentType<OriginalProps & WithQueryInjectedProps>
 ) => {
     type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps>;
     type InternalProps = ExternalProps & ConnectedProps;
@@ -80,7 +75,7 @@ const withQuery = ({
         refetch = () => {
             this.setState({ isLoading: true });
 
-            const { fetchData, cacheQueryResult } = this.props as InternalProps;
+            const { fetchData, cacheQueryResult } = this.props;
 
             fetchData!()
                 .then(response => {
@@ -178,12 +173,7 @@ const withQuery = ({
         },
     });
 
-    return connect<
-        MapStateProps,
-        MapDispatchProps,
-        ExternalProps,
-        StateWithJasonApi
-    >(mapStateToProps, mapDispatchToProps)(WithQuery);
+    return connect(mapStateToProps, mapDispatchToProps)(WithQuery);
 };
 
 /**
