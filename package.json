@@ -10,6 +10,8 @@
     "scripts": {
         "build": "rimraf ./lib && rimraf ./types && tsc",
         "build:watch": "rimraf ./lib && rimraf ./types && tsc --watch",
+        "docs:build": "gitbook build",
+        "docs:serve": "gitbook serve",
         "test": "jest"
     },
     "types": "./types/index.d.ts",
@@ -32,6 +34,7 @@
         "eslint": "^4.19.0",
         "eslint-config-prettier": "^2.9.0",
         "eslint-plugin-prettier": "^2.6.0",
+        "gitbook-cli": "^2.3.2",
         "jest": "^22.1.1",
         "prettier": "^1.11.1",
         "react": "^16.0.0",
