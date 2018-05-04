@@ -11,7 +11,7 @@ JasonAPI action creators also play nice with our Higher Order Components,
 enabling intelligent caching, error-handling, and much more. There's plenty
 of additional, helpful options; so be sure to check the WIKI.
 
-```ts
+```js
 import { JASON_API_REQUEST } from 'jason-api';
 
 const getUser = userId => ({
