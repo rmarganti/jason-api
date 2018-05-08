@@ -1,0 +1,432 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>withQuery() · jason-api</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="42-WITH-ITEM.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../10-SETUP.html">
+            
+                <a href="../10-SETUP.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../20-TALKING-TO-AN-API.html">
+            
+                <a href="../20-TALKING-TO-AN-API.html">
+            
+                    
+                    Talking to an API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../30-ASYNC-ACTIONS.html">
+            
+                <a href="../30-ASYNC-ACTIONS.html">
+            
+                    
+                    Async Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    High-order Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="41-WITH-QUERY.html">
+            
+                <a href="41-WITH-QUERY.html">
+            
+                    
+                    withQuery()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="42-WITH-ITEM.html">
+            
+                <a href="42-WITH-ITEM.html">
+            
+                    
+                    withItem()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="43-WITH-COLLECTION.html">
+            
+                <a href="43-WITH-COLLECTION.html">
+            
+                    
+                    withCollection()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="44-COMBINING-WITH-OTHER-HOCS.html">
+            
+                <a href="44-COMBINING-WITH-OTHER-HOCS.html">
+            
+                    
+                    Combining with connect() and other HOC's
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../50-DIRECTLY-ACCESSING-THE-STORE.html">
+            
+                <a href="../50-DIRECTLY-ACCESSING-THE-STORE.html">
+            
+                    
+                    Directly accessing the store
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../60-TYPESCRIPT.html">
+            
+                <a href="../60-TYPESCRIPT.html">
+            
+                    
+                    Typescript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >withQuery()</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="withquery">withQuery()</h1>
+<p><code>withQuery</code> triggers and manages any Promise that resolves to a JSON API
+response. With it, you get caching, loading status management, and error
+handling. This HOC pairs well with <code>JASON_API_REQUEST</code> action creators.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { withQuery } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+<span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react-dom&apos;</span>;
+<span class="hljs-keyword">import</span> { createStore, combineReducers, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux&apos;</span>;
+<span class="hljs-keyword">import</span> { getUser, updateUser } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./yourActions&apos;</span>;
+
+<span class="hljs-keyword">const</span> User = ({
+    data,
+    isLoading, <span class="hljs-comment">// Automatically updated based on the status of your queryFactory&apos;s Promise</span>
+    refetch, <span class="hljs-comment">// Re-run your queryFactory.</span>
+    ...anyOtherDataInAJsonApiResponse <span class="hljs-comment">// `meta`, `errors`, etc.</span>
+}) =&gt;
+    isLoading ? (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+    ) : (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{data.attributes.firstName} {data.attributes.lastName}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{data.attributes.email}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+
+<span class="hljs-keyword">const</span> enhance = withQuery({
+    queryFactory: (dispatch, props) =&gt; dispatch(getUser(props.id)),
+    expandResourceObjects: <span class="hljs-literal">true</span>,
+    propsToWatch: [<span class="hljs-string">&apos;id&apos;</span>],
+});
+
+<span class="hljs-keyword">const</span> EnhancedUser = enhance(User);
+</code></pre>
+<p>Now, you can use the <code>EnhancedUser</code> component wherever you may need them.
+<code>&lt;EnhancedUser id=&quot;12345&quot; /&gt;</code>.</p>
+<h2 id="options">Options</h2>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> enhance = withQuery({
+    <span class="hljs-comment">// queryFactory is a function that returns a Promise</span>
+    <span class="hljs-comment">// that resolves to a JSON API response. HINT: Any</span>
+    <span class="hljs-comment">// dispatch()&apos;ed JASON_API_REQUEST fits this criteria.</span>
+    queryFactory: (dispatch, props) =&gt; dispatch(getUser(props.id)),
+
+    <span class="hljs-comment">// Determines how caching is handled.</span>
+    <span class="hljs-comment">// `cacheFirst` (default) &#x27A1; Initially load the cached query,</span>
+    <span class="hljs-comment">//     but still trigger the `queryFactory` for an updated.</span>
+    <span class="hljs-comment">// `cacheOnly` &#x27A1; If a cached version exists, use that without</span>
+    <span class="hljs-comment">//     triggering the `queryFactory`.</span>
+    <span class="hljs-comment">// `noCache` &#x27A1; Never use the cached version, always trigger `queryFactory`.</span>
+    cacheScheme: <span class="hljs-string">&apos;cacheFirst&apos;</span>,
+
+    <span class="hljs-comment">// Should full resource objects be provided to your component? Otherwise,</span>
+    <span class="hljs-comment">// the resource objects will only contain a `type` and `id`. This useful for</span>
+    <span class="hljs-comment">// optimizing React renders. Generally, you will want `true` for single-item</span>
+    <span class="hljs-comment">// response and `false` for collection responses. Your individual collection</span>
+    <span class="hljs-comment">// items can then be individually grabbed from the redux store using</span>
+    <span class="hljs-comment">// `withItem()`. `false` by default.</span>
+    expandResourceObjects: <span class="hljs-literal">true</span>,
+
+    <span class="hljs-comment">// Any time any of the given props change,</span>
+    <span class="hljs-comment">// the queryFactory will be retriggered.</span>
+    propsToWatch: [<span class="hljs-string">&apos;id&apos;</span>],
+
+    <span class="hljs-comment">// By default, JasonAPI assumes its reducer is keyed by `resourceObjects`.</span>
+    <span class="hljs-comment">// If you change it for some reason (we don&apos;t recommend you do), you can</span>
+    <span class="hljs-comment">// let `withQuery` know to look for it a different key.</span>
+    stateBranch: <span class="hljs-string">&apos;resourceObjects&apos;</span>,
+});
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: High-order Components">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="42-WITH-ITEM.html" class="navigation navigation-next " aria-label="Next page: withItem()">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"withQuery()","level":"1.5.1","depth":2,"next":{"title":"withItem()","level":"1.5.2","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.md","ref":"40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.md","articles":[]},"previous":{"title":"High-order Components","level":"1.5","depth":1,"path":"40-HIGH-ORDER-COMPONENTS/README.md","ref":"40-HIGH-ORDER-COMPONENTS/README.md","articles":[{"title":"withQuery()","level":"1.5.1","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/41-WITH-QUERY.md","ref":"40-HIGH-ORDER-COMPONENTS/41-WITH-QUERY.md","articles":[]},{"title":"withItem()","level":"1.5.2","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.md","ref":"40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.md","articles":[]},{"title":"withCollection()","level":"1.5.3","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/43-WITH-COLLECTION.md","ref":"40-HIGH-ORDER-COMPONENTS/43-WITH-COLLECTION.md","articles":[]},{"title":"Combining with connect() and other HOC's","level":"1.5.4","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.md","ref":"40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"jason-api","gitbook":"^3.0.0"},"file":{"path":"40-HIGH-ORDER-COMPONENTS/41-WITH-QUERY.md","mtime":"2018-05-08T23:02:04.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-08T23:49:08.742Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

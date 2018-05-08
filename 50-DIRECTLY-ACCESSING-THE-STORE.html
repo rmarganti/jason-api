@@ -1,0 +1,498 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Directly accessing the store · jason-api</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="60-TYPESCRIPT.html" />
+    
+    
+    <link rel="prev" href="40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="10-SETUP.html">
+            
+                <a href="10-SETUP.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="20-TALKING-TO-AN-API.html">
+            
+                <a href="20-TALKING-TO-AN-API.html">
+            
+                    
+                    Talking to an API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="30-ASYNC-ACTIONS.html">
+            
+                <a href="30-ASYNC-ACTIONS.html">
+            
+                    
+                    Async Actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="40-HIGH-ORDER-COMPONENTS/">
+            
+                <a href="40-HIGH-ORDER-COMPONENTS/">
+            
+                    
+                    High-order Components
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="40-HIGH-ORDER-COMPONENTS/41-WITH-QUERY.html">
+            
+                <a href="40-HIGH-ORDER-COMPONENTS/41-WITH-QUERY.html">
+            
+                    
+                    withQuery()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.html">
+            
+                <a href="40-HIGH-ORDER-COMPONENTS/42-WITH-ITEM.html">
+            
+                    
+                    withItem()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="40-HIGH-ORDER-COMPONENTS/43-WITH-COLLECTION.html">
+            
+                <a href="40-HIGH-ORDER-COMPONENTS/43-WITH-COLLECTION.html">
+            
+                    
+                    withCollection()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.html">
+            
+                <a href="40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.html">
+            
+                    
+                    Combining with connect() and other HOC's
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="50-DIRECTLY-ACCESSING-THE-STORE.html">
+            
+                <a href="50-DIRECTLY-ACCESSING-THE-STORE.html">
+            
+                    
+                    Directly accessing the store
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="60-TYPESCRIPT.html">
+            
+                <a href="60-TYPESCRIPT.html">
+            
+                    
+                    Typescript
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Directly accessing the store</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="directly-accessing-the-store">Directly Accessing the Store</h1>
+<p>You may not want to use the HOC&apos;s, opting instead to locally stored data yourself. Below are a number of action creators and selectors that may be helpful.</p>
+<h2 id="consuming-json-data">Consuming JSON data</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { loadJsonApiResourceObjectData } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+dispatch(loadJsonApiResourceObjectData(jsonApiResponseFromServer));
+</code></pre>
+<h2 id="manipulating-resource-objects">Manipulating resource objects</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {
+    addRelationshipToResourceObject,
+    removeRelationshipFromResourceObject,
+    updateResourceObject
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+<span class="hljs-comment">/**
+ * dispatch(updateResourceObject(&apos;article&apos;, articleId, {
+ *     isUserFavorite: true
+ * }));
+ */</span>
+updateResourceObject(resourceObjectKey, resourceObjectId, dataObject);
+
+<span class="hljs-comment">/**
+ * dispatch(addRelationshipToResourceObject(&apos;article&apos;, &apos;54321&apos;, &apos;readers&apos;, {
+ *     type: &apos;user&apos;,
+ *     id: &apos;12345&apos;,
+ *     attributes: { name: &quot;Bob Ross&quot; }
+ * }));
+ */</span>
+addRelationshipToResourceObject(
+    resourceObjectKey,
+    resourceObjectId,
+    relationshipKey,
+    relationshipJsonApiObject
+);
+
+<span class="hljs-comment">/**
+ * You can also add relationships by ID.
+ * dispatch(addRelationshipToResourceObject(
+ *     &apos;article&apos;, &apos;54321&apos;, &apos;readers&apos;, &apos;12345&apos;
+ * ));
+ */</span>
+addRelationshipToResourceObject(
+    resourceObjectKey,
+    resourceObjectId,
+    relationshipKey,
+    relationshipJsonApiObject
+);
+
+<span class="hljs-comment">/**
+ * dispatch(removeRelationshipFromResourceObject(
+ *     &apos;article&apos;, &apos;54321&apos;, &apos;readers&apos;, &apos;12345&apos;
+ * ));
+ */</span>
+removeRelationshipFromResourceObject(
+    resourceObjectKey,
+    resourceObjectId,
+    relationshipKey,
+    relationshipId
+);
+</code></pre>
+<h2 id="retrieving-resource-objects-from-the-store">Retrieving resource objects from the store</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { getResourceObject, getEntities } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+<span class="hljs-comment">// Get single article</span>
+<span class="hljs-keyword">const</span> article = getResourceObject(state.resourceObjects, <span class="hljs-string">&apos;article&apos;</span>, articleId);
+
+<span class="hljs-comment">// Get all articles</span>
+<span class="hljs-keyword">const</span> articles = getEntities(state.resourceObjects, <span class="hljs-string">&apos;articles&apos;</span>);
+
+<span class="hljs-comment">// Get array of articles</span>
+<span class="hljs-keyword">const</span> articles = getEntities(
+    state.resourceObjects,
+    <span class="hljs-string">&apos;articles&apos;</span>,
+    [id1, id2, id3]
+);
+</code></pre>
+<h2 id="removing-resource-objects-from-the-store">Removing resource objects from the store</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { removeResourceObject, clearResourceObjectType } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+<span class="hljs-comment">// Remove a single resource object</span>
+dispatch(removeResourceObject(<span class="hljs-string">&apos;articles&apos;</span>, <span class="hljs-string">&apos;1&apos;</span>));
+
+<span class="hljs-comment">// Remove all resource objects from an resource object type</span>
+dispatch(clearResourceObjectType(<span class="hljs-string">&apos;articles&apos;</span>));
+</code></pre>
+<h2 id="metadata">Metadata</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {
+    updateEntitiesMeta,
+    updateResourceObjectMeta,
+    getEntitiesMeta,
+    getResourceObjectMeta
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+<span class="hljs-comment">// Set a metadata value for a resource object type</span>
+dispatch(updateEntitiesMeta(<span class="hljs-string">&apos;articles&apos;</span>, <span class="hljs-string">&apos;isLoading&apos;</span>, <span class="hljs-literal">true</span>));
+
+<span class="hljs-comment">// Get all metadata for an resource object type</span>
+<span class="hljs-keyword">const</span> metadata = getEntitiesMeta(state.resourceObjects, <span class="hljs-string">&apos;articles&apos;</span>);
+
+<span class="hljs-comment">// Get a specific metadata value for an resource object type</span>
+<span class="hljs-keyword">const</span> isLoading = getEntitiesMeta(
+    state.resourceObjects,
+    <span class="hljs-string">&apos;articles&apos;</span>,
+    <span class="hljs-string">&apos;isLoading&apos;</span>
+);
+
+<span class="hljs-comment">// Set a metadata value for a specific resource object</span>
+dispatch(updateResourceObjectMeta(<span class="hljs-string">&apos;articles&apos;</span>, <span class="hljs-string">&apos;123&apos;</span>, <span class="hljs-string">&apos;isLoading&apos;</span>, <span class="hljs-literal">true</span>));
+
+<span class="hljs-comment">// Get all metadata for a specific resource object</span>
+<span class="hljs-keyword">const</span> metadata = getResourceObjectMeta(
+    state.resourceObjects,
+    <span class="hljs-string">&apos;articles&apos;</span>,
+    <span class="hljs-string">&apos;123&apos;</span>
+);
+
+<span class="hljs-comment">// Get a specific metadata value for a specific resource object</span>
+<span class="hljs-keyword">const</span> isLoading = getResourceObjectMeta(
+    state.resourceObjects,
+    <span class="hljs-string">&apos;articles&apos;</span>,
+    <span class="hljs-string">&apos;123&apos;</span>,
+    <span class="hljs-string">&apos;isLoading&apos;</span>
+);
+</code></pre>
+<h2 id="helpers">Helpers</h2>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { getId, getIds } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;jason-api&apos;</span>;
+
+<span class="hljs-comment">// Extract item ID from JSON API response</span>
+getId(jsonResponse);
+
+<span class="hljs-comment">// Extract collection ID&apos;s from JSON API response</span>
+getIds(jsonResponse);
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.html" class="navigation navigation-prev " aria-label="Previous page: Combining with connect() and other HOC's">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="60-TYPESCRIPT.html" class="navigation navigation-next " aria-label="Next page: Typescript">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Directly accessing the store","level":"1.6","depth":1,"next":{"title":"Typescript","level":"1.7","depth":1,"path":"60-TYPESCRIPT.md","ref":"60-TYPESCRIPT.md","articles":[]},"previous":{"title":"Combining with connect() and other HOC's","level":"1.5.4","depth":2,"path":"40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.md","ref":"40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"jason-api","gitbook":"^3.0.0"},"file":{"path":"50-DIRECTLY-ACCESSING-THE-STORE.md","mtime":"2018-05-04T00:28:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-08T23:49:08.742Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
