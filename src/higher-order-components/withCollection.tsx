@@ -5,7 +5,7 @@ import {
 } from 'react-redux';
 import { Attributes, Links, Relationships, ResourceObjects } from 'ts-json-api';
 
-import { JasonApiState } from '../common-types/state';
+import { JasonApiState, StateWithJasonApi } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
 import { simplifyResourceObjects } from '../utils/data';
 
@@ -28,18 +28,13 @@ const withCollection = ({
     ids: resourceIds,
     expandResourceObjects = false,
 }: WithCollectionOptions) =>
-    connect(
-        (
-            state: { resourceObjects: JasonApiState },
-            { ids }: WithCollectionProps
-        ) => ({
-            data: getResourceObjects(
-                state.resourceObjects,
-                resourceType,
-                ids || resourceIds,
-                expandResourceObjects
-            ),
-        })
-    );
+    connect((state: StateWithJasonApi, { ids }: WithCollectionProps) => ({
+        data: getResourceObjects(
+            state.resourceObjects,
+            resourceType,
+            ids || resourceIds,
+            expandResourceObjects
+        ),
+    }));
 
 export default withCollection;

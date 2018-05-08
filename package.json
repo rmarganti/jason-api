@@ -10,6 +10,10 @@
     "scripts": {
         "build": "rimraf ./lib && rimraf ./types && tsc",
         "build:watch": "rimraf ./lib && rimraf ./types && tsc --watch",
+        "docs:build": "yarn docs:prepare && rm -rf _book && gitbook build",
+        "docs:prepare": "gitbook install",
+        "docs:publish": "yarn run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push git@github.com:rmarganti/jason-api gh-pages --force",
+        "docs:watch": "gitbook serve",
         "test": "jest"
     },
     "types": "./types/index.d.ts",
@@ -32,6 +36,7 @@
         "eslint": "^4.19.0",
         "eslint-config-prettier": "^2.9.0",
         "eslint-plugin-prettier": "^2.6.0",
+        "gitbook-cli": "^2.3.2",
         "jest": "^22.1.1",
         "prettier": "^1.11.1",
         "react": "^16.0.0",
