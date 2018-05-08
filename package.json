@@ -10,8 +10,10 @@
     "scripts": {
         "build": "rimraf ./lib && rimraf ./types && tsc",
         "build:watch": "rimraf ./lib && rimraf ./types && tsc --watch",
-        "docs:build": "gitbook build",
-        "docs:serve": "gitbook serve",
+        "docs:build": "yarn docs:prepare && rm -rf _book && gitbook build",
+        "docs:prepare": "gitbook install",
+        "docs:publish": "yarn run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push git@github.com:rmarganti/jason-api gh-pages --force",
+        "docs:watch": "gitbook serve",
         "test": "jest"
     },
     "types": "./types/index.d.ts",

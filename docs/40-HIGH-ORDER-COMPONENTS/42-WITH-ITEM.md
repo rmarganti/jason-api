@@ -33,5 +33,3 @@ const EnhancedUser = enhance(YourUserComponent);
 // returned from a `withQuery` collection response.
 <EnhancedUser data={{ type: 'users', id: '12345' }} />
 ```
-
-##Options

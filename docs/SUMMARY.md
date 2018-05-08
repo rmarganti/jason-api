@@ -10,4 +10,4 @@
    * [withCollection()](40-HIGH-ORDER-COMPONENTS/43-WITH-COLLECTION.md)
    * [Combining with `connect()` and other HOC's](40-HIGH-ORDER-COMPONENTS/44-COMBINING-WITH-OTHER-HOCS.md)
 * [Directly accessing the store](50-DIRECTLY-ACCESSING-THE-STORE.md)
-
+* [Typescript](60-TYPESCRIPT.md)

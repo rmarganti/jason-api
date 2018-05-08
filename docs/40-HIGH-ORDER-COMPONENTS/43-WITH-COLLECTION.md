@@ -1,8 +1,37 @@
 # withCollection()
 
+## Basic Usage
+
 ```js
 import { withCollection } from 'jason-api';
+import { User } from './your-components';
 
+const UserList = ({
+    data,
+    isLoading,
+    refetch,
+}: CollectionProps) => (
+    <div onClick={onDummyAction}>
+        <h1>
+            User
+            {isLoading && <span>Loading...</span>}
+        </h1>
+
+        {(data || []).map(user => (
+            <User key={user.id} data={user} />
+        ))}
+
+        <button onClick={refetch}>Refresh</button>
+    </div>
+);
+
+const EnhancedUserList = withCollection({ resourceType: 'users' })(UserList);
+
+```
+
+## Options
+
+```js
 const enhance = withCollection({
     resourceType: 'users',
 
@@ -26,6 +55,3 @@ const EnhancedUsers = enhance(Users);
 // If you want to set id's dynamically.
 <EnhancedUsers ids={['12345', '54321']} />
 ```
-
-## Options
-
