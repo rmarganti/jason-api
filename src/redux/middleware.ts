@@ -1,13 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { path } from 'ramda';
-import {
-    Action,
-    ActionCreator,
-    Dispatch,
-    Middleware,
-    MiddlewareAPI,
-    AnyAction,
-} from 'redux';
+import { ActionCreator, MiddlewareAPI } from 'redux';
 import {
     ApiResourceObject,
     Response,
@@ -15,26 +7,22 @@ import {
     ResponseWithErrors,
 } from 'ts-json-api';
 
-import {
-    JasonApiRequestAction,
-    JasonApiDispatch,
-    JasonApiMiddleware,
-    StateWithJasonApi,
-} from '../common-types';
+import { JasonApiMiddleware, RequestConfig } from '../types';
 import {
     extractJsonApiErrorFromAxios,
     stringifyJsonApiErrors,
 } from '../utils/async';
-import { JASON_API_REQUEST } from './actionTypes';
+import { JASON_API } from './actions/actionTypes';
 import {
     addRelationshipToResourceObject,
-    loadJsonApiResourceObjectData,
+    JasonApiRequest,
     removeRelationshipFromResourceObject,
     removeResourceObject,
+    request,
+    requestError,
+    requestSuccess,
     setRelationshipOnResourceObject,
     updateResourceObject,
-    updateResourceObjectMeta,
-    updateResourceObjectsMeta,
 } from './actions';
 
 export interface MiddlewareConfig {
@@ -50,59 +38,40 @@ export interface Payload {
 
 class JsonApiMiddleware {
     private config: MiddlewareConfig;
-
-    private action: JasonApiRequestAction;
-
-    private resourceType?: string;
-
-    private resourceId?: string;
-
+    private requestConfig: RequestConfig;
     private store: MiddlewareAPI<any>;
 
     constructor(
         config: MiddlewareConfig = {},
         store: MiddlewareAPI<any>,
-        action: AnyAction
+        action: JasonApiRequest
     ) {
         this.config = config;
         this.store = store;
 
-        this.action = Object.assign(
-            {},
-            {
-                method: 'get',
-                disableStartLoadingActionCreator: false,
-                displayNotificationOnError: false,
-            },
-            action as JasonApiRequestAction
-        );
+        this.requestConfig = action[JASON_API];
     }
 
     /**
-     * Intercept `JASON_API_REQUEST` type actions
+     * Intercept `REQUEST` type actions
      * and let others bubble through
      */
     public executeMiddleware() {
+        this.store.dispatch(request(this.requestConfig));
+
         if (
-            !this.action.disableStartLoadingActionCreator &&
+            !this.requestConfig.disableStartLoadingActionCreator &&
             this.config.startLoadingActionCreator
         ) {
             this.store.dispatch(this.config.startLoadingActionCreator());
         }
 
-        const payload: Payload | undefined =
-            this.action.payload instanceof ApiResourceObject
-                ? this.action.payload && { data: this.action.payload.toJSON() }
-                : this.action.payload;
-
-        this.resourceType =
-            this.action.resourceType || path(['data', 'type'], payload);
-
-        this.resourceId =
-            this.action.resourceId || path(['data', 'id'], payload);
-
-        this.setLoadingMeta();
-        this.clearError();
+        const payload =
+            this.requestConfig.payload instanceof ApiResourceObject
+                ? this.requestConfig.payload && {
+                      data: this.requestConfig.payload.toJSON(),
+                  }
+                : this.requestConfig.payload;
 
         return this.executeRequest(payload);
     }
@@ -119,23 +88,22 @@ class JsonApiMiddleware {
             const response = await networkCall;
             const data = response.data;
 
-            const transformedData = this.action.transformer
-                ? this.action.transformer.call(null, data)
+            const transformedData = this.requestConfig.transformer
+                ? this.requestConfig.transformer(data)
                 : data;
 
             if (
-                !this.action.disableStartLoadingActionCreator &&
+                !this.requestConfig.disableStartLoadingActionCreator &&
                 this.config.stopLoadingActionCreator
             ) {
                 this.store.dispatch(this.config.stopLoadingActionCreator());
             }
 
-            this.clearLoadingMeta();
             this.finishLoading(transformedData);
             this.executeOnSuccessActions(transformedData);
 
-            if (this.action.onSuccess) {
-                this.action.onSuccess(transformedData);
+            if (this.requestConfig.onSuccess) {
+                this.requestConfig.onSuccess(transformedData);
             }
 
             return transformedData;
@@ -143,13 +111,11 @@ class JsonApiMiddleware {
             const errorJson = extractJsonApiErrorFromAxios(error);
 
             if (
-                !this.action.disableStartLoadingActionCreator &&
+                !this.requestConfig.disableStartLoadingActionCreator &&
                 this.config.stopLoadingActionCreator
             ) {
                 this.store.dispatch(this.config.stopLoadingActionCreator());
             }
-
-            this.clearLoadingMeta();
 
             if (
                 this.config.authenticationExpiredActionCreator &&
@@ -161,7 +127,7 @@ class JsonApiMiddleware {
             } else {
                 this.handleError(errorJson);
                 if (
-                    this.action.displayNotificationOnError &&
+                    this.requestConfig.displayNotificationOnError &&
                     this.config.displayErrorActionCreator
                 ) {
                     this.store.dispatch(
@@ -177,41 +143,18 @@ class JsonApiMiddleware {
     }
 
     private buildNetworkCall(payload?: Payload) {
-        return axios.request({
+        return axios.request<ResponseWithData>({
             data: payload,
             headers: {
                 Accept: 'application/vnd.api+json',
                 ContentType:
                     !(payload instanceof FormData) &&
                     'application/vnd.api+json',
-                ...this.action.additionalHeaders,
+                ...this.requestConfig.additionalHeaders,
             },
-            method: this.action.method,
-            url: this.action.url,
+            method: this.requestConfig.method,
+            url: this.requestConfig.url,
         });
-    }
-
-    /**
-     * Set global loading state, as well as ResourceObject-specific loading state
-     */
-    private setLoadingMeta() {
-        if (!this.resourceType) return;
-
-        if (this.resourceId) {
-            this.store.dispatch(
-                updateResourceObjectMeta(
-                    this.resourceType,
-                    this.resourceId,
-                    'loading',
-                    true
-                )
-            );
-            return;
-        }
-
-        this.store.dispatch(
-            updateResourceObjectsMeta(this.resourceType, 'loading', true)
-        );
     }
 
     /**
@@ -224,30 +167,7 @@ class JsonApiMiddleware {
             return;
         }
 
-        this.store.dispatch(loadJsonApiResourceObjectData(response));
-    }
-
-    /**
-     * Set global loading state, as well as ResourceObject-specific loading state
-     */
-    private clearLoadingMeta() {
-        if (!this.resourceType) return;
-
-        if (this.resourceId) {
-            this.store.dispatch(
-                updateResourceObjectMeta(
-                    this.resourceType,
-                    this.resourceId,
-                    'loading',
-                    false
-                )
-            );
-            return;
-        }
-
-        this.store.dispatch(
-            updateResourceObjectsMeta(this.resourceType, 'loading', false)
-        );
+        this.store.dispatch(requestSuccess(this.requestConfig, response));
     }
 
     /**
@@ -256,8 +176,8 @@ class JsonApiMiddleware {
      * @param response
      */
     private executeOnSuccessActions(response: ResponseWithData) {
-        this.action.setRelationshipOnSuccess &&
-            this.action.setRelationshipOnSuccess.forEach(action => {
+        this.requestConfig.setRelationshipOnSuccess &&
+            this.requestConfig.setRelationshipOnSuccess.forEach(action => {
                 const [
                     resourceType,
                     resourceId,
@@ -274,8 +194,8 @@ class JsonApiMiddleware {
                 );
             });
 
-        this.action.addRelationshipOnSuccess &&
-            this.action.addRelationshipOnSuccess.forEach(action => {
+        this.requestConfig.addRelationshipOnSuccess &&
+            this.requestConfig.addRelationshipOnSuccess.forEach(action => {
                 const [
                     resourceType,
                     resourceId,
@@ -292,8 +212,8 @@ class JsonApiMiddleware {
                 );
             });
 
-        this.action.removeRelationshipOnSuccess &&
-            this.action.removeRelationshipOnSuccess.forEach(action => {
+        this.requestConfig.removeRelationshipOnSuccess &&
+            this.requestConfig.removeRelationshipOnSuccess.forEach(action => {
                 const [
                     resourceType,
                     resourceId,
@@ -310,16 +230,16 @@ class JsonApiMiddleware {
                 );
             });
 
-        this.action.removeResourceObjectOnSuccess &&
-            this.action.removeResourceObjectOnSuccess.forEach(action => {
+        this.requestConfig.removeResourceObjectOnSuccess &&
+            this.requestConfig.removeResourceObjectOnSuccess.forEach(action => {
                 const [resourceType, resourceId] = action;
                 this.store.dispatch(
                     removeResourceObject(resourceType, resourceId)
                 );
             });
 
-        this.action.updateResourceObjectOnSuccess &&
-            this.action.updateResourceObjectOnSuccess.forEach(action => {
+        this.requestConfig.updateResourceObjectOnSuccess &&
+            this.requestConfig.updateResourceObjectOnSuccess.forEach(action => {
                 const [resourceType, resourceId, payload] = action;
                 this.store.dispatch(
                     updateResourceObject(resourceType, resourceId, payload)
@@ -328,53 +248,12 @@ class JsonApiMiddleware {
     }
 
     /**
-     * Clears error metadata
-     */
-    private clearError() {
-        if (!this.resourceType) return;
-
-        if (this.resourceId) {
-            this.store.dispatch(
-                updateResourceObjectMeta(
-                    this.resourceType,
-                    this.resourceId,
-                    'errors',
-                    null
-                )
-            );
-            return;
-        }
-
-        this.store.dispatch(
-            updateResourceObjectsMeta(this.resourceType, 'errors', null)
-        );
-    }
-
-    /**
      * Handle a failed API call, and update the entities store
      *
      * @param error
      */
     private handleError(errorBody: ResponseWithErrors) {
-        if (!this.resourceType) {
-            return;
-        }
-
-        if (this.resourceId) {
-            this.store.dispatch(
-                updateResourceObjectMeta(
-                    this.resourceType,
-                    this.resourceId,
-                    'errors',
-                    errorBody.errors
-                )
-            );
-            return;
-        }
-
-        this.store.dispatch(
-            updateResourceObjectsMeta(this.resourceType, 'errors', errorBody)
-        );
+        this.store.dispatch(requestError(this.requestConfig, errorBody));
     }
 
     /**
@@ -388,20 +267,19 @@ class JsonApiMiddleware {
 }
 
 /**
- * Handle JASON_API_REQUEST actions
+ * Handle REQUEST actions
  *
  * @param dispatch
  */
 export const middlewareFactory = (
     config: MiddlewareConfig = {}
 ): JasonApiMiddleware => store => next => action => {
-    if (action.type !== JASON_API_REQUEST) {
+    if (!action[JASON_API]) {
         return next(action);
     }
 
     const jsonApiMiddleware = new JsonApiMiddleware(config, store, action);
-
     return jsonApiMiddleware.executeMiddleware();
 };
 
-export default middlewareFactory();
+export const middleware = middlewareFactory();

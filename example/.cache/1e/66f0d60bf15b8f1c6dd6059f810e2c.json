@@ -1,0 +1,202 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./internal/_curry3",
+            "loc": { "line": 1, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/internal/_curry3.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _curry = _interopRequireDefault(require(\"./internal/_curry3\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * Replace a substring or regex match in a string with a replacement.\n *\n * @func\n * @memberOf R\n * @since v0.7.0\n * @category String\n * @sig RegExp|String -> String -> String -> String\n * @param {RegExp|String} pattern A regular expression or a substring to match.\n * @param {String} replacement The string to replace the matches with.\n * @param {String} str The String to do the search and replacement in.\n * @return {String} The result.\n * @example\n *\n *      R.replace('foo', 'bar', 'foo foo foo'); //=> 'bar foo foo'\n *      R.replace(/foo/, 'bar', 'foo foo foo'); //=> 'bar foo foo'\n *\n *      // Use the \"g\" (global) flag to replace all occurrences:\n *      R.replace(/foo/g, 'bar', 'foo foo foo'); //=> 'bar bar bar'\n */\nvar replace =\n/*#__PURE__*/\n(0, _curry.default)(function replace(regex, replacement, str) {\n  return str.replace(regex, replacement);\n});\nvar _default = replace;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 12, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 3, "column": 0 }
+                },
+                {
+                    "generated": { "line": 32, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 0 }
+                },
+                {
+                    "name": "replace",
+                    "generated": { "line": 32, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 4 }
+                },
+                {
+                    "generated": { "line": 32, "column": 11 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 11 }
+                },
+                {
+                    "generated": { "line": 33, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 14 }
+                },
+                {
+                    "generated": { "line": 34, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 27 }
+                },
+                {
+                    "generated": { "line": 34, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 35 }
+                },
+                {
+                    "name": "replace",
+                    "generated": { "line": 34, "column": 29 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 44 }
+                },
+                {
+                    "generated": { "line": 34, "column": 36 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 35 }
+                },
+                {
+                    "name": "regex",
+                    "generated": { "line": 34, "column": 37 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 52 }
+                },
+                {
+                    "generated": { "line": 34, "column": 42 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 35 }
+                },
+                {
+                    "name": "replacement",
+                    "generated": { "line": 34, "column": 44 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 59 }
+                },
+                {
+                    "generated": { "line": 34, "column": 55 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 35 }
+                },
+                {
+                    "name": "str",
+                    "generated": { "line": 34, "column": 57 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 72 }
+                },
+                {
+                    "generated": { "line": 34, "column": 60 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 35 }
+                },
+                {
+                    "generated": { "line": 34, "column": 62 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 77 }
+                },
+                {
+                    "generated": { "line": 35, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 2 }
+                },
+                {
+                    "name": "str",
+                    "generated": { "line": 35, "column": 9 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 9 }
+                },
+                {
+                    "generated": { "line": 35, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 12 }
+                },
+                {
+                    "name": "replace",
+                    "generated": { "line": 35, "column": 13 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 13 }
+                },
+                {
+                    "generated": { "line": 35, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 9 }
+                },
+                {
+                    "name": "regex",
+                    "generated": { "line": 35, "column": 21 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 21 }
+                },
+                {
+                    "generated": { "line": 35, "column": 26 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 9 }
+                },
+                {
+                    "name": "replacement",
+                    "generated": { "line": 35, "column": 28 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 28 }
+                },
+                {
+                    "generated": { "line": 35, "column": 39 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 9 }
+                },
+                {
+                    "generated": { "line": 35, "column": 40 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 24, "column": 2 }
+                },
+                {
+                    "generated": { "line": 36, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 25, "column": 1 }
+                },
+                {
+                    "generated": { "line": 36, "column": 1 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 27 }
+                },
+                {
+                    "generated": { "line": 36, "column": 2 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 23, "column": 0 }
+                },
+                {
+                    "name": "replace",
+                    "generated": { "line": 37, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/replace.js",
+                    "original": { "line": 26, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/replace.js": "import _curry3 from './internal/_curry3';\n\n/**\n * Replace a substring or regex match in a string with a replacement.\n *\n * @func\n * @memberOf R\n * @since v0.7.0\n * @category String\n * @sig RegExp|String -> String -> String -> String\n * @param {RegExp|String} pattern A regular expression or a substring to match.\n * @param {String} replacement The string to replace the matches with.\n * @param {String} str The String to do the search and replacement in.\n * @return {String} The result.\n * @example\n *\n *      R.replace('foo', 'bar', 'foo foo foo'); //=> 'bar foo foo'\n *      R.replace(/foo/, 'bar', 'foo foo foo'); //=> 'bar foo foo'\n *\n *      // Use the \"g\" (global) flag to replace all occurrences:\n *      R.replace(/foo/g, 'bar', 'foo foo foo'); //=> 'bar bar bar'\n */\nvar replace = /*#__PURE__*/_curry3(function replace(regex, replacement, str) {\n  return str.replace(regex, replacement);\n});\nexport default replace;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "5f74449de0a139dfbe4d034db0c1b8f9",
+    "cacheData": { "env": {} }
+}

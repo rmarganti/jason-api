@@ -1,15 +1,10 @@
-import * as pluralize from 'pluralize';
-import * as R from 'ramda';
-import {
-    Attributes,
-    Links,
-    Relationships,
-    ResourceObject,
-    ResourceObjects,
-    Response,
-} from 'ts-json-api';
-import { JasonApiState } from '../common-types/state';
+import pluralize from 'pluralize';
+import { lensProp, over, path, pathOr, props, reject, values } from 'ramda';
+import { ResourceObject, Response, pipe } from 'ts-json-api';
+
+import { StateWithJasonApi } from '../types/state';
 import { mapOrOnce, simplifyResourceObjects } from '../utils/data';
+import { isUndefined } from '../utils';
 
 /**
  * Grab an Resource Object from the state
@@ -18,13 +13,12 @@ import { mapOrOnce, simplifyResourceObjects } from '../utils/data';
  * @param key
  * @param id
  */
-export const getResourceObject = (
-    state: JasonApiState,
+export const getResourceObject = <T extends ResourceObject = ResourceObject>(
     key: string,
     id: string
-): ResourceObject | undefined => {
+) => (state: StateWithJasonApi): T | undefined => {
     const pluralKey = pluralize(key);
-    return R.path([pluralKey, 'byId', id], state);
+    return path([pluralKey, 'byId', id], state.jasonApi.resourceObjects);
 };
 
 /**
@@ -35,25 +29,23 @@ export const getResourceObject = (
  * @param ids
  * @param expand
  */
-export const getResourceObjects = (
-    state: JasonApiState,
+export const getResourceObjects = <T extends ResourceObject = ResourceObject>(
     key: string,
     ids: string[] | null = null,
     expand: boolean = true
-): ResourceObjects | undefined => {
+) => (state: StateWithJasonApi): T[] => {
     const pluralKey = pluralize(key);
-    const isUndefined = (value: any) => typeof value === 'undefined';
 
     const resourceObjects =
         ids === null
-            ? R.pathOr({}, [pluralKey, 'byId'], state)
-            : R.pipe(
-                  R.pathOr({}, [key, 'byId']),
-                  R.props(ids),
-                  R.reject(isUndefined)
-              )(state);
+            ? pathOr({}, [pluralKey, 'byId'], state.jasonApi.resourceObjects)
+            : pipe(
+                  pathOr({}, [key, 'byId']),
+                  props(ids),
+                  reject(isUndefined)
+              )(state.jasonApi.resourceObjects);
 
-    const resourceObjectsArray = R.values(resourceObjects);
+    const resourceObjectsArray = values(resourceObjects);
 
     return expand
         ? resourceObjectsArray
@@ -68,13 +60,12 @@ export const getResourceObjects = (
  * @param metaKey
  */
 export const getResourceObjectsMeta = (
-    state: JasonApiState,
     resourceType: string,
     metaKey: string | null = null
-) =>
+) => (state: StateWithJasonApi) =>
     metaKey === null
-        ? R.path([resourceType, 'meta'], state)
-        : R.path([resourceType, 'meta', metaKey], state);
+        ? path([resourceType, 'meta'], state.jasonApi.resourceObjects)
+        : path([resourceType, 'meta', metaKey], state.jasonApi.resourceObjects);
 
 /**
  * Grab an Resource Object's meta data from the state
@@ -85,14 +76,19 @@ export const getResourceObjectsMeta = (
  * @param metaKey
  */
 export const getResourceObjectMeta = (
-    state: JasonApiState,
     resourceType: string,
     resourceId: string,
     metaKey: string | null = null
-) =>
+) => (state: StateWithJasonApi) =>
     metaKey === null
-        ? R.path([resourceType, 'byId', resourceId, 'meta'], state)
-        : R.path([resourceType, 'byId', resourceId, 'meta', metaKey], state);
+        ? path(
+              [resourceType, 'byId', resourceId, 'meta'],
+              state.jasonApi.resourceObjects
+          )
+        : path(
+              [resourceType, 'byId', resourceId, 'meta', metaKey],
+              state.jasonApi.resourceObjects
+          );
 
 /**
  * Get a cached Query
@@ -102,21 +98,20 @@ export const getResourceObjectMeta = (
  * @param expandResourceObjects
  */
 export const getCachedQuery = (
-    state: JasonApiState,
     key: string,
     expandResourceObjects: boolean = false
-): Response | undefined => {
-    const cachedQuery = R.path(['_cachedQueries', key], state);
+) => (state: StateWithJasonApi): Response | undefined => {
+    const cachedQuery = state.jasonApi.queries[key];
 
-    if (!expandResourceObjects || !cachedQuery) {
+    if (!expandResourceObjects || !cachedQuery || !cachedQuery.data) {
         return cachedQuery;
     }
 
-    const expandResourceObject = (state: JasonApiState) => (
+    const expandResourceObject = (state: StateWithJasonApi) => (
         resourceObject: ResourceObject
-    ) => getResourceObject(state, resourceObject.type, resourceObject.id!);
+    ) => getResourceObject(resourceObject.type, resourceObject.id)(state);
 
     const expandAll = mapOrOnce(expandResourceObject(state));
 
-    return R.over(R.lensProp('data'), expandAll, cachedQuery);
+    return over(lensProp('data'), expandAll, cachedQuery);
 };

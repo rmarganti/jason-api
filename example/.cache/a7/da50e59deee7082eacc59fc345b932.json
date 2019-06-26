@@ -1,0 +1,255 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./internal/_curry3",
+            "loc": { "line": 1, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/internal/_curry3.js"
+        },
+        {
+            "name": "./internal/_has",
+            "loc": { "line": 2, "column": 17 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/internal/_has.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _curry = _interopRequireDefault(require(\"./internal/_curry3\"));\n\nvar _has2 = _interopRequireDefault(require(\"./internal/_has\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * If the given, non-null object has an own property with the specified name,\n * returns the value of that property. Otherwise returns the provided default\n * value.\n *\n * @func\n * @memberOf R\n * @since v0.6.0\n * @category Object\n * @sig a -> String -> Object -> a\n * @param {*} val The default value.\n * @param {String} p The name of the property to return.\n * @param {Object} obj The object to query.\n * @return {*} The value of given property of the supplied object or the default value.\n * @example\n *\n *      var alice = {\n *        name: 'ALICE',\n *        age: 101\n *      };\n *      var favorite = R.prop('favoriteLibrary');\n *      var favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');\n *\n *      favorite(alice);  //=> undefined\n *      favoriteWithDefault(alice);  //=> 'Ramda'\n */\nvar propOr =\n/*#__PURE__*/\n(0, _curry.default)(function propOr(val, p, obj) {\n  return obj != null && (0, _has2.default)(p, obj) ? obj[p] : val;\n});\nvar _default = propOr;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 10, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 2, "column": 0 }
+                },
+                {
+                    "generated": { "line": 14, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 4, "column": 0 }
+                },
+                {
+                    "generated": { "line": 40, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 0 }
+                },
+                {
+                    "name": "propOr",
+                    "generated": { "line": 40, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 4 }
+                },
+                {
+                    "generated": { "line": 40, "column": 10 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 10 }
+                },
+                {
+                    "generated": { "line": 41, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 13 }
+                },
+                {
+                    "generated": { "line": 42, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 26 }
+                },
+                {
+                    "generated": { "line": 42, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 34 }
+                },
+                {
+                    "name": "propOr",
+                    "generated": { "line": 42, "column": 29 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 43 }
+                },
+                {
+                    "generated": { "line": 42, "column": 35 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 34 }
+                },
+                {
+                    "name": "val",
+                    "generated": { "line": 42, "column": 36 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 50 }
+                },
+                {
+                    "generated": { "line": 42, "column": 39 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 34 }
+                },
+                {
+                    "name": "p",
+                    "generated": { "line": 42, "column": 41 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 55 }
+                },
+                {
+                    "generated": { "line": 42, "column": 42 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 34 }
+                },
+                {
+                    "name": "obj",
+                    "generated": { "line": 42, "column": 44 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 58 }
+                },
+                {
+                    "generated": { "line": 42, "column": 47 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 34 }
+                },
+                {
+                    "generated": { "line": 42, "column": 49 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 63 }
+                },
+                {
+                    "generated": { "line": 43, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 2 }
+                },
+                {
+                    "name": "obj",
+                    "generated": { "line": 43, "column": 9 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 9 }
+                },
+                {
+                    "generated": { "line": 43, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 12 }
+                },
+                {
+                    "generated": { "line": 43, "column": 16 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 16 }
+                },
+                {
+                    "generated": { "line": 43, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 9 }
+                },
+                {
+                    "generated": { "line": 43, "column": 24 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 24 }
+                },
+                {
+                    "name": "p",
+                    "generated": { "line": 43, "column": 43 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 29 }
+                },
+                {
+                    "generated": { "line": 43, "column": 44 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 24 }
+                },
+                {
+                    "name": "obj",
+                    "generated": { "line": 43, "column": 46 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 32 }
+                },
+                {
+                    "generated": { "line": 43, "column": 49 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 24 }
+                },
+                {
+                    "generated": { "line": 43, "column": 50 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 9 }
+                },
+                {
+                    "name": "obj",
+                    "generated": { "line": 43, "column": 53 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 39 }
+                },
+                {
+                    "generated": { "line": 43, "column": 56 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 42 }
+                },
+                {
+                    "name": "p",
+                    "generated": { "line": 43, "column": 57 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 43 }
+                },
+                {
+                    "generated": { "line": 43, "column": 58 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 42 }
+                },
+                {
+                    "generated": { "line": 43, "column": 59 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 9 }
+                },
+                {
+                    "name": "val",
+                    "generated": { "line": 43, "column": 62 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 48 }
+                },
+                {
+                    "generated": { "line": 43, "column": 65 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 31, "column": 2 }
+                },
+                {
+                    "generated": { "line": 44, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 32, "column": 1 }
+                },
+                {
+                    "generated": { "line": 44, "column": 1 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 26 }
+                },
+                {
+                    "generated": { "line": 44, "column": 2 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 30, "column": 0 }
+                },
+                {
+                    "name": "propOr",
+                    "generated": { "line": 45, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js",
+                    "original": { "line": 33, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/propOr.js": "import _curry3 from './internal/_curry3';\nimport _has from './internal/_has';\n\n/**\n * If the given, non-null object has an own property with the specified name,\n * returns the value of that property. Otherwise returns the provided default\n * value.\n *\n * @func\n * @memberOf R\n * @since v0.6.0\n * @category Object\n * @sig a -> String -> Object -> a\n * @param {*} val The default value.\n * @param {String} p The name of the property to return.\n * @param {Object} obj The object to query.\n * @return {*} The value of given property of the supplied object or the default value.\n * @example\n *\n *      var alice = {\n *        name: 'ALICE',\n *        age: 101\n *      };\n *      var favorite = R.prop('favoriteLibrary');\n *      var favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');\n *\n *      favorite(alice);  //=> undefined\n *      favoriteWithDefault(alice);  //=> 'Ramda'\n */\nvar propOr = /*#__PURE__*/_curry3(function propOr(val, p, obj) {\n  return obj != null && _has(p, obj) ? obj[p] : val;\n});\nexport default propOr;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "0031a8a53eb62b630fdd441e12aaaf6e",
+    "cacheData": { "env": {} }
+}

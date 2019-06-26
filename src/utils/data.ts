@@ -1,10 +1,7 @@
 import {
     append,
-    compose,
     concat,
-    curry,
     curryN,
-    evolve,
     ifElse,
     flip,
     has,
@@ -18,7 +15,12 @@ import {
     pipe,
     prop,
 } from 'ramda';
-import { isUndefined } from 'util';
+
+/**
+ * Type guard that asserts that a value is `undefined`.
+ */
+export const isUndefined = (value: unknown): value is undefined =>
+    typeof value === 'undefined';
 
 /**
  * Ensure the given value is an array. If not,
@@ -26,11 +28,10 @@ import { isUndefined } from 'util';
  *
  * @param value
  */
-export const ensureArray = (value: any) =>
-    Array.isArray(value) ? value : [value];
+export const ensureArray = ifElse(Array.isArray, identity, value => [value]);
 
 /**
- * Ramda's mergeDeepRight with paramater order flipped.
+ * Ramda's mergeDeepRight with parameter order flipped.
  */
 export const reverseMergeDeepLeft = flip(mergeDeepRight);
 
@@ -68,7 +69,7 @@ export const simplifyResourceObject = ifElse(
 );
 
 /**
- * Simplifiy a single Resource Object or array of
+ * Simplify a single Resource Object or array of
  * Resource Objects to only its/their ID/ID's
  *
  * a -> a
@@ -92,9 +93,8 @@ export const simplifyJsonApi = pipe(
  * @param object
  */
 export const hashObject = (object: any): string => {
-    const stringified = JSON.stringify(
-        object,
-        (key, value) => (typeof value === 'function' ? value.toString() : value)
+    const stringified = JSON.stringify(object, (_, value) =>
+        typeof value === 'function' ? value.toString() : value
     );
 
     let hash = 0,

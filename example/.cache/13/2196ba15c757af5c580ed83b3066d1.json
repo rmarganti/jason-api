@@ -1,0 +1,211 @@
+{
+    "id": "../src/redux/hooks/useCollection.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "react-redux",
+            "loc": { "line": 1, "column": 28 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/hooks/useCollection.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/react-redux/es/index.js"
+        },
+        {
+            "name": "../selectors",
+            "loc": { "line": 2, "column": 35 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/hooks/useCollection.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/selectors.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.useCollection = void 0;\n\nvar _reactRedux = require(\"react-redux\");\n\nvar _selectors = require(\"../selectors\");\n\nvar useCollection = function useCollection(resourceType, resourceIds, expandResourceObjects) {\n  return (0, _reactRedux.useSelector)((0, _selectors.getResourceObjects)(resourceType, resourceIds, expandResourceObjects));\n};\n\nexports.useCollection = useCollection;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 13 },
+                    "generated": { "line": 12, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 26 },
+                    "generated": { "line": 12, "column": 17 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 29 },
+                    "generated": { "line": 12, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 13 },
+                    "generated": { "line": 12, "column": 29 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 29 },
+                    "generated": { "line": 12, "column": 42 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 4 },
+                    "generated": { "line": 12, "column": 43 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 29 },
+                    "generated": { "line": 12, "column": 55 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 12, "column": 57 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 29 },
+                    "generated": { "line": 12, "column": 68 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 4 },
+                    "generated": { "line": 12, "column": 70 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 29 },
+                    "generated": { "line": 12, "column": 91 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 35 },
+                    "generated": { "line": 12, "column": 93 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 4 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 4 },
+                    "generated": { "line": 13, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 8 },
+                    "generated": { "line": 13, "column": 38 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 27 },
+                    "generated": { "line": 13, "column": 73 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 8 },
+                    "generated": { "line": 13, "column": 85 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 41 },
+                    "generated": { "line": 13, "column": 87 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 8 },
+                    "generated": { "line": 13, "column": 98 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 54 },
+                    "generated": { "line": 13, "column": 100 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 8 },
+                    "generated": { "line": 13, "column": 121 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 4 },
+                    "generated": { "line": 13, "column": 122 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 4 },
+                    "generated": { "line": 13, "column": 123 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 5 },
+                    "generated": { "line": 14, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useCollection.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 14, "column": 1 }
+                }
+            ],
+            "sources": {
+                "../src/redux/hooks/useCollection.ts": "import { useSelector } from 'react-redux';\nimport { ResourceObject } from 'ts-json-api/types';\n\nimport { getResourceObjects } from '../selectors';\n\nexport const useCollection = <T extends ResourceObject = ResourceObject>(\n    resourceType: string,\n    resourceIds?: string[],\n    expandResourceObjects?: boolean\n): T[] =>\n    useSelector(\n        getResourceObjects(resourceType, resourceIds, expandResourceObjects)\n    );\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "d966db598144e1def76ad52286e51012",
+    "cacheData": { "env": {} }
+}

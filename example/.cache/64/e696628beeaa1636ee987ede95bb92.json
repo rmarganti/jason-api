@@ -1,0 +1,39 @@
+{
+    "id": "node_modules/core-js/internals/is-pure.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/core-js/package.json",
+            "includedInParent": true,
+            "mtime": 1558467224000
+        }
+    ],
+    "generated": { "js": "module.exports = false;\n" },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "node_modules/core-js/internals/is-pure.js",
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 1, "column": 0 }
+                },
+                {
+                    "source": "node_modules/core-js/internals/is-pure.js",
+                    "original": { "line": 2, "column": 0 },
+                    "generated": { "line": 2, "column": 0 }
+                }
+            ],
+            "sources": {
+                "node_modules/core-js/internals/is-pure.js": "module.exports = false;\n"
+            },
+            "lineCount": 2
+        }
+    },
+    "error": null,
+    "hash": "ca0ce11ea1feaf15ac5248160bf53477",
+    "cacheData": { "env": {} }
+}

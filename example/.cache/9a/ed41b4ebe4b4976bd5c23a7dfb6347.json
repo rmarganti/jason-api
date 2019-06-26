@@ -1,0 +1,475 @@
+{
+    "id": "../src/index.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "ramda",
+            "loc": { "line": 1, "column": 30 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ramda/es/index.js"
+        },
+        {
+            "name": "./redux/actions",
+            "loc": { "line": 2, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/actions/index.ts"
+        },
+        {
+            "name": "./redux/hooks",
+            "loc": { "line": 3, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/hooks/index.ts"
+        },
+        {
+            "name": "./redux/middleware",
+            "loc": { "line": 4, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/middleware.ts"
+        },
+        {
+            "name": "./redux/selectors",
+            "loc": { "line": 5, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/selectors.ts"
+        },
+        {
+            "name": "./redux/reducer",
+            "loc": { "line": 6, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/index.ts"
+        },
+        {
+            "name": "./types",
+            "loc": { "line": 7, "column": 14 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/types/index.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar _exportNames = {\n  compose: true,\n  pipe: true\n};\nObject.defineProperty(exports, \"compose\", {\n  enumerable: true,\n  get: function () {\n    return _ramda.compose;\n  }\n});\nObject.defineProperty(exports, \"pipe\", {\n  enumerable: true,\n  get: function () {\n    return _ramda.pipe;\n  }\n});\n\nvar _ramda = require(\"ramda\");\n\nvar _actions = require(\"./redux/actions\");\n\nObject.keys(_actions).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _actions[key];\n    }\n  });\n});\n\nvar _hooks = require(\"./redux/hooks\");\n\nObject.keys(_hooks).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _hooks[key];\n    }\n  });\n});\n\nvar _middleware = require(\"./redux/middleware\");\n\nObject.keys(_middleware).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _middleware[key];\n    }\n  });\n});\n\nvar _selectors = require(\"./redux/selectors\");\n\nObject.keys(_selectors).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _selectors[key];\n    }\n  });\n});\n\nvar _reducer = require(\"./redux/reducer\");\n\nObject.keys(_reducer).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _reducer[key];\n    }\n  });\n});\n\nvar _types = require(\"./types\");\n\nObject.keys(_types).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _types[key];\n    }\n  });\n});"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 23, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 25, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 27, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 28, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 29, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 30, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 31, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 32, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 33, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 34, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 35, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 36, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 38, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 40, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 41, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 42, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 43, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 44, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 45, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 46, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 47, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 48, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 49, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 51, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 53, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 54, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 55, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 56, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 57, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 58, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 59, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 60, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 61, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 62, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 64, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 66, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 67, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 68, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 69, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 70, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 71, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 72, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 73, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 74, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 75, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 77, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 79, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 80, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 81, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 82, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 83, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 84, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 85, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 86, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 87, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 88, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 90, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 92, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 93, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 94, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 95, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 96, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 97, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 98, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 99, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 100, "column": 0 }
+                },
+                {
+                    "source": "../src/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 101, "column": 0 }
+                }
+            ],
+            "sources": {
+                "../src/index.ts": "export { compose, pipe } from 'ramda';\n\nexport * from './redux/actions';\nexport * from './redux/hooks';\nexport * from './redux/middleware';\nexport * from './redux/selectors';\nexport * from './redux/reducer';\nexport * from './types';\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "5b19971dcd5b84df2b52a07144cfd7c8",
+    "cacheData": { "env": {} }
+}

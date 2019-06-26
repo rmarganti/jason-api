@@ -1,0 +1,2017 @@
+{
+    "id": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "../../actions/actionTypes",
+            "loc": { "line": 1, "column": 29 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/resourceObjects/resourceObjects.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/actions/actionTypes.ts"
+        },
+        {
+            "name": "../state-transformer",
+            "loc": { "line": 2, "column": 308 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/resourceObjects/resourceObjects.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/state-transformer.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar actionTypes = _interopRequireWildcard(require(\"../../actions/actionTypes\"));\n\nvar _stateTransformer = require(\"../state-transformer\");\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }\n\nvar _default = function _default(state, action) {\n  if (state === void 0) {\n    state = {};\n  }\n\n  if (!action) {\n    return state;\n  }\n\n  switch (action.type) {\n    case actionTypes.REQUEST_SUCCESS:\n      return (0, _stateTransformer.insertOrUpdateResourceObjects)(action.payload.response)(state);\n\n    case actionTypes.LOAD_DATA:\n      return (0, _stateTransformer.insertOrUpdateResourceObjects)(action.payload)(state);\n\n    case actionTypes.ADD_RELATIONSHIP:\n      return (0, _stateTransformer.addRelationshipToResourceObject)(action.payload.resourceType, action.payload.resourceId, action.payload.relationshipKey, action.payload.relationshipObject)(state);\n\n    case actionTypes.REMOVE_RELATIONSHIP:\n      return (0, _stateTransformer.removeRelationshipFromResourceObject)(action.payload.resourceType, action.payload.resourceId, action.payload.relationshipKey, action.payload.relationshipId)(state);\n\n    case actionTypes.SET_RELATIONSHIP:\n      return (0, _stateTransformer.setRelationshipOnResourceObject)(action.payload.resourceType, action.payload.resourceId, action.payload.relationshipKey, action.payload.relationshipObject)(state);\n\n    case actionTypes.CLEAR_RELATIONSHIP:\n      return (0, _stateTransformer.clearRelationshipOnResourceObject)(action.payload.resourceType, action.payload.resourceId, action.payload.relationshipKey)(state);\n\n    case actionTypes.UPDATE_RESOURCE_OBJECTS_META:\n      return (0, _stateTransformer.updateResourceObjectsMeta)(action.payload.resourceType, action.payload.metaKey, action.payload.value)(state);\n\n    case actionTypes.UPDATE_RESOURCE_OBJECT_META:\n      return (0, _stateTransformer.updateResourceObjectMeta)(action.payload.resourceType, action.payload.resourceId, action.payload.metaKey, action.payload.value)(state);\n\n    case actionTypes.UPDATE_RESOURCE_OBJECT:\n      return (0, _stateTransformer.updateResourceObject)(action.payload.resourceType, action.payload.resourceId, action.payload.data)(state);\n\n    case actionTypes.REMOVE_RESOURCE_OBJECT:\n      return (0, _stateTransformer.removeResourceObject)(action.payload.resourceType, action.payload.resourceId)(state);\n\n    case actionTypes.CLEAR_RESOURCE_OBJECT_TYPE:\n      return (0, _stateTransformer.clearResourceObjectType)(action.payload.resourceType)(state);\n\n    default:\n      return state;\n  }\n};\n\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 15 },
+                    "generated": { "line": 14, "column": 15 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 14, "column": 33 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 15 },
+                    "generated": { "line": 14, "column": 38 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 50 },
+                    "generated": { "line": 14, "column": 40 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 15 },
+                    "generated": { "line": 14, "column": 46 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 73 },
+                    "generated": { "line": 14, "column": 48 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 6 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 16 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 22 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 15, "column": 24 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 16, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 16, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 16, "column": 12 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 16, "column": 14 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 48 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 4 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 8 },
+                    "generated": { "line": 19, "column": 6 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 9 },
+                    "generated": { "line": 19, "column": 7 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 4 },
+                    "generated": { "line": 19, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 17 },
+                    "generated": { "line": 19, "column": 15 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 8 },
+                    "generated": { "line": 20, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 15 },
+                    "generated": { "line": 20, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 8 },
+                    "generated": { "line": 20, "column": 16 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 5 },
+                    "generated": { "line": 21, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 4 },
+                    "generated": { "line": 23, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 12 },
+                    "generated": { "line": 23, "column": 10 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 18 },
+                    "generated": { "line": 23, "column": 16 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 19 },
+                    "generated": { "line": 23, "column": 17 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 4 },
+                    "generated": { "line": 23, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 23, "column": 8 },
+                    "generated": { "line": 24, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 23, "column": 13 },
+                    "generated": { "line": 24, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 23, "column": 24 },
+                    "generated": { "line": 24, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 23, "column": 25 },
+                    "generated": { "line": 24, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 23, "column": 8 },
+                    "generated": { "line": 24, "column": 36 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 12 },
+                    "generated": { "line": 25, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 19 },
+                    "generated": { "line": 25, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 49 },
+                    "generated": { "line": 25, "column": 66 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 55 },
+                    "generated": { "line": 25, "column": 72 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 56 },
+                    "generated": { "line": 25, "column": 73 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 49 },
+                    "generated": { "line": 25, "column": 80 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 64 },
+                    "generated": { "line": 25, "column": 81 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 19 },
+                    "generated": { "line": 25, "column": 89 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 25, "column": 16 },
+                    "generated": { "line": 25, "column": 91 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 19 },
+                    "generated": { "line": 25, "column": 96 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 12 },
+                    "generated": { "line": 25, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 28, "column": 8 },
+                    "generated": { "line": 27, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 28, "column": 13 },
+                    "generated": { "line": 27, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 28, "column": 24 },
+                    "generated": { "line": 27, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 28, "column": 25 },
+                    "generated": { "line": 27, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 28, "column": 8 },
+                    "generated": { "line": 27, "column": 30 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 12 },
+                    "generated": { "line": 28, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 19 },
+                    "generated": { "line": 28, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 49 },
+                    "generated": { "line": 28, "column": 66 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 55 },
+                    "generated": { "line": 28, "column": 72 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 56 },
+                    "generated": { "line": 28, "column": 73 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 19 },
+                    "generated": { "line": 28, "column": 80 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 65 },
+                    "generated": { "line": 28, "column": 82 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 19 },
+                    "generated": { "line": 28, "column": 87 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 29, "column": 12 },
+                    "generated": { "line": 28, "column": 88 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 31, "column": 8 },
+                    "generated": { "line": 30, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 31, "column": 13 },
+                    "generated": { "line": 30, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 31, "column": 24 },
+                    "generated": { "line": 30, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 31, "column": 25 },
+                    "generated": { "line": 30, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 31, "column": 8 },
+                    "generated": { "line": 30, "column": 37 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 12 },
+                    "generated": { "line": 31, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 33, "column": 16 },
+                    "generated": { "line": 31, "column": 68 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 33, "column": 22 },
+                    "generated": { "line": 31, "column": 74 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 33, "column": 23 },
+                    "generated": { "line": 31, "column": 75 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 33, "column": 16 },
+                    "generated": { "line": 31, "column": 82 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 33, "column": 31 },
+                    "generated": { "line": 31, "column": 83 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 95 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 34, "column": 16 },
+                    "generated": { "line": 31, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 34, "column": 22 },
+                    "generated": { "line": 31, "column": 103 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 34, "column": 23 },
+                    "generated": { "line": 31, "column": 104 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 34, "column": 16 },
+                    "generated": { "line": 31, "column": 111 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 34, "column": 31 },
+                    "generated": { "line": 31, "column": 112 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 122 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 35, "column": 16 },
+                    "generated": { "line": 31, "column": 124 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 35, "column": 22 },
+                    "generated": { "line": 31, "column": 130 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 35, "column": 23 },
+                    "generated": { "line": 31, "column": 131 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 35, "column": 16 },
+                    "generated": { "line": 31, "column": 138 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 35, "column": 31 },
+                    "generated": { "line": 31, "column": 139 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 154 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 36, "column": 16 },
+                    "generated": { "line": 31, "column": 156 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 36, "column": 22 },
+                    "generated": { "line": 31, "column": 162 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 36, "column": 23 },
+                    "generated": { "line": 31, "column": 163 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 36, "column": 16 },
+                    "generated": { "line": 31, "column": 170 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 36, "column": 31 },
+                    "generated": { "line": 31, "column": 171 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 189 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 37, "column": 14 },
+                    "generated": { "line": 31, "column": 191 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 19 },
+                    "generated": { "line": 31, "column": 196 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 32, "column": 12 },
+                    "generated": { "line": 31, "column": 197 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 39, "column": 8 },
+                    "generated": { "line": 33, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 39, "column": 13 },
+                    "generated": { "line": 33, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 39, "column": 24 },
+                    "generated": { "line": 33, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 39, "column": 25 },
+                    "generated": { "line": 33, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 39, "column": 8 },
+                    "generated": { "line": 33, "column": 40 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 12 },
+                    "generated": { "line": 34, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 41, "column": 16 },
+                    "generated": { "line": 34, "column": 73 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 41, "column": 22 },
+                    "generated": { "line": 34, "column": 79 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 41, "column": 23 },
+                    "generated": { "line": 34, "column": 80 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 41, "column": 16 },
+                    "generated": { "line": 34, "column": 87 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 41, "column": 31 },
+                    "generated": { "line": 34, "column": 88 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 100 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 42, "column": 16 },
+                    "generated": { "line": 34, "column": 102 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 42, "column": 22 },
+                    "generated": { "line": 34, "column": 108 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 42, "column": 23 },
+                    "generated": { "line": 34, "column": 109 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 42, "column": 16 },
+                    "generated": { "line": 34, "column": 116 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 42, "column": 31 },
+                    "generated": { "line": 34, "column": 117 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 127 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 43, "column": 16 },
+                    "generated": { "line": 34, "column": 129 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 43, "column": 22 },
+                    "generated": { "line": 34, "column": 135 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 43, "column": 23 },
+                    "generated": { "line": 34, "column": 136 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 43, "column": 16 },
+                    "generated": { "line": 34, "column": 143 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 43, "column": 31 },
+                    "generated": { "line": 34, "column": 144 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 159 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 44, "column": 16 },
+                    "generated": { "line": 34, "column": 161 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 44, "column": 22 },
+                    "generated": { "line": 34, "column": 167 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 44, "column": 23 },
+                    "generated": { "line": 34, "column": 168 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 44, "column": 16 },
+                    "generated": { "line": 34, "column": 175 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 44, "column": 31 },
+                    "generated": { "line": 34, "column": 176 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 190 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 45, "column": 14 },
+                    "generated": { "line": 34, "column": 192 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 19 },
+                    "generated": { "line": 34, "column": 197 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 40, "column": 12 },
+                    "generated": { "line": 34, "column": 198 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 47, "column": 8 },
+                    "generated": { "line": 36, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 47, "column": 13 },
+                    "generated": { "line": 36, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 47, "column": 24 },
+                    "generated": { "line": 36, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 47, "column": 25 },
+                    "generated": { "line": 36, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 47, "column": 8 },
+                    "generated": { "line": 36, "column": 37 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 12 },
+                    "generated": { "line": 37, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 49, "column": 16 },
+                    "generated": { "line": 37, "column": 68 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 49, "column": 22 },
+                    "generated": { "line": 37, "column": 74 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 49, "column": 23 },
+                    "generated": { "line": 37, "column": 75 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 49, "column": 16 },
+                    "generated": { "line": 37, "column": 82 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 49, "column": 31 },
+                    "generated": { "line": 37, "column": 83 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 95 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 50, "column": 16 },
+                    "generated": { "line": 37, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 50, "column": 22 },
+                    "generated": { "line": 37, "column": 103 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 50, "column": 23 },
+                    "generated": { "line": 37, "column": 104 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 50, "column": 16 },
+                    "generated": { "line": 37, "column": 111 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 50, "column": 31 },
+                    "generated": { "line": 37, "column": 112 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 122 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 51, "column": 16 },
+                    "generated": { "line": 37, "column": 124 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 51, "column": 22 },
+                    "generated": { "line": 37, "column": 130 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 51, "column": 23 },
+                    "generated": { "line": 37, "column": 131 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 51, "column": 16 },
+                    "generated": { "line": 37, "column": 138 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 51, "column": 31 },
+                    "generated": { "line": 37, "column": 139 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 154 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 52, "column": 16 },
+                    "generated": { "line": 37, "column": 156 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 52, "column": 22 },
+                    "generated": { "line": 37, "column": 162 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 52, "column": 23 },
+                    "generated": { "line": 37, "column": 163 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 52, "column": 16 },
+                    "generated": { "line": 37, "column": 170 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 52, "column": 31 },
+                    "generated": { "line": 37, "column": 171 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 189 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 53, "column": 14 },
+                    "generated": { "line": 37, "column": 191 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 19 },
+                    "generated": { "line": 37, "column": 196 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 48, "column": 12 },
+                    "generated": { "line": 37, "column": 197 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 55, "column": 8 },
+                    "generated": { "line": 39, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 55, "column": 13 },
+                    "generated": { "line": 39, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 55, "column": 24 },
+                    "generated": { "line": 39, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 55, "column": 25 },
+                    "generated": { "line": 39, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 55, "column": 8 },
+                    "generated": { "line": 39, "column": 39 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 12 },
+                    "generated": { "line": 40, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 19 },
+                    "generated": { "line": 40, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 57, "column": 16 },
+                    "generated": { "line": 40, "column": 70 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 57, "column": 22 },
+                    "generated": { "line": 40, "column": 76 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 57, "column": 23 },
+                    "generated": { "line": 40, "column": 77 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 57, "column": 16 },
+                    "generated": { "line": 40, "column": 84 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 57, "column": 31 },
+                    "generated": { "line": 40, "column": 85 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 19 },
+                    "generated": { "line": 40, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 58, "column": 16 },
+                    "generated": { "line": 40, "column": 99 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 58, "column": 22 },
+                    "generated": { "line": 40, "column": 105 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 58, "column": 23 },
+                    "generated": { "line": 40, "column": 106 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 58, "column": 16 },
+                    "generated": { "line": 40, "column": 113 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 58, "column": 31 },
+                    "generated": { "line": 40, "column": 114 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 19 },
+                    "generated": { "line": 40, "column": 124 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 59, "column": 16 },
+                    "generated": { "line": 40, "column": 126 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 59, "column": 22 },
+                    "generated": { "line": 40, "column": 132 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 59, "column": 23 },
+                    "generated": { "line": 40, "column": 133 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 59, "column": 16 },
+                    "generated": { "line": 40, "column": 140 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 59, "column": 31 },
+                    "generated": { "line": 40, "column": 141 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 19 },
+                    "generated": { "line": 40, "column": 156 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 60, "column": 14 },
+                    "generated": { "line": 40, "column": 158 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 19 },
+                    "generated": { "line": 40, "column": 163 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 56, "column": 12 },
+                    "generated": { "line": 40, "column": 164 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 62, "column": 8 },
+                    "generated": { "line": 42, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 62, "column": 13 },
+                    "generated": { "line": 42, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 62, "column": 24 },
+                    "generated": { "line": 42, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 62, "column": 25 },
+                    "generated": { "line": 42, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 62, "column": 8 },
+                    "generated": { "line": 42, "column": 49 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 12 },
+                    "generated": { "line": 43, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 19 },
+                    "generated": { "line": 43, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 64, "column": 16 },
+                    "generated": { "line": 43, "column": 62 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 64, "column": 22 },
+                    "generated": { "line": 43, "column": 68 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 64, "column": 23 },
+                    "generated": { "line": 43, "column": 69 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 64, "column": 16 },
+                    "generated": { "line": 43, "column": 76 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 64, "column": 31 },
+                    "generated": { "line": 43, "column": 77 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 19 },
+                    "generated": { "line": 43, "column": 89 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 65, "column": 16 },
+                    "generated": { "line": 43, "column": 91 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 65, "column": 22 },
+                    "generated": { "line": 43, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 65, "column": 23 },
+                    "generated": { "line": 43, "column": 98 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 65, "column": 16 },
+                    "generated": { "line": 43, "column": 105 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 65, "column": 31 },
+                    "generated": { "line": 43, "column": 106 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 19 },
+                    "generated": { "line": 43, "column": 113 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 66, "column": 16 },
+                    "generated": { "line": 43, "column": 115 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 66, "column": 22 },
+                    "generated": { "line": 43, "column": 121 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 66, "column": 23 },
+                    "generated": { "line": 43, "column": 122 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 66, "column": 16 },
+                    "generated": { "line": 43, "column": 129 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 66, "column": 31 },
+                    "generated": { "line": 43, "column": 130 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 19 },
+                    "generated": { "line": 43, "column": 135 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 67, "column": 14 },
+                    "generated": { "line": 43, "column": 137 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 19 },
+                    "generated": { "line": 43, "column": 142 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 63, "column": 12 },
+                    "generated": { "line": 43, "column": 143 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 69, "column": 8 },
+                    "generated": { "line": 45, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 69, "column": 13 },
+                    "generated": { "line": 45, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 69, "column": 24 },
+                    "generated": { "line": 45, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 69, "column": 25 },
+                    "generated": { "line": 45, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 69, "column": 8 },
+                    "generated": { "line": 45, "column": 48 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 12 },
+                    "generated": { "line": 46, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 71, "column": 16 },
+                    "generated": { "line": 46, "column": 61 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 71, "column": 22 },
+                    "generated": { "line": 46, "column": 67 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 71, "column": 23 },
+                    "generated": { "line": 46, "column": 68 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 71, "column": 16 },
+                    "generated": { "line": 46, "column": 75 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 71, "column": 31 },
+                    "generated": { "line": 46, "column": 76 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 88 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 72, "column": 16 },
+                    "generated": { "line": 46, "column": 90 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 72, "column": 22 },
+                    "generated": { "line": 46, "column": 96 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 72, "column": 23 },
+                    "generated": { "line": 46, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 72, "column": 16 },
+                    "generated": { "line": 46, "column": 104 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 72, "column": 31 },
+                    "generated": { "line": 46, "column": 105 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 115 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 73, "column": 16 },
+                    "generated": { "line": 46, "column": 117 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 73, "column": 22 },
+                    "generated": { "line": 46, "column": 123 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 73, "column": 23 },
+                    "generated": { "line": 46, "column": 124 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 73, "column": 16 },
+                    "generated": { "line": 46, "column": 131 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 73, "column": 31 },
+                    "generated": { "line": 46, "column": 132 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 139 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 74, "column": 16 },
+                    "generated": { "line": 46, "column": 141 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 74, "column": 22 },
+                    "generated": { "line": 46, "column": 147 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 74, "column": 23 },
+                    "generated": { "line": 46, "column": 148 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 74, "column": 16 },
+                    "generated": { "line": 46, "column": 155 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 74, "column": 31 },
+                    "generated": { "line": 46, "column": 156 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 161 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 75, "column": 14 },
+                    "generated": { "line": 46, "column": 163 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 19 },
+                    "generated": { "line": 46, "column": 168 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 70, "column": 12 },
+                    "generated": { "line": 46, "column": 169 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 77, "column": 8 },
+                    "generated": { "line": 48, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 77, "column": 13 },
+                    "generated": { "line": 48, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 77, "column": 24 },
+                    "generated": { "line": 48, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 77, "column": 25 },
+                    "generated": { "line": 48, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 77, "column": 8 },
+                    "generated": { "line": 48, "column": 43 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 12 },
+                    "generated": { "line": 49, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 19 },
+                    "generated": { "line": 49, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 79, "column": 16 },
+                    "generated": { "line": 49, "column": 57 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 79, "column": 22 },
+                    "generated": { "line": 49, "column": 63 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 79, "column": 23 },
+                    "generated": { "line": 49, "column": 64 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 79, "column": 16 },
+                    "generated": { "line": 49, "column": 71 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 79, "column": 31 },
+                    "generated": { "line": 49, "column": 72 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 19 },
+                    "generated": { "line": 49, "column": 84 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 80, "column": 16 },
+                    "generated": { "line": 49, "column": 86 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 80, "column": 22 },
+                    "generated": { "line": 49, "column": 92 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 80, "column": 23 },
+                    "generated": { "line": 49, "column": 93 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 80, "column": 16 },
+                    "generated": { "line": 49, "column": 100 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 80, "column": 31 },
+                    "generated": { "line": 49, "column": 101 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 19 },
+                    "generated": { "line": 49, "column": 111 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 81, "column": 16 },
+                    "generated": { "line": 49, "column": 113 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 81, "column": 22 },
+                    "generated": { "line": 49, "column": 119 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 81, "column": 23 },
+                    "generated": { "line": 49, "column": 120 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 81, "column": 16 },
+                    "generated": { "line": 49, "column": 127 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 81, "column": 31 },
+                    "generated": { "line": 49, "column": 128 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 19 },
+                    "generated": { "line": 49, "column": 132 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 82, "column": 14 },
+                    "generated": { "line": 49, "column": 134 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 19 },
+                    "generated": { "line": 49, "column": 139 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 78, "column": 12 },
+                    "generated": { "line": 49, "column": 140 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 84, "column": 8 },
+                    "generated": { "line": 51, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 84, "column": 13 },
+                    "generated": { "line": 51, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 84, "column": 24 },
+                    "generated": { "line": 51, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 84, "column": 25 },
+                    "generated": { "line": 51, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 84, "column": 8 },
+                    "generated": { "line": 51, "column": 43 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 12 },
+                    "generated": { "line": 52, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 19 },
+                    "generated": { "line": 52, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 86, "column": 16 },
+                    "generated": { "line": 52, "column": 57 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 86, "column": 22 },
+                    "generated": { "line": 52, "column": 63 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 86, "column": 23 },
+                    "generated": { "line": 52, "column": 64 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 86, "column": 16 },
+                    "generated": { "line": 52, "column": 71 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 86, "column": 31 },
+                    "generated": { "line": 52, "column": 72 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 19 },
+                    "generated": { "line": 52, "column": 84 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 87, "column": 16 },
+                    "generated": { "line": 52, "column": 86 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 87, "column": 22 },
+                    "generated": { "line": 52, "column": 92 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 87, "column": 23 },
+                    "generated": { "line": 52, "column": 93 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 87, "column": 16 },
+                    "generated": { "line": 52, "column": 100 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 87, "column": 31 },
+                    "generated": { "line": 52, "column": 101 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 19 },
+                    "generated": { "line": 52, "column": 111 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 88, "column": 14 },
+                    "generated": { "line": 52, "column": 113 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 19 },
+                    "generated": { "line": 52, "column": 118 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 85, "column": 12 },
+                    "generated": { "line": 52, "column": 119 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 90, "column": 8 },
+                    "generated": { "line": 54, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 90, "column": 13 },
+                    "generated": { "line": 54, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 90, "column": 24 },
+                    "generated": { "line": 54, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 90, "column": 25 },
+                    "generated": { "line": 54, "column": 21 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 90, "column": 8 },
+                    "generated": { "line": 54, "column": 47 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 12 },
+                    "generated": { "line": 55, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 19 },
+                    "generated": { "line": 55, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 43 },
+                    "generated": { "line": 55, "column": 60 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 49 },
+                    "generated": { "line": 55, "column": 66 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 50 },
+                    "generated": { "line": 55, "column": 67 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 43 },
+                    "generated": { "line": 55, "column": 74 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 58 },
+                    "generated": { "line": 55, "column": 75 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 19 },
+                    "generated": { "line": 55, "column": 87 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 72 },
+                    "generated": { "line": 55, "column": 89 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 19 },
+                    "generated": { "line": 55, "column": 94 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 91, "column": 12 },
+                    "generated": { "line": 55, "column": 95 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 93, "column": 8 },
+                    "generated": { "line": 57, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 94, "column": 12 },
+                    "generated": { "line": 58, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 94, "column": 19 },
+                    "generated": { "line": 58, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 94, "column": 12 },
+                    "generated": { "line": 58, "column": 18 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 4 },
+                    "generated": { "line": 59, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/resourceObjects/resourceObjects.ts",
+                    "name": null,
+                    "original": { "line": 96, "column": 1 },
+                    "generated": { "line": 60, "column": 0 }
+                }
+            ],
+            "sources": {
+                "../src/redux/reducer/resourceObjects/resourceObjects.ts": "import { JasonApiAction } from '../../../types/redux';\nimport { ResourceObjectsState } from '../../../types/state';\nimport * as actionTypes from '../../actions/actionTypes';\nimport {\n    addRelationshipToResourceObject,\n    clearRelationshipOnResourceObject,\n    clearResourceObjectType,\n    insertOrUpdateResourceObjects,\n    removeRelationshipFromResourceObject,\n    removeResourceObject,\n    setRelationshipOnResourceObject,\n    updateResourceObject,\n    updateResourceObjectMeta,\n    updateResourceObjectsMeta,\n} from '../state-transformer';\n\nexport default (state: ResourceObjectsState = {}, action?: JasonApiAction) => {\n    if (!action) {\n        return state;\n    }\n\n    switch (action.type) {\n        case actionTypes.REQUEST_SUCCESS:\n            return insertOrUpdateResourceObjects(action.payload.response)(\n                state\n            );\n\n        case actionTypes.LOAD_DATA:\n            return insertOrUpdateResourceObjects(action.payload)(state);\n\n        case actionTypes.ADD_RELATIONSHIP:\n            return addRelationshipToResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.relationshipKey,\n                action.payload.relationshipObject\n            )(state);\n\n        case actionTypes.REMOVE_RELATIONSHIP:\n            return removeRelationshipFromResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.relationshipKey,\n                action.payload.relationshipId\n            )(state);\n\n        case actionTypes.SET_RELATIONSHIP:\n            return setRelationshipOnResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.relationshipKey,\n                action.payload.relationshipObject\n            )(state);\n\n        case actionTypes.CLEAR_RELATIONSHIP:\n            return clearRelationshipOnResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.relationshipKey\n            )(state);\n\n        case actionTypes.UPDATE_RESOURCE_OBJECTS_META:\n            return updateResourceObjectsMeta(\n                action.payload.resourceType,\n                action.payload.metaKey,\n                action.payload.value\n            )(state);\n\n        case actionTypes.UPDATE_RESOURCE_OBJECT_META:\n            return updateResourceObjectMeta(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.metaKey,\n                action.payload.value\n            )(state);\n\n        case actionTypes.UPDATE_RESOURCE_OBJECT:\n            return updateResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId,\n                action.payload.data\n            )(state);\n\n        case actionTypes.REMOVE_RESOURCE_OBJECT:\n            return removeResourceObject(\n                action.payload.resourceType,\n                action.payload.resourceId\n            )(state);\n\n        case actionTypes.CLEAR_RESOURCE_OBJECT_TYPE:\n            return clearResourceObjectType(action.payload.resourceType)(state);\n\n        default:\n            return state;\n    }\n};\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "0fe8c5b5fbf731cf8585c7e08fcb7070",
+    "cacheData": { "env": {} }
+}

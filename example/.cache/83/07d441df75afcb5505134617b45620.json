@@ -1,0 +1,547 @@
+{
+    "id": "actions.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1558731796000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "../src",
+            "loc": { "line": 3, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/actions.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/index.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar src_1 = require(\"../src\");\n\nexports.getArticle = function (articleId) {\n  return src_1.jasonApiRequest({\n    url: \"/articles/\" + articleId\n  });\n};\n\nexports.createArticle = function (title) {\n  return src_1.jasonApiRequest({\n    method: 'post',\n    url: '/articles',\n    payload: {\n      data: {\n        type: 'articles',\n        attributes: {\n          title: title\n        }\n      }\n    }\n  });\n};"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 9 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 12 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 19 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 20 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 28 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 7, "column": 29 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 9, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 9, "column": 7 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 9, "column": 8 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 9, "column": 18 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 26 },
+                    "generated": { "line": 9, "column": 21 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 27 },
+                    "generated": { "line": 9, "column": 31 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 26 },
+                    "generated": { "line": 9, "column": 40 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 44 },
+                    "generated": { "line": 9, "column": 42 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 10, "column": 9 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 10, "column": 14 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 10, "column": 15 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 10, "column": 30 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 20 },
+                    "generated": { "line": 10, "column": 31 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 8 },
+                    "generated": { "line": 11, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 8 },
+                    "generated": { "line": 11, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 11 },
+                    "generated": { "line": 11, "column": 7 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 13 },
+                    "generated": { "line": 11, "column": 9 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 26 },
+                    "generated": { "line": 11, "column": 24 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 20 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 12, "column": 3 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 12, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 6 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 13, "column": 1 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 15, "column": 7 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 15, "column": 8 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 15, "column": 21 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 29 },
+                    "generated": { "line": 15, "column": 24 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 30 },
+                    "generated": { "line": 15, "column": 34 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 29 },
+                    "generated": { "line": 15, "column": 39 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 43 },
+                    "generated": { "line": 15, "column": 41 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 16, "column": 9 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 16, "column": 14 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 16, "column": 15 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 16, "column": 30 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 20 },
+                    "generated": { "line": 16, "column": 31 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 8 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 8 },
+                    "generated": { "line": 17, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 14 },
+                    "generated": { "line": 17, "column": 10 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 16 },
+                    "generated": { "line": 17, "column": 12 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 20 },
+                    "generated": { "line": 17, "column": 18 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 8 },
+                    "generated": { "line": 18, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 8 },
+                    "generated": { "line": 18, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 11 },
+                    "generated": { "line": 18, "column": 7 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 13 },
+                    "generated": { "line": 18, "column": 9 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 20 },
+                    "generated": { "line": 18, "column": 20 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 8 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 8 },
+                    "generated": { "line": 19, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 15 },
+                    "generated": { "line": 19, "column": 11 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 17 },
+                    "generated": { "line": 19, "column": 13 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 12 },
+                    "generated": { "line": 20, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 12 },
+                    "generated": { "line": 20, "column": 6 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 16 },
+                    "generated": { "line": 20, "column": 10 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 18 },
+                    "generated": { "line": 20, "column": 12 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 16 },
+                    "generated": { "line": 21, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 16 },
+                    "generated": { "line": 21, "column": 8 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 20 },
+                    "generated": { "line": 21, "column": 12 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 22 },
+                    "generated": { "line": 21, "column": 14 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 18 },
+                    "generated": { "line": 21, "column": 24 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 16 },
+                    "generated": { "line": 22, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 16 },
+                    "generated": { "line": 22, "column": 8 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 26 },
+                    "generated": { "line": 22, "column": 18 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 28 },
+                    "generated": { "line": 22, "column": 20 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 20 },
+                    "generated": { "line": 23, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 20 },
+                    "generated": { "line": 23, "column": 10 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 25 },
+                    "generated": { "line": 23, "column": 15 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 25 },
+                    "generated": { "line": 23, "column": 17 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 19, "column": 28 },
+                    "generated": { "line": 24, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 18 },
+                    "generated": { "line": 25, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 17 },
+                    "generated": { "line": 26, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 20 },
+                    "generated": { "line": 27, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 27, "column": 3 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 13, "column": 4 },
+                    "generated": { "line": 27, "column": 4 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 24, "column": 6 },
+                    "generated": { "line": 28, "column": 0 }
+                },
+                {
+                    "source": "actions.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 28, "column": 1 }
+                }
+            ],
+            "sources": {
+                "actions.ts": "import { jasonApiRequest } from '../src';\n\n// These create a JasonAPI meta action. They will trigger\n// the middleware, which will make the API call, normalize\n// the response, update the redux store with returned data,\n// and fire various actions during that life cycle.\nexport const getArticle = (articleId: string) =>\n    jasonApiRequest({\n        url: `/articles/${articleId}`,\n    });\n\nexport const createArticle = (title: string) =>\n    jasonApiRequest({\n        method: 'post',\n        url: '/articles',\n        payload: {\n            data: {\n                type: 'articles',\n                attributes: {\n                    title,\n                },\n            },\n        },\n    });\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "6689c1ada77eb4b0e736f8b411822917",
+    "cacheData": { "env": {} }
+}

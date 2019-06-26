@@ -1,27 +1,30 @@
-import * as configureMockStore from 'redux-mock-store';
+// 3rd Party dependencies
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+
+// // Internal dependencies
 import { middlewareFactory } from '../../src/redux/middleware';
+import { reducer as jasonApi } from '../../src/redux/reducer';
 
-const defaultStoreContent = require('../mocks/defaultStore.json');
+// Testing dependencies
+import { defaultState } from '../../__mocks__';
 
+// Mock default actions
 const startLoading = () => ({ type: 'START_LOADING' });
 const stopLoading = () => ({ type: 'STOP_LOADING' });
 const displayError = () => ({ type: 'DISPLAY_ERROR' });
 
-export const jsonApiFetchMiddleware = middlewareFactory({
+// Middleware Config
+const jasonApiMiddleware = middlewareFactory({
     startLoadingActionCreator: startLoading,
     stopLoadingActionCreator: stopLoading,
     displayErrorActionCreator: displayError,
 });
 
-export const createMockStore = configureMockStore([jsonApiFetchMiddleware]);
+// Setup the store
+const rootReducer = combineReducers({ jasonApi });
 
-export const defaultStore = createMockStore({
-    resourceObjects: defaultStoreContent,
-});
-
-export const restoreNetworkFunctions = network => {
-    ['delete', 'get', 'post', 'patch', 'request'].forEach(action => {
-        if (network[action] && network[action].restore)
-            network[action].restore();
-    });
-};
+export const defaultStore = createStore(
+    rootReducer,
+    { jasonApi: defaultState },
+    applyMiddleware(jasonApiMiddleware)
+);

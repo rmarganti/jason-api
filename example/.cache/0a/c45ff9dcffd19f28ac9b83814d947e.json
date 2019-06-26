@@ -1,0 +1,316 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./internal/_curry2",
+            "loc": { "line": 1, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/internal/_curry2.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _curry = _interopRequireDefault(require(\"./internal/_curry2\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * Returns true if its arguments are identical, false otherwise. Values are\n * identical if they reference the same memory. `NaN` is identical to `NaN`;\n * `0` and `-0` are not identical.\n *\n * @func\n * @memberOf R\n * @since v0.15.0\n * @category Relation\n * @sig a -> a -> Boolean\n * @param {*} a\n * @param {*} b\n * @return {Boolean}\n * @example\n *\n *      var o = {};\n *      R.identical(o, o); //=> true\n *      R.identical(1, 1); //=> true\n *      R.identical(1, '1'); //=> false\n *      R.identical([], []); //=> false\n *      R.identical(0, -0); //=> false\n *      R.identical(NaN, NaN); //=> true\n */\nvar identical =\n/*#__PURE__*/\n(0, _curry.default)(function identical(a, b) {\n  // SameValue algorithm\n  if (a === b) {\n    // Steps 1-5, 7-10\n    // Steps 6.b-6.e: +0 != -0\n    return a !== 0 || 1 / a === 1 / b;\n  } else {\n    // Step 6.a: NaN == NaN\n    return a !== a && b !== b;\n  }\n});\nvar _default = identical;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 12, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 3, "column": 0 }
+                },
+                {
+                    "generated": { "line": 35, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 0 }
+                },
+                {
+                    "name": "identical",
+                    "generated": { "line": 35, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 4 }
+                },
+                {
+                    "generated": { "line": 35, "column": 13 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 13 }
+                },
+                {
+                    "generated": { "line": 36, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 16 }
+                },
+                {
+                    "generated": { "line": 37, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 29 }
+                },
+                {
+                    "generated": { "line": 37, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 37 }
+                },
+                {
+                    "name": "identical",
+                    "generated": { "line": 37, "column": 29 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 46 }
+                },
+                {
+                    "generated": { "line": 37, "column": 38 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 37 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 37, "column": 39 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 56 }
+                },
+                {
+                    "generated": { "line": 37, "column": 40 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 37 }
+                },
+                {
+                    "name": "b",
+                    "generated": { "line": 37, "column": 42 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 59 }
+                },
+                {
+                    "generated": { "line": 37, "column": 43 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 37 }
+                },
+                {
+                    "generated": { "line": 37, "column": 45 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 62 }
+                },
+                {
+                    "generated": { "line": 38, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 27, "column": 2 }
+                },
+                {
+                    "generated": { "line": 39, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 2 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 39, "column": 6 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 6 }
+                },
+                {
+                    "generated": { "line": 39, "column": 7 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 7 }
+                },
+                {
+                    "name": "b",
+                    "generated": { "line": 39, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 12 }
+                },
+                {
+                    "generated": { "line": 39, "column": 13 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 2 }
+                },
+                {
+                    "generated": { "line": 39, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 15 }
+                },
+                {
+                    "generated": { "line": 40, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 29, "column": 4 }
+                },
+                {
+                    "generated": { "line": 41, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 30, "column": 4 }
+                },
+                {
+                    "generated": { "line": 42, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 4 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 42, "column": 11 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 11 }
+                },
+                {
+                    "generated": { "line": 42, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 12 }
+                },
+                {
+                    "generated": { "line": 42, "column": 17 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 17 }
+                },
+                {
+                    "generated": { "line": 42, "column": 18 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 11 }
+                },
+                {
+                    "generated": { "line": 42, "column": 22 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 22 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 42, "column": 26 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 26 }
+                },
+                {
+                    "generated": { "line": 42, "column": 27 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 22 }
+                },
+                {
+                    "generated": { "line": 42, "column": 32 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 32 }
+                },
+                {
+                    "name": "b",
+                    "generated": { "line": 42, "column": 36 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 36 }
+                },
+                {
+                    "generated": { "line": 42, "column": 37 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 31, "column": 4 }
+                },
+                {
+                    "generated": { "line": 43, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 32, "column": 3 }
+                },
+                {
+                    "generated": { "line": 43, "column": 3 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 28, "column": 2 }
+                },
+                {
+                    "generated": { "line": 43, "column": 9 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 32, "column": 9 }
+                },
+                {
+                    "generated": { "line": 44, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 33, "column": 4 }
+                },
+                {
+                    "generated": { "line": 45, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 4 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 45, "column": 11 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 11 }
+                },
+                {
+                    "generated": { "line": 45, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 12 }
+                },
+                {
+                    "name": "a",
+                    "generated": { "line": 45, "column": 17 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 17 }
+                },
+                {
+                    "generated": { "line": 45, "column": 18 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 11 }
+                },
+                {
+                    "name": "b",
+                    "generated": { "line": 45, "column": 22 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 22 }
+                },
+                {
+                    "generated": { "line": 45, "column": 23 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 23 }
+                },
+                {
+                    "name": "b",
+                    "generated": { "line": 45, "column": 28 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 28 }
+                },
+                {
+                    "generated": { "line": 45, "column": 29 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 34, "column": 4 }
+                },
+                {
+                    "generated": { "line": 46, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 35, "column": 3 }
+                },
+                {
+                    "generated": { "line": 47, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 36, "column": 1 }
+                },
+                {
+                    "generated": { "line": 47, "column": 1 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 29 }
+                },
+                {
+                    "generated": { "line": 47, "column": 2 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 26, "column": 0 }
+                },
+                {
+                    "name": "identical",
+                    "generated": { "line": 48, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/identical.js",
+                    "original": { "line": 37, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/identical.js": "import _curry2 from './internal/_curry2';\n\n/**\n * Returns true if its arguments are identical, false otherwise. Values are\n * identical if they reference the same memory. `NaN` is identical to `NaN`;\n * `0` and `-0` are not identical.\n *\n * @func\n * @memberOf R\n * @since v0.15.0\n * @category Relation\n * @sig a -> a -> Boolean\n * @param {*} a\n * @param {*} b\n * @return {Boolean}\n * @example\n *\n *      var o = {};\n *      R.identical(o, o); //=> true\n *      R.identical(1, 1); //=> true\n *      R.identical(1, '1'); //=> false\n *      R.identical([], []); //=> false\n *      R.identical(0, -0); //=> false\n *      R.identical(NaN, NaN); //=> true\n */\nvar identical = /*#__PURE__*/_curry2(function identical(a, b) {\n  // SameValue algorithm\n  if (a === b) {\n    // Steps 1-5, 7-10\n    // Steps 6.b-6.e: +0 != -0\n    return a !== 0 || 1 / a === 1 / b;\n  } else {\n    // Step 6.a: NaN == NaN\n    return a !== a && b !== b;\n  }\n});\nexport default identical;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "24e966e7142a49c5118c5e9ab0833590",
+    "cacheData": { "env": {} }
+}

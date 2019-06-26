@@ -1,13 +1,9 @@
-import {
-    connect,
-    DispatchProp,
-    InferableComponentEnhancerWithProps,
-} from 'react-redux';
-import { Attributes, Links, Relationships, ResourceObjects } from 'ts-json-api';
+import { ComponentType } from 'react';
+import { connect } from 'react-redux';
+import { ResourceObject } from 'ts-json-api';
 
-import { JasonApiState, StateWithJasonApi } from '../common-types/state';
 import { getResourceObjects } from '../redux/selectors';
-import { simplifyResourceObjects } from '../utils/data';
+import { StateWithJasonApi } from '../types/state';
 
 export interface WithCollectionOptions {
     resourceType: string;
@@ -15,26 +11,29 @@ export interface WithCollectionOptions {
     expandResourceObjects?: boolean;
 }
 
-export interface WithCollectionProps {
+export interface WithCollectionInjectedProps<
+    D extends ResourceObject = ResourceObject
+> {
+    data?: D[];
     ids?: string[];
-}
-
-export interface WithCollectionPassedProps extends DispatchProp<any> {
-    data: ResourceObjects | undefined;
 }
 
 const withCollection = ({
     resourceType,
     ids: resourceIds,
     expandResourceObjects = false,
-}: WithCollectionOptions) =>
-    connect((state: StateWithJasonApi, { ids }: WithCollectionProps) => ({
+}: WithCollectionOptions) => <
+    OriginalProps extends WithCollectionInjectedProps
+>(
+    UnwrappedComponent: ComponentType<OriginalProps>
+) =>
+    connect((state: StateWithJasonApi, { ids }: OriginalProps) => ({
         data: getResourceObjects(
-            state.resourceObjects,
+            state.jasonApi,
             resourceType,
             ids || resourceIds,
             expandResourceObjects
         ),
-    }));
+    }))(UnwrappedComponent as any);
 
 export default withCollection;

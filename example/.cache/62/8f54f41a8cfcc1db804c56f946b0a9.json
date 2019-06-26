@@ -1,0 +1,187 @@
+{
+    "id": "../src/redux/hooks/useItem.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "react-redux",
+            "loc": { "line": 1, "column": 28 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/hooks/useItem.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/react-redux/es/index.js"
+        },
+        {
+            "name": "../selectors",
+            "loc": { "line": 2, "column": 34 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/hooks/useItem.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/selectors.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.useItem = void 0;\n\nvar _reactRedux = require(\"react-redux\");\n\nvar _selectors = require(\"../selectors\");\n\nvar useItem = function useItem(resourceType, resourceId) {\n  return (0, _reactRedux.useSelector)((0, _selectors.getResourceObject)(resourceType, resourceId));\n};\n\nexports.useItem = useItem;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 13 },
+                    "generated": { "line": 12, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 20 },
+                    "generated": { "line": 12, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 12, "column": 14 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 13 },
+                    "generated": { "line": 12, "column": 23 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 12, "column": 30 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 4 },
+                    "generated": { "line": 12, "column": 31 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 12, "column": 43 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 12, "column": 45 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 12, "column": 55 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 22 },
+                    "generated": { "line": 12, "column": 57 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 20 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 20 },
+                    "generated": { "line": 13, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 32 },
+                    "generated": { "line": 13, "column": 38 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 50 },
+                    "generated": { "line": 13, "column": 72 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 32 },
+                    "generated": { "line": 13, "column": 84 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 64 },
+                    "generated": { "line": 13, "column": 86 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 32 },
+                    "generated": { "line": 13, "column": 96 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 20 },
+                    "generated": { "line": 13, "column": 97 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 20 },
+                    "generated": { "line": 13, "column": 98 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 76 },
+                    "generated": { "line": 14, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/hooks/useItem.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 14, "column": 1 }
+                }
+            ],
+            "sources": {
+                "../src/redux/hooks/useItem.ts": "import { useSelector } from 'react-redux';\nimport { ResourceObject } from 'ts-json-api/types';\n\nimport { getResourceObject } from '../selectors';\n\nexport const useItem = <T extends ResourceObject = ResourceObject>(\n    resourceType: string,\n    resourceId: string\n): T | undefined => useSelector(getResourceObject(resourceType, resourceId));\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "6df97d0f89ff3d658c5af42ae3f3cd29",
+    "cacheData": { "env": {} }
+}

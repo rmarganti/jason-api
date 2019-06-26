@@ -1,0 +1,217 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./internal/_curry2",
+            "loc": { "line": 1, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/internal/_curry2.js"
+        },
+        {
+            "name": "./equals",
+            "loc": { "line": 2, "column": 19 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/equals.js"
+        },
+        {
+            "name": "./takeLast",
+            "loc": { "line": 3, "column": 21 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/takeLast.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _curry = _interopRequireDefault(require(\"./internal/_curry2\"));\n\nvar _equals = _interopRequireDefault(require(\"./equals\"));\n\nvar _takeLast = _interopRequireDefault(require(\"./takeLast\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * Checks if a list ends with the provided values\n *\n * @func\n * @memberOf R\n * @since v0.24.0\n * @category List\n * @sig [a] -> Boolean\n * @sig String -> Boolean\n * @param {*} suffix\n * @param {*} list\n * @return {Boolean}\n * @example\n *\n *      R.endsWith('c', 'abc')                //=> true\n *      R.endsWith('b', 'abc')                //=> false\n *      R.endsWith(['c'], ['a', 'b', 'c'])    //=> true\n *      R.endsWith(['b'], ['a', 'b', 'c'])    //=> false\n */\nvar endsWith =\n/*#__PURE__*/\n(0, _curry.default)(function (suffix, list) {\n  return (0, _equals.default)((0, _takeLast.default)(suffix.length, list), suffix);\n});\nvar _default = endsWith;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 10, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 2, "column": 0 }
+                },
+                {
+                    "generated": { "line": 12, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 3, "column": 0 }
+                },
+                {
+                    "generated": { "line": 16, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 5, "column": 0 }
+                },
+                {
+                    "generated": { "line": 35, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 0 }
+                },
+                {
+                    "name": "endsWith",
+                    "generated": { "line": 35, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 4 }
+                },
+                {
+                    "generated": { "line": 35, "column": 12 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 12 }
+                },
+                {
+                    "generated": { "line": 36, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 15 }
+                },
+                {
+                    "generated": { "line": 37, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 28 }
+                },
+                {
+                    "generated": { "line": 37, "column": 20 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 36 }
+                },
+                {
+                    "name": "suffix",
+                    "generated": { "line": 37, "column": 30 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 46 }
+                },
+                {
+                    "generated": { "line": 37, "column": 36 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 36 }
+                },
+                {
+                    "name": "list",
+                    "generated": { "line": 37, "column": 38 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 54 }
+                },
+                {
+                    "generated": { "line": 37, "column": 42 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 36 }
+                },
+                {
+                    "generated": { "line": 37, "column": 44 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 60 }
+                },
+                {
+                    "generated": { "line": 38, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 2 }
+                },
+                {
+                    "generated": { "line": 38, "column": 9 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 9 }
+                },
+                {
+                    "generated": { "line": 38, "column": 30 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 16 }
+                },
+                {
+                    "name": "suffix",
+                    "generated": { "line": 38, "column": 53 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 25 }
+                },
+                {
+                    "generated": { "line": 38, "column": 59 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 31 }
+                },
+                {
+                    "name": "length",
+                    "generated": { "line": 38, "column": 60 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 32 }
+                },
+                {
+                    "generated": { "line": 38, "column": 66 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 16 }
+                },
+                {
+                    "name": "list",
+                    "generated": { "line": 38, "column": 68 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 40 }
+                },
+                {
+                    "generated": { "line": 38, "column": 72 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 16 }
+                },
+                {
+                    "generated": { "line": 38, "column": 73 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 9 }
+                },
+                {
+                    "name": "suffix",
+                    "generated": { "line": 38, "column": 75 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 47 }
+                },
+                {
+                    "generated": { "line": 38, "column": 81 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 9 }
+                },
+                {
+                    "generated": { "line": 38, "column": 82 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 25, "column": 2 }
+                },
+                {
+                    "generated": { "line": 39, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 26, "column": 1 }
+                },
+                {
+                    "generated": { "line": 39, "column": 1 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 28 }
+                },
+                {
+                    "generated": { "line": 39, "column": 2 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 24, "column": 0 }
+                },
+                {
+                    "name": "endsWith",
+                    "generated": { "line": 40, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js",
+                    "original": { "line": 27, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/endsWith.js": "import _curry2 from './internal/_curry2';\nimport equals from './equals';\nimport takeLast from './takeLast';\n\n/**\n * Checks if a list ends with the provided values\n *\n * @func\n * @memberOf R\n * @since v0.24.0\n * @category List\n * @sig [a] -> Boolean\n * @sig String -> Boolean\n * @param {*} suffix\n * @param {*} list\n * @return {Boolean}\n * @example\n *\n *      R.endsWith('c', 'abc')                //=> true\n *      R.endsWith('b', 'abc')                //=> false\n *      R.endsWith(['c'], ['a', 'b', 'c'])    //=> true\n *      R.endsWith(['b'], ['a', 'b', 'c'])    //=> false\n */\nvar endsWith = /*#__PURE__*/_curry2(function (suffix, list) {\n  return equals(takeLast(suffix.length, list), suffix);\n});\nexport default endsWith;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "36c72846c82698f70a87fe87156869ab",
+    "cacheData": { "env": {} }
+}

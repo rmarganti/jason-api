@@ -1,0 +1,141 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./memoizeWith",
+            "loc": { "line": 1, "column": 24 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/memoizeWith.js"
+        },
+        {
+            "name": "./toString",
+            "loc": { "line": 2, "column": 21 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/toString.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _memoizeWith = _interopRequireDefault(require(\"./memoizeWith\"));\n\nvar _toString = _interopRequireDefault(require(\"./toString\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * Creates a new function that, when invoked, caches the result of calling `fn`\n * for a given argument set and returns the result. Subsequent calls to the\n * memoized `fn` with the same argument set will not result in an additional\n * call to `fn`; instead, the cached result for that set of arguments will be\n * returned.\n *\n * @func\n * @memberOf R\n * @since v0.1.0\n * @category Function\n * @sig (*... -> a) -> (*... -> a)\n * @param {Function} fn The function to memoize.\n * @return {Function} Memoized version of `fn`.\n * @see R.memoizeWith\n * @deprecated since v0.25.0\n * @example\n *\n *      let count = 0;\n *      const factorial = R.memoize(n => {\n *        count += 1;\n *        return R.product(R.range(1, n + 1));\n *      });\n *      factorial(5); //=> 120\n *      factorial(5); //=> 120\n *      factorial(5); //=> 120\n *      count; //=> 1\n */\nvar memoize =\n/*#__PURE__*/\n(0, _memoizeWith.default)(function () {\n  return (0, _toString.default)(arguments);\n});\nvar _default = memoize;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 10, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 2, "column": 0 }
+                },
+                {
+                    "generated": { "line": 14, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 4, "column": 0 }
+                },
+                {
+                    "generated": { "line": 42, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 0 }
+                },
+                {
+                    "name": "memoize",
+                    "generated": { "line": 42, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 4 }
+                },
+                {
+                    "generated": { "line": 42, "column": 11 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 11 }
+                },
+                {
+                    "generated": { "line": 43, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 14 }
+                },
+                {
+                    "generated": { "line": 44, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 27 }
+                },
+                {
+                    "generated": { "line": 44, "column": 26 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 39 }
+                },
+                {
+                    "generated": { "line": 44, "column": 38 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 51 }
+                },
+                {
+                    "generated": { "line": 45, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 33, "column": 2 }
+                },
+                {
+                    "generated": { "line": 45, "column": 9 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 33, "column": 9 }
+                },
+                {
+                    "name": "arguments",
+                    "generated": { "line": 45, "column": 32 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 33, "column": 18 }
+                },
+                {
+                    "generated": { "line": 45, "column": 41 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 33, "column": 9 }
+                },
+                {
+                    "generated": { "line": 45, "column": 42 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 33, "column": 2 }
+                },
+                {
+                    "generated": { "line": 46, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 34, "column": 1 }
+                },
+                {
+                    "generated": { "line": 46, "column": 1 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 27 }
+                },
+                {
+                    "generated": { "line": 46, "column": 2 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 32, "column": 0 }
+                },
+                {
+                    "name": "memoize",
+                    "generated": { "line": 47, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js",
+                    "original": { "line": 35, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/memoize.js": "import memoizeWith from './memoizeWith';\nimport toString from './toString';\n\n/**\n * Creates a new function that, when invoked, caches the result of calling `fn`\n * for a given argument set and returns the result. Subsequent calls to the\n * memoized `fn` with the same argument set will not result in an additional\n * call to `fn`; instead, the cached result for that set of arguments will be\n * returned.\n *\n * @func\n * @memberOf R\n * @since v0.1.0\n * @category Function\n * @sig (*... -> a) -> (*... -> a)\n * @param {Function} fn The function to memoize.\n * @return {Function} Memoized version of `fn`.\n * @see R.memoizeWith\n * @deprecated since v0.25.0\n * @example\n *\n *      let count = 0;\n *      const factorial = R.memoize(n => {\n *        count += 1;\n *        return R.product(R.range(1, n + 1));\n *      });\n *      factorial(5); //=> 120\n *      factorial(5); //=> 120\n *      factorial(5); //=> 120\n *      count; //=> 1\n */\nvar memoize = /*#__PURE__*/memoizeWith(function () {\n  return toString(arguments);\n});\nexport default memoize;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "c661f80ec0b5bf8f00abcb5eb4939ad7",
+    "cacheData": { "env": {} }
+}

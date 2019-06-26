@@ -1,0 +1,151 @@
+{
+    "id": "../node_modules/ts-json-api/dist/index.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "ramda",
+            "loc": { "line": 6, "column": 22 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/index.js"
+        },
+        {
+            "name": "./ApiError",
+            "loc": { "line": 9, "column": 25 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/ApiError.js"
+        },
+        {
+            "name": "./ApiResponse",
+            "loc": { "line": 15, "column": 28 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/ApiResponse.js"
+        },
+        {
+            "name": "./ApiResourceObject",
+            "loc": { "line": 13, "column": 34 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/ApiResourceObject.js"
+        },
+        {
+            "name": "./fp",
+            "loc": { "line": 17, "column": 17 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/index.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\nexports.compose = ramda_1.compose;\nexports.pipe = ramda_1.pipe;\nvar ApiError_1 = require(\"./ApiError\");\nexports.ApiError = ApiError_1.default;\nvar ApiResponse_1 = require(\"./ApiResponse\");\nexports.ApiRequest = ApiResponse_1.default;\nvar ApiResourceObject_1 = require(\"./ApiResourceObject\");\nexports.ApiResourceObject = ApiResourceObject_1.default;\nvar ApiResponse_2 = require(\"./ApiResponse\");\nexports.ApiResponse = ApiResponse_2.default;\n__export(require(\"./fp\"));\n"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 1, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 2, "column": 0 },
+                    "generated": { "line": 2, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 3, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 4, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 5, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 6, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 7, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 9, "column": 0 },
+                    "generated": { "line": 9, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 10, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 11, "column": 0 },
+                    "generated": { "line": 11, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 12, "column": 0 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 13, "column": 0 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 14, "column": 0 },
+                    "generated": { "line": 14, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 15, "column": 0 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 16, "column": 0 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 17, "column": 0 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/index.js",
+                    "original": { "line": 18, "column": 0 },
+                    "generated": { "line": 18, "column": 0 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/dist/index.js": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\nexports.compose = ramda_1.compose;\nexports.pipe = ramda_1.pipe;\nvar ApiError_1 = require(\"./ApiError\");\nexports.ApiError = ApiError_1.default;\nvar ApiResponse_1 = require(\"./ApiResponse\");\nexports.ApiRequest = ApiResponse_1.default;\nvar ApiResourceObject_1 = require(\"./ApiResourceObject\");\nexports.ApiResourceObject = ApiResourceObject_1.default;\nvar ApiResponse_2 = require(\"./ApiResponse\");\nexports.ApiResponse = ApiResponse_2.default;\n__export(require(\"./fp\"));\n"
+            },
+            "lineCount": 18
+        }
+    },
+    "error": null,
+    "hash": "c5a657afd21b2af9c50433e94b010500",
+    "cacheData": { "env": {} }
+}

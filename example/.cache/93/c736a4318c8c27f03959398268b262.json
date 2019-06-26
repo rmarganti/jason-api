@@ -1,0 +1,169 @@
+{
+    "id": "../src/redux/reducer/index.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "redux",
+            "loc": { "line": 1, "column": 32 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/redux/es/redux.js"
+        },
+        {
+            "name": "./resourceObjects",
+            "loc": { "line": 2, "column": 28 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/resourceObjects/index.ts"
+        },
+        {
+            "name": "./queries",
+            "loc": { "line": 3, "column": 20 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/index.ts",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/src/redux/reducer/queries/index.ts"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.reducer = void 0;\n\nvar _redux = require(\"redux\");\n\nvar _resourceObjects = _interopRequireDefault(require(\"./resourceObjects\"));\n\nvar _queries = _interopRequireDefault(require(\"./queries\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({\n  resourceObjects: _resourceObjects.default,\n  queries: _queries.default\n});\nexports.reducer = reducer;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 13 },
+                    "generated": { "line": 16, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 20 },
+                    "generated": { "line": 16, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 16, "column": 14 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 39 },
+                    "generated": { "line": 16, "column": 42 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 4 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 4 },
+                    "generated": { "line": 17, "column": 2 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 19 },
+                    "generated": { "line": 17, "column": 17 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 19 },
+                    "generated": { "line": 17, "column": 19 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 39 },
+                    "generated": { "line": 17, "column": 43 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 18, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 4 },
+                    "generated": { "line": 18, "column": 2 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 11 },
+                    "generated": { "line": 18, "column": 9 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 8, "column": 11 },
+                    "generated": { "line": 18, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 39 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 23 },
+                    "generated": { "line": 19, "column": 1 }
+                },
+                {
+                    "source": "../src/redux/reducer/index.ts",
+                    "name": null,
+                    "original": { "line": 6, "column": 7 },
+                    "generated": { "line": 19, "column": 2 }
+                }
+            ],
+            "sources": {
+                "../src/redux/reducer/index.ts": "import { combineReducers } from 'redux';\n\nimport resourceObjects from './resourceObjects';\nimport queries from './queries';\n\nexport const reducer = combineReducers({\n    resourceObjects,\n    queries,\n});\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "0ab17935d9363a25789f029944010142",
+    "cacheData": { "env": {} }
+}

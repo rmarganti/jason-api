@@ -1,70 +1,71 @@
 {
-    "name": "jason-api",
-    "private": false,
-    "version": "1.0.0-beta",
-    "license": "MIT",
-    "main": "./lib/index.js",
-    "description": "Consume and manipulate JSON API standard data in Redux with scary ease.",
-    "repository": "https://github.com/rmarganti/jason-api",
-    "author": "Ryan Marganti",
-    "scripts": {
-        "build": "rimraf ./lib && rimraf ./types && tsc",
-        "build:watch": "rimraf ./lib && rimraf ./types && tsc --watch",
-        "docs:build": "yarn docs:prepare && rm -rf _book && gitbook build",
-        "docs:prepare": "gitbook install",
-        "docs:publish": "yarn run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push git@github.com:rmarganti/jason-api gh-pages --force",
-        "docs:watch": "gitbook serve",
-        "test": "jest"
-    },
-    "types": "./types/index.d.ts",
-    "dependencies": {
-        "axios": "^0.18.0",
-        "enzyme": "^3.3.0",
-        "pluralize": "^7.0.0",
-        "ramda": "^0.25.0",
-        "ts-json-api": "^0.9.0"
-    },
-    "devDependencies": {
-        "@types/enzyme": "^3.1.9",
-        "@types/isomorphic-fetch": "^0.0.34",
-        "@types/jest": "^22.2.3",
-        "@types/pluralize": "^0.0.28",
-        "@types/ramda": "^0.25.15",
-        "@types/react": "^16.0.34",
-        "@types/react-redux": "^5.0.14",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "eslint": "^4.19.0",
-        "eslint-config-prettier": "^2.9.0",
-        "eslint-plugin-prettier": "^2.6.0",
-        "gitbook-cli": "^2.3.2",
-        "jest": "^22.1.1",
-        "prettier": "^1.11.1",
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
-        "react-redux": "^5.0.0",
-        "redux": "^4.0.0",
-        "redux-mock-store": "^1.4.0",
-        "rimraf": "^2.6.2",
-        "ts-jest": "^22.4.3",
-        "typescript": "^2.8.0",
-        "typescript-eslint-parser": "^14.0.0"
-    },
-    "peerDependencies": {
-        "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
-        "react-redux": "^5.0.6",
-        "redux": "^2.0.0 || ^3.0.0"
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js",
-            "json"
-        ],
-        "testRegex": "(\\.(test|spec))\\.(ts|tsx|js)$",
-        "transform": {
-            ".(ts|tsx)": "<rootDir>/__tests__/tools/preprocessor.js"
-        },
-        "setupTestFrameworkScriptFile": "./__tests__/.setup.ts"
+  "name": "jason-api-next",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "umd:main": "dist/jason-api-next.umd.production.js",
+  "module": "dist/jason-api-next.es.production.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(ts|tsx)\" && yarn test"
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "es5"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/__tests__/setupTests.ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/*.(spec|test).{ts,tsx}"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "pluralize": "^7.0.0",
+    "ramda": "^0.26.1",
+    "ts-json-api": "^0.9.3"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^3.9.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.13",
+    "@types/pluralize": "^0.0.29",
+    "@types/ramda": "^0.26.8",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.1.0",
+    "@types/sinon": "^7.0.11",
+    "axios-mock-adapter": "^1.16.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "husky": "^2.3.0",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.11.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1",
+    "sinon": "^7.3.2",
+    "tsdx": "^0.5.11",
+    "tslib": "^1.9.3",
+    "typescript": "^3.4.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-redux": ">=7.1.0",
+    "redux": ">=4.0.0"
+  }
 }

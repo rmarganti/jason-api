@@ -1,0 +1,209 @@
+{
+    "id": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "ramda",
+            "loc": { "line": 6, "column": 22 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/index.js"
+        },
+        {
+            "name": "./attributes",
+            "loc": { "line": 10, "column": 17 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/resourceObjects/attributes.js"
+        },
+        {
+            "name": "./relationships",
+            "loc": { "line": 11, "column": 17 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/fp/resourceObjects/relationships.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\n/**\n * Resource Object-related\n */\n__export(require(\"./attributes\"));\n__export(require(\"./relationships\"));\n/**\n * Build a new Resource Object\n *\n * @param type\n * @param attributes\n * @param id\n */\nexports.buildResourceObject = function (type, attributes, id) { return ({\n    attributes: attributes,\n    id: id,\n    type: type,\n}); };\n/**\n * Return the `type` of a Resource Object\n */\nexports.type = ramda_1.prop('type');\n/**\n * Return the `id` of a Resource Object\n */\nexports.id = ramda_1.prop('id');\n"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 1, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 2, "column": 0 },
+                    "generated": { "line": 2, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 3, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 4, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 5, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 6, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 7, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 9, "column": 0 },
+                    "generated": { "line": 9, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 10, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 11, "column": 0 },
+                    "generated": { "line": 11, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 12, "column": 0 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 13, "column": 0 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 14, "column": 0 },
+                    "generated": { "line": 14, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 15, "column": 0 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 16, "column": 0 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 17, "column": 0 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 18, "column": 0 },
+                    "generated": { "line": 18, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 19, "column": 0 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 20, "column": 0 },
+                    "generated": { "line": 20, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 21, "column": 0 },
+                    "generated": { "line": 21, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 22, "column": 0 },
+                    "generated": { "line": 22, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 23, "column": 0 },
+                    "generated": { "line": 23, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 24, "column": 0 },
+                    "generated": { "line": 24, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 25, "column": 0 },
+                    "generated": { "line": 25, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 26, "column": 0 },
+                    "generated": { "line": 26, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 27, "column": 0 },
+                    "generated": { "line": 27, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 28, "column": 0 },
+                    "generated": { "line": 28, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 29, "column": 0 },
+                    "generated": { "line": 29, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 30, "column": 0 },
+                    "generated": { "line": 30, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 31, "column": 0 },
+                    "generated": { "line": 31, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js",
+                    "original": { "line": 32, "column": 0 },
+                    "generated": { "line": 32, "column": 0 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/dist/fp/resourceObjects/index.js": "\"use strict\";\nfunction __export(m) {\n    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n}\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\n/**\n * Resource Object-related\n */\n__export(require(\"./attributes\"));\n__export(require(\"./relationships\"));\n/**\n * Build a new Resource Object\n *\n * @param type\n * @param attributes\n * @param id\n */\nexports.buildResourceObject = function (type, attributes, id) { return ({\n    attributes: attributes,\n    id: id,\n    type: type,\n}); };\n/**\n * Return the `type` of a Resource Object\n */\nexports.type = ramda_1.prop('type');\n/**\n * Return the `id` of a Resource Object\n */\nexports.id = ramda_1.prop('id');\n"
+            },
+            "lineCount": 32
+        }
+    },
+    "error": null,
+    "hash": "7244d308046ca80544e5e52d9c63ee71",
+    "cacheData": { "env": {} }
+}

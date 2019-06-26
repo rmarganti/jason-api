@@ -1,0 +1,94 @@
+{
+    "id": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "./always",
+            "loc": { "line": 1, "column": 19 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/F.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/always.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _always = _interopRequireDefault(require(\"./always\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/**\n * A function that always returns `false`. Any passed in parameters are ignored.\n *\n * @func\n * @memberOf R\n * @since v0.9.0\n * @category Function\n * @sig * -> Boolean\n * @param {*}\n * @return {Boolean}\n * @see R.always, R.T\n * @example\n *\n *      R.F(); //=> false\n */\nvar F =\n/*#__PURE__*/\n(0, _always.default)(false);\nvar _default = F;\nexports.default = _default;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "generated": { "line": 8, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 1, "column": 0 }
+                },
+                {
+                    "generated": { "line": 12, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 3, "column": 0 }
+                },
+                {
+                    "generated": { "line": 27, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 0 }
+                },
+                {
+                    "name": "F",
+                    "generated": { "line": 27, "column": 4 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 4 }
+                },
+                {
+                    "generated": { "line": 27, "column": 5 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 5 }
+                },
+                {
+                    "generated": { "line": 28, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 8 }
+                },
+                {
+                    "generated": { "line": 29, "column": 0 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 21 }
+                },
+                {
+                    "generated": { "line": 29, "column": 21 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 28 }
+                },
+                {
+                    "generated": { "line": 29, "column": 26 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 21 }
+                },
+                {
+                    "generated": { "line": 29, "column": 27 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 18, "column": 0 }
+                },
+                {
+                    "name": "F",
+                    "generated": { "line": 30, "column": 15 },
+                    "source": "../node_modules/ts-json-api/node_modules/ramda/es/F.js",
+                    "original": { "line": 19, "column": 15 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/node_modules/ramda/es/F.js": "import always from './always';\n\n/**\n * A function that always returns `false`. Any passed in parameters are ignored.\n *\n * @func\n * @memberOf R\n * @since v0.9.0\n * @category Function\n * @sig * -> Boolean\n * @param {*}\n * @return {Boolean}\n * @see R.always, R.T\n * @example\n *\n *      R.F(); //=> false\n */\nvar F = /*#__PURE__*/always(false);\nexport default F;"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "453111750b1b8401c7191dae7532da86",
+    "cacheData": { "env": {} }
+}

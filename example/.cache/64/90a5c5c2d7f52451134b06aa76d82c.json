@@ -1,0 +1,47 @@
+{
+    "id": "node_modules/core-js/internals/function-to-string.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/core-js/package.json",
+            "includedInParent": true,
+            "mtime": 1558467224000
+        },
+        {
+            "name": "../internals/shared",
+            "loc": { "line": 1, "column": 25 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/core-js/internals/function-to-string.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/core-js/internals/shared.js"
+        }
+    ],
+    "generated": {
+        "js": "module.exports = require('../internals/shared')('native-function-to-string', Function.toString);\n"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "node_modules/core-js/internals/function-to-string.js",
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 1, "column": 0 }
+                },
+                {
+                    "source": "node_modules/core-js/internals/function-to-string.js",
+                    "original": { "line": 2, "column": 0 },
+                    "generated": { "line": 2, "column": 0 }
+                }
+            ],
+            "sources": {
+                "node_modules/core-js/internals/function-to-string.js": "module.exports = require('../internals/shared')('native-function-to-string', Function.toString);\n"
+            },
+            "lineCount": 2
+        }
+    },
+    "error": null,
+    "hash": "c915a5185403229f068268acf0925280",
+    "cacheData": { "env": {} }
+}

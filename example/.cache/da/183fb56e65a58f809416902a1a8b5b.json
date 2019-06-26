@@ -1,0 +1,451 @@
+{
+    "id": "../src/redux/actionTypes.ts",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/tsconfig.json",
+            "includedInParent": true,
+            "mtime": 1559050403000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1558731818000
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.CLEAR_RESOURCE_OBJECT_TYPE = exports.REMOVE_RESOURCE_OBJECT = exports.UPDATE_RESOURCE_OBJECT_META = exports.UPDATE_RESOURCE_OBJECTS_META = exports.UPDATE_RESOURCE_OBJECT = exports.CLEAR_RELATIONSHIP = exports.SET_RELATIONSHIP = exports.REMOVE_RELATIONSHIP = exports.ADD_RELATIONSHIP = exports.LOAD_DATA = exports.REQUEST_ERROR = exports.REQUEST_SUCCESS = exports.REQUEST = exports.JASON_API = void 0;\nvar JASON_API = '[JASON API] Initialize Request';\nexports.JASON_API = JASON_API;\nvar REQUEST = '[JASON API] Make Request';\nexports.REQUEST = REQUEST;\nvar REQUEST_SUCCESS = '[JASON API] Request Success';\nexports.REQUEST_SUCCESS = REQUEST_SUCCESS;\nvar REQUEST_ERROR = '[JASON API] Request Error';\nexports.REQUEST_ERROR = REQUEST_ERROR;\nvar LOAD_DATA = '[JASON API] Load Data';\nexports.LOAD_DATA = LOAD_DATA;\nvar ADD_RELATIONSHIP = '[JASON API] Add Relationship';\nexports.ADD_RELATIONSHIP = ADD_RELATIONSHIP;\nvar REMOVE_RELATIONSHIP = '[JASON API] Remove Relationship';\nexports.REMOVE_RELATIONSHIP = REMOVE_RELATIONSHIP;\nvar SET_RELATIONSHIP = '[JASON API] Set Relationship';\nexports.SET_RELATIONSHIP = SET_RELATIONSHIP;\nvar CLEAR_RELATIONSHIP = '[JASON API] Clear Relationship';\nexports.CLEAR_RELATIONSHIP = CLEAR_RELATIONSHIP;\nvar UPDATE_RESOURCE_OBJECT = '[JASON API] Update Resource Object';\nexports.UPDATE_RESOURCE_OBJECT = UPDATE_RESOURCE_OBJECT;\nvar UPDATE_RESOURCE_OBJECTS_META = '[JASON API] Update Resource Objects Meta';\nexports.UPDATE_RESOURCE_OBJECTS_META = UPDATE_RESOURCE_OBJECTS_META;\nvar UPDATE_RESOURCE_OBJECT_META = '[JASON API] Update Resource Object Meta';\nexports.UPDATE_RESOURCE_OBJECT_META = UPDATE_RESOURCE_OBJECT_META;\nvar REMOVE_RESOURCE_OBJECT = '[JASON API] Remove Resource Object';\nexports.REMOVE_RESOURCE_OBJECT = REMOVE_RESOURCE_OBJECT;\nvar CLEAR_RESOURCE_OBJECT_TYPE = '[JASON API] Clear Resource Object Type';\nexports.CLEAR_RESOURCE_OBJECT_TYPE = CLEAR_RESOURCE_OBJECT_TYPE;"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 7 },
+                    "generated": { "line": 7, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 13 },
+                    "generated": { "line": 7, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 22 },
+                    "generated": { "line": 7, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 25 },
+                    "generated": { "line": 7, "column": 16 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 1, "column": 7 },
+                    "generated": { "line": 7, "column": 48 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 7 },
+                    "generated": { "line": 9, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 13 },
+                    "generated": { "line": 9, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 20 },
+                    "generated": { "line": 9, "column": 11 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 23 },
+                    "generated": { "line": 9, "column": 14 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 3, "column": 7 },
+                    "generated": { "line": 9, "column": 40 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 7 },
+                    "generated": { "line": 11, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 13 },
+                    "generated": { "line": 11, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 28 },
+                    "generated": { "line": 11, "column": 19 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 31 },
+                    "generated": { "line": 11, "column": 22 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 4, "column": 7 },
+                    "generated": { "line": 11, "column": 51 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 7 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 13 },
+                    "generated": { "line": 13, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 26 },
+                    "generated": { "line": 13, "column": 17 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 29 },
+                    "generated": { "line": 13, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 5, "column": 7 },
+                    "generated": { "line": 13, "column": 47 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 7 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 13 },
+                    "generated": { "line": 15, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 22 },
+                    "generated": { "line": 15, "column": 13 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 25 },
+                    "generated": { "line": 15, "column": 16 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 7, "column": 7 },
+                    "generated": { "line": 15, "column": 39 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 7 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 13 },
+                    "generated": { "line": 17, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 29 },
+                    "generated": { "line": 17, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 32 },
+                    "generated": { "line": 17, "column": 23 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 9, "column": 7 },
+                    "generated": { "line": 17, "column": 53 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 7 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 13 },
+                    "generated": { "line": 19, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 32 },
+                    "generated": { "line": 19, "column": 23 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 35 },
+                    "generated": { "line": 19, "column": 26 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 10, "column": 7 },
+                    "generated": { "line": 19, "column": 59 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 7 },
+                    "generated": { "line": 21, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 13 },
+                    "generated": { "line": 21, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 29 },
+                    "generated": { "line": 21, "column": 20 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 32 },
+                    "generated": { "line": 21, "column": 23 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 11, "column": 7 },
+                    "generated": { "line": 21, "column": 53 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 7 },
+                    "generated": { "line": 23, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 13 },
+                    "generated": { "line": 23, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 31 },
+                    "generated": { "line": 23, "column": 22 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 34 },
+                    "generated": { "line": 23, "column": 25 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 12, "column": 7 },
+                    "generated": { "line": 23, "column": 57 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 7 },
+                    "generated": { "line": 25, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 13 },
+                    "generated": { "line": 25, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 35 },
+                    "generated": { "line": 25, "column": 26 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 38 },
+                    "generated": { "line": 25, "column": 29 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 14, "column": 7 },
+                    "generated": { "line": 25, "column": 65 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 7 },
+                    "generated": { "line": 27, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 13 },
+                    "generated": { "line": 27, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 41 },
+                    "generated": { "line": 27, "column": 32 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 16, "column": 4 },
+                    "generated": { "line": 27, "column": 35 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 15, "column": 7 },
+                    "generated": { "line": 27, "column": 77 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 7 },
+                    "generated": { "line": 29, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 13 },
+                    "generated": { "line": 29, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 40 },
+                    "generated": { "line": 29, "column": 31 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 18, "column": 4 },
+                    "generated": { "line": 29, "column": 34 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 17, "column": 7 },
+                    "generated": { "line": 29, "column": 75 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 7 },
+                    "generated": { "line": 31, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 13 },
+                    "generated": { "line": 31, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 35 },
+                    "generated": { "line": 31, "column": 26 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 38 },
+                    "generated": { "line": 31, "column": 29 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 20, "column": 7 },
+                    "generated": { "line": 31, "column": 65 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 21, "column": 7 },
+                    "generated": { "line": 33, "column": 0 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 21, "column": 13 },
+                    "generated": { "line": 33, "column": 4 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 21, "column": 39 },
+                    "generated": { "line": 33, "column": 30 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 22, "column": 4 },
+                    "generated": { "line": 33, "column": 33 }
+                },
+                {
+                    "source": "../src/redux/actionTypes.ts",
+                    "name": null,
+                    "original": { "line": 21, "column": 7 },
+                    "generated": { "line": 33, "column": 73 }
+                }
+            ],
+            "sources": {
+                "../src/redux/actionTypes.ts": "export const JASON_API = '[JASON API] Initialize Request';\n\nexport const REQUEST = '[JASON API] Make Request';\nexport const REQUEST_SUCCESS = '[JASON API] Request Success';\nexport const REQUEST_ERROR = '[JASON API] Request Error';\n\nexport const LOAD_DATA = '[JASON API] Load Data';\n\nexport const ADD_RELATIONSHIP = '[JASON API] Add Relationship';\nexport const REMOVE_RELATIONSHIP = '[JASON API] Remove Relationship';\nexport const SET_RELATIONSHIP = '[JASON API] Set Relationship';\nexport const CLEAR_RELATIONSHIP = '[JASON API] Clear Relationship';\n\nexport const UPDATE_RESOURCE_OBJECT = '[JASON API] Update Resource Object';\nexport const UPDATE_RESOURCE_OBJECTS_META =\n    '[JASON API] Update Resource Objects Meta';\nexport const UPDATE_RESOURCE_OBJECT_META =\n    '[JASON API] Update Resource Object Meta';\n\nexport const REMOVE_RESOURCE_OBJECT = '[JASON API] Remove Resource Object';\nexport const CLEAR_RESOURCE_OBJECT_TYPE =\n    '[JASON API] Clear Resource Object Type';\n"
+            },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "c828d596fa3d5b67d07f81a42772ae59",
+    "cacheData": { "env": {} }
+}

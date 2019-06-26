@@ -1,0 +1,31 @@
+{
+    "id": "node_modules/parcel/src/builtins/_empty.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1557924250000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/parcel/package.json",
+            "includedInParent": true,
+            "mtime": 1558729758000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/node_modules/parcel/src/.babelrc",
+            "includedInParent": true,
+            "mtime": 1558729758000
+        }
+    ],
+    "generated": { "js": "" },
+    "sourceMaps": {
+        "js": {
+            "mappings": [],
+            "sources": { "node_modules/parcel/src/builtins/_empty.js": "" },
+            "lineCount": null
+        }
+    },
+    "error": null,
+    "hash": "44502ee85ce60af6695be1510773f7b6",
+    "cacheData": { "env": {} }
+}

@@ -1,7 +1,7 @@
-_book
-lib
-types
+*.log
+.DS_Store
 node_modules
-yarn.lock
-yarn-error.log
-
+.rts2_cache_cjs
+.rts2_cache_es
+.rts2_cache_umd
+dist

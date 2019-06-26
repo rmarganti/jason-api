@@ -1,10 +1,5 @@
 import { AxiosError } from 'axios';
-import {
-    Attributes,
-    Links,
-    Relationships,
-    ResponseWithErrors,
-} from 'ts-json-api';
+import { ResponseWithErrors } from 'ts-json-api';
 
 /**
  * Extract valid JSON API errors from an Axios error response.

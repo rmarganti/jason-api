@@ -1,32 +1,26 @@
-import { equals, omit, pickAll } from 'ramda';
+import { equals, pathOr, pickAll } from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { Response, ResourceObjectOrObjects } from 'ts-json-api';
-import { JasonApiDispatch } from '../common-types/middleware';
-import { StateWithJasonApi } from '../common-types/state';
-import { cacheQuery } from '../redux/actions';
+
 import { getCachedQuery } from '../redux/selectors';
-import { hashObject, simplifyJsonApi } from '../utils/data';
+import { Omit } from '../types/other';
+import { StateWithJasonApi } from '../types/state';
+import { hashObject } from '../utils/data';
 
-type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-
-export type QueryFactory = (
-    dispatch: JasonApiDispatch,
-    props: any
-) => Promise<Response>;
+export type QueryFactory = (dispatch: Dispatch, props: any) => any;
 
 export interface WithQueryOptions {
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     propsToWatch?: string[];
     queryFactory: QueryFactory;
-    stateBranch?: string;
 }
 
 export interface ConnectedProps {
     cachedQuery: Response | undefined;
-    cacheQueryResult: (response: Response) => void;
-    fetchData: () => Promise<Response>;
+    fetchData: () => any;
 }
 
 export interface WithQueryInjectedProps<
@@ -36,28 +30,20 @@ export interface WithQueryInjectedProps<
     refetch?: () => void;
 }
 
-type State = {
-    isLoading: boolean;
-    queryResult?: Response;
-};
-
 const withQuery = ({
     cacheScheme = 'cacheFirst',
     expandResourceObjects = false,
     queryFactory,
     propsToWatch = [],
-    stateBranch = 'resourceObjects',
 }: WithQueryOptions) => <OriginalProps extends {}>(
     BaseComponent: React.ComponentType<OriginalProps & WithQueryInjectedProps>
 ) => {
     type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps>;
     type InternalProps = ExternalProps & ConnectedProps;
 
-    class WithQuery extends React.Component<InternalProps, State> {
+    class WithQuery extends React.Component<InternalProps> {
         static displayName = `WithQuery(${BaseComponent.displayName ||
             BaseComponent.name})`;
-
-        readonly state: State;
 
         constructor(props: InternalProps) {
             super(props);
@@ -73,30 +59,8 @@ const withQuery = ({
          * and cache queries appropriately.
          */
         refetch = () => {
-            this.setState({ isLoading: true });
-
-            const { fetchData, cacheQueryResult } = this.props;
-
-            fetchData!()
-                .then(response => {
-                    this.setState({
-                        isLoading: false,
-                        queryResult: expandResourceObjects
-                            ? response
-                            : simplifyJsonApi(response),
-                    });
-
-                    cacheQueryResult!(response);
-                })
-                .catch(errors => {
-                    this.setState(({ queryResult }) => ({
-                        isLoading: false,
-                        queryResult: {
-                            ...queryResult,
-                            ...errors,
-                        },
-                    }));
-                });
+            const { fetchData } = this.props;
+            fetchData();
         };
 
         /**
@@ -107,7 +71,7 @@ const withQuery = ({
         componentDidMount() {
             if (
                 cacheScheme === 'noCache' ||
-                (cacheScheme === 'cacheOnly' && this.state.queryResult)
+                (cacheScheme === 'cacheOnly' && this.props.cachedQuery)
             ) {
                 return;
             }
@@ -116,7 +80,7 @@ const withQuery = ({
         }
 
         /**
-         * Execute a referch of the query if any
+         * Execute a refetch of the query if any
          * of the `propsToWatch` has changed.
          *
          * @param prevProps
@@ -138,15 +102,15 @@ const withQuery = ({
          * @inheritDoc
          */
         render() {
-            const passedProps = omit(['cachedQuery', 'fetchData'], this.props);
-            const { isLoading, queryResult } = this.state;
+            const { cachedQuery, fetchData, ...rest } = this.props;
+            const isLoading = pathOr(false, ['meta', 'isLoading'], cachedQuery);
 
             return (
                 <BaseComponent
                     isLoading={isLoading}
                     refetch={this.refetch}
-                    {...passedProps}
-                    {...queryResult}
+                    {...cachedQuery}
+                    {...rest}
                 />
             );
         }
@@ -159,7 +123,7 @@ const withQuery = ({
         cachedQuery:
             cacheScheme !== 'noCache'
                 ? getCachedQuery(
-                      state[stateBranch],
+                      state.jasonApi,
                       hashQuery(queryFactory, ownProps),
                       expandResourceObjects
                   )
@@ -168,12 +132,12 @@ const withQuery = ({
 
     const mapDispatchToProps = (dispatch: any, ownProps: ExternalProps) => ({
         fetchData: () => queryFactory(dispatch as JasonApiDispatch, ownProps),
-        cacheQueryResult: (result: Response) => {
-            dispatch(cacheQuery(hashQuery(queryFactory, ownProps), result));
-        },
     });
 
-    return connect(mapStateToProps, mapDispatchToProps)(WithQuery);
+    return connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(WithQuery);
 };
 
 /**

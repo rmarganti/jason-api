@@ -1,0 +1,142 @@
+{
+    "id": "../node_modules/ts-json-api/dist/ApiError.js",
+    "dependencies": [
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/example/package.json",
+            "includedInParent": true,
+            "mtime": 1559061771000
+        },
+        {
+            "name": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/package.json",
+            "includedInParent": true,
+            "mtime": 1558467235000
+        },
+        {
+            "name": "ramda",
+            "loc": { "line": 3, "column": 22 },
+            "parent": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/dist/ApiError.js",
+            "resolved": "/Users/rmarganti/code/_packages+libraries/jason-api-next/node_modules/ts-json-api/node_modules/ramda/es/index.js"
+        }
+    ],
+    "generated": {
+        "js": "\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\nvar ApiError = /** @class */ (function () {\n    function ApiError(error) {\n        this.error = error;\n        Object.freeze(this);\n    }\n    ApiError.of = function (error) {\n        return new ApiError(error);\n    };\n    ApiError.prototype.map = function (f) {\n        return ApiError.of(f(this.error));\n    };\n    ApiError.prototype.toJSON = function () {\n        return ramda_1.clone(this.error);\n    };\n    return ApiError;\n}());\nexports.default = ApiError;\n"
+    },
+    "sourceMaps": {
+        "js": {
+            "mappings": [
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 1, "column": 0 },
+                    "generated": { "line": 1, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 2, "column": 0 },
+                    "generated": { "line": 2, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 3, "column": 0 },
+                    "generated": { "line": 3, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 4, "column": 0 },
+                    "generated": { "line": 4, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 5, "column": 0 },
+                    "generated": { "line": 5, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 6, "column": 0 },
+                    "generated": { "line": 6, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 7, "column": 0 },
+                    "generated": { "line": 7, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 8, "column": 0 },
+                    "generated": { "line": 8, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 9, "column": 0 },
+                    "generated": { "line": 9, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 10, "column": 0 },
+                    "generated": { "line": 10, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 11, "column": 0 },
+                    "generated": { "line": 11, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 12, "column": 0 },
+                    "generated": { "line": 12, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 13, "column": 0 },
+                    "generated": { "line": 13, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 14, "column": 0 },
+                    "generated": { "line": 14, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 15, "column": 0 },
+                    "generated": { "line": 15, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 16, "column": 0 },
+                    "generated": { "line": 16, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 17, "column": 0 },
+                    "generated": { "line": 17, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 18, "column": 0 },
+                    "generated": { "line": 18, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 19, "column": 0 },
+                    "generated": { "line": 19, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 20, "column": 0 },
+                    "generated": { "line": 20, "column": 0 }
+                },
+                {
+                    "source": "../node_modules/ts-json-api/dist/ApiError.js",
+                    "original": { "line": 21, "column": 0 },
+                    "generated": { "line": 21, "column": 0 }
+                }
+            ],
+            "sources": {
+                "../node_modules/ts-json-api/dist/ApiError.js": "\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar ramda_1 = require(\"ramda\");\nvar ApiError = /** @class */ (function () {\n    function ApiError(error) {\n        this.error = error;\n        Object.freeze(this);\n    }\n    ApiError.of = function (error) {\n        return new ApiError(error);\n    };\n    ApiError.prototype.map = function (f) {\n        return ApiError.of(f(this.error));\n    };\n    ApiError.prototype.toJSON = function () {\n        return ramda_1.clone(this.error);\n    };\n    return ApiError;\n}());\nexports.default = ApiError;\n"
+            },
+            "lineCount": 21
+        }
+    },
+    "error": null,
+    "hash": "a2760379a18b274b930b5ea8dceb85bb",
+    "cacheData": { "env": {} }
+}
