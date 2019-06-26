@@ -3,8 +3,6 @@ import { JASON_API } from './actionTypes';
 
 const defaultRequestConfig = {
     method: 'get',
-    disableStartLoadingActionCreator: false,
-    displayNotificationOnError: false,
 };
 
 /**
