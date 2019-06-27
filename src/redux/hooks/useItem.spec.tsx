@@ -1,5 +1,5 @@
 // External dependencies
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Provider } from 'react-redux';
 
@@ -9,12 +9,14 @@ import ItemComponent from './__mocks__/ItemComponent';
 
 describe('useItem', () => {
     it('retrieves a ResourceItem from the store', () => {
-        const wrapper = mount(
+        const { container } = render(
             <Provider store={defaultStore}>
                 <ItemComponent id="5" />
             </Provider>
         );
 
-        expect(wrapper.find('p')).toHaveLength(1);
+        const body = container.querySelector('p');
+
+        expect(body).toBeTruthy();
     });
 });

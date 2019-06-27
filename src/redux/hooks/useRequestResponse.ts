@@ -1,11 +1,15 @@
-import { DependencyList, useEffect, useCallback } from 'react';
+import { DependencyList, useEffect, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+    ResourceObjectOrObjects,
+    Response,
+    ResponseWithData,
+} from 'ts-json-api/types';
 
 import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequest, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
-import { ResourceObjectOrObjects, Response } from 'ts-json-api/types';
 
 /**
  * useRequestResponse()
@@ -41,24 +45,44 @@ interface UseQueryOptions {
 export const useRequestResponse = <
     D extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >(
-    { action, expandResourceObjects }: UseQueryOptions,
+    { action, cacheScheme, expandResourceObjects }: UseQueryOptions,
     deps: DependencyList = []
 ) => {
     const dispatch = useDispatch<JasonApiDispatch>();
-    const refetch = useCallback(() => dispatch(action), [action]);
+    const [isLoading, setLoading] = useState(false);
+    const [response, setResponse] = useState<Response<D>>({});
 
-    useEffect(() => {
-        refetch();
-    }, deps);
+    // Preform the fetch and keep track of loading states.
+    const fetch = useCallback(() => {
+        if (cacheScheme === 'cacheOnly') {
+            return;
+        }
 
+        setLoading(true);
+
+        dispatch(action).then(r => {
+            setLoading(false);
+            setResponse(r as ResponseWithData<D>);
+        });
+    }, [action]);
+
+    // Get cached response.
     const cacheKey = cacheKeyForRequestAction(action[JASON_API]);
-
-    const response = useSelector(
+    const cachedResponse = useSelector(
         getCachedQuery(cacheKey, expandResourceObjects)
     ) as Response<D>;
 
+    const providedResponse =
+        cacheScheme === 'noCache' ? response : response || cachedResponse;
+
+    // Make the request
+    useEffect(() => {
+        fetch();
+    }, deps);
+
     return {
-        ...response,
-        refetch,
+        ...providedResponse,
+        isLoading,
+        refetch: fetch,
     };
 };

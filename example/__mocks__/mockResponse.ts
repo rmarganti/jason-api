@@ -47,9 +47,21 @@ export const mockResponse = {
             type: 'people',
             id: '9',
             attributes: {
-                'first-name': 'Dan',
-                'last-name': 'Gebhardt',
+                firstName: 'Dan',
+                lastName: 'Gebhardt',
                 twitter: 'dgeb',
+            },
+            links: {
+                self: 'http://example.com/people/9',
+            },
+        },
+        {
+            type: 'people',
+            id: '2',
+            attributes: {
+                firstName: 'Banana',
+                lastName: 'Man',
+                twitter: 'bman',
             },
             links: {
                 self: 'http://example.com/people/9',

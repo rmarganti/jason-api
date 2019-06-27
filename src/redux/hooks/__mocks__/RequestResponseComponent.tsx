@@ -27,7 +27,9 @@ const RequestResponseComponent: React.FunctionComponent = () => {
         expandResourceObjects: true,
     });
 
-    return response.data ? <h1>{response.data.attributes.title}</h1> : null;
+    return response.data ? (
+        <h1 id="title">{response.data.attributes.title}</h1>
+    ) : null;
 };
 
 export default RequestResponseComponent;
