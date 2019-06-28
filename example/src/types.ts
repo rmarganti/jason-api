@@ -8,6 +8,7 @@ export interface Article extends ResourceObject {
         body: string;
     };
     relationships: {
+        author: Relationship<Person>;
         comments: Relationship<Comment[]>;
     };
 }

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { defaultStore } from '../../../__tests__/tools';
 import RequestResponseComponent from './__mocks__/RequestResponseComponent';
 
-describe('useItem', () => {
+describe('useAutoRequest()', () => {
     it('retrieves a ResourceItem from the store', done => {
         const { queryByText } = render(
             <Provider store={defaultStore}>

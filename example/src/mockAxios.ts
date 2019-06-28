@@ -12,12 +12,11 @@ export const mockAxios = () => {
     });
 
     // Articles
-    mock.onGet('/articles/1').reply(200, mockArticleResponse);
-    mock.onPost('/articles').reply(200, mockArticleResponse);
+    mock.onGet('/articles/1').reply(mockArticleResponse);
+    mock.onPost('/articles').reply(mockArticleResponse);
 
     // Comments
     mock.onPost('/articles/1/relationships/comments').reply(
-        200,
         mockCommentResponse
     );
 };

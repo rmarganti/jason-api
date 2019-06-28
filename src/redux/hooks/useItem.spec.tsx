@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { defaultStore } from '../../../__tests__/tools';
 import ItemComponent from './__mocks__/ItemComponent';
 
-describe('useItem', () => {
+describe('useItem()', () => {
     it('retrieves a ResourceItem from the store', () => {
         const { container } = render(
             <Provider store={defaultStore}>

@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 // JasonAPI
-import { useRequestResponse } from '../../../src';
+import { useAutoRequest } from '../../../src';
 
 // Internal Dependencies
 import { getArticle } from '../actions';
@@ -10,7 +10,7 @@ import { Article } from '../types';
 import Comments from './Comments';
 
 const Article = () => {
-    const { data, errors, isLoading, refetch } = useRequestResponse<Article>({
+    const { data, errors, isLoading, fetch } = useAutoRequest<Article>({
         action: getArticle('1'),
         expandResourceObjects: true,
     });
@@ -25,7 +25,7 @@ const Article = () => {
             {isLoading && <p>Refreshing...</p>}
             <p>{data.attributes.body}</p>
             <Comments comments={data.relationships.comments.data} />
-            <button onClick={refetch}>Refetch</button>
+            <button onClick={fetch}>Refetch</button>
         </div>
     ) : null;
 };

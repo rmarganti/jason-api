@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import { defaultStore } from '../../../__tests__/tools';
 import CollectionComponent from './__mocks__/CollectionComponent';
 
-describe('useItem', () => {
-    it('retrieves a ResourceItem from the store', () => {
+describe('useCollection()', () => {
+    it('retrieves a Resource Collection from the store', () => {
         const { container } = render(
             <Provider store={defaultStore}>
                 <CollectionComponent />

@@ -5,7 +5,7 @@ import * as React from 'react';
 
 // Internal dependencies
 import { jasonApiRequest } from '../../actions';
-import { useRequestResponse } from '../useRequestResponse';
+import { useAutoRequest } from '../useAutoRequest';
 
 // Testing dependencies
 import { articleResponse } from '../../../../__mocks__/articleResponse';
@@ -22,7 +22,7 @@ mock.onGet().reply(200, articleResponse);
 
 const RequestResponseComponent: React.FunctionComponent = () => {
     const action = mockAction('1');
-    const response = useRequestResponse<Article>({
+    const response = useAutoRequest<Article>({
         action,
         expandResourceObjects: true,
     });
