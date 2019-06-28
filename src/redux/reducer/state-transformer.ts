@@ -1,24 +1,19 @@
 import {
     assocPath,
+    concat,
     dissoc,
     dissocPath,
     has,
     lensPath,
     over,
     pipe,
-    set,
+    propEq,
     propOr,
-    concat,
     reduce,
     reject,
-    propEq,
+    set,
 } from 'ramda';
-import {
-    ResourceObjects,
-    ResourceObject,
-    Attributes,
-    Response,
-} from 'ts-json-api';
+import { Attributes, ResourceObject, ResourceObjects } from 'ts-json-api';
 
 import { FlexiblePayload } from '../../types/other';
 import { ResourceObjectsState } from '../../types/state';
@@ -28,7 +23,6 @@ import {
     mapOrOnce,
     reverseMergeDeepLeft,
     simplifyResourceObject,
-    simplifyJsonApi,
     unwrapDataProp,
 } from '../../utils/data';
 
@@ -321,15 +315,3 @@ export const removeResourceObject = (
 export const clearResourceObjectType = (resourceType: string) => (
     state: ResourceObjectsState
 ): ResourceObjectsState => dissoc(resourceType, state);
-
-/**
- * Cache a simplified API response
- *
- * @param state
- * @param url
- * @param response
- */
-export const cacheQuery = (key: string, response: Response) => (
-    state: ResourceObjectsState
-): ResourceObjectsState =>
-    set(lensPath(['_cachedQueries', key]), simplifyJsonApi(response), state);
