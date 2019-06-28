@@ -1,5 +1,6 @@
 // External Dependencies
 import * as React from 'react';
+import styled from 'styled-components';
 
 // JasonAPI
 import { useItem } from '../../../src';
@@ -20,11 +21,21 @@ const Comment: React.SFC<CommentProps> = ({ id }) => {
     }
 
     return (
-        <li>
-            {comment.attributes.body} -{' '}
+        <Root>
+            {comment.attributes.body.split('\n').map(paragraph => (
+                <p>{paragraph}</p>
+            ))}
+
             <Author id={comment.relationships.author.data.id} />
-        </li>
+        </Root>
     );
 };
+
+const Root = styled.li`
+    margin-bottom: 2em;
+    margin-top: 2em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #ccc;
+`;
 
 export default Comment;

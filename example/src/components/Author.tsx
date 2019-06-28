@@ -1,5 +1,6 @@
 // External Dependencies
 import * as React from 'react';
+import styled from 'styled-components';
 
 // JasonAPI
 import { useItem } from '../../../src';
@@ -8,10 +9,11 @@ import { useItem } from '../../../src';
 import { Person } from '../types';
 
 interface AuthorProps {
+    extraMargin?: boolean;
     id: string;
 }
 
-const Author: React.SFC<AuthorProps> = ({ id }) => {
+const Author: React.SFC<AuthorProps> = ({ extraMargin, id }) => {
     const author = useItem<Person>('people', id);
 
     if (!author) {
@@ -19,10 +21,19 @@ const Author: React.SFC<AuthorProps> = ({ id }) => {
     }
 
     return (
-        <span>
+        <Root extraMargin={extraMargin}>
             {author.attributes.firstName} {author.attributes.lastName}
-        </span>
+        </Root>
     );
 };
+
+interface RootProps {
+    extraMargin?: boolean;
+}
+const Root = styled.div<RootProps>`
+    margin-bottom: ${props => (props.extraMargin ? '2em' : '0')};
+    font-style: italic;
+    opacity: 0.5;
+`;
 
 export default Author;

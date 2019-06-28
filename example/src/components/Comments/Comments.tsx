@@ -1,9 +1,11 @@
 // External Dependencies
 import * as React from 'react';
+import styled from 'styled-components';
 import { ResourceIdentifier } from 'ts-json-api';
 
 // Internal Dependencies
 import { Comment as CommentType } from '../../types';
+import Button from '../Button';
 import Comment from '../Comment';
 
 interface CommentsProps {
@@ -17,17 +19,30 @@ const Comments: React.SFC<CommentsProps> = ({
     isLoading,
     onAddComment,
 }) => (
-    <div>
+    <Root>
         <h2>Comments</h2>
-        <ul>
+
+        <CommentList>
             {comments.map(comment => (
                 <Comment key={comment.id} id={comment.id} />
             ))}
-        </ul>
-        <button onClick={onAddComment}>
-            {isLoading ? 'Adding comment…' : 'Add Comment'}
-        </button>
-    </div>
+        </CommentList>
+
+        <Button disabled={isLoading} onClick={onAddComment}>
+            {isLoading ? 'Adding Comment…' : 'Add Comment'}
+        </Button>
+    </Root>
 );
+
+const Root = styled.div`
+    margin-top: 2em;
+    margin-bottom: 2em;
+`;
+
+const CommentList = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+`;
 
 export default Comments;

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
+// Testing Dependencies.
 import { mockArticleResponse } from '../__mocks__/mockArticleResponse';
 import { mockCommentResponse } from '../__mocks__/mockCommentResponse';
 
