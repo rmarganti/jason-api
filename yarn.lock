@@ -4347,11 +4347,6 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-ramda@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
-  integrity sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ==
-
 ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
@@ -5364,12 +5359,12 @@ ts-jest@^24.0.2:
     semver "^5.5"
     yargs-parser "10.x"
 
-ts-json-api@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/ts-json-api/-/ts-json-api-0.9.3.tgz#bd1e7cb27e194eadc1655bd81fd05cb4c9ee7558"
-  integrity sha1-vR58sn4ZTq3BZVvYH9BctMnudVg=
+ts-json-api@^1.0.0-beta2:
+  version "1.0.0-beta2"
+  resolved "https://registry.yarnpkg.com/ts-json-api/-/ts-json-api-1.0.0-beta2.tgz#aef9b633d64e8faf6600c0ff60b6dcc5d1574941"
+  integrity sha512-FV+U8ptzFhYjVqqs+7MMOt13JvtAiK9g0WITo4eFsHv4aSj26tqLzWrz4Q6CGHcU1V5/9ZHAOo3d2meJq0pflA==
   dependencies:
-    ramda "^0.25.0"
+    ramda "^0.26.1"
 
 tsdx@^0.5.11:
   version "0.5.11"

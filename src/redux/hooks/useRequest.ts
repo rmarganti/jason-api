@@ -31,7 +31,7 @@
 
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ResourceObjectOrObjects, Response } from 'ts-json-api/types';
+import { ResourceObjectOrObjects, Response } from 'ts-json-api';
 
 import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
@@ -47,6 +47,11 @@ export interface UseRequestOptions<D extends ResourceObjectOrObjects> {
     onSuccess?: (response: ResponseWithData<D>) => void;
 }
 
+type UseRequestReturn<D extends ResourceObjectOrObjects> = Response<D> & {
+    fetch: () => Promise<void>;
+    isLoading: boolean;
+};
+
 export const useRequest = <
     D extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >({
@@ -58,7 +63,7 @@ export const useRequest = <
 }: UseRequestOptions<D>) => {
     const dispatch = useDispatch<JasonApiDispatch>();
     const [isLoading, setLoading] = useState(false);
-    const [response, setResponse] = useState<Response<D>>({});
+    const [response, setResponse] = useState<Response<D>>();
 
     // Preform the fetch and keep track of loading states.
     const fetch = useCallback(async () => {
@@ -114,5 +119,5 @@ export const useRequest = <
         ...providedResponse,
         fetch,
         isLoading,
-    };
+    } as UseRequestReturn<D>;
 };

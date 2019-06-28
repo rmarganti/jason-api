@@ -1,4 +1,4 @@
-import { Response } from 'ts-json-api/types';
+import { Response } from 'ts-json-api';
 
 import { Comment } from './types';
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { ResourceObject } from 'ts-json-api/types';
+import { ResourceObject } from 'ts-json-api';
 
 import { getResourceObject } from '../selectors';
 
