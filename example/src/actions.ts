@@ -22,3 +22,9 @@ export const createArticle = (title: string) =>
             },
         },
     });
+
+export const addComment = () =>
+    jasonApiRequest({
+        method: 'post',
+        url: '/articles/1/relationships/comments',
+    });

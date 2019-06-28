@@ -1,3 +1,4 @@
+// External Dependencies
 import { ResourceObject, Relationship } from 'ts-json-api';
 
 export interface Article extends ResourceObject {

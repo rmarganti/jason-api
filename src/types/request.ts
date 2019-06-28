@@ -1,10 +1,4 @@
-import {
-    Attributes,
-    Response,
-    ResponseWithData,
-    NewResourceObject,
-    Request,
-} from 'ts-json-api';
+import { Attributes, Response, ResponseWithData } from 'ts-json-api';
 
 import { FlexiblePayload } from './other';
 

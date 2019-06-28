@@ -1,6 +1,11 @@
+// External Dependencies
 import * as React from 'react';
+
+// JasonAPI
 import { useItem } from '../../../src';
-import { Person } from 'src/types';
+
+// Internal Dependencies
+import { Person } from '../types';
 
 interface AuthorProps {
     id: string;

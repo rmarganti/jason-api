@@ -2,7 +2,6 @@ import axios, { AxiosError } from 'axios';
 import { ActionCreator, MiddlewareAPI } from 'redux';
 import {
     ApiResourceObject,
-    Response,
     ResponseWithData,
     ResponseWithErrors,
 } from 'ts-json-api';
@@ -162,7 +161,7 @@ class JsonApiMiddleware {
      *
      * @param response
      */
-    private finishLoading(response: Response) {
+    private finishLoading(response: ResponseWithData) {
         if (!response || !response.data) {
             return;
         }

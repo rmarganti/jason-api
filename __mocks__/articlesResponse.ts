@@ -1,8 +1,8 @@
-import { Response } from 'ts-json-api';
+import { ResponseWithData } from 'ts-json-api';
 
 import { Article } from './types';
 
-export const articlesResponse: Response<Article[]> = {
+export const articlesResponse: ResponseWithData<Article[]> = {
     // @ts-ignore
     data: [
         {

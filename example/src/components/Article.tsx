@@ -1,33 +1,31 @@
+// External Dependencies
 import * as React from 'react';
 
-import { useRequestResponse } from '../../../src'; // JasonApi
+// JasonAPI
+import { useRequestResponse } from '../../../src';
 
+// Internal Dependencies
 import { getArticle } from '../actions';
 import { Article } from '../types';
-import Comment from './Comment';
+import Comments from './Comments';
 
 const Article = () => {
-    const result = useRequestResponse<Article>({
+    const { data, errors, isLoading, refetch } = useRequestResponse<Article>({
         action: getArticle('1'),
         expandResourceObjects: true,
     });
 
-    return result.isLoading ? (
+    return !data && isLoading ? (
         <p>Loading</p>
-    ) : result.errors ? (
+    ) : errors ? (
         <div>Errors!</div>
-    ) : result.data ? (
+    ) : data ? (
         <div>
-            <h1>{result.data.attributes.title}</h1>
-            <p>{result.data.attributes.body}</p>
-            <div>
-                <h2>Comments</h2>
-                <ul>
-                    {result.data.relationships.comments.data.map(comment => (
-                        <Comment key={comment.id} id={comment.id} />
-                    ))}
-                </ul>
-            </div>
+            <h1>{data.attributes.title}</h1>
+            {isLoading && <p>Refreshing...</p>}
+            <p>{data.attributes.body}</p>
+            <Comments comments={data.relationships.comments.data} />
+            <button onClick={refetch}>Refetch</button>
         </div>
     ) : null;
 };

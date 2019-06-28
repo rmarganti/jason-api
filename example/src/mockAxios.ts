@@ -1,14 +1,23 @@
+// External Dependencies
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-import { mockResponse } from '../__mocks__/mockResponse';
+import { mockArticleResponse } from '../__mocks__/mockArticleResponse';
+import { mockCommentResponse } from '../__mocks__/mockCommentResponse';
 
 export const mockAxios = () => {
     // Mock the Axios (used under the hood) response
     const mock = new MockAdapter(axios, {
-        delayResponse: 2000,
+        delayResponse: 1000,
     });
 
-    mock.onGet('/articles/1').reply(200, mockResponse);
-    mock.onPost('/articles').reply(200, mockResponse);
+    // Articles
+    mock.onGet('/articles/1').reply(200, mockArticleResponse);
+    mock.onPost('/articles').reply(200, mockArticleResponse);
+
+    // Comments
+    mock.onPost('/articles/1/relationships/comments').reply(
+        200,
+        mockCommentResponse
+    );
 };

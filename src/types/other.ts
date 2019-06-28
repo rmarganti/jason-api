@@ -1,4 +1,4 @@
-import { Response, ResourceObjectOrObjects } from 'ts-json-api';
+import { ResourceObjectOrObjects, ResponseWithData } from 'ts-json-api';
 
 /**
  * Remove from object T any properties with key of K.
@@ -11,7 +11,7 @@ import { Response, ResourceObjectOrObjects } from 'ts-json-api';
  */
 export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
-export type FlexiblePayload = ResourceObjectOrObjects | Response;
+export type FlexiblePayload = ResourceObjectOrObjects | ResponseWithData;
 
 export type FunctionType = (...args: any[]) => any;
 

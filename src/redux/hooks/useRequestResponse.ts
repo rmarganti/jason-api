@@ -1,10 +1,6 @@
-import { DependencyList, useEffect, useCallback, useState } from 'react';
+import { DependencyList, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    ResourceObjectOrObjects,
-    Response,
-    ResponseWithData,
-} from 'ts-json-api/types';
+import { ResourceObjectOrObjects, Response } from 'ts-json-api/types';
 
 import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
@@ -53,17 +49,22 @@ export const useRequestResponse = <
     const [response, setResponse] = useState<Response<D>>({});
 
     // Preform the fetch and keep track of loading states.
-    const fetch = useCallback(() => {
+    const fetch = useCallback(async () => {
         if (cacheScheme === 'cacheOnly') {
             return;
         }
 
+        // Start loading.
         setLoading(true);
 
-        dispatch(action).then(r => {
-            setLoading(false);
-            setResponse(r as ResponseWithData<D>);
-        });
+        // Get the response.
+        const mostRecentResponse = (await dispatch(action)) as Response<D>;
+
+        // Stop Loading.
+        setLoading(false);
+
+        // Store the response.
+        setResponse(mostRecentResponse);
     }, [action]);
 
     // Get cached response.
@@ -72,6 +73,7 @@ export const useRequestResponse = <
         getCachedQuery(cacheKey, expandResourceObjects)
     ) as Response<D>;
 
+    // Determine correct response to return.
     const providedResponse =
         cacheScheme === 'noCache' ? response : response || cachedResponse;
 

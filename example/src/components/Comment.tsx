@@ -1,7 +1,10 @@
+// External Dependencies
 import * as React from 'react';
 
+// JasonAPI
 import { useItem } from '../../../src';
 
+// Internal Dependencies
 import { Comment as CommentType } from '../types';
 import Author from './Author';
 

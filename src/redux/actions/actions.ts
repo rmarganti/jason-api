@@ -1,5 +1,5 @@
 import pluralize from 'pluralize';
-import { Attributes, Response, ResponseWithErrors } from 'ts-json-api';
+import { Attributes, ResponseWithData, ResponseWithErrors } from 'ts-json-api';
 
 import { FlexiblePayload } from '../../types/other';
 import { RequestConfig } from '../../types/request';
@@ -17,7 +17,7 @@ export const request = (config: RequestConfig) =>
  */
 export const requestSuccess = (
     requestConfig: RequestConfig,
-    response: Response
+    response: ResponseWithData
 ) =>
     createAction(actionTypes.REQUEST_SUCCESS, {
         requestConfig,

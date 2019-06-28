@@ -1,4 +1,4 @@
-export const mockResponse = {
+export const mockArticleResponse = {
     links: {
         self: 'http://example.com/articles/1',
     },

@@ -1,3 +1,4 @@
+// External Dependencies
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
 // JasonAPI

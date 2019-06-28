@@ -81,6 +81,8 @@ export const defaultState: JasonApiState = {
                     },
                 },
                 '12': {
+                    type: 'comments',
+                    id: '12',
                     attributes: {
                         body: 'I like XML better',
                     },
@@ -92,7 +94,6 @@ export const defaultState: JasonApiState = {
                             },
                         },
                     },
-                    // @ts-ignore
                     meta: {
                         error: null,
                         isLoading: false,
