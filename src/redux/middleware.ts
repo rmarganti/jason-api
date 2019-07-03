@@ -14,7 +14,7 @@ import {
 import { JASON_API } from './actions/actionTypes';
 import {
     addRelationshipToResourceObject,
-    JasonApiRequest,
+    JasonApiRequestAction,
     removeRelationshipFromResourceObject,
     removeResourceObject,
     request,
@@ -43,7 +43,7 @@ class JsonApiMiddleware {
     constructor(
         config: MiddlewareConfig = {},
         store: MiddlewareAPI<any>,
-        action: JasonApiRequest
+        action: JasonApiRequestAction
     ) {
         this.config = config;
         this.store = store;

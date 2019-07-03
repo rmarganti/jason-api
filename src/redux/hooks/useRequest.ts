@@ -35,12 +35,12 @@ import { ResourceObjectOrObjects, Response } from 'ts-json-api';
 
 import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
-import { JasonApiRequest, JASON_API } from '../actions';
+import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
 import { ResponseWithData, ResponseWithErrors } from 'ts-json-api';
 
 export interface UseRequestOptions<D extends ResourceObjectOrObjects> {
-    action: JasonApiRequest;
+    action: JasonApiRequestAction;
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     onError?: (response: ResponseWithErrors) => void;
