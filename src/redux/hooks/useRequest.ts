@@ -47,7 +47,9 @@ export interface UseRequestOptions<D extends ResourceObjectOrObjects> {
     onSuccess?: (response: ResponseWithData<D>) => void;
 }
 
-type UseRequestReturn<D extends ResourceObjectOrObjects> = Response<D> & {
+export type UseRequestResult<D extends ResourceObjectOrObjects> = Response<
+    D
+> & {
     fetch: () => Promise<void>;
     isLoading: boolean;
 };
@@ -119,5 +121,5 @@ export const useRequest = <
         ...providedResponse,
         fetch,
         isLoading,
-    } as UseRequestReturn<D>;
+    } as UseRequestResult<D>;
 };
