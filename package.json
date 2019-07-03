@@ -1,6 +1,6 @@
 {
   "name": "jason-api",
-  "version": "1.0.0-beta3",
+  "version": "1.0.0-beta4",
   "license": "MIT",
   "description": "Consume and manipulate JSON API standard data in Redux with scary ease.",
   "repository": "https://github.com/rmarganti/jason-api",
