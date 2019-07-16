@@ -23,9 +23,11 @@
  * ```
  */
 
+// External dependencies
 import { useEffect, DependencyList } from 'react';
 import { ResourceObjectOrObjects } from 'ts-json-api';
 
+// Internal dependencies
 import { useRequest, UseRequestOptions } from './useRequest';
 
 export const useAutoRequest = <

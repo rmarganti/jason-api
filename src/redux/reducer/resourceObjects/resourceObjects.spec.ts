@@ -1,12 +1,15 @@
+// External dependencies
 import R from 'ramda';
 import { ResourceObject } from 'ts-json-api';
 
+// Internal dependencies
 import * as actionTypes from '../../actions/actionTypes';
-import reducer from './resourceObjects';
+import { resourceObjects } from './resourceObjects';
 
-import { commentResponse, articlesResponse } from '../../../../__mocks__';
+// Testing dependencies
+import { commentResponse, articlesResponse } from '__mocks__';
 
-const initialExpectedState = reducer(
+const initialExpectedState = resourceObjects(
     {},
     {
         type: actionTypes.LOAD_DATA,
@@ -16,7 +19,7 @@ const initialExpectedState = reducer(
 
 describe('reducer', () => {
     it('should return the initial state', () => {
-        const result = reducer(undefined);
+        const result = resourceObjects(undefined);
         expect(result).toEqual({});
     });
 
@@ -49,12 +52,12 @@ describe('reducer', () => {
     });
 
     it('should handle an additional LOAD_DATA', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.LOAD_DATA,
             payload: commentResponse,
         });
 
-        expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy;
+        expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy();
         expect(
             R.path(['comments', 'byId', '44', 'attributes', 'body'], result)
         ).toEqual('This is a terrible comment');
@@ -76,7 +79,7 @@ describe('reducer', () => {
     });
 
     it('should handle ADD_RELATIONSHIP_TO_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.ADD_RELATIONSHIP,
             payload: {
                 resourceType: 'articles',
@@ -86,7 +89,7 @@ describe('reducer', () => {
             },
         });
 
-        expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy;
+        expect(R.path(['comments', 'byId', '44'], result)).toBeTruthy();
         expect(
             R.path<ResourceObject[]>(
                 ['articles', 'byId', '1', 'relationships', 'comments', 'data'],
@@ -96,7 +99,7 @@ describe('reducer', () => {
     });
 
     it('should handle REMOVE_RELATIONSHIP_FROM_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.REMOVE_RELATIONSHIP,
             payload: {
                 resourceType: 'articles',
@@ -114,7 +117,7 @@ describe('reducer', () => {
     });
 
     it('should handle a SET_RELATIONSHIP_ON_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.SET_RELATIONSHIP,
             payload: {
                 resourceType: 'articles',
@@ -152,7 +155,7 @@ describe('reducer', () => {
     });
 
     it('should handle a CLEAR_RELATIONSHIP_ON_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.CLEAR_RELATIONSHIP,
             payload: {
                 resourceType: 'articles',
@@ -170,7 +173,7 @@ describe('reducer', () => {
     });
 
     it('should handle UPDATE_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.UPDATE_RESOURCE_OBJECT,
             payload: {
                 resourceType: 'articles',
@@ -187,7 +190,7 @@ describe('reducer', () => {
     });
 
     it('should handle UPDATE_ENTITIES_META and replace a single metadata property', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.UPDATE_RESOURCE_OBJECTS_META,
             payload: {
                 resourceType: 'articles',
@@ -202,7 +205,7 @@ describe('reducer', () => {
     });
 
     it('should handle UPDATE_RESOURCE_OBJECTS_META and completely replace the meta object', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.UPDATE_RESOURCE_OBJECTS_META,
             payload: {
                 resourceType: 'articles',
@@ -217,7 +220,7 @@ describe('reducer', () => {
     });
 
     it('should handle UPDATE_RESOURCE_OBJECT_META and replace a single metadata property', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.UPDATE_RESOURCE_OBJECT_META,
             payload: {
                 resourceType: 'articles',
@@ -233,7 +236,7 @@ describe('reducer', () => {
     });
 
     it('should handle UPDATE_RESOURCE_OBJECT_META and completely replace the meta object', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.UPDATE_RESOURCE_OBJECT_META,
             payload: {
                 resourceType: 'articles',
@@ -249,7 +252,7 @@ describe('reducer', () => {
     });
 
     it('should handle REMOVE_ENTITY', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.REMOVE_RESOURCE_OBJECT,
             payload: {
                 resourceType: 'articles',
@@ -260,7 +263,7 @@ describe('reducer', () => {
     });
 
     it('should handle CLEAR_ENTITY_TYPE', () => {
-        const result = reducer(initialExpectedState, {
+        const result = resourceObjects(initialExpectedState, {
             type: actionTypes.CLEAR_RESOURCE_OBJECT_TYPE,
             payload: {
                 resourceType: 'articles',

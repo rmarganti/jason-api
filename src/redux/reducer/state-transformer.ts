@@ -1,3 +1,4 @@
+// External dependencies
 import {
     assocPath,
     concat,
@@ -15,6 +16,7 @@ import {
 } from 'ramda';
 import { Attributes, ResourceObject, ResourceObjects } from 'ts-json-api';
 
+// Internal dependencies
 import { FlexiblePayload } from '../../types/other';
 import { ResourceObjectsState } from '../../types/state';
 import {

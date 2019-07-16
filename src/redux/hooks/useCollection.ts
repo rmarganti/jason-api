@@ -1,6 +1,8 @@
+// External dependencies
 import { useSelector } from 'react-redux';
 import { ResourceObject } from 'ts-json-api';
 
+// Internal dependencies
 import { getResourceObjects } from '../selectors';
 
 export const useCollection = <T extends ResourceObject = ResourceObject>(

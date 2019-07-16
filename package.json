@@ -15,7 +15,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "prepublish": "npm build"
+    "prepublish": "yarn build"
   },
   "husky": {
     "hooks": {
@@ -28,7 +28,12 @@
     "trailingComma": "es5"
   },
   "jest": {
+    "moduleNameMapper": {
+      "^__mocks__(/?.*)": "<rootDir>/__mocks__/$1",
+      "^__tests__(/?.*)": "<rootDir>/__tests__/$1"
+    },
     "setupFilesAfterEnv": [
+      "@testing-library/react/cleanup-after-each",
       "<rootDir>/__tests__/setupTests.ts"
     ],
     "testMatch": [

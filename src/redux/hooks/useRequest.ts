@@ -29,10 +29,12 @@
  * ```
  */
 
+// External dependencies
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResourceObjectOrObjects, Response } from 'ts-json-api';
 
+// Internal dependencies
 import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
