@@ -2,7 +2,7 @@ import { Middleware, Action } from 'redux';
 import { ResponseWithData } from 'ts-json-api';
 
 import * as actions from '../redux/actions/actions';
-import { JasonApiRequestAction } from '../redux/actions/jsonApiRequest';
+import { JasonApiRequestAction } from '../redux/actions/jasonApiRequest';
 import { ActionsUnion } from './other';
 
 export type JasonApiAction = ActionsUnion<typeof actions>;

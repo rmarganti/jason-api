@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 // Testing dependencies
-import { defaultStore } from '../../../__tests__/tools';
+import { defaultStore } from '__tests__/tools';
 import CollectionComponent from './__mocks__/CollectionComponent';
 
 describe('useCollection()', () => {
@@ -15,8 +15,7 @@ describe('useCollection()', () => {
             </Provider>
         );
 
-        const articles = container.querySelectorAll('p');
-
-        expect(articles).toHaveLength(1);
+        const comments = container.querySelectorAll('p');
+        expect(comments).toHaveLength(2);
     });
 });

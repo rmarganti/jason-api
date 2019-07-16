@@ -4,7 +4,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 // Testing dependencies
-import { defaultStore } from '../../../__tests__/tools';
+import { defaultStore } from '__tests__/tools';
 import ItemComponent from './__mocks__/ItemComponent';
 
 describe('useItem()', () => {

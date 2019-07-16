@@ -8,8 +8,8 @@ import { jasonApiRequest } from '../../actions';
 import { useAutoRequest } from '../useAutoRequest';
 
 // Testing dependencies
-import { articleResponse } from '../../../../__mocks__/articleResponse';
-import { Article } from '../../../../__mocks__/types';
+import { articleResponse } from '__mocks__/articleResponse';
+import { Article } from '__mocks__/types';
 
 // Mock Action Creator
 const mockAction = (articleId: string) =>

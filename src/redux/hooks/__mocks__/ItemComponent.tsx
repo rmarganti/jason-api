@@ -1,6 +1,8 @@
+// External dependencies
 import * as React from 'react';
 
-import { Comment } from '../../../../__mocks__/types';
+// Internal dependencies
+import { Comment } from '__mocks__/types';
 import { useItem } from '../useItem';
 
 interface ItemComponentProps {

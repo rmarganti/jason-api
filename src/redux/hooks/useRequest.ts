@@ -29,11 +29,13 @@
  * ```
  */
 
+// External dependencies
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResourceObjectOrObjects, Response } from 'ts-json-api';
 
-import { JasonApiDispatch } from '../../types';
+// Internal dependencies
+import { JasonApiDispatch } from '../../types/redux';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';

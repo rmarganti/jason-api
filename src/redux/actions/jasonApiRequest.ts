@@ -1,4 +1,4 @@
-import { RequestConfig } from '../../types';
+import { RequestConfig } from '../../types/request';
 import { JASON_API } from './actionTypes';
 
 const defaultRequestConfig: Partial<RequestConfig> = {

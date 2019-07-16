@@ -6,7 +6,8 @@ import {
     ResponseWithErrors,
 } from 'ts-json-api';
 
-import { JasonApiMiddleware, RequestConfig } from '../types';
+import { JasonApiMiddleware } from '../types/redux';
+import { RequestConfig } from '../types/request';
 import {
     extractJsonApiErrorFromAxios,
     stringifyJsonApiErrors,
@@ -266,7 +267,7 @@ class JsonApiMiddleware {
 }
 
 /**
- * Handle REQUEST actions
+ * Handle JasonAPI meta actions.
  *
  * @param dispatch
  */

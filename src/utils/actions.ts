@@ -1,5 +1,5 @@
 import { hashObject } from './data';
-import { RequestConfig } from '../types';
+import { RequestConfig } from '../types/request';
 
 export interface Action<T extends string> {
     type: T;

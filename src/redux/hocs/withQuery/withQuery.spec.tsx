@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 
 // Testing dependencies
 import { defaultStore } from '__tests__/tools';
-import RequestResponseComponent from './__mocks__/RequestResponseComponent';
+import WithQueryComponent from './__mocks__/WithQueryComponent';
 
-describe('useAutoRequest()', () => {
-    it('It requests and injects a query', done => {
+describe('withQuery()', () => {
+    it('requests and injects a query', done => {
         const { getByText } = render(
             <Provider store={defaultStore}>
-                <RequestResponseComponent />
+                <WithQueryComponent />
             </Provider>
         );
 

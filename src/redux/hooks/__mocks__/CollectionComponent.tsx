@@ -5,15 +5,15 @@ import * as React from 'react';
 import { useCollection } from '../useCollection';
 
 // Testing dependencies
-import { Article } from '../../../../__mocks__/types';
+import { Comment } from '__mocks__/types';
 
 const CollectionComponent: React.FunctionComponent = () => {
-    const collection = useCollection<Article>('articles');
+    const collection = useCollection<Comment>('comments');
 
     return (
         <div>
-            {collection.map(article => (
-                <p key={article.id}>{article.attributes.title}</p>
+            {collection.map(comment => (
+                <p key={comment.id}>{comment.attributes.body}</p>
             ))}
         </div>
     );

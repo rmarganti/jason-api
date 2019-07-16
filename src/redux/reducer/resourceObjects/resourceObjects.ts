@@ -1,3 +1,4 @@
+// Internal dependencies
 import { JasonApiAction } from '../../../types/redux';
 import { ResourceObjectsState } from '../../../types/state';
 import * as actionTypes from '../../actions/actionTypes';
@@ -14,7 +15,10 @@ import {
     updateResourceObjectsMeta,
 } from '../state-transformer';
 
-export default (state: ResourceObjectsState = {}, action?: JasonApiAction) => {
+export const resourceObjects = (
+    state: ResourceObjectsState = {},
+    action?: JasonApiAction
+) => {
     if (!action) {
         return state;
     }

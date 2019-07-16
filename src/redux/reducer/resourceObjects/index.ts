@@ -1,1 +1,1 @@
-export { default } from './resourceObjects';
+export { resourceObjects } from './resourceObjects';
