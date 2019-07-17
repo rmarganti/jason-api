@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
 // Internal Dependencies
-import Article from './src/components/Article';
+import App from './src/App';
 import { mockAxios } from './src/mockAxios';
-import { store } from './src/store';
+import { createStore } from './src/createStore';
 
 // Mock the network response.
 mockAxios();
@@ -30,9 +30,9 @@ const RootStyles = createGlobalStyle`
 `;
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={createStore()}>
         <RootStyles />
-        <Article id="1" />
+        <App />
     </Provider>,
     document.getElementById('root')
 );

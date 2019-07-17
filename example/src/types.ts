@@ -1,29 +1,29 @@
 // External Dependencies
 import { ResourceObject, Relationship } from 'ts-json-api';
 
-export interface Article extends ResourceObject {
+export interface ArticleResource extends ResourceObject {
     type: 'articles';
     attributes: {
         title: string;
         body: string;
     };
     relationships: {
-        author: Relationship<Person>;
-        comments: Relationship<Comment[]>;
+        author: Relationship<PersonResource>;
+        comments: Relationship<CommentResource[]>;
     };
 }
 
-export interface Comment extends ResourceObject {
+export interface CommentResource extends ResourceObject {
     type: 'comments';
     attributes: {
         body: string;
     };
     relationships: {
-        author: Relationship<Person>;
+        author: Relationship<PersonResource>;
     };
 }
 
-export interface Person extends ResourceObject {
+export interface PersonResource extends ResourceObject {
     type: 'people';
     attributes: {
         firstName: string;

@@ -20,7 +20,7 @@ const RequestResponseComponent: React.FunctionComponent<
     data && data.attributes ? <h1>{data.attributes.title}</h1> : null;
 
 export default withQuery<Article>({
-    queryFactory: () =>
+    actionFactory: () =>
         jasonApiRequest({
             url: '/api/article/1',
         }),

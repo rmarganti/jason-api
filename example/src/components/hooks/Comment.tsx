@@ -3,10 +3,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // JasonAPI
-import { useItem } from '../../../src';
+import { useItem } from '../../../../src';
 
 // Internal Dependencies
-import { Comment as CommentType } from '../types';
+import { CommentResource } from '../../types';
 import Author from './Author';
 
 interface CommentProps {
@@ -14,7 +14,7 @@ interface CommentProps {
 }
 
 const Comment: React.SFC<CommentProps> = ({ id }) => {
-    const comment = useItem<CommentType>('comments', id);
+    const comment = useItem<CommentResource>('comments', id);
 
     if (!comment) {
         return null;
@@ -22,8 +22,8 @@ const Comment: React.SFC<CommentProps> = ({ id }) => {
 
     return (
         <Root>
-            {comment.attributes.body.split('\n').map(paragraph => (
-                <p>{paragraph}</p>
+            {comment.attributes.body.split('\n').map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
             ))}
 
             <Author id={comment.relationships.author.data.id} />

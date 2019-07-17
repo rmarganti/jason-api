@@ -16,7 +16,7 @@ interface WithQueryOptions<R extends ResourceObjectOrObjects> {
     onError?: UseRequestOptions<R>['onError'];
     onSuccess?: UseRequestOptions<R>['onSuccess'];
     propsToWatch?: string[];
-    queryFactory: QueryFactory;
+    actionFactory: QueryFactory;
 }
 
 export type WithQueryInjectedProps<
@@ -31,14 +31,14 @@ export const withQuery = <
     onError,
     onSuccess,
     propsToWatch = [],
-    queryFactory,
+    actionFactory,
 }: WithQueryOptions<D>) => <OriginalProps extends WithQueryInjectedProps<D>>(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
     type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps<D>>;
 
     const WithQuery: React.FunctionComponent<ExternalProps> = externalProps => {
-        const action = queryFactory(externalProps);
+        const action = actionFactory(externalProps);
 
         const request = useAutoRequest<D>(
             {

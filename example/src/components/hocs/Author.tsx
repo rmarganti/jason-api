@@ -3,29 +3,22 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // JasonAPI
-import { useItem } from '../../../src';
+import { WithItemInjectedProps, withItem } from '../../../../src';
 
 // Internal Dependencies
-import { Person } from '../types';
+import { PersonResource } from '../../types';
 
-interface AuthorProps {
+type AuthorProps = WithItemInjectedProps<PersonResource> & {
     extraMargin?: boolean;
     id: string;
-}
+};
 
-const Author: React.SFC<AuthorProps> = ({ extraMargin, id }) => {
-    const author = useItem<Person>('people', id);
-
-    if (!author) {
-        return null;
-    }
-
-    return (
+const Author: React.SFC<AuthorProps> = ({ data: author, extraMargin }) =>
+    author ? (
         <Root extraMargin={extraMargin}>
             {author.attributes.firstName} {author.attributes.lastName}
         </Root>
-    );
-};
+    ) : null;
 
 interface RootProps {
     extraMargin?: boolean;
@@ -36,4 +29,6 @@ const Root = styled.div<RootProps>`
     opacity: 0.5;
 `;
 
-export default Author;
+export default withItem<PersonResource>({
+    resourceType: 'people',
+})(Author);

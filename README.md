@@ -51,7 +51,7 @@ const UsersList = ({ data, errors, isLoading }) =>
     );
 
 const EnhancedUsersList = withQuery({
-    queryFactory: dispatch => dispatch(fetchUsers()),
+    actionFactory: dispatch => dispatch(fetchUsers()),
 });
 
 const User = ({ data }) => (
@@ -132,8 +132,8 @@ import { getUser, updateUser } from './yourActions';
 
 const User = ({
     data,
-    isLoading, // Automatically updated based on the status of your queryFactory's Promise
-    refetch, // Re-run your queryFactory.
+    isLoading, // Automatically updated based on the status of your actionFactory's Promise
+    refetch, // Re-run your actionFactory.
     ...anyOtherDataInAJsonApiResponse // `meta`, `errors`, etc.
 }) =>
     isLoading ? (
@@ -146,17 +146,17 @@ const User = ({
     );
 
 const enhance = withQuery({
-    // queryFactory is a function that returns a Promise
+    // actionFactory is a function that returns a Promise
     // that resolves to a JSON API response. HINT: Any
     // dispatch()'ed JASON_API_REQUEST fits this criteria.
-    queryFactory: (dispatch, props) => dispatch(getUser(props.id)),
+    actionFactory: (dispatch, props) => dispatch(getUser(props.id)),
 
     // Determines how caching is handled.
     // `cacheFirst` (default) ➡ Initially load the cached query,
-    //     but still trigger the `queryFactory` for an updated.
+    //     but still trigger the `actionFactory` for an updated.
     // `cacheOnly` ➡ If a cached version exists, use that without
-    //     triggering the `queryFactory`.
-    // `noCache` ➡ Never use the cached version, always trigger `queryFactory`.
+    //     triggering the `actionFactory`.
+    // `noCache` ➡ Never use the cached version, always trigger `actionFactory`.
     cacheScheme: 'cacheFirst',
 
     // Should full resource objects be provided to your component? Otherwise,
@@ -168,7 +168,7 @@ const enhance = withQuery({
     expandResourceObjects: true,
 
     // Any time any of the given props change,
-    // the queryFactory will be retriggered.
+    // the actionFactory will be retriggered.
     propsToWatch: ['id'],
 
     // By default, JasonAPI assumes its reducer is keyed by `resourceObjects`.
