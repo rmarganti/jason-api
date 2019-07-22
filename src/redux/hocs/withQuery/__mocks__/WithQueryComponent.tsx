@@ -9,17 +9,17 @@ import { withQuery, WithQueryInjectedProps } from '../withQuery';
 
 // Testing dependencies
 import { articleResponse } from '__mocks__/articleResponse';
-import { Article } from '__mocks__/types';
+import { ArticleResource } from '__mocks__/types';
 
 const mock = new MockAdapter(axios);
 mock.onGet().reply(200, articleResponse);
 
 const RequestResponseComponent: React.FunctionComponent<
-    WithQueryInjectedProps<Article>
+    WithQueryInjectedProps<ArticleResource>
 > = ({ data }) =>
     data && data.attributes ? <h1>{data.attributes.title}</h1> : null;
 
-export default withQuery<Article>({
+export default withQuery<ArticleResource>({
     actionFactory: () =>
         jasonApiRequest({
             url: '/api/article/1',

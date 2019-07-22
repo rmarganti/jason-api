@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 // Internal dependencies
-import { Comment } from '__mocks__/types';
+import { CommentResource } from '__mocks__/types';
 import { useItem } from '../useItem';
 
 interface ItemComponentProps {
@@ -10,7 +10,7 @@ interface ItemComponentProps {
 }
 
 const ItemComponent: React.FunctionComponent<ItemComponentProps> = ({ id }) => {
-    const item = useItem<Comment>('comments', id);
+    const item = useItem<CommentResource>('comments', id);
 
     return item ? <p>{item.attributes.body}</p> : null;
 };

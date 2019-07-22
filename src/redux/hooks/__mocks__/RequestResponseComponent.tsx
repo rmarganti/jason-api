@@ -9,11 +9,11 @@ import { useAutoRequest } from '../useAutoRequest';
 
 // Testing dependencies
 import { articleResponse } from '__mocks__/articleResponse';
-import { Article } from '__mocks__/types';
+import { ArticleResource } from '__mocks__/types';
 
 // Mock Action Creator
 const mockAction = (articleId: string) =>
-    jasonApiRequest({
+    jasonApiRequest<ArticleResource>({
         url: `/api/article/${articleId}`,
     });
 
@@ -22,7 +22,7 @@ mock.onGet().reply(200, articleResponse);
 
 const RequestResponseComponent: React.FunctionComponent = () => {
     const action = mockAction('1');
-    const response = useAutoRequest<Article>({
+    const response = useAutoRequest({
         action,
         expandResourceObjects: true,
     });

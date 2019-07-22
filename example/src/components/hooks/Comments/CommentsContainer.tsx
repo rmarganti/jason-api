@@ -24,18 +24,19 @@ const CommentsContainer: React.SFC<CommentsProps> = ({ comments }) => {
         setComments(comments);
     }, [comments]);
 
-    const addNewCommentToLocalState = React.useCallback(response => {
-        setComments(currentComments => {
-            const typedResponse = response as ResponseWithData<CommentResource>;
+    const addNewCommentToLocalState = React.useCallback(
+        (response: ResponseWithData<CommentResource>) => {
+            setComments(currentComments => {
+                const newComment: CommentIdentifier = {
+                    type: 'comments',
+                    id: response.data.id,
+                };
 
-            const newComment: CommentIdentifier = {
-                type: 'comments',
-                id: typedResponse.data.id,
-            };
-
-            return [...currentComments, newComment];
-        });
-    }, []);
+                return [...currentComments, newComment];
+            });
+        },
+        []
+    );
 
     const doAddComment = useRequest({
         action: addComment(),

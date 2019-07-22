@@ -1,17 +1,24 @@
-import { Attributes, Response, ResponseWithData } from 'ts-json-api';
+import {
+    Attributes,
+    ResourceObjectOrObjects,
+    Response,
+    ResponseWithData,
+    ResponseWithErrors,
+} from 'ts-json-api';
 
 import { FlexiblePayload } from './other';
+import { JasonApiMiddlewareApi } from './redux';
 
 interface AdditionalHeaders {
     [index: string]: string;
 }
 
 interface ErrorCallback {
-    (error: Error): void;
+    (error: ResponseWithErrors, store: JasonApiMiddlewareApi): void;
 }
 
-interface SuccessCallback {
-    (response?: Response): void;
+interface SuccessCallback<D extends ResourceObjectOrObjects> {
+    (response: Response<D>, store: JasonApiMiddlewareApi): void;
 }
 
 interface Transformer {
@@ -28,7 +35,9 @@ type UpdateResourceObjectOnSuccess = [string, string, Attributes];
 
 type Method = 'get' | 'post' | 'patch' | 'delete';
 
-export interface RequestConfig {
+export interface RequestConfig<
+    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+> {
     url: string;
     method?: Method;
     payload?: any;
@@ -38,7 +47,7 @@ export interface RequestConfig {
     disableStartLoadingActionCreator?: boolean;
     displayNotificationOnError?: boolean;
     onError?: ErrorCallback;
-    onSuccess?: SuccessCallback;
+    onSuccess?: SuccessCallback<D>;
     transformer?: Transformer;
     setRelationshipOnSuccess?: SetRelationshipOnSuccess[];
     addRelationshipOnSuccess?: AddRelationshipOnSuccess[];
