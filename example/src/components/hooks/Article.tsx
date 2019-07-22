@@ -3,14 +3,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 // JasonAPI
-import { useAutoRequest } from '../../../src';
+import { useAutoRequest } from '../../../../src';
 
 // Internal Dependencies
-import { getArticle } from '../actions';
-import { Article } from '../types';
-import Button from './Button';
+import { getArticle } from '../../actions';
+import { ArticleResource } from '../../types';
+import Button from '../common/Button';
+import Loading from '../common/Loading';
 import Comments from './Comments';
-import Loading from './Loading';
 import Author from './Author';
 
 interface ArticleProps {
@@ -18,7 +18,9 @@ interface ArticleProps {
 }
 
 const Article: React.FunctionComponent<ArticleProps> = ({ id }) => {
-    const { data: article, errors, isLoading, fetch } = useAutoRequest<Article>(
+    const { data: article, errors, isLoading, fetch } = useAutoRequest<
+        ArticleResource
+    >(
         {
             action: getArticle(id),
             expandResourceObjects: true,
@@ -69,7 +71,7 @@ const Root = styled.div`
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
-
+    padding-bottom: 3em;
     font-family: sans-serif;
 `;
 

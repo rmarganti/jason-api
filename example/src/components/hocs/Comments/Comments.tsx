@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { ResourceIdentifier } from 'ts-json-api';
 
 // Internal Dependencies
-import { Comment as CommentType } from '../../types';
-import Button from '../Button';
+import Button from '../../common/Button';
 import Comment from '../Comment';
+import { CommentResource } from '../../../types';
 
 interface CommentsProps {
-    comments: ResourceIdentifier<CommentType>[];
+    comments: ResourceIdentifier<CommentResource>[];
     isLoading: boolean;
     onAddComment: () => void;
 }

@@ -4,24 +4,33 @@
  * Provide a method to dispatch an JasonAPI action,
  * while keeping track of loading status and responses.
  *
+ * Example:
+ *
  * ```ts
  * import React from 'react';
- * import { useRequest } from 'jason-api';
+ * import { jasonApiRequest, useRequest } from 'jason-api';
  * import { useDispatch } from 'react-redux';
  *
- * import { acceptYourHookOverlords } from './actions';
+ * import { ArticleResource } from './your-types.ts';
  *
- * const SomeComponent: React.FunctionComponent = () => {
- *     const action = acceptYourHookOverlords();
+ * const fetchArticles = () => jasonApiRequest<ArticleResource>({
+ *     url: '/api/articles',
+ * });
+ *
+ * const ArticlesList: React.FunctionComponent = () => {
+ *     const action = fetchArticles();
  *
  *     const { data, errors, fetch, isLoading } = useRequest(
  *          { action },
- *         [id]
  *     );
  *
  *     return (
  *         <button onClick={acceptYourHookOverlords.fetch}>
- *             {isLoading ? 'Please wait…' : 'Comb Dan Abramov\'s Hair'}
+ *             {
+ *                 isLoading
+ *                     ? 'Please wait…'
+ *                     : <pre>{JSON.stringify(data, null, 4)}</pre>
+ *             }
  *         </button>
  *     );
  * };
@@ -32,21 +41,24 @@
 // External dependencies
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ResourceObjectOrObjects, Response } from 'ts-json-api';
+import {
+    ResourceObjectOrObjects,
+    Response,
+    ResponseWithErrors,
+} from 'ts-json-api';
 
 // Internal dependencies
 import { JasonApiDispatch } from '../../types/redux';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
-import { ResponseWithData, ResponseWithErrors } from 'ts-json-api';
 
 export interface UseRequestOptions<D extends ResourceObjectOrObjects> {
-    action: JasonApiRequestAction;
+    action: JasonApiRequestAction<D>;
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     onError?: (response: ResponseWithErrors) => void;
-    onSuccess?: (response: ResponseWithData<D>) => void;
+    onSuccess?: (response: Response<D>) => void;
 }
 
 export type UseRequestResult<D extends ResourceObjectOrObjects> = Response<
@@ -80,9 +92,7 @@ export const useRequest = <
 
         // Get the response.
         try {
-            const successResponse = (await dispatch(
-                action
-            )) as ResponseWithData<D>;
+            const successResponse = await dispatch(action);
 
             // Store the success response.
             setResponse(successResponse);

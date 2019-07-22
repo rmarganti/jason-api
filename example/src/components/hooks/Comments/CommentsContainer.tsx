@@ -3,15 +3,17 @@ import * as React from 'react';
 import { ResponseWithData, ResourceIdentifier } from 'ts-json-api';
 
 // JasonAPI
-import { useRequest } from '../../../../src';
+import { useRequest } from '../../../../../src';
 
 // Internal Dependencies
-import { addComment } from '../../actions';
-import { Comment as CommentType } from '../../types';
+import { addComment } from '../../../actions';
+import { CommentResource } from '../../../types';
 import Comments from './Comments';
 
+type CommentIdentifier = ResourceIdentifier<CommentResource>;
+
 interface CommentsProps {
-    comments: ResourceIdentifier<CommentType>[];
+    comments: CommentIdentifier[];
 }
 
 const CommentsContainer: React.SFC<CommentsProps> = ({ comments }) => {
@@ -20,23 +22,21 @@ const CommentsContainer: React.SFC<CommentsProps> = ({ comments }) => {
     // Reset local state when props change (Similar to `mapPropsToState`).
     React.useEffect(() => {
         setComments(comments);
-    }, comments);
+    }, [comments]);
 
-    const addNewCommentToLocalState = React.useCallback(response => {
-        setComments(currentComments => {
-            const typedResponse = response as ResponseWithData<CommentType>;
+    const addNewCommentToLocalState = React.useCallback(
+        (response: ResponseWithData<CommentResource>) => {
+            setComments(currentComments => {
+                const newComment: CommentIdentifier = {
+                    type: 'comments',
+                    id: response.data.id,
+                };
 
-            console.log(typedResponse);
-
-            // @ts-ignore
-            const newComment: CommentType = {
-                type: 'comments',
-                id: typedResponse.data.id,
-            };
-
-            return [...currentComments, newComment];
-        });
-    }, []);
+                return [...currentComments, newComment];
+            });
+        },
+        []
+    );
 
     const doAddComment = useRequest({
         action: addComment(),

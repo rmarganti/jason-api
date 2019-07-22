@@ -1,5 +1,10 @@
 // External Dependencies
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import {
+    applyMiddleware,
+    combineReducers,
+    compose,
+    createStore as originalCreateStore,
+} from 'redux';
 
 // JasonAPI
 import {
@@ -18,7 +23,8 @@ declare global {
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(jasonApiMiddleware))
-);
+export const createStore = () =>
+    originalCreateStore(
+        rootReducer,
+        composeEnhancers(applyMiddleware(jasonApiMiddleware))
+    );

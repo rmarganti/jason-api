@@ -8,15 +8,17 @@ import { JasonApiRequestAction } from '../../actions/jasonApiRequest';
 import { useAutoRequest } from '../../hooks/useAutoRequest';
 import { UseRequestOptions, UseRequestResult } from '../../hooks/useRequest';
 
-type QueryFactory = (props: any) => JasonApiRequestAction;
+type QueryFactory<D extends ResourceObjectOrObjects> = (
+    props: any
+) => JasonApiRequestAction<D>;
 
 interface WithQueryOptions<R extends ResourceObjectOrObjects> {
+    actionFactory: QueryFactory<R>;
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     onError?: UseRequestOptions<R>['onError'];
     onSuccess?: UseRequestOptions<R>['onSuccess'];
     propsToWatch?: string[];
-    queryFactory: QueryFactory;
 }
 
 export type WithQueryInjectedProps<
@@ -26,19 +28,19 @@ export type WithQueryInjectedProps<
 export const withQuery = <
     D extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >({
+    actionFactory,
     cacheScheme = 'cacheFirst',
     expandResourceObjects = false,
     onError,
     onSuccess,
     propsToWatch = [],
-    queryFactory,
 }: WithQueryOptions<D>) => <OriginalProps extends WithQueryInjectedProps<D>>(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
     type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps<D>>;
 
     const WithQuery: React.FunctionComponent<ExternalProps> = externalProps => {
-        const action = queryFactory(externalProps);
+        const action = actionFactory(externalProps);
 
         const request = useAutoRequest<D>(
             {

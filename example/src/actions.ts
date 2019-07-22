@@ -1,17 +1,18 @@
 // JasonAPI
 import { jasonApiRequest } from '../../src';
+import { ArticleResource, CommentResource } from './types';
 
 // These create a JasonAPI meta action. They will trigger
 // the middleware, which will make the API call, normalize
 // the response, update the redux store with returned data,
 // and fire various actions during that life cycle.
 export const getArticle = (articleId: string) =>
-    jasonApiRequest({
+    jasonApiRequest<ArticleResource>({
         url: `/articles/${articleId}`,
     });
 
 export const createArticle = (title: string) =>
-    jasonApiRequest({
+    jasonApiRequest<ArticleResource>({
         method: 'post',
         url: '/articles',
         payload: {
@@ -25,7 +26,7 @@ export const createArticle = (title: string) =>
     });
 
 export const addComment = () =>
-    jasonApiRequest({
+    jasonApiRequest<CommentResource>({
         method: 'post',
         url: '/articles/1/relationships/comments',
     });

@@ -5,10 +5,10 @@ import * as React from 'react';
 import { useCollection } from '../useCollection';
 
 // Testing dependencies
-import { Comment } from '__mocks__/types';
+import { CommentResource } from '__mocks__/types';
 
 const CollectionComponent: React.FunctionComponent = () => {
-    const collection = useCollection<Comment>('comments');
+    const collection = useCollection<CommentResource>('comments');
 
     return (
         <div>

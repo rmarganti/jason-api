@@ -1,12 +1,12 @@
 import axios, { AxiosError } from 'axios';
-import { ActionCreator, MiddlewareAPI } from 'redux';
+import { ActionCreator } from 'redux';
 import {
     ApiResourceObject,
     ResponseWithData,
     ResponseWithErrors,
 } from 'ts-json-api';
 
-import { JasonApiMiddleware } from '../types/redux';
+import { JasonApiMiddleware, JasonApiMiddlewareApi } from '../types/redux';
 import { RequestConfig } from '../types/request';
 import {
     extractJsonApiErrorFromAxios,
@@ -39,11 +39,11 @@ export interface Payload {
 class JsonApiMiddleware {
     private config: MiddlewareConfig;
     private requestConfig: RequestConfig;
-    private store: MiddlewareAPI<any>;
+    private store: JasonApiMiddlewareApi;
 
     constructor(
         config: MiddlewareConfig = {},
-        store: MiddlewareAPI<any>,
+        store: JasonApiMiddlewareApi,
         action: JasonApiRequestAction
     ) {
         this.config = config;
@@ -103,7 +103,7 @@ class JsonApiMiddleware {
             this.executeOnSuccessActions(transformedData);
 
             if (this.requestConfig.onSuccess) {
-                this.requestConfig.onSuccess(transformedData);
+                this.requestConfig.onSuccess(transformedData, this.store);
             }
 
             return transformedData;
@@ -254,6 +254,10 @@ class JsonApiMiddleware {
      */
     private handleError(errorBody: ResponseWithErrors) {
         this.store.dispatch(requestError(this.requestConfig, errorBody));
+
+        if (this.requestConfig.onError) {
+            this.requestConfig.onError(errorBody, this.store);
+        }
     }
 
     /**
