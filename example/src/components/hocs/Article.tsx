@@ -20,7 +20,7 @@ type ArticleProps = WithQueryInjectedProps<ArticleResource> & {
 class Article extends React.Component<ArticleProps> {
     componentDidUpdate(prevProps: ArticleProps) {
         // Scroll to top when a new Article is loaded.
-        if (prevProps.id !== this.props.id) {
+        if (prevProps.data !== this.props.data) {
             document.body.scrollTop = 0;
         }
     }
@@ -70,7 +70,7 @@ const Root = styled.div`
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
-
+    padding-bottom: 3em;
     font-family: sans-serif;
 `;
 

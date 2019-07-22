@@ -71,7 +71,7 @@ const Root = styled.div`
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
-
+    padding-bottom: 3em;
     font-family: sans-serif;
 `;
 
