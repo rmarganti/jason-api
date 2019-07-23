@@ -5,14 +5,15 @@ import * as React from 'react';
 import { withItem, WithItemInjectedProps } from '../withItem';
 
 // Testing dependencies
-import { Article } from '__mocks__/types';
+import { ArticleResource } from '__mocks__/types';
 
-const RequestResponseComponent: React.FunctionComponent<
-    WithItemInjectedProps<Article>
-> = ({ data }) =>
-    data && data.attributes ? <h1>{data.attributes.title}</h1> : null;
+type WithItemComponentProps = WithItemInjectedProps<ArticleResource>;
 
-export default withItem<Article>({
+const WithItemComponent: React.FunctionComponent<WithItemComponentProps> = ({
+    data,
+}) => (data && data.attributes ? <h1>{data.attributes.title}</h1> : null);
+
+export default withItem<ArticleResource>({
     resourceType: 'articles',
     resourceId: '1',
-})(RequestResponseComponent);
+})(WithItemComponent);

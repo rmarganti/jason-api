@@ -8,9 +8,9 @@ import { JasonApiRequestAction } from '../../actions/jasonApiRequest';
 import { useAutoRequest } from '../../hooks/useAutoRequest';
 import { UseRequestOptions, UseRequestResult } from '../../hooks/useRequest';
 
-type QueryFactory<D extends ResourceObjectOrObjects> = (
+type QueryFactory<Data extends ResourceObjectOrObjects> = (
     props: any
-) => JasonApiRequestAction<D>;
+) => JasonApiRequestAction<Data>;
 
 interface WithQueryOptions<R extends ResourceObjectOrObjects> {
     actionFactory: QueryFactory<R>;
@@ -22,11 +22,11 @@ interface WithQueryOptions<R extends ResourceObjectOrObjects> {
 }
 
 export type WithQueryInjectedProps<
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
-> = UseRequestResult<D>;
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
+> = UseRequestResult<Data>;
 
 export const withQuery = <
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >({
     actionFactory,
     cacheScheme = 'cacheFirst',
@@ -34,15 +34,20 @@ export const withQuery = <
     onError,
     onSuccess,
     propsToWatch = [],
-}: WithQueryOptions<D>) => <OriginalProps extends WithQueryInjectedProps<D>>(
+}: WithQueryOptions<Data>) => <
+    OriginalProps extends WithQueryInjectedProps<Data>
+>(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
-    type ExternalProps = Omit<OriginalProps, keyof WithQueryInjectedProps<D>>;
+    type ExternalProps = Omit<
+        OriginalProps,
+        keyof WithQueryInjectedProps<Data>
+    >;
 
     const WithQuery: React.FunctionComponent<ExternalProps> = externalProps => {
         const action = actionFactory(externalProps);
 
-        const request = useAutoRequest<D>(
+        const request = useAutoRequest<Data>(
             {
                 action,
                 cacheScheme,

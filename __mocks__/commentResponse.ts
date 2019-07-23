@@ -1,8 +1,8 @@
 import { ResponseWithData } from 'ts-json-api';
 
-import { Comment } from './types';
+import { CommentResource } from './types';
 
-export const commentResponse: ResponseWithData<Comment> = {
+export const commentResponse: ResponseWithData<CommentResource> = {
     data: {
         type: 'comments',
         id: '44',

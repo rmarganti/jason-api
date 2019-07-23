@@ -17,8 +17,8 @@ interface ErrorCallback {
     (error: ResponseWithErrors, store: JasonApiMiddlewareApi): void;
 }
 
-interface SuccessCallback<D extends ResourceObjectOrObjects> {
-    (response: Response<D>, store: JasonApiMiddlewareApi): void;
+interface SuccessCallback<Data extends ResourceObjectOrObjects> {
+    (response: Response<Data>, store: JasonApiMiddlewareApi): void;
 }
 
 interface Transformer {
@@ -36,7 +36,7 @@ type UpdateResourceObjectOnSuccess = [string, string, Attributes];
 type Method = 'get' | 'post' | 'patch' | 'delete';
 
 export interface RequestConfig<
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
 > {
     url: string;
     method?: Method;
@@ -47,7 +47,7 @@ export interface RequestConfig<
     disableStartLoadingActionCreator?: boolean;
     displayNotificationOnError?: boolean;
     onError?: ErrorCallback;
-    onSuccess?: SuccessCallback<D>;
+    onSuccess?: SuccessCallback<Data>;
     transformer?: Transformer;
     setRelationshipOnSuccess?: SetRelationshipOnSuccess[];
     addRelationshipOnSuccess?: AddRelationshipOnSuccess[];

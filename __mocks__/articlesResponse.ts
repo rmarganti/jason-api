@@ -1,9 +1,8 @@
 import { ResponseWithData } from 'ts-json-api';
 
-import { Article } from './types';
+import { ArticleResource } from './types';
 
-export const articlesResponse: ResponseWithData<Article[]> = {
-    // @ts-ignore
+export const articlesResponse: ResponseWithData<ArticleResource[]> = {
     data: [
         {
             type: 'articles',
@@ -30,12 +29,10 @@ export const articlesResponse: ResponseWithData<Article[]> = {
                         related: 'http://example.com/articles/1/comments',
                     },
                     data: [
-                        // @ts-ignore
                         {
                             type: 'comments',
                             id: '5',
                         },
-                        // @ts-ignore
                         {
                             type: 'comments',
                             id: '12',

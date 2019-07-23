@@ -29,6 +29,6 @@ export function createAction<T extends string, P>(type: T, payload?: P) {
 /**
  * Generate a deterministic cache key for a Request Action.
  */
-export const cacheKeyForRequestAction = <D extends ResourceObjectOrObjects>(
-    requestActionPayload: RequestConfig<D>
+export const cacheKeyForRequestAction = <Data extends ResourceObjectOrObjects>(
+    requestActionPayload: RequestConfig<Data>
 ) => requestActionPayload.cacheKey || hashObject(requestActionPayload);

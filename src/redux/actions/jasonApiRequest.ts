@@ -8,18 +8,18 @@ const defaultRequestConfig: Partial<RequestConfig> = {
 };
 
 export interface JasonApiRequestAction<
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
 > {
-    [JASON_API]: RequestConfig<D>;
+    [JASON_API]: RequestConfig<Data>;
 }
 
 /**
  * Initialize a Request to be handled by the middleware.
  */
 export const jasonApiRequest = <
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >(
-    config: RequestConfig<D>
-): JasonApiRequestAction<D> => ({
+    config: RequestConfig<Data>
+): JasonApiRequestAction<Data> => ({
     [JASON_API]: Object.assign({}, defaultRequestConfig, config),
 });

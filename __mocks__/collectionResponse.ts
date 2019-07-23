@@ -1,14 +1,13 @@
 import { Response } from 'ts-json-api';
 
-import { Article } from './types';
+import { ArticleResource } from './types';
 
-export const collectionResponse: Response<Article[]> = {
+export const collectionResponse: Response<ArticleResource[]> = {
     links: {
         self: 'http://example.com/articles',
         next: 'http://example.com/articles?page[offset]=2',
         last: 'http://example.com/articles?page[offset]=10',
     },
-    // @ts-ignore
     data: [
         {
             type: 'articles',
@@ -35,12 +34,10 @@ export const collectionResponse: Response<Article[]> = {
                         related: 'http://example.com/articles/1/comments',
                     },
                     data: [
-                        // @ts-ignore
                         {
                             type: 'comments',
                             id: '5',
                         },
-                        // @ts-ignore
                         {
                             type: 'comments',
                             id: '12',

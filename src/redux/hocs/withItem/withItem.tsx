@@ -10,19 +10,19 @@ interface WithItemOptions {
 }
 
 export interface WithItemInjectedProps<
-    D extends ResourceObject = ResourceObject
+    Data extends ResourceObject = ResourceObject
 > {
-    data: D;
+    data: Data;
 }
 
-export const withItem = <D extends ResourceObject = ResourceObject>({
+export const withItem = <Data extends ResourceObject = ResourceObject>({
     resourceType,
     resourceId,
-}: WithItemOptions = {}) => <OriginalProps extends WithItemInjectedProps<D>>(
+}: WithItemOptions = {}) => <OriginalProps extends WithItemInjectedProps<Data>>(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
     type ExternalProps = Omit<OriginalProps, 'data'> & {
-        data?: ResourceIdentifier<D>;
+        data?: ResourceIdentifier<Data>;
         id?: string;
     };
 
@@ -34,7 +34,7 @@ export const withItem = <D extends ResourceObject = ResourceObject>({
 
         const item =
             resolvedType && resolvedId
-                ? useItem<D>(resolvedType, resolvedId)
+                ? useItem<Data>(resolvedType, resolvedId)
                 : undefined;
 
         // @ts-ignore

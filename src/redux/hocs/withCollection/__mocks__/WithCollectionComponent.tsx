@@ -5,10 +5,14 @@ import * as React from 'react';
 import { withCollection, WithCollectionInjectedProps } from '../withCollection';
 
 // Testing dependencies
-import { Comment } from '__mocks__/types';
+import { CommentResource } from '__mocks__/types';
 
-const RequestResponseComponent: React.FunctionComponent<
-    WithCollectionInjectedProps<Comment>
+type WithCollectionComponentProps = WithCollectionInjectedProps<
+    CommentResource
+>;
+
+const WithCollectionComponent: React.FunctionComponent<
+    WithCollectionComponentProps
 > = ({ data }) =>
     data ? (
         <div>
@@ -18,6 +22,6 @@ const RequestResponseComponent: React.FunctionComponent<
         </div>
     ) : null;
 
-export default withCollection<Comment>({
+export default withCollection<CommentResource>({
     resourceType: 'comments',
-})(RequestResponseComponent);
+})(WithCollectionComponent);

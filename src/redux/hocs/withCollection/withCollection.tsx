@@ -12,16 +12,16 @@ interface WithCollectionOptions {
 }
 
 export interface WithCollectionInjectedProps<
-    D extends ResourceObject = ResourceObject
+    Data extends ResourceObject = ResourceObject
 > {
-    data: D[];
+    data: Data[];
 }
 
-export const withCollection = <D extends ResourceObject = ResourceObject>({
+export const withCollection = <Data extends ResourceObject = ResourceObject>({
     resourceType,
     resourceIds,
 }: WithCollectionOptions) => <
-    OriginalProps extends WithCollectionInjectedProps<D>
+    OriginalProps extends WithCollectionInjectedProps<Data>
 >(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
@@ -35,7 +35,7 @@ export const withCollection = <D extends ResourceObject = ResourceObject>({
         const { ids } = externalProps;
         const resolvedIds = ids || resourceIds;
 
-        const collection = useCollection<D>(resourceType, resolvedIds) || [];
+        const collection = useCollection<Data>(resourceType, resolvedIds) || [];
 
         // @ts-ignore
         return <BaseComponent {...externalProps} data={collection} />;

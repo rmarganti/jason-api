@@ -1,12 +1,11 @@
 import { Response } from 'ts-json-api';
 
-import { Article } from './types';
+import { ArticleResource } from './types';
 
-export const articleResponse: Response<Article> = {
+export const articleResponse: Response<ArticleResource> = {
     links: {
         self: 'http://example.com/articles/1',
     },
-    // @ts-ignore
     data: {
         type: 'articles',
         id: '1',
@@ -31,12 +30,10 @@ export const articleResponse: Response<Article> = {
                     related: 'http://example.com/articles/1/comments',
                 },
                 data: [
-                    // @ts-ignore
                     {
                         type: 'comments',
                         id: '5',
                     },
-                    // @ts-ignore
                     {
                         type: 'comments',
                         id: '12',

@@ -48,38 +48,38 @@ import {
 } from 'ts-json-api';
 
 // Internal dependencies
-import { JasonApiDispatch } from '../../types/redux';
+import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
 
-export interface UseRequestOptions<D extends ResourceObjectOrObjects> {
-    action: JasonApiRequestAction<D>;
+export interface UseRequestOptions<Data extends ResourceObjectOrObjects> {
+    action: JasonApiRequestAction<Data>;
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     onError?: (response: ResponseWithErrors) => void;
-    onSuccess?: (response: Response<D>) => void;
+    onSuccess?: (response: Response<Data>) => void;
 }
 
-export type UseRequestResult<D extends ResourceObjectOrObjects> = Response<
-    D
+export type UseRequestResult<Data extends ResourceObjectOrObjects> = Response<
+    Data
 > & {
     fetch: () => Promise<void>;
     isLoading: boolean;
 };
 
 export const useRequest = <
-    D extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
 >({
     action,
     cacheScheme,
     expandResourceObjects,
     onError,
     onSuccess,
-}: UseRequestOptions<D>) => {
+}: UseRequestOptions<Data>) => {
     const dispatch = useDispatch<JasonApiDispatch>();
     const [isLoading, setLoading] = useState(false);
-    const [response, setResponse] = useState<Response<D>>();
+    const [response, setResponse] = useState<Response<Data>>();
 
     // Preform the fetch and keep track of loading states.
     const fetch = useCallback(async () => {
@@ -104,7 +104,7 @@ export const useRequest = <
         } catch (e) {
             // The middleware always throws errors
             // as a valid JsonAPI error response.
-            const errorResponse = e as ResponseWithErrors<D>;
+            const errorResponse = e as ResponseWithErrors<Data>;
 
             // Store error response.
             setResponse(errorResponse);
@@ -123,7 +123,7 @@ export const useRequest = <
     const cacheKey = cacheKeyForRequestAction(action[JASON_API]);
     const cachedResponse = useSelector(
         getCachedQuery(cacheKey, expandResourceObjects)
-    ) as Response<D>;
+    ) as Response<Data>;
 
     // Determine correct response to return.
     const providedResponse =
@@ -133,5 +133,5 @@ export const useRequest = <
         ...providedResponse,
         fetch,
         isLoading,
-    } as UseRequestResult<D>;
+    } as UseRequestResult<Data>;
 };

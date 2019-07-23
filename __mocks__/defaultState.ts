@@ -34,7 +34,6 @@ export const defaultState: JasonApiState = {
                             ],
                         },
                     },
-                    // @ts-ignore
                     meta: {
                         isLoading: true,
                     },
@@ -74,7 +73,6 @@ export const defaultState: JasonApiState = {
                             },
                         },
                     },
-                    // @ts-ignore
                     meta: {
                         error: null,
                         isLoading: true,

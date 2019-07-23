@@ -7,6 +7,7 @@
         "**/.DS_Store": true,
         ".rts2_cache_cjs": true,
         ".rts2_cache_es": true,
-        ".rts2_cache_umd": true
+        ".rts2_cache_umd": true,
+        "example/.cache": true
     }
 }
