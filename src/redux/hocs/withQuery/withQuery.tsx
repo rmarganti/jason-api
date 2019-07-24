@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ResourceObjectOrObjects } from 'ts-json-api';
 
 // Internal dependencies
-import { Omit } from '../../../types/other';
+import { Subtract } from '../../../types/other';
 import { JasonApiRequestAction } from '../../actions/jasonApiRequest';
 import { useAutoRequest } from '../../hooks/useAutoRequest';
 import { UseRequestOptions, UseRequestResult } from '../../hooks/useRequest';
@@ -39,10 +39,7 @@ export const withQuery = <
 >(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
-    type ExternalProps = Omit<
-        OriginalProps,
-        keyof WithQueryInjectedProps<Data>
-    >;
+    type ExternalProps = Subtract<OriginalProps, WithQueryInjectedProps<Data>>;
 
     const WithQuery: React.FunctionComponent<ExternalProps> = externalProps => {
         const action = actionFactory(externalProps);
@@ -58,7 +55,7 @@ export const withQuery = <
             propsToWatch
         );
 
-        // @ts-ignore
+        // @ts-ignore This works as expected, but TS still complains.
         return <BaseComponent {...externalProps} {...request} />;
     };
 

@@ -14,14 +14,15 @@ import { ArticleResource } from '__mocks__/types';
 const mock = new MockAdapter(axios);
 mock.onGet().reply(200, articleResponse);
 
-const RequestResponseComponent: React.FunctionComponent<
-    WithQueryInjectedProps<ArticleResource>
-> = ({ data }) =>
-    data && data.attributes ? <h1>{data.attributes.title}</h1> : null;
+type WithQueryComponentProps = WithQueryInjectedProps<ArticleResource>;
+
+const WithQueryComponent: React.FunctionComponent<WithQueryComponentProps> = ({
+    data,
+}) => (data && data.attributes ? <h1>{data.attributes.title}</h1> : null);
 
 export default withQuery<ArticleResource>({
     actionFactory: () =>
         jasonApiRequest({
             url: '/api/article/1',
         }),
-})(RequestResponseComponent);
+})(WithQueryComponent);

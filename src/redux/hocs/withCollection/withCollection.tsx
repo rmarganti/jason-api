@@ -3,12 +3,16 @@ import * as React from 'react';
 import { ResourceObject } from 'ts-json-api';
 
 // Internal dependencies
-import { Omit } from '../../../types/other';
+import { Subtract } from '../../../types/other';
 import { useCollection } from '../../hooks';
 
 interface WithCollectionOptions {
     resourceType: string;
     resourceIds?: string[];
+}
+
+interface WithCollectionOwnProps {
+    ids?: string[];
 }
 
 export interface WithCollectionInjectedProps<
@@ -25,20 +29,23 @@ export const withCollection = <Data extends ResourceObject = ResourceObject>({
 >(
     BaseComponent: React.ComponentType<OriginalProps>
 ) => {
-    type ExternalProps = Omit<OriginalProps, 'data'> & {
-        ids?: string[];
-    };
+    type ExternalProps = Subtract<OriginalProps, WithCollectionInjectedProps> &
+        WithCollectionOwnProps;
 
     const WithCollection: React.FunctionComponent<
         ExternalProps
     > = externalProps => {
-        const { ids } = externalProps;
+        const { ids, ...rest } = externalProps;
         const resolvedIds = ids || resourceIds;
 
         const collection = useCollection<Data>(resourceType, resolvedIds) || [];
 
-        // @ts-ignore
-        return <BaseComponent {...externalProps} data={collection} />;
+        const passedProps = {
+            ...rest,
+            data: collection,
+        } as OriginalProps;
+
+        return <BaseComponent {...passedProps} />;
     };
 
     return WithCollection;

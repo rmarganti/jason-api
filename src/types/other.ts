@@ -1,15 +1,20 @@
 import { ResourceObjectOrObjects, ResponseWithData } from 'ts-json-api';
 
 /**
- * Remove from object T any properties with key of K.
+ * From `T` remove properties that exist in `T1` (`T1` is a subtype of `T`).
  *
  * ```ts
- * type Input = { one: 'string', two: 'string', three: 'string'};
- * type Result = Omit<Input, 'two' | 'three'>;
- * // Result = { one: 'string' };
+ * type A = { one: string; two: string; three: string; };
+ * type B = { two: string; three: string; };
+ *
+ * // Expect: { one: string; }
+ * type Result = Subtract<A, B>;
  * ```
  */
-export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+export type Subtract<T extends T1, T1 extends object> = Pick<
+    T,
+    Exclude<keyof T, keyof T1>
+>;
 
 export type FlexiblePayload = ResourceObjectOrObjects | ResponseWithData;
 

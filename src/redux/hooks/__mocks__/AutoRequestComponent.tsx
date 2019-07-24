@@ -20,7 +20,7 @@ const mockAction = (articleId: string) =>
 const mock = new MockAdapter(axios);
 mock.onGet().reply(200, articleResponse);
 
-const RequestResponseComponent: React.FunctionComponent = () => {
+const AutoRequestComponent: React.FunctionComponent = () => {
     const action = mockAction('1');
     const response = useAutoRequest({
         action,
@@ -32,4 +32,4 @@ const RequestResponseComponent: React.FunctionComponent = () => {
     ) : null;
 };
 
-export default RequestResponseComponent;
+export default AutoRequestComponent;
