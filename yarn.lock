@@ -5359,10 +5359,10 @@ ts-jest@^24.0.2:
     semver "^5.5"
     yargs-parser "10.x"
 
-ts-json-api@^1.0.0-beta2:
-  version "1.0.0-beta2"
-  resolved "https://registry.yarnpkg.com/ts-json-api/-/ts-json-api-1.0.0-beta2.tgz#aef9b633d64e8faf6600c0ff60b6dcc5d1574941"
-  integrity sha512-FV+U8ptzFhYjVqqs+7MMOt13JvtAiK9g0WITo4eFsHv4aSj26tqLzWrz4Q6CGHcU1V5/9ZHAOo3d2meJq0pflA==
+ts-json-api@^1.0.0-alpha.1:
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/ts-json-api/-/ts-json-api-1.0.0-alpha.1.tgz#8bab473d2e876c97817695d8f4fb43195df40b7e"
+  integrity sha512-MgPx6Yab5fTjA9k3Kx6Wpq7W9nMHwToA6H6WO1h0GZGocK3+f41pn0zX9oGGnBaOapN0mTjzdcAZh6zxhe2VOg==
   dependencies:
     ramda "^0.26.1"
 

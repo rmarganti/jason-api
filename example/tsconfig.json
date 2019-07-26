@@ -9,7 +9,7 @@
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "removeComments": true,
-        "strictNullChecks": true,
+        "strict": true,
         "preserveConstEnums": true,
         "sourceMap": true,
         "lib": ["es2015", "es2016", "dom"],

@@ -9,9 +9,9 @@ import { withItem, WithItemInjectedProps } from '../../../../src';
 import { CommentResource } from '../../types';
 import Author from './Author';
 
-type CommentProps = WithItemInjectedProps<CommentResource> & {
+interface CommentProps extends WithItemInjectedProps<CommentResource> {
     id: string;
-};
+}
 
 const Comment: React.SFC<CommentProps> = ({ data: comment }) =>
     comment ? (

@@ -1,6 +1,6 @@
 {
   "name": "jason-api",
-  "version": "1.0.0-beta7",
+  "version": "1.0.0-alpha.0",
   "license": "MIT",
   "description": "Consume and manipulate JSON API standard data in Redux with scary ease.",
   "repository": "https://github.com/rmarganti/jason-api",
@@ -44,7 +44,7 @@
     "axios": "^0.18.0",
     "pluralize": "^7.0.0",
     "ramda": "^0.26.1",
-    "ts-json-api": "^1.0.0-beta2"
+    "ts-json-api": "^1.0.0-alpha.1"
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.4",

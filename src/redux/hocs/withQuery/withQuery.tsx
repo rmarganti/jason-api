@@ -55,8 +55,12 @@ export const withQuery = <
             propsToWatch
         );
 
-        // @ts-ignore This works as expected, but TS still complains.
-        return <BaseComponent {...externalProps} {...request} />;
+        const passedProps = {
+            ...externalProps,
+            ...request,
+        } as OriginalProps;
+
+        return <BaseComponent {...passedProps} />;
     };
 
     return WithQuery;

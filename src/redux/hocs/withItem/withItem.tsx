@@ -9,7 +9,7 @@ interface WithItemOptions {
     resourceId?: string;
 }
 
-interface WithItemOwnProps<Data extends ResourceObject> {
+export interface WithItemOwnProps<Data extends ResourceObject> {
     data?: ResourceIdentifier<Data>;
     id?: string;
 }

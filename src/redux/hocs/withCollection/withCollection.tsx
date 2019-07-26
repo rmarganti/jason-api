@@ -11,7 +11,7 @@ interface WithCollectionOptions {
     resourceIds?: string[];
 }
 
-interface WithCollectionOwnProps {
+export interface WithCollectionOwnProps {
     ids?: string[];
 }
 

@@ -1,6 +1,6 @@
 // External Dependencies
 import * as React from 'react';
-import { ResponseWithData, ResourceIdentifier } from 'ts-json-api';
+import { ResourceIdentifier, Response } from 'ts-json-api';
 
 // JasonAPI
 import { useRequest } from '../../../../../src';
@@ -25,8 +25,12 @@ const CommentsContainer: React.SFC<CommentsProps> = ({ comments }) => {
     }, [comments]);
 
     const addNewCommentToLocalState = React.useCallback(
-        (response: ResponseWithData<CommentResource>) => {
+        (response: Response<CommentResource>) => {
             setComments(currentComments => {
+                if (!response.data) {
+                    return currentComments;
+                }
+
                 const newComment: CommentIdentifier = {
                     type: 'comments',
                     id: response.data.id,

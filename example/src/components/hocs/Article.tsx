@@ -13,9 +13,9 @@ import Loading from '../common/Loading';
 import Comments from './Comments';
 import Author from './Author';
 
-type ArticleProps = WithQueryInjectedProps<ArticleResource> & {
+interface ArticleProps extends WithQueryInjectedProps<ArticleResource> {
     id: string;
-};
+}
 
 class Article extends React.Component<ArticleProps> {
     componentDidUpdate(prevProps: ArticleProps) {

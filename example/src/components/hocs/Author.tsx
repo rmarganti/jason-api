@@ -8,10 +8,10 @@ import { WithItemInjectedProps, withItem } from '../../../../src';
 // Internal Dependencies
 import { PersonResource } from '../../types';
 
-type AuthorProps = WithItemInjectedProps<PersonResource> & {
+interface AuthorProps extends WithItemInjectedProps<PersonResource> {
     extraMargin?: boolean;
     id: string;
-};
+}
 
 const Author: React.SFC<AuthorProps> = ({ data: author, extraMargin }) =>
     author ? (
