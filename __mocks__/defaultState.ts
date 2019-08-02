@@ -1,6 +1,6 @@
-import { JasonApiState } from '../src/types';
+import { JasonAPIState } from '../src/types';
 
-export const defaultState: JasonApiState = {
+export const defaultState: JasonAPIState = {
     resourceObjects: {
         articles: {
             meta: {

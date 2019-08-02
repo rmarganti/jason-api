@@ -7,11 +7,11 @@ export interface ResourceObjectCollection {
     };
 }
 
-export interface StateWithJasonApi {
-    jasonApi: JasonApiState;
+export interface StateWithJasonAPI {
+    jasonApi: JasonAPIState;
 }
 
-export interface JasonApiState {
+export interface JasonAPIState {
     resourceObjects: ResourceObjectsState;
     queries: QueriesState;
 }

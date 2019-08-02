@@ -4,13 +4,13 @@ import { ResourceObjectOrObjects } from 'ts-json-api';
 
 // Internal dependencies
 import { Subtract } from '../../../types/other';
-import { JasonApiRequestAction } from '../../actions/jasonApiRequest';
+import { JasonAPIRequestAction } from '../../actions/jasonApiRequest';
 import { useAutoRequest } from '../../hooks/useAutoRequest';
 import { UseRequestOptions, UseRequestResult } from '../../hooks/useRequest';
 
 type QueryFactory<Data extends ResourceObjectOrObjects> = (
     props: any
-) => JasonApiRequestAction<Data>;
+) => JasonAPIRequestAction<Data>;
 
 interface WithQueryOptions<R extends ResourceObjectOrObjects> {
     actionFactory: QueryFactory<R>;

@@ -2,7 +2,7 @@
 import { lensPath, lensProp, over, pipe } from 'ramda';
 
 // Internal dependencies
-import { JasonApiAction } from '../../../types/redux';
+import { JasonAPIAction } from '../../../types/redux';
 import { QueriesState } from '../../../types/state';
 import { cacheKeyForRequestAction } from '../../../utils/actions';
 import {
@@ -16,7 +16,7 @@ import {
     REQUEST_ERROR,
 } from '../../actions/actionTypes';
 
-export const queries = (state: QueriesState = {}, action?: JasonApiAction) => {
+export const queries = (state: QueriesState = {}, action?: JasonAPIAction) => {
     if (!action) {
         return state;
     }

@@ -1,7 +1,7 @@
 /**
  * useAutoRequest()
  * --------------------------------
- * Automatically dispatch a JasonApi Request and return the response.
+ * Automatically dispatch a JasonAPI Request and return the response.
  *
  * ```ts
  * import React from 'react';

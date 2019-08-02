@@ -1,5 +1,5 @@
 // Internal dependencies
-import { JasonApiAction } from '../../../types/redux';
+import { JasonAPIAction } from '../../../types/redux';
 import { ResourceObjectsState } from '../../../types/state';
 import * as actionTypes from '../../actions/actionTypes';
 import {
@@ -17,7 +17,7 @@ import {
 
 export const resourceObjects = (
     state: ResourceObjectsState = {},
-    action?: JasonApiAction
+    action?: JasonAPIAction
 ) => {
     if (!action) {
         return state;

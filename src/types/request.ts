@@ -1,3 +1,4 @@
+// External Dependencies
 import {
     Attributes,
     ResourceObjectOrObjects,
@@ -6,19 +7,34 @@ import {
     ResponseWithErrors,
 } from 'ts-json-api';
 
+// Internal Dependencies
 import { FlexiblePayload } from './other';
-import { JasonApiMiddlewareApi } from './redux';
+import { JasonAPIMiddlewareApi, JasonAPIDispatch } from './redux';
+import { StateWithJasonAPI } from './state';
 
 interface AdditionalHeaders {
     [index: string]: string;
 }
 
-interface ErrorCallback {
-    (error: ResponseWithErrors, store: JasonApiMiddlewareApi): void;
+interface ErrorCallback<
+    Dispatch extends JasonAPIDispatch,
+    State extends StateWithJasonAPI = StateWithJasonAPI
+> {
+    (
+        error: ResponseWithErrors,
+        store: JasonAPIMiddlewareApi<Dispatch, State>
+    ): void;
 }
 
-interface SuccessCallback<Data extends ResourceObjectOrObjects> {
-    (response: Response<Data>, store: JasonApiMiddlewareApi): void;
+interface SuccessCallback<
+    Data extends ResourceObjectOrObjects,
+    Dispatch extends JasonAPIDispatch,
+    State extends StateWithJasonAPI = StateWithJasonAPI
+> {
+    (
+        response: Response<Data>,
+        store: JasonAPIMiddlewareApi<Dispatch, State>
+    ): void;
 }
 
 interface Transformer {
@@ -36,7 +52,9 @@ type UpdateResourceObjectOnSuccess = [string, string, Attributes];
 type Method = 'get' | 'post' | 'patch' | 'delete';
 
 export interface RequestConfig<
-    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
+    Data extends ResourceObjectOrObjects = ResourceObjectOrObjects,
+    Dispatch extends JasonAPIDispatch = JasonAPIDispatch,
+    State extends StateWithJasonAPI = StateWithJasonAPI
 > {
     url: string;
     method?: Method;
@@ -46,8 +64,8 @@ export interface RequestConfig<
     additionalHeaders?: AdditionalHeaders;
     disableStartLoadingActionCreator?: boolean;
     displayNotificationOnError?: boolean;
-    onError?: ErrorCallback;
-    onSuccess?: SuccessCallback<Data>;
+    onError?: ErrorCallback<Dispatch, State>;
+    onSuccess?: SuccessCallback<Data, Dispatch, State>;
     transformer?: Transformer;
     setRelationshipOnSuccess?: SetRelationshipOnSuccess[];
     addRelationshipOnSuccess?: AddRelationshipOnSuccess[];
