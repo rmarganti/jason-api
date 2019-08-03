@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ResourceIdentifier, Response } from 'ts-json-api';
 
 // JasonAPI
-import { JasonAPIDispatch } from '../../../../../src';
+import { JasonApiDispatch } from '../../../../../src';
 
 // Internal Dependencies
 import { addComment } from '../../../actions';
@@ -85,7 +85,7 @@ class CommentsContainer extends React.Component<CommentsProps, CommentsState> {
 
 export default connect(
     null,
-    (dispatch: JasonAPIDispatch) => ({
+    (dispatch: JasonApiDispatch) => ({
         doAddComment: () => dispatch(addComment()),
     })
 )(CommentsContainer);

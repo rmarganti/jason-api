@@ -2,24 +2,24 @@ import { Action as BaseAction, Middleware, MiddlewareAPI } from 'redux';
 import { ResourceObjectOrObjects, Response } from 'ts-json-api';
 
 import * as actions from '../redux/actions/actions';
-import { JasonAPIRequestAction } from '../redux/actions/jasonApiRequest';
+import { JasonApiRequestAction } from '../redux/actions/jasonApiRequest';
 import { ActionsUnion } from './other';
-import { StateWithJasonAPI } from './state';
+import { StateWithJasonApi } from './state';
 
-export type JasonAPIAction = ActionsUnion<typeof actions>;
+export type JasonApiAction = ActionsUnion<typeof actions>;
 
-export interface JasonAPIDispatch {
+export interface JasonApiDispatch {
     <Action extends BaseAction>(action: Action): Action;
     <Data extends ResourceObjectOrObjects>(
-        metaAction: JasonAPIRequestAction<Data>
+        metaAction: JasonApiRequestAction<Data>
     ): Promise<Response<Data>>;
 }
 
-export type JasonAPIMiddleware = Middleware<JasonAPIDispatch>;
+export type JasonApiMiddleware = Middleware<JasonApiDispatch>;
 
-export type JasonAPIGetState<State extends StateWithJasonAPI> = () => State;
+export type JasonApiGetState<State extends StateWithJasonApi> = () => State;
 
-export type JasonAPIMiddlewareApi<
-    Dispatch extends JasonAPIDispatch = JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+export type JasonApiMiddlewareApi<
+    Dispatch extends JasonApiDispatch = JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 > = MiddlewareAPI<Dispatch, State>;

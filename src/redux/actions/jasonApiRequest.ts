@@ -1,18 +1,18 @@
 import { ResourceObjectOrObjects } from 'ts-json-api';
 
-import { JasonAPIDispatch } from '../../types/redux';
+import { JasonApiDispatch } from '../../types/redux';
 import { RequestConfig } from '../../types/request';
-import { StateWithJasonAPI } from '../../types/state';
+import { StateWithJasonApi } from '../../types/state';
 import { JASON_API } from './actionTypes';
 
 const defaultRequestConfig: Partial<RequestConfig> = {
     method: 'get',
 };
 
-export interface JasonAPIRequestAction<
+export interface JasonApiRequestAction<
     Data extends ResourceObjectOrObjects = ResourceObjectOrObjects,
-    Dispatch extends JasonAPIDispatch = JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+    Dispatch extends JasonApiDispatch = JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 > {
     [JASON_API]: RequestConfig<Data, Dispatch, State>;
 }
@@ -22,10 +22,10 @@ export interface JasonAPIRequestAction<
  */
 export const jasonApiRequest = <
     Data extends ResourceObjectOrObjects = ResourceObjectOrObjects,
-    Dispatch extends JasonAPIDispatch = JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+    Dispatch extends JasonApiDispatch = JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 >(
     config: RequestConfig<Data, Dispatch, State>
-): JasonAPIRequestAction<Data, Dispatch, State> => ({
+): JasonApiRequestAction<Data, Dispatch, State> => ({
     [JASON_API]: Object.assign({}, defaultRequestConfig, config),
 });

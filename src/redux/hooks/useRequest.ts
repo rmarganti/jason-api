@@ -48,13 +48,13 @@ import {
 } from 'ts-json-api';
 
 // Internal dependencies
-import { JasonAPIDispatch } from '../../types';
+import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
-import { JasonAPIRequestAction, JASON_API } from '../actions';
+import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
 
 export interface UseRequestOptions<Data extends ResourceObjectOrObjects> {
-    action: JasonAPIRequestAction<Data>;
+    action: JasonApiRequestAction<Data>;
     cacheScheme?: 'cacheFirst' | 'cacheOnly' | 'noCache';
     expandResourceObjects?: boolean;
     onError?: (response: ResponseWithErrors) => void;
@@ -77,7 +77,7 @@ export const useRequest = <
     onError,
     onSuccess,
 }: UseRequestOptions<Data>) => {
-    const dispatch = useDispatch<JasonAPIDispatch>();
+    const dispatch = useDispatch<JasonApiDispatch>();
     const [isLoading, setLoading] = useState(false);
     const [response, setResponse] = useState<Response<Data>>();
 

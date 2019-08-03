@@ -1,3 +1,3 @@
-export { JasonAPIDispatch, JasonAPIMiddleware } from './redux';
+export { JasonApiDispatch, JasonApiMiddleware } from './redux';
 export { RequestConfig } from './request';
-export { JasonAPIState } from './state';
+export { JasonApiState } from './state';

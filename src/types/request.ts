@@ -9,31 +9,31 @@ import {
 
 // Internal Dependencies
 import { FlexiblePayload } from './other';
-import { JasonAPIMiddlewareApi, JasonAPIDispatch } from './redux';
-import { StateWithJasonAPI } from './state';
+import { JasonApiMiddlewareApi, JasonApiDispatch } from './redux';
+import { StateWithJasonApi } from './state';
 
 interface AdditionalHeaders {
     [index: string]: string;
 }
 
 interface ErrorCallback<
-    Dispatch extends JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+    Dispatch extends JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 > {
     (
         error: ResponseWithErrors,
-        store: JasonAPIMiddlewareApi<Dispatch, State>
+        store: JasonApiMiddlewareApi<Dispatch, State>
     ): void;
 }
 
 interface SuccessCallback<
     Data extends ResourceObjectOrObjects,
-    Dispatch extends JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+    Dispatch extends JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 > {
     (
         response: Response<Data>,
-        store: JasonAPIMiddlewareApi<Dispatch, State>
+        store: JasonApiMiddlewareApi<Dispatch, State>
     ): void;
 }
 
@@ -53,8 +53,8 @@ type Method = 'get' | 'post' | 'patch' | 'delete';
 
 export interface RequestConfig<
     Data extends ResourceObjectOrObjects = ResourceObjectOrObjects,
-    Dispatch extends JasonAPIDispatch = JasonAPIDispatch,
-    State extends StateWithJasonAPI = StateWithJasonAPI
+    Dispatch extends JasonApiDispatch = JasonApiDispatch,
+    State extends StateWithJasonApi = StateWithJasonApi
 > {
     url: string;
     method?: Method;

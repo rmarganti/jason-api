@@ -6,7 +6,7 @@ import {
     ResponseWithErrors,
 } from 'ts-json-api';
 
-import { JasonAPIMiddleware, JasonAPIMiddlewareApi } from '../types/redux';
+import { JasonApiMiddleware, JasonApiMiddlewareApi } from '../types/redux';
 import { RequestConfig } from '../types/request';
 import {
     extractJsonApiErrorFromAxios,
@@ -15,7 +15,7 @@ import {
 import { JASON_API } from './actions/actionTypes';
 import {
     addRelationshipToResourceObject,
-    JasonAPIRequestAction,
+    JasonApiRequestAction,
     removeRelationshipFromResourceObject,
     removeResourceObject,
     request,
@@ -39,12 +39,12 @@ export interface Payload {
 class JsonApiMiddleware {
     private config: MiddlewareConfig;
     private requestConfig: RequestConfig;
-    private store: JasonAPIMiddlewareApi;
+    private store: JasonApiMiddlewareApi;
 
     constructor(
         config: MiddlewareConfig = {},
-        store: JasonAPIMiddlewareApi,
-        action: JasonAPIRequestAction
+        store: JasonApiMiddlewareApi,
+        action: JasonApiRequestAction
     ) {
         this.config = config;
         this.store = store;
@@ -277,7 +277,7 @@ class JsonApiMiddleware {
  */
 export const middlewareFactory = (
     config: MiddlewareConfig = {}
-): JasonAPIMiddleware => store => next => action => {
+): JasonApiMiddleware => store => next => action => {
     if (!action[JASON_API]) {
         return next(action);
     }
