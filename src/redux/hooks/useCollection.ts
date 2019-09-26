@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { ResourceObject } from 'ts-json-api';
 
 // Internal dependencies
+import { StateWithJasonApi } from '../../types/state';
 import { getResourceObjects } from '../selectors';
 
 export const useCollection = <T extends ResourceObject = ResourceObject>(
@@ -11,5 +12,21 @@ export const useCollection = <T extends ResourceObject = ResourceObject>(
     expandResourceObjects?: boolean
 ): T[] =>
     useSelector(
-        getResourceObjects(resourceType, resourceIds, expandResourceObjects)
+        createCollectionSelector(
+            resourceType,
+            resourceIds,
+            expandResourceObjects
+        )
+    );
+
+const createCollectionSelector = <T extends ResourceObject = ResourceObject>(
+    resourceType: string,
+    resourceIds?: string[],
+    expandResourceObjects?: boolean
+) => (state: StateWithJasonApi) =>
+    getResourceObjects<T>(
+        state,
+        resourceType,
+        resourceIds,
+        expandResourceObjects
     );

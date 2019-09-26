@@ -52,6 +52,7 @@ import { JasonApiDispatch } from '../../types';
 import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
+import { StateWithJasonApi } from 'src/types/state';
 
 export interface UseRequestOptions<Data extends ResourceObjectOrObjects> {
     action: JasonApiRequestAction<Data>;
@@ -121,8 +122,8 @@ export const useRequest = <
 
     // Get cached response.
     const cacheKey = cacheKeyForRequestAction(action[JASON_API]);
-    const cachedResponse = useSelector(
-        getCachedQuery(cacheKey, expandResourceObjects)
+    const cachedResponse = useSelector((state: StateWithJasonApi) =>
+        getCachedQuery(state, cacheKey, expandResourceObjects)
     ) as Response<Data>;
 
     // Determine correct response to return.
