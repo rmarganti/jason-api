@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 // Testing dependencies
 import { defaultStore } from '__tests__/tools';
 import AutoRequestComponent from './__mocks__/AutoRequestComponent';
+import { act } from 'react-dom/test-utils';
 
 describe('useAutoRequest()', () => {
     it('It requests and injects a query', done => {
@@ -16,10 +17,12 @@ describe('useAutoRequest()', () => {
         );
 
         // Wait a short period of time to allow fake network response to return.
-        setTimeout(() => {
-            const title = getByText('JSON API paints my bikeshed!');
-            expect(title).toBeTruthy();
-            done();
-        }, 10);
+        act(() => {
+            setTimeout(() => {
+                const title = getByText('JSON API paints my bikeshed!');
+                expect(title).toBeTruthy();
+                done();
+            }, 10);
+        });
     });
 });

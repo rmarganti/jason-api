@@ -35,10 +35,10 @@ export const withItem = <Data extends ResourceObject = ResourceObject>({
         const resolvedType = data ? data.type : resourceType;
         const resolvedId = data ? data.id : id || resourceId;
 
-        const item =
-            resolvedType && resolvedId
-                ? useItem<Data>(resolvedType, resolvedId)
-                : undefined;
+        const item = useItem<Data>(
+            resolvedType || '__fallbackType',
+            resolvedId || '__fallbackId'
+        );
 
         const passedProps = {
             ...rest,

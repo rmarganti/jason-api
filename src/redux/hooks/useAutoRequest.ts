@@ -23,6 +23,10 @@
  * ```
  */
 
+// We assume `deps` will be a static array and don't want
+// to use `request` as a dependency, since it is an object.
+/* eslint-disable react-hooks/exhaustive-deps */
+
 // External dependencies
 import { DependencyList, useEffect } from 'react';
 import { ResourceObjectOrObjects } from 'ts-json-api';
@@ -36,7 +40,7 @@ export const useAutoRequest = <
     options: UseRequestOptions<Data>,
     deps: DependencyList = []
 ) => {
-    const request = useRequest<Data>(options);
+    const request = useRequest<Data>(options, deps);
 
     // Make the request
     useEffect(() => {

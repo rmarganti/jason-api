@@ -20,13 +20,10 @@ interface ArticleProps {
 const Article: React.FunctionComponent<ArticleProps> = ({ id }) => {
     const { data: article, errors, isLoading, fetch } = useAutoRequest<
         ArticleResource
-    >(
-        {
-            action: getArticle(id),
-            expandResourceObjects: true,
-        },
-        [id]
-    );
+    >({
+        action: getArticle(id),
+        expandResourceObjects: true,
+    });
 
     // Scroll to top when a new Article is loaded.
     React.useLayoutEffect(() => {

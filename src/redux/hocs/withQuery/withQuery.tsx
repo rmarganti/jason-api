@@ -33,7 +33,6 @@ export const withQuery = <
     expandResourceObjects = false,
     onError,
     onSuccess,
-    propsToWatch = [],
 }: WithQueryOptions<Data>) => <
     OriginalProps extends WithQueryInjectedProps<Data>
 >(
@@ -44,16 +43,13 @@ export const withQuery = <
     const WithQuery: React.FunctionComponent<ExternalProps> = externalProps => {
         const action = actionFactory(externalProps);
 
-        const request = useAutoRequest<Data>(
-            {
-                action,
-                cacheScheme,
-                expandResourceObjects,
-                onSuccess,
-                onError,
-            },
-            propsToWatch
-        );
+        const request = useAutoRequest<Data>({
+            action,
+            cacheScheme,
+            expandResourceObjects,
+            onSuccess,
+            onError,
+        });
 
         const passedProps = {
             ...externalProps,

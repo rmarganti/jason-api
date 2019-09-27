@@ -9,10 +9,7 @@ import { getResourceObject } from '../selectors';
 export const useItem = <T extends ResourceObject = ResourceObject>(
     resourceType: string,
     resourceId: string
-): T | undefined => useSelector(createItemSelector(resourceType, resourceId));
-
-const createItemSelector = <T extends ResourceObject = ResourceObject>(
-    resourceType: string,
-    resourceId: string
-) => (state: StateWithJasonApi) =>
-    getResourceObject<T>(state, resourceType, resourceId);
+): T | undefined =>
+    useSelector((state: StateWithJasonApi) =>
+        getResourceObject<T>(state, resourceType, resourceId)
+    );

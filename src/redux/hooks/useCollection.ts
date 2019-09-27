@@ -11,22 +11,11 @@ export const useCollection = <T extends ResourceObject = ResourceObject>(
     resourceIds?: string[],
     expandResourceObjects?: boolean
 ): T[] =>
-    useSelector(
-        createCollectionSelector(
+    useSelector((state: StateWithJasonApi) =>
+        getResourceObjects<T>(
+            state,
             resourceType,
             resourceIds,
             expandResourceObjects
         )
-    );
-
-const createCollectionSelector = <T extends ResourceObject = ResourceObject>(
-    resourceType: string,
-    resourceIds?: string[],
-    expandResourceObjects?: boolean
-) => (state: StateWithJasonApi) =>
-    getResourceObjects<T>(
-        state,
-        resourceType,
-        resourceIds,
-        expandResourceObjects
     );

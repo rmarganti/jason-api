@@ -39,7 +39,7 @@
  */
 
 // External dependencies
-import { useCallback, useState } from 'react';
+import { useCallback, useState, DependencyList } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     ResourceObjectOrObjects,
@@ -53,6 +53,10 @@ import { cacheKeyForRequestAction } from '../../utils';
 import { JasonApiRequestAction, JASON_API } from '../actions';
 import { getCachedQuery } from '../selectors';
 import { StateWithJasonApi } from 'src/types/state';
+
+// We assume `deps` will be a static array and don't want
+// to use `request` as a dependency, since it is an object.
+/* eslint-disable react-hooks/exhaustive-deps */
 
 export interface UseRequestOptions<Data extends ResourceObjectOrObjects> {
     action: JasonApiRequestAction<Data>;
@@ -71,13 +75,16 @@ export type UseRequestResult<Data extends ResourceObjectOrObjects> = Response<
 
 export const useRequest = <
     Data extends ResourceObjectOrObjects = ResourceObjectOrObjects
->({
-    action,
-    cacheScheme,
-    expandResourceObjects,
-    onError,
-    onSuccess,
-}: UseRequestOptions<Data>) => {
+>(
+    {
+        action,
+        cacheScheme,
+        expandResourceObjects,
+        onError,
+        onSuccess,
+    }: UseRequestOptions<Data>,
+    deps: DependencyList = []
+) => {
     const dispatch = useDispatch<JasonApiDispatch>();
     const [isLoading, setLoading] = useState(false);
     const [response, setResponse] = useState<Response<Data>>();
@@ -118,7 +125,7 @@ export const useRequest = <
 
         // Stop Loading.
         setLoading(false);
-    }, [action]);
+    }, deps);
 
     // Get cached response.
     const cacheKey = cacheKeyForRequestAction(action[JASON_API]);
