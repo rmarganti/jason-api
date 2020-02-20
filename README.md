@@ -1,6 +1,8 @@
 ![Logo](./imgs/header.png)
 
-# JasonAPI
+# [RELOCATED ⛔️] JasonAPI
+
+NOTICE: This project has moved. Visit its [new home here](https://github.com/rmarganti/json-api/tree/master/packages/jason-api).
 
 Consume and manipulate [JSON API standard](http://jsonapi.org/)
 data in Redux with scary ease.
